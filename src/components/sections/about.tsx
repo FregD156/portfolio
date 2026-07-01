@@ -31,7 +31,7 @@ export function About() {
               I am a Software Engineering student at the University of Transport Technology (UTT), maintaining an Excellent academic standing. Driven by logic and a proactive mindset, I actively look for opportunities to solve real-world problems through advanced software workflows and practical implementations.
             </p>
             <p>
-              As a proven leader, I served as the Team Leader in the "AI for Social Challenge" competition. I excel under pressure and bring a well-rounded background combining strong technical skills with extensive soft skills acquired through operational management roles. I look forward to advancing my global perspective by continuing my studies at the Korea National University of Transportation (KNUT).
+              As a proven leader, I served as the Team Leader in the &quot;AI for Social Challenge&quot; competition. I excel under pressure and bring a well-rounded background combining strong technical skills with extensive soft skills acquired through operational management roles. I look forward to advancing my global perspective by continuing my studies at the Korea National University of Transportation (KNUT).
             </p>
           </div>
         </motion.div>

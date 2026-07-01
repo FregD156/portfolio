@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { buttonVariants } from "@/components/ui/button"
+import Image from "next/image"
 
 export function Projects() {
   const projects = [
@@ -51,7 +52,7 @@ export function Projects() {
         </div>
 
         <div className="flex flex-col gap-32">
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <motion.article
               key={project.id}
               initial={{ opacity: 0, y: 32 }}
@@ -146,10 +147,12 @@ export function Projects() {
                 }`}
               >
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
-                <img
+                <Image
                   src={project.image}
                   alt={`${project.name} Interface Dashboard Mockup`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </div>
 

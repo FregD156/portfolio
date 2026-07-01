@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { buttonVariants } from "@/components/ui/button"
+import Image from "next/image"
 
 export function Hero() {
   return (
@@ -59,12 +60,14 @@ export function Hero() {
             <div className="absolute inset-0 border border-primary/20 rounded-2xl scale-[1.03] opacity-50 group-hover:scale-[1.05] group-hover:border-primary/40 group-hover:opacity-100 transition-all duration-500 pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
-            <div className="w-full h-full rounded-2xl overflow-hidden border border-border shadow-2xl transition-transform duration-500 group-hover:translate-y-[-4px] group-hover:scale-[1.01]">
-              <img
+            <div className="w-full h-full rounded-2xl overflow-hidden border border-border shadow-2xl transition-transform duration-500 group-hover:translate-y-[-4px] group-hover:scale-[1.01] relative">
+              <Image
                 src="/assets/images/profile.jpg"
                 alt="Nguyen Thanh Duy professional portrait"
-                className="w-full h-full object-cover"
-                loading="eager"
+                fill
+                sizes="(max-width: 768px) 280px, 340px"
+                className="object-cover"
+                priority
               />
             </div>
           </div>

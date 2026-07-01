@@ -12,12 +12,15 @@ export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false)
 
   React.useEffect(() => {
-    setMounted(true)
+    const timer = setTimeout(() => setMounted(true), 0)
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => {
+      clearTimeout(timer)
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   const toggleMenu = () => setIsOpen(!isOpen)
