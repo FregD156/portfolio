@@ -4,6 +4,7 @@ import * as React from "react"
 import { useTheme } from "next-themes"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { Button, buttonVariants } from "@/components/ui/button"
+import { portfolioConfig } from "@/lib/config"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -83,7 +84,7 @@ export function Navbar() {
           )}
 
           <a
-            href="https://drive.google.com/drive/folders/your-resume-placeholder"
+            href={portfolioConfig.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={buttonVariants({
@@ -157,7 +158,7 @@ export function Navbar() {
           Contact
         </a>
         <a
-          href="https://drive.google.com/drive/folders/your-resume-placeholder"
+          href={portfolioConfig.resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={buttonVariants({

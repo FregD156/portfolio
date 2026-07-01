@@ -6,13 +6,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
+import { portfolioConfig } from "@/lib/config"
 
 export function Contact() {
   const info = [
-    { label: "Email", value: "nguyentduy156@gmail.com", href: "mailto:nguyentduy156@gmail.com" },
-    { label: "Phone", value: "+84 866 479 117", href: "tel:+84866479117" },
-    { label: "Location", value: "Hanoi, Vietnam" },
-    { label: "GitHub", value: "github.com/FregD156", href: "https://github.com/FregD156" }
+    { label: "Email", value: portfolioConfig.email, href: `mailto:${portfolioConfig.email}` },
+    { label: "Phone", value: portfolioConfig.phone, href: `tel:${portfolioConfig.phone.replace(/\s+/g, "")}` },
+    { label: "Location", value: portfolioConfig.location },
+    { label: "GitHub", value: portfolioConfig.github.replace("https://", ""), href: portfolioConfig.github }
   ]
 
   return (
@@ -67,7 +68,7 @@ export function Contact() {
             <CardContent className="p-6 md:p-8">
               <form
                 className="space-y-6"
-                action="https://formspree.io/f/your-formspree-id-placeholder"
+                action={`https://formspree.io/f/${portfolioConfig.formspreeId}`}
                 method="POST"
               >
                 <div className="flex flex-col gap-2 text-left">
