@@ -12,7 +12,7 @@ export function About() {
   }
 
   return (
-    <section className="py-24" id="about">
+    <section className="py-28" id="about">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         
         {/* About narrative block */}

@@ -3,10 +3,10 @@
 
 ## 1. General Profile
 *   **Full Name**: Nguyen Thanh Duy[cite: 1]
-*   **Professional Title**: Full Stack Developer / Software Engineer
-*   **Short Bio (1-2 sentences)**: A high-achieving Software Engineering student and Full Stack Developer with an impressive 3.67 GPA[cite: 1] and an award-winning track record in AI innovation[cite: 1]. Passionate about building robust backend architectures and intelligent, user-centric web platforms.
+*   **Professional Title**: Software Engineer
+*   **Short Bio (1-2 sentences)**: A high-achieving Software Engineering student with an impressive 3.64 GPA[cite: 1] and an award-winning track record in AI innovation[cite: 1]. Passionate about building robust backend architectures and intelligent, user-centric web platforms.
 *   **Detailed About Me**: 
-    I am a Software Engineering student at the University of Transport Technology (UTT)[cite: 1], currently maintaining an Excellent academic standing with a 3.67 GPA[cite: 1]. Driven by logic, rapid adaptability, and a proactive mindset[cite: 1], I actively look for opportunities to solve real-world problems through advanced software workflows and practical implementations. My technical expertise spans across multiple programming languages, database structures, and engineering frameworks[cite: 1].
+    I am a Software Engineering student at the University of Transport Technology (UTT)[cite: 1], currently maintaining an Excellent academic standing with a 3.64 GPA[cite: 1]. Driven by logic, rapid adaptability, and a proactive mindset[cite: 1], I actively look for opportunities to solve real-world problems through advanced software workflows and practical implementations. My technical expertise spans across multiple programming languages, database structures, and engineering frameworks[cite: 1].
     
     As a proven leader, I served as the Team Leader and secured 3rd Place in the "AI for Social Challenge" competition[cite: 1]. I excel under pressure[cite: 1] and bring a well-rounded background combining strong technical skills (Java, JavaScript, Python, C/C++)[cite: 1] with extensive soft skills acquired through over a year of diverse operational, customer service, and management roles[cite: 1]. Furthermore, I look forward to expanding my global perspective by advancing my studies at the Korea National University of Transportation (KNUT).
 *   **Profile Image (Path or URL)**: `/assets/images/profile.jpg`
@@ -15,7 +15,7 @@
 ## 2. Contact Information
 *   **Email**: nguyentduy156@gmail.com[cite: 1]
 *   **Phone**: +84 866479117[cite: 1]
-*   **Location**: 26b Tan Trieu, Trieu Khuc, Hanoi, Vietnam[cite: 1]
+*   **Location**: Hanoi, Vietnam[cite: 1]
 *   **GitHub Link**: https://github.com/FregD156[cite: 1]
 
 ## 3. Skills & Technologies
@@ -54,13 +54,13 @@
 *   **Live Demo Link**: `wwww.xettuyen.site`
 *   **Project Image**: `/assets/images/projects/eduguide-ai.png`
 
-### Project 2: TOPIK W - Korean Proficiency Web Application
+### Project 2: TOPIK Master - Korean Proficiency Web Application
 *   **Description**: A specialized web application designed to support intensive Korean language preparation, featuring vocabulary marathons and structured mock practices for TOPIK I and TOPIK II levels.
 *   **Key Features**:
     - Interactive database supporting high-volume vocabulary quizzes (ranging from 50 to 350+ multi-level question marathons).
     - Lightweight, optimized web client ensuring fast loading speeds for rigorous test reviews.
     - Fully responsive layouts tailored for modern web browsers and mobile screen adaptations.
-*   **Technologies Used**: JavaScript, Frontend Web Stack, Vercel (Deployment)
+*   **Technologies Used**: BE: Python & FastAPI, Frontend: Note.JS & ShadCN, Vercel (Deployment)
 *   **GitHub Repository**: `[Link to your repository]`
 *   **Live Demo Link**: https://topikwfregd.vercel.app
 *   **Project Image**: `/assets/images/projects/topikw-demo.png`
@@ -70,8 +70,8 @@
 ### Academic Accomplishments & Activities
 *   **Team Leader - 3rd Place Award**: AI for Social Challenge[cite: 1].
 *   **Research Member**: Key Scientific Research Team at UTT[cite: 1].
-*   **Academic Standing**: GPA 3.67 / 4.00 (Excellent)[cite: 1].
-*   **Extracurricular Champions**: Regional Football Champion (2023), Silver Medalist in Badminton (2019), and 5-year participant in District/Provincial academic student contests[cite: 1].
+*   **Academic Standing**: GPA 3.64 / 4.00 (Excellent)[cite: 1].
+*   **Extracurricular Champions**: Regional Volleyball Champion (2023), Silver Medalist in Badminton (2019), and 5-year participant in District/Provincial academic student contests[cite: 1].
 
 ### Professional Experience
 *   **Badminton Coach** at Badminton Academy

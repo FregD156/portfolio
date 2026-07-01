@@ -27,7 +27,7 @@ export function Projects() {
     },
     {
       id: "topikw",
-      name: "TOPIK W",
+      name: "TOPIK Master",
       tagline: "Korean Proficiency Training Web Client",
       tag: "Web Application",
       description: "A specialized language preparation web client featuring vocabulary marathons and structured mock practice modules for TOPIK I and TOPIK II levels.",
@@ -36,8 +36,8 @@ export function Projects() {
         "Optimized, lightweight web client ensuring fast rendering speeds for rigorous study sessions.",
         "Fully responsive layouts tailored for mobile and web screens."
       ],
-      tech: ["JavaScript", "Vercel", "HTML5/CSS3"],
-      image: "/assets/images/projects/topikw-demo.jpg",
+      tech: ["Python", "FastAPI", "Node.js", "shadcn/ui", "Vercel"],
+      image: "/assets/images/projects/topikw-demo.png",
       codeUrl: null,
       demoUrl: "https://topikwfregd.vercel.app",
       reverse: true
@@ -45,7 +45,7 @@ export function Projects() {
   ]
 
   return (
-    <section className="py-24 border-t border-border" id="projects">
+    <section className="py-28 border-y border-border bg-muted/15 dark:bg-card/10" id="projects">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-16 text-left">
           <h2 className="text-3xl font-bold tracking-tight">Selected Projects</h2>
@@ -110,7 +110,7 @@ export function Projects() {
                       rel="noopener noreferrer"
                       className={buttonVariants({
                         variant: "outline",
-                        className: "rounded-full font-semibold border border-border hover:bg-accent/40 cursor-pointer"
+                        className: "rounded-full font-semibold border border-border hover:border-volt hover:text-volt hover:bg-transparent transition-colors duration-300 cursor-pointer"
                       })}
                     >
                       Source Code
@@ -131,7 +131,7 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={buttonVariants({
-                        className: "rounded-full font-semibold px-6 bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:shadow-[0_0_20px_rgba(16,185,129,0.25)] transition-all cursor-pointer"
+                        className: "rounded-full font-semibold px-6 bg-primary hover:bg-volt hover:text-black dark:hover:text-black shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:shadow-[0_0_20px_rgba(163,230,53,0.35)] transition-all duration-300 cursor-pointer"
                       })}
                     >
                       Live Demo

@@ -1,6 +1,6 @@
 export const portfolioConfig = {
   name: "Nguyen Thanh Duy",
-  title: "Full Stack Developer / Software Engineer",
+  title: "Software Engineer",
   email: "nguyentduy156@gmail.com",
   phone: "+84 866 479 117",
   location: "Hanoi, Vietnam",

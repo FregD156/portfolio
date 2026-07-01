@@ -6,13 +6,13 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export function Stats() {
   const stats = [
-    { value: "3.67", label: "UTT GPA (Excellent)" },
+    { value: "3.64", label: "UTT GPA (Excellent)" },
     { value: "3rd Place", label: "AI for Social Challenge" },
     { value: "1.5+ Yrs", label: "Operations & Consulting" }
   ]
 
   return (
-    <section className="py-12 border-y border-border" id="stats">
+    <section className="py-16 border-y border-border bg-muted/20 dark:bg-card/25" id="stats">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, i) => (

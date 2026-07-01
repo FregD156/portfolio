@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nguyen Thanh Duy | Full Stack Developer & Software Engineer",
-  description: "Portfolio of Nguyen Thanh Duy, a software engineering student and full-stack developer specializing in backend architectures and intelligent AI platforms.",
+  title: "Nguyen Thanh Duy | Software Engineer",
+  description: "Portfolio of Nguyen Thanh Duy, a software engineering student specializing in backend architectures and intelligent AI platforms.",
 };
 
 export default function RootLayout({

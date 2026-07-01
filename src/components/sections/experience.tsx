@@ -27,7 +27,7 @@ export function Experience() {
   ]
 
   return (
-    <section className="py-24 border-t border-border" id="experience">
+    <section className="py-28 border-t border-border" id="experience">
       <div className="max-w-4xl mx-auto px-6">
         
         <div className="mb-16 text-center">
