@@ -2,72 +2,133 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
+
+const timeline = [
+  {
+    period: "Academic",
+    role: "Research Member & Team Leader",
+    company: "University of Transport Technology (UTT)",
+    duration: "2023 – Present",
+    highlight: "3rd Place - AI for Social Challenge",
+    description: "Member of a key scientific research team. Led a team to build EduGuide AI, an award-winning university recommendation system. Maintained a 3.64 GPA throughout.",
+    tags: ["AI Research", "Team Leadership", "Software Engineering"],
+  },
+  {
+    period: "12 Months",
+    role: "Badminton Coach",
+    company: "Badminton Academy",
+    duration: "2025 – Present",
+    highlight: "Regional Silver Medalist",
+    description: "Leveraged athletic background to design personalized training routines for junior and adult students. Developed key leadership, communication, and soft skills in a fast-paced environment.",
+    tags: ["Leadership", "Coaching", "Soft Skills"],
+  },
+  {
+    period: "12 Months",
+    role: "Business Operations Consultant",
+    company: "Freelance / Independent",
+    duration: "2023 – 2024",
+    highlight: "Soft Skills & Operations Development",
+    description: "Managed operations, content updates, customer success, and technical workflow setup for private business clients. Developed communication, problem-solving, and administrative execution skills.",
+    tags: ["Operations", "Customer Success", "Soft Skills Development"],
+  },
+  {
+    period: "11 Months",
+    role: "Front of House Specialist & Financial Assistant",
+    company: "Le Monde Steak & Cuốn 37 (Golden Gate Group)",
+    duration: "2022 – 2023",
+    highlight: "Excellent Employee of the Month × 3",
+    description: "Supported daily financial tracking and transaction logs. Awarded \"Excellent Employee of the Month\" three times across both establishments for exceptional performance.",
+    tags: ["Finance", "Customer Service", "Team Coordination"],
+  },
+]
 
 export function Experience() {
-  const items = [
-    {
-      time: "12 Months",
-      role: "Business Operations & Soft Skills Consultant",
-      company: "Freelance / Independent",
-      desc: "Managed operations, content updates, customer success services, and technical workflow setup for private business clients. Developed communication, problem-solving, and administrative execution skills."
-    },
-    {
-      time: "11 Months",
-      role: "Front of House Specialist & Financial Assistant",
-      company: "Le Monde Steak & Cuốn 37 (Golden Gate Group)",
-      desc: "Supported daily financial tracking and transaction logs. Awarded \"Excellent Employee of the Month\" three times across both establishments for exceptional performance, team coordination, and customer relations."
-    },
-    {
-      time: "8 Months",
-      role: "Badminton Coach",
-      company: "Badminton Academy",
-      desc: "Leveraged athletic background (regional silver medalist) to formulate personalized training routines. Coached junior and adult student groups, refining leadership, motivation, and clear communication techniques under athletic pressure."
-    }
-  ]
-
   return (
-    <section className="py-28 border-t border-border" id="experience">
-      <div className="max-w-4xl mx-auto px-6">
-        
-        <div className="mb-16 text-center">
-          <span className="text-xs font-mono font-semibold uppercase tracking-[0.22em] text-primary mb-4 block">
-            TIMELINE
-          </span>
-          <h2 className="text-3xl font-bold tracking-tight">Leadership & Background</h2>
-        </div>
+    <section className="py-32 border-t border-border" id="experience">
+      <div className="max-w-6xl mx-auto px-6">
 
-        <div className="relative border-l border-border pl-6 ml-4 space-y-12">
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative group"
+        {/* Header */}
+        <div className="mb-20">
+          <div className="overflow-hidden mb-3">
+            <motion.h2
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl md:text-4xl font-extrabold tracking-tight"
             >
-              {/* Timeline dot marker */}
-              <div className="absolute left-[-29px] top-6 w-2.5 h-2.5 rounded-full bg-background border-2 border-primary z-10 transition-all duration-300 group-hover:scale-130 group-hover:bg-primary" />
-              
-              <Card className="border border-border bg-card/40 backdrop-blur-sm hover:border-border-hover hover:bg-card-hover/60 transition-all duration-300">
-                <CardContent className="p-6 flex flex-col text-left">
-                  <span className="text-[10px] font-mono font-semibold text-primary uppercase tracking-wide mb-2 block">
-                    {item.time}
-                  </span>
-                  <h3 className="text-xl font-bold mb-1">{item.role}</h3>
-                  <h4 className="text-xs font-mono font-medium text-muted-foreground mb-4">
-                    {item.company}
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.desc}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+              Background
+            </motion.h2>
+          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-sm text-muted-foreground max-w-[50ch]"
+          >
+            A track record spanning research, operations, and leadership across academic and professional environments.
+          </motion.p>
         </div>
 
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-0 top-0 bottom-0 w-px ml-[3px]"
+            style={{ background: "linear-gradient(to bottom, rgba(217,119,87,0.4), rgba(217,119,87,0.05))" }}
+          />
+
+          <div className="space-y-14 pl-8">
+            {timeline.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="relative group"
+              >
+                {/* Dot */}
+                <div className="absolute -left-8 top-1.5 w-[7px] h-[7px] rounded-full border-2 border-primary bg-background transition-all duration-300 group-hover:scale-[1.6] group-hover:bg-primary" />
+
+                <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-12">
+
+                  {/* Time info */}
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-mono text-muted-foreground">{item.duration}</span>
+                    <span className="text-xs font-mono font-semibold uppercase tracking-wider text-primary">{item.period}</span>
+                  </div>
+
+                  {/* Content */}
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-0.5 leading-snug">{item.role}</h3>
+                    <p className="text-sm font-mono text-muted-foreground mb-3">{item.company}</p>
+
+                    {item.highlight && (
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-xs font-semibold px-2.5 py-1 rounded-full border border-primary/20 text-primary bg-primary/8">
+                          ✦ {item.highlight}
+                        </span>
+                      </div>
+                    )}
+
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 max-w-[55ch]">
+                      {item.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {item.tags.map(tag => (
+                        <span key={tag} className="text-[11px] font-mono text-muted-foreground border border-border px-2.5 py-0.5 rounded-md hover:border-primary/30 hover:text-primary transition-colors duration-200">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

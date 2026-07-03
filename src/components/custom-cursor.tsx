@@ -1,22 +1,23 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import { motion, useMotionValue, useSpring } from "framer-motion"
+import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
 
 export function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false)
   const [isHidden, setIsHidden] = useState(true)
+  const reduceMotion = useReducedMotion()
 
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
-  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 }
+  const springConfig = { damping: 30, stiffness: 300, mass: 0.6 }
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
 
   useEffect(() => {
-    // Hide cursor on touch devices
-    if (window.matchMedia("(pointer: coarse)").matches) {
+    // Hide cursor on touch devices or if reduced motion is enabled
+    if (window.matchMedia("(pointer: coarse)").matches || reduceMotion) {
       return
     }
 
@@ -35,7 +36,8 @@ export function CustomCursor() {
         target.closest("a") ||
         target.closest("button") ||
         target.closest(".cursor-pointer") ||
-        target.classList.contains("project-image-container")
+        target.closest("input") ||
+        target.closest("textarea")
       
       setIsHovered(!!isInteractive)
     }
@@ -47,36 +49,34 @@ export function CustomCursor() {
       window.removeEventListener("mousemove", moveCursor)
       window.removeEventListener("mouseover", handleMouseOver)
     }
-  }, [cursorX, cursorY])
+  }, [cursorX, cursorY, reduceMotion])
 
-  if (isHidden) return null
+  if (isHidden || reduceMotion) return null
 
   return (
     <>
       {/* Outer Spring ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-primary pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-primary pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 hidden md:block mix-blend-difference"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
         }}
         animate={{
-          scale: isHovered ? 1.5 : 1,
-          borderColor: isHovered ? "var(--color-volt)" : "var(--color-primary-raw)",
-          backgroundColor: isHovered ? "var(--color-volt-glow)" : "rgba(16, 185, 129, 0)",
+          scale: isHovered ? 1.6 : 1,
+          backgroundColor: isHovered ? "rgba(217, 119, 87, 0.25)" : "rgba(217, 119, 87, 0)",
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.2 }}
       />
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-primary pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 hidden md:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-primary pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 hidden md:block mix-blend-difference"
         style={{
           x: cursorX,
           y: cursorY,
         }}
         animate={{
           scale: isHovered ? 0.5 : 1,
-          backgroundColor: isHovered ? "var(--color-volt)" : "var(--color-primary-raw)",
         }}
         transition={{ type: "tween", ease: "linear", duration: 0.1 }}
       />

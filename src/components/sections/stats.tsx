@@ -2,37 +2,42 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
+
+const stats = [
+  { value: "3.64", unit: "/4.0",  label: "Academic GPA",            sub: "UTT · Excellent Standing",            warm: true  },
+  { value: "3rd",  unit: " Place", label: "AI for Social Challenge", sub: "Team Leader · National Competition",  warm: false },
+  { value: "1.5+", unit: " yrs",  label: "Work Experience",          sub: "Operations & Management Roles",       warm: true  },
+]
 
 export function Stats() {
-  const stats = [
-    { value: "3.64", label: "UTT GPA (Excellent)" },
-    { value: "3rd Place", label: "AI for Social Challenge" },
-    { value: "1.5+ Yrs", label: "Operations & Consulting" }
-  ]
-
   return (
-    <section className="py-16 border-y border-border bg-muted/20 dark:bg-card/25" id="stats">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {stats.map((stat, i) => (
+    <section className="py-20 border-y border-border relative overflow-hidden" id="stats">
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(217,119,87,0.03) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="max-w-6xl mx-auto px-6 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-border">
+          {stats.map((s, i) => (
             <motion.div
-              key={stat.label}
+              key={s.label}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.55, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col px-8 first:pl-0 last:pr-0"
             >
-              <Card className="border border-border bg-card/40 backdrop-blur-sm hover:border-border-hover hover:bg-card-hover/60 transition-all duration-300">
-                <CardContent className="p-6 flex flex-col gap-2">
-                  <span className="text-3xl lg:text-4xl font-extrabold text-primary tracking-tight leading-none">
-                    {stat.value}
-                  </span>
-                  <span className="text-xs font-semibold text-muted-foreground tracking-wide uppercase">
-                    {stat.label}
-                  </span>
-                </CardContent>
-              </Card>
+              <div className="flex items-baseline gap-1 mb-2">
+                <span className="text-4xl md:text-5xl font-extrabold tracking-tight leading-none text-primary">
+                  {s.value}
+                </span>
+                <span className="text-lg font-bold text-muted-foreground">{s.unit}</span>
+              </div>
+              <div className="text-sm font-semibold text-foreground mb-1">{s.label}</div>
+              <div className="text-xs font-mono text-muted-foreground">{s.sub}</div>
             </motion.div>
           ))}
         </div>
