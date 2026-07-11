@@ -20,11 +20,23 @@ export function Navbar() {
   const { theme, setTheme }     = useTheme()
   const [scrolled, setScrolled] = React.useState(false)
   const [active,   setActive]   = React.useState("")
+  const [visible,  setVisible]  = React.useState(true)
+  const lastScrollY = React.useRef(0)
 
   React.useEffect(() => {
     setMounted(true)
     const onScroll = () => {
-      setScrolled(window.scrollY > 40)
+      const currentScrollY = window.scrollY
+      setScrolled(currentScrollY > 40)
+
+      // Smart hide on scroll down, reveal on scroll up
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setVisible(false)
+      } else {
+        setVisible(true)
+      }
+      lastScrollY.current = currentScrollY
+
       const ids = ["about", "projects", "experience", "contact"]
       const cur = ids.find(id => {
         const el = document.getElementById(id)
@@ -41,10 +53,12 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 transform ${
           scrolled
             ? "bg-background/85 backdrop-blur-xl border-b border-border"
             : "bg-transparent border-b border-transparent"
+        } ${
+          visible ? "translate-y-0" : "-translate-y-full"
         }`}
         style={{ height: "68px" }}
       >

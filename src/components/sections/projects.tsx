@@ -30,7 +30,6 @@ const projects = [
     codeUrl: "https://github.com/FregD156/AI.git",
     demoUrl: "http://www.xettuyen.site",
     hasAward: true,
-    // bento placement: large left cell
     span: "large",
   },
   {
@@ -57,7 +56,6 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://topikwfregd.vercel.app",
     hasAward: false,
-    // bento placement: smaller top-right cell
     span: "small",
   },
 ]
@@ -71,7 +69,7 @@ function TechTag({ label }: { label: string }) {
   )
 }
 
-/* ── LARGE CARD (left, full height) ─────────────────────────────────── */
+/* ── LARGE CARD (Featured Project - Full Banner Layout) ───────────────── */
 function LargeCard({ project }: { project: typeof projects[0] }) {
   return (
     <motion.div
@@ -79,24 +77,25 @@ function LargeCard({ project }: { project: typeof projects[0] }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-      className="h-full flex"
+      className="w-full flex"
     >
       <Tilt
-        tiltMaxAngleX={4}
-        tiltMaxAngleY={4}
-        className="w-full flex flex-col rounded-2xl border border-border bg-card/80 backdrop-blur-md overflow-hidden group relative"
+        tiltMaxAngleX={2}
+        tiltMaxAngleY={2}
+        className="w-full rounded-2xl border border-border bg-card/85 backdrop-blur-md overflow-hidden group relative flex flex-col lg:flex-row"
       >
-        {/* Image */}
-        <div className="relative w-full aspect-[16/9] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/60 z-10" />
-          <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/4 transition-colors duration-500 z-10" />
+        {/* Banner Image */}
+        <div className="relative w-full lg:w-[60%] aspect-[16/9] lg:aspect-auto min-h-[260px] lg:min-h-[420px] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card/90 z-10 hidden lg:block" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/90 z-10 lg:hidden" />
           <Image
             src={project.image}
             alt={project.name}
-            fill sizes="(max-width: 768px) 100vw, 65vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            fill
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            priority
           />
-          {/* Award badge overlay */}
           {project.hasAward && (
             <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/20">
               <Award className="w-3 h-3 text-primary flex-shrink-0" />
@@ -105,18 +104,19 @@ function LargeCard({ project }: { project: typeof projects[0] }) {
           )}
         </div>
 
-        {/* Content */}
-        <div className="flex flex-col flex-1 p-6 md:p-7">
-          <h3 className="text-2xl font-extrabold tracking-tight mb-1.5">{project.name}</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-[52ch]">
+        {/* Content Details */}
+        <div className="flex flex-col justify-center flex-1 p-6 md:p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-border/50">
+          <div className="text-[10px] font-mono text-primary uppercase tracking-[0.2em] mb-2">Featured Project</div>
+          <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-3">{project.name}</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-[48ch]">
             {project.description}
           </p>
 
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-8">
             {project.tech.map(t => <TechTag key={t} label={t} />)}
           </div>
 
-          <div className="flex gap-3 mt-auto">
+          <div className="flex gap-3">
             {project.codeUrl ? (
               <a
                 href={project.codeUrl} target="_blank" rel="noopener noreferrer"
@@ -151,7 +151,7 @@ function LargeCard({ project }: { project: typeof projects[0] }) {
   )
 }
 
-/* ── SMALL CARD (right column, stacks with "what I do") ─────────────── */
+/* ── SMALL CARD (equal height layout block) ─────────────────────────── */
 function SmallCard({ project }: { project: typeof projects[0] }) {
   return (
     <motion.div
@@ -159,35 +159,47 @@ function SmallCard({ project }: { project: typeof projects[0] }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.75, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col"
+      className="flex flex-col w-full h-full"
     >
       <Tilt
         tiltMaxAngleX={4}
         tiltMaxAngleY={4}
-        className="w-full flex flex-col rounded-2xl border border-border bg-card/80 backdrop-blur-md overflow-hidden group relative"
+        className="w-full h-full flex flex-col rounded-2xl border border-border bg-card/80 backdrop-blur-md overflow-hidden group relative"
       >
-        {/* Image - shorter, more horizontal */}
-        <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/7" }}>
+        {/* Image */}
+        <div className={`relative w-full overflow-hidden aspect-[16/8] ${
+          project.id === "dblinkstore"
+            ? "bg-gradient-to-br from-[#1c120e] via-[#0d0d0d] to-[#221008] flex items-center justify-center"
+            : ""
+        }`}>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/60 z-10" />
           <Image
             src={project.image}
             alt={project.name}
-            fill sizes="(max-width: 768px) 100vw, 35vw"
-            className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+            fill
+            sizes="(max-width: 768px) 100vw, 30vw"
+            className={`transition-transform duration-700 group-hover:scale-[1.04] ${
+              project.id === "dblinkstore"
+                ? "object-contain p-7"
+                : "object-cover object-top"
+            }`}
           />
         </div>
 
+        {/* Content */}
         <div className="flex flex-col flex-1 p-5 md:p-6">
-          <div className="flex items-start justify-between gap-4 mb-2">
-            <h3 className="text-xl font-extrabold tracking-tight">{project.name}</h3>
+          <div className="flex items-start justify-between gap-4 mb-1.5">
+            <h3 className="text-lg md:text-xl font-extrabold tracking-tight">{project.name}</h3>
           </div>
-          <p className="text-xs text-muted-foreground mb-1 font-mono">{project.outcome}</p>
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mt-auto">
+          <p className="text-[10px] text-muted-foreground mb-3 font-mono">{project.outcome}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">{project.description}</p>
+          
+          <div className="flex flex-wrap gap-2 mb-5 mt-auto">
             {project.tech.map(t => <TechTag key={t} label={t} />)}
           </div>
+          
           {project.demoUrl && (
-            <div className="mt-4 pt-3 border-t border-border/50">
+            <div className="pt-3 border-t border-border/50">
               <a
                 href={project.demoUrl} target="_blank" rel="noopener noreferrer"
                 className={buttonVariants({
@@ -220,12 +232,12 @@ function WhatIDoCard() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.75, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-      className="rounded-2xl border border-border bg-card/80 backdrop-blur-md p-6 md:p-7 flex flex-col"
+      className="rounded-2xl border border-border bg-card/80 backdrop-blur-md p-6 md:p-7 flex flex-col h-full w-full"
     >
       <div className="text-xs font-mono text-primary uppercase tracking-[0.15em] mb-4">
         What I do
       </div>
-      <ul className="space-y-3 flex-1">
+      <ul className="space-y-3.5 flex-1">
         {capabilities.map((c, i) => (
           <li key={i} className="flex items-start gap-2.5 text-sm text-foreground/80">
             <span className="text-primary mt-0.5 text-xs flex-shrink-0">▸</span>
@@ -281,26 +293,30 @@ export function Projects() {
         </div>
 
         {/* ── BENTO GRID ─────────────────────────────────────────────
-            Desktop: [  large (col-span 7)  ] [ small (col-span 5) ]
-                                              [ what-I-do           ]
-            Mobile: stacked vertically
+            Desktop Layout:
+            Row 1: [        Featured Banner (col-span-12)       ]
+            Row 2: [ Small (4) ] [ Small (4) ] [ What I do (4) ]
+            Mobile: Stacked vertically
         ─────────────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-
-          {/* Large card - left, spans 7 cols, full grid height */}
-          <div className="lg:col-span-7 lg:row-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          
+          {/* Row 1: Large card - Full width */}
+          <div className="lg:col-span-12">
             <LargeCard project={large} />
           </div>
 
-          {/* Small project card - top right */}
-          <div className="lg:col-span-5 flex flex-col gap-5">
-            {small.map(p => <SmallCard key={p.id} project={p} />)}
-          </div>
+          {/* Row 2: Smaller cards - Side by side (1/3 each on desktop) */}
+          {small.map(p => (
+            <div key={p.id} className="lg:col-span-4 flex">
+              <SmallCard project={p} />
+            </div>
+          ))}
 
-          {/* "What I do" info card - bottom right */}
-          <div className="lg:col-span-5">
+          {/* Row 2: Info Card - 1/3 on desktop */}
+          <div className="lg:col-span-4 flex">
             <WhatIDoCard />
           </div>
+
         </div>
       </div>
     </section>
