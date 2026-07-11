@@ -34,6 +34,19 @@ const projects = [
     span: "large",
   },
   {
+    id: "dblinkstore",
+    name: "DBLink Store",
+    outcome: "Live · Link Aggregation Store",
+    description:
+      "A premium link-in-bio store and digital asset aggregator designed for developers and creators to centralize their online presence.",
+    tech: ["Next.js", "Tailwind CSS", "TypeScript"],
+    image: "/assets/images/projects/dblinkstore.png",
+    codeUrl: null,
+    demoUrl: "https://dblinkstore.vercel.app",
+    hasAward: false,
+    span: "small",
+  },
+  {
     id: "topikw",
     name: "TOPIK Master",
     outcome: "Live · Deployed on Vercel",
@@ -280,7 +293,7 @@ export function Projects() {
           </div>
 
           {/* Small project card - top right */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 flex flex-col gap-5">
             {small.map(p => <SmallCard key={p.id} project={p} />)}
           </div>
 
