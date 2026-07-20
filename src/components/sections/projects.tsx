@@ -20,6 +20,19 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
 /* ── DATA ──────────────────────────────────────────────────────────── */
 const projects = [
   {
+    id: "shb-legal-intelligence",
+    name: "SHB Legal Intelligence",
+    outcome: "Vietnam AI Innovation Challenge",
+    description:
+      "A sophisticated Temporal Graph-RAG system for SHB banking compliance. Resolves active legal clauses, maps document references using NetworkX, and enforces strict grounding via CitationGuard.",
+    tech: ["Python", "FastAPI", "SQLite/FAISS", "NetworkX", "React 19", "React Flow"],
+    image: "/assets/images/projects/shb-legal-intelligence.jpg",
+    codeUrl: null,
+    demoUrl: "https://shb-compliance-operations-intellige.vercel.app/",
+    hasAward: true,
+    span: "large",
+  },
+  {
     id: "eduguide",
     name: "EduGuide AI",
     outcome: "3rd Place · AI for Social Challenge",
@@ -256,7 +269,7 @@ function WhatIDoCard() {
 
 /* ── SECTION ─────────────────────────────────────────────────────────── */
 export function Projects() {
-  const large = projects.find(p => p.span === "large")!
+  const featured = projects.filter(p => p.span === "large")
   const small = projects.filter(p => p.span === "small")
 
   return (
@@ -294,16 +307,18 @@ export function Projects() {
 
         {/* ── BENTO GRID ─────────────────────────────────────────────
             Desktop Layout:
-            Row 1: [        Featured Banner (col-span-12)       ]
+            Row 1: [        Featured Banners (col-span-12)      ]
             Row 2: [ Small (4) ] [ Small (4) ] [ What I do (4) ]
             Mobile: Stacked vertically
         ─────────────────────────────────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
           
-          {/* Row 1: Large card - Full width */}
-          <div className="lg:col-span-12">
-            <LargeCard project={large} />
-          </div>
+          {/* Row 1: Large cards - Full width */}
+          {featured.map(p => (
+            <div key={p.id} className="lg:col-span-12">
+              <LargeCard project={p} />
+            </div>
+          ))}
 
           {/* Row 2: Smaller cards - Side by side (1/3 each on desktop) */}
           {small.map(p => (

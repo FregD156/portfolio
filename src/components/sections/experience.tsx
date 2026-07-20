@@ -5,6 +5,15 @@ import { motion } from "framer-motion"
 
 const timeline = [
   {
+    period: "Competition",
+    role: "Hackathon Participant",
+    company: "Vietnam AI Innovation Challenge",
+    duration: "2026",
+    highlight: "SHB Legal Intelligence",
+    description: "Developed a sophisticated Temporal Graph-RAG system. Engineered hybrid search with RRF, dynamic legal clause resolution, and reference network traversal mapping 15,000+ SQLite/FAISS chunks.",
+    tags: ["Graph-RAG", "Hybrid Retrieval", "Banking Compliance", "FastAPI"],
+  },
+  {
     period: "Academic",
     role: "Research Member & Team Leader",
     company: "University of Transport Technology (UTT)",

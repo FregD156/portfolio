@@ -43,7 +43,19 @@
 
 ## 4. Projects
 
-### Project 1: EduGuide AI (AI for Social Challenge - 3rd Place)
+### Project 1: SHB Legal Intelligence (Vietnam AI Innovation Challenge)
+*   **Description**: A highly sophisticated Temporal Graph-RAG system for SHB public data and Vietnamese banking compliance. Built to retrieve precise legal documents, resolve versioning/effectiveness timelines, and ensure safety.
+*   **Key Features**:
+    - **Dynamic Graph-RAG**: Hierarchical traversal (Doc → Article → Clause) mapping connections (`amends`, `supersedes`) using NetworkX.
+    - **Hybrid Retrieval (RRF)**: Integrates exact legal ID searches, BM25, and FAISS vectors (`multilingual-e5-large`) using Reciprocal Rank Fusion.
+    - **Temporal Compliance**: Custom `EffectiveResolver` filtering regulations by active dates (`as_of`).
+    - **Strict Grounding**: `CitationGuard` to guarantee evidence boundaries and enforce zero-hallucination policies.
+*   **Technologies Used**: Python, FastAPI, SQLite, FAISS, NetworkX, React 19, Vite, Tailwind CSS, SSE Streaming, React Flow
+*   **GitHub Repository**: `[Private]`
+*   **Live Demo Link**: https://shb-compliance-operations-intellige.vercel.app/
+*   **Project Image**: `/assets/images/projects/shb-legal-intelligence.jpg`
+
+### Project 2: EduGuide AI (AI for Social Challenge - 3rd Place)
 *   **Description**: An intelligent, award-winning recommendation system designed to assist high school students in selecting the most optimal universities and academic majors based on personalized profiles and data analysis[cite: 1].
 *   **Key Features**:
     - Built by a core member of a key scientific research team[cite: 1].
@@ -52,15 +64,15 @@
 *   **Technologies Used**: Python, JavaScript, Node.js, Artificial Intelligence (AI) Models, CSS, HTML[cite: 1]
 *   **GitHub Repository**: https://github.com/FregD156/AI.git[cite: 1]
 *   **Live Demo Link**: `wwww.xettuyen.site`
-*   **Project Image**: `/assets/images/projects/eduguide-ai.png`
+*   **Project Image**: `/assets/images/projects/eduguide-ai.jpg`
 
-### Project 2: TOPIK Master - Korean Proficiency Web Application
+### Project 3: TOPIK Master - Korean Proficiency Web Application
 *   **Description**: A specialized web application designed to support intensive Korean language preparation, featuring vocabulary marathons and structured mock practices for TOPIK I and TOPIK II levels.
 *   **Key Features**:
     - Interactive database supporting high-volume vocabulary quizzes (ranging from 50 to 350+ multi-level question marathons).
     - Lightweight, optimized web client ensuring fast loading speeds for rigorous test reviews.
     - Fully responsive layouts tailored for modern web browsers and mobile screen adaptations.
-*   **Technologies Used**: BE: Python & FastAPI, Frontend: Note.JS & ShadCN, Vercel (Deployment)
+*   **Technologies Used**: BE: Python & FastAPI, Frontend: Node.JS & ShadCN, Vercel (Deployment)
 *   **GitHub Repository**: `[Link to your repository]`
 *   **Live Demo Link**: https://topikwfregd.vercel.app
 *   **Project Image**: `/assets/images/projects/topikw-demo.png`
@@ -68,6 +80,7 @@
 ## 5. Work Experience & Achievements
 
 ### Academic Accomplishments & Activities
+*   **Hackathon Participant**: Vietnam AI Innovation Challenge (2026) - Developed and deployed SHB Legal Intelligence.
 *   **Team Leader - 3rd Place Award**: AI for Social Challenge[cite: 1].
 *   **Research Member**: Key Scientific Research Team at UTT[cite: 1].
 *   **Academic Standing**: GPA 3.64 / 4.00 (Excellent)[cite: 1].
