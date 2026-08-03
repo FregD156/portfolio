@@ -58,10 +58,11 @@ export function About() {
                 advanced software workflows and practical implementations.
               </p>
               <p>
-                As a proven leader, I served as Team Leader and secured{" "}
-                <span className="text-primary font-medium">3rd Place in the &quot;AI for Social Challenge&quot;</span>
-                {" "}competition. I bring a well-rounded background combining technical skills with soft
-                skills acquired through over a year of operational and management roles.
+                As a proven AI builder, I achieved{" "}
+                <span className="text-primary font-medium">Top 6 in Hackathon: AI for Everyday Life (LIKELION / K-Tech College 2026)</span>
+                {" "}and secured <span className="text-primary font-medium">3rd Place in the &quot;AI for Social Challenge&quot;</span>
+                {" "}as Team Leader. I bring a well-rounded background combining technical skills with soft
+                skills acquired through operational and leadership roles.
               </p>
               <p>
                 I look forward to expanding my global perspective by continuing studies at the{" "}

@@ -1,9 +1,34 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
+import { Award, FileText, X, ExternalLink, Eye } from "lucide-react"
 
-const timeline = [
+interface TimelineItem {
+  period: string
+  role: string
+  company: string
+  duration: string
+  highlight?: string
+  description: string
+  tags: string[]
+  certificateUrl?: string
+  certificatePdf?: string
+}
+
+const timeline: TimelineItem[] = [
+  {
+    period: "Hackathon",
+    role: "Top 6 Finalist",
+    company: "LIKELION Vietnam · K-Tech College 2026",
+    duration: "July 30, 2026",
+    highlight: "Top 6 - Hackathon: AI for Everyday Life",
+    description: "Awarded Top 6 in the national Hackathon: AI for Everyday Life as part of K-Tech College 2026, organized by LIKELION Vietnam.",
+    tags: ["Hackathon", "AI Innovation", "LIKELION", "K-Tech College"],
+    certificateUrl: "/assets/images/projects/certificate-likelion-hackathon-2026.png",
+    certificatePdf: "/assets/images/projects/Certificate - Nguyễn Thành Duy.pdf",
+  },
   {
     period: "Competition",
     role: "Hackathon Participant",
@@ -52,6 +77,8 @@ const timeline = [
 ]
 
 export function Experience() {
+  const [selectedCert, setSelectedCert] = React.useState<TimelineItem | null>(null)
+
   return (
     <section className="py-32 border-t border-border" id="experience">
       <div className="max-w-6xl mx-auto px-6">
@@ -66,7 +93,7 @@ export function Experience() {
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="text-3xl md:text-4xl font-extrabold tracking-tight"
             >
-              Background
+              Background & Achievements
             </motion.h2>
           </div>
           <motion.p
@@ -76,7 +103,7 @@ export function Experience() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-sm text-muted-foreground max-w-[50ch]"
           >
-            A track record spanning research, operations, and leadership across academic and professional environments.
+            A track record spanning research, AI hackathons, operations, and leadership across academic and professional environments.
           </motion.p>
         </div>
 
@@ -114,10 +141,19 @@ export function Experience() {
                     <p className="text-sm font-mono text-muted-foreground mb-3">{item.company}</p>
 
                     {item.highlight && (
-                      <div className="flex items-center gap-2 mb-3">
+                      <div className="flex items-center gap-2 mb-3 flex-wrap">
                         <span className="text-xs font-semibold px-2.5 py-1 rounded-full border border-primary/20 text-primary bg-primary/8">
                           ✦ {item.highlight}
                         </span>
+                        {item.certificateUrl && (
+                          <button
+                            onClick={() => setSelectedCert(item)}
+                            className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border border-border bg-card/60 hover:border-primary/40 hover:text-primary transition-all duration-200 cursor-pointer"
+                          >
+                            <Eye className="w-3 h-3 text-primary" />
+                            View Certificate
+                          </button>
+                        )}
                       </div>
                     )}
 
@@ -139,6 +175,82 @@ export function Experience() {
           </div>
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedCert(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-background/80 backdrop-blur-md"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={e => e.stopPropagation()}
+              className="relative w-full max-w-4xl bg-card border border-border rounded-2xl p-6 md:p-8 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+            >
+              {/* Modal Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-wider mb-1">
+                    <Award className="w-4 h-4" />
+                    Official Certificate
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground">{selectedCert.highlight}</h3>
+                  <p className="text-xs font-mono text-muted-foreground">{selectedCert.company} · {selectedCert.duration}</p>
+                </div>
+                <button
+                  onClick={() => setSelectedCert(null)}
+                  className="p-2 rounded-full border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Certificate Image View */}
+              {selectedCert.certificateUrl && (
+                <div className="relative flex-1 min-h-[300px] md:min-h-[450px] w-full rounded-xl overflow-hidden border border-border/60 bg-black/40 mb-6">
+                  <Image
+                    src={selectedCert.certificateUrl}
+                    alt={selectedCert.highlight || "Certificate"}
+                    fill
+                    sizes="(max-width: 1200px) 100vw, 80vw"
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              )}
+
+              {/* Footer Actions */}
+              <div className="flex items-center justify-between gap-4 pt-4 border-t border-border/60 flex-wrap">
+                <p className="text-xs text-muted-foreground">
+                  Awarded to <span className="text-foreground font-semibold">Nguyen Thanh Duy</span>
+                </p>
+                <div className="flex items-center gap-3">
+                  {selectedCert.certificatePdf && (
+                    <a
+                      href={selectedCert.certificatePdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-full border border-primary/40 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer shadow-sm"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Open Full PDF
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

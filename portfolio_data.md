@@ -80,6 +80,7 @@
 ## 5. Work Experience & Achievements
 
 ### Academic Accomplishments & Activities
+*   **Top 6 Hackathon Award**: Hackathon "AI for Everyday Life" - K-Tech College 2026 (Organized by LIKELION Vietnam, July 30, 2026).
 *   **Hackathon Participant**: Vietnam AI Innovation Challenge (2026) - Developed and deployed SHB Legal Intelligence.
 *   **Team Leader - 3rd Place Award**: AI for Social Challenge[cite: 1].
 *   **Research Member**: Key Scientific Research Team at UTT[cite: 1].

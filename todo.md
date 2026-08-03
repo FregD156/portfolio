@@ -71,3 +71,9 @@ Tài liệu này ghi lại toàn bộ các thư viện, công cụ và quy trìn
 ### Bước 9: Commit & Đẩy lên Vercel Production
 *   Commit toàn bộ source code sạch lỗi phân nhánh chính và push lên GitHub.
 *   Kết nối và triển khai build tự động thành công thông qua Vercel CLI lên tên miền chính thức: **[duynguyenthanh.vercel.app](https://duynguyenthanh.vercel.app)**.
+
+### Bước 10: Cập nhật chứng nhận & giải thưởng mới (K-Tech College 2026 - LIKELION Hackathon)
+*   Thêm chứng nhận **Top 6 Hackathon: AI for Everyday Life** thuộc khuôn khổ K-Tech College 2026 (ngày 30/07/2026).
+*   Chuyển đổi file PDF chứng nhận sang ảnh PNG sắc nét (`certificate-likelion-hackathon-2026.png`).
+*   Bổ sung chỉ số **Top 6** vào phần Stats, cập nhật About section và dòng thời gian Background.
+*   Tích hợp Modal xem trực tiếp chứng nhận kèm liên kết xem PDF gốc.
