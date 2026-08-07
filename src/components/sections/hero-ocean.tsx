@@ -430,10 +430,10 @@ export function HeroOcean() {
             perspective={1000}
             transitionSpeed={1200}
             gyroscope={true}
-            className="relative flex flex-col items-center justify-center p-4"
+            className="relative flex flex-col items-center justify-center p-2"
           >
             {/* Outer Titanium Yacht Porthole Frame with Precision Rivets */}
-            <div className="relative w-[300px] h-[300px] md:w-[350px] md:h-[350px] rounded-full p-4 bg-gradient-to-br from-slate-200 via-teal-800 to-cyan-900 border-4 border-white/80 shadow-[0_20px_60px_rgba(2,132,199,0.35)] group">
+            <div className="relative w-[280px] h-[280px] md:w-[330px] md:h-[330px] rounded-full p-4 bg-gradient-to-br from-slate-200 via-teal-800 to-cyan-900 border-4 border-white/90 shadow-[0_20px_60px_rgba(2,132,199,0.35)] group">
               
               {/* Titanium Rivets around Porthole Circle (12 Rivets) */}
               {Array.from({ length: 12 }).map((_, i) => {
@@ -444,67 +444,66 @@ export function HeroOcean() {
                 return (
                   <div
                     key={i}
-                    className="absolute w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-400 to-white shadow-[0_1px_3px_rgba(0,0,0,0.5)] border border-slate-600/40 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                    className="absolute w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-300 to-white shadow-[0_1px_3px_rgba(0,0,0,0.5)] border border-slate-600/40 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                     style={{ left: `${x}%`, top: `${y}%` }}
                   />
                 );
               })}
 
-              {/* Inner Convex Glass Window Lens */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#0284C7]/80 bg-[#0284C7] shadow-inner">
+              {/* Inner Convex Glass Window Lens (100% Unobstructed Clean Image) */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#0284C7] bg-[#0284C7] shadow-inner">
                 
                 {/* Centered Profile Photo */}
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
                   fill
-                  sizes="(max-width: 768px) 300px, 350px"
+                  sizes="(max-width: 768px) 280px, 330px"
                   className="object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-108"
                   priority
                 />
 
                 {/* Sunlit Glass Lens Flare & Reflection */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/40 pointer-events-none group-hover:opacity-80 transition-opacity duration-500" />
-
-                {/* Underwater Water Wave Shimmer Vignette at Bottom */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0284C7]/80 via-transparent to-transparent pointer-events-none" />
-
-                {/* Embedded Name Banner on Glass Lens */}
-                <div className="absolute bottom-5 left-0 right-0 text-center px-4 text-white drop-shadow-lg">
-                  <div className="font-fraunces text-lg font-bold">Nguyen Thanh Duy</div>
-                  <div className="postmark text-[10px] text-[#FEF08A] font-extrabold tracking-widest mt-0.5">
-                    SOFTWARE ENGINEER · UTT
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none group-hover:opacity-80 transition-opacity duration-500" />
               </div>
 
             </div>
 
-            {/* Attached Gold & Titanium Nautical Coin Badges */}
-            <div className="flex gap-3 mt-5 z-20">
+            {/* Standalone Glass Caption Label (OUTSIDE photo, no text overlay on image) */}
+            <div className="mt-4 px-6 py-2 rounded-full border border-white/60 bg-white/20 backdrop-blur-xl text-center shadow-xl">
+              <div className="font-fraunces text-base md:text-lg font-bold text-white tracking-tight drop-shadow-sm">
+                Nguyen Thanh Duy
+              </div>
+              <div className="font-mono text-[10px] md:text-[11px] text-[#FEF08A] font-extrabold tracking-widest uppercase">
+                SOFTWARE ENGINEER · UTT HANOI
+              </div>
+            </div>
+
+            {/* Unified Glass Cluster connected to Porthole Frame */}
+            <div className="flex flex-wrap justify-center gap-2.5 mt-3.5 z-20">
               <motion.div 
-                whileHover={{ scale: 1.06 }}
-                className="px-4 py-2 rounded-2xl border border-white/60 bg-white/20 backdrop-blur-xl text-white text-xs font-bold flex items-center gap-2 shadow-xl cursor-default"
+                whileHover={{ scale: 1.05 }}
+                className="px-3.5 py-1.5 rounded-2xl border border-white/50 bg-[#032b3d]/65 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-full bg-[#FEF08A] text-[#0284C7] flex items-center justify-center font-extrabold shadow-sm">
-                  <OceanIcon name="star" className="w-3.5 h-3.5" />
+                <div className="w-6 h-6 rounded-xl bg-white/20 text-[#FEF08A] flex items-center justify-center font-bold shadow-inner">
+                  <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FEF08A]" />
                 </div>
                 <div>
-                  <div className="text-[9px] text-[#FEF08A] font-bold tracking-wider">ACADEMIC GPA</div>
-                  <div className="font-fraunces text-sm font-extrabold leading-none text-white">3.64 / 4.00</div>
+                  <div className="font-mono text-[9px] text-[#FEF08A] font-bold tracking-wider uppercase">ACADEMIC GPA</div>
+                  <div className="font-fraunces text-xs md:text-sm font-extrabold text-white">3.64 / 4.00</div>
                 </div>
               </motion.div>
 
               <motion.div 
-                whileHover={{ scale: 1.06 }}
-                className="px-4 py-2 rounded-2xl border border-white/60 bg-white/20 backdrop-blur-xl text-white text-xs font-bold flex items-center gap-2 shadow-xl cursor-default"
+                whileHover={{ scale: 1.05 }}
+                className="px-3.5 py-1.5 rounded-2xl border border-white/50 bg-[#032b3d]/65 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-full bg-[#FEF08A] text-[#0284C7] flex items-center justify-center font-extrabold shadow-sm">
-                  <OceanIcon name="trophy" className="w-3.5 h-3.5" />
+                <div className="w-6 h-6 rounded-xl bg-white/20 text-[#FEF08A] flex items-center justify-center font-bold shadow-inner">
+                  <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FEF08A]" />
                 </div>
                 <div>
-                  <div className="text-[9px] text-[#FEF08A] font-bold tracking-wider">AI INNOVATION</div>
-                  <div className="font-fraunces text-sm font-extrabold leading-none text-white">3rd Place Award</div>
+                  <div className="font-mono text-[9px] text-[#FEF08A] font-bold tracking-wider uppercase">AI INNOVATION</div>
+                  <div className="font-fraunces text-xs md:text-sm font-extrabold text-white">3rd Place Award</div>
                 </div>
               </motion.div>
             </div>
