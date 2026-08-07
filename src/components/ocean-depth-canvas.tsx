@@ -339,6 +339,66 @@ export function OceanDepthCanvas() {
         else if (c.type === "turtle") drawTurtle(c, t);
       });
 
+      // 5. --- SUBMERGED SEABED ROCK FORMATIONS & CORAL REEFS (Mô Phỏng Đá Ngầm & San Hô) ---
+      const seabedY = height * 0.88;
+
+      // Background Dark Ocean Rock Silhouette (Layer 1)
+      ctx.fillStyle = "rgba(1, 20, 30, 0.95)";
+      ctx.beginPath();
+      ctx.moveTo(0, height);
+      ctx.lineTo(0, seabedY - 35);
+      ctx.quadraticCurveTo(width * 0.15, seabedY - 80, width * 0.3, seabedY - 40);
+      ctx.quadraticCurveTo(width * 0.5, seabedY - 110, width * 0.7, seabedY - 50);
+      ctx.quadraticCurveTo(width * 0.85, seabedY - 95, width, seabedY - 45);
+      ctx.lineTo(width, height);
+      ctx.closePath();
+      ctx.fill();
+
+      // Foreground Crisp Coral Reef Rocks with Glowing Edges (Layer 2)
+      const rockGrad = ctx.createLinearGradient(0, seabedY - 60, 0, height);
+      rockGrad.addColorStop(0, "#042c3d");
+      rockGrad.addColorStop(0.5, "#021a27");
+      rockGrad.addColorStop(1, "#010e17");
+      ctx.fillStyle = rockGrad;
+      ctx.strokeStyle = "rgba(45, 212, 191, 0.4)";
+      ctx.lineWidth = 2;
+
+      ctx.beginPath();
+      ctx.moveTo(0, height);
+      ctx.lineTo(0, seabedY - 20);
+      ctx.quadraticCurveTo(width * 0.1, seabedY - 55, width * 0.22, seabedY - 25);
+      ctx.quadraticCurveTo(width * 0.38, seabedY - 75, width * 0.55, seabedY - 30);
+      ctx.quadraticCurveTo(width * 0.72, seabedY - 85, width * 0.88, seabedY - 35);
+      ctx.quadraticCurveTo(width * 0.95, seabedY - 60, width, seabedY - 20);
+      ctx.lineTo(width, height);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Swaying Seaweed & Sea Kelp (Tảo Biển Đung Đưa Theo Dòng Nước)
+      const kelpCount = 16;
+      for (let i = 0; i < kelpCount; i++) {
+        const kx = (width / kelpCount) * i + Math.sin(i * 99) * 20;
+        const ky = seabedY - 25 + Math.cos(i * 33) * 15;
+        const kh = 70 + (i % 5) * 25;
+        const sway = Math.sin(t * 1.6 + i * 0.8) * 18;
+
+        ctx.strokeStyle = i % 2 === 0 ? "rgba(45, 212, 191, 0.75)" : "rgba(253, 230, 138, 0.65)";
+        ctx.lineWidth = 3;
+        ctx.lineCap = "round";
+
+        ctx.beginPath();
+        ctx.moveTo(kx, ky);
+        ctx.quadraticCurveTo(kx + sway * 0.5, ky - kh * 0.5, kx + sway, ky - kh);
+        ctx.stroke();
+
+        // Glowing Bioluminescent Coral Spore Heads
+        ctx.fillStyle = i % 2 === 0 ? "#2DD4BF" : "#FDE68A";
+        ctx.beginPath();
+        ctx.arc(kx + sway, ky - kh, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       if (!reduceMotion) {
         animationFrameId = requestAnimationFrame(render);
       }
