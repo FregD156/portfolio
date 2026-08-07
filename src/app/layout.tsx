@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import { LenisProvider } from "@/components/lenis-provider";
 import { SplashIntro } from "@/components/splash-intro";
 import { OceanIconSprite } from "@/components/ui/ocean-icons";
@@ -59,25 +58,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" className="dark">
       <body
         className={`${fraunces.variable} ${plusJakartaSans.variable} ${spaceMono.variable} font-sans min-h-screen bg-background text-foreground antialiased grain`}
       >
         <OceanIconSprite />
         <SplashIntro />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LenisProvider>
-            {children}
-          </LenisProvider>
-        </ThemeProvider>
+        <LenisProvider>
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );
 }
+
 
 
