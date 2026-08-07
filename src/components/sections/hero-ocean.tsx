@@ -128,40 +128,15 @@ export function HeroOcean() {
     const drawSky = (w: number, h: number, time: number) => {
       skyCtx.clearRect(0, 0, w, h);
 
-      // Sky Gradient - Fresh Summer Ocean Sky to Sunset transition
+      // Sky Gradient - Bright Clear Blue Summer Sky
       const drift = Math.sin(time * 0.02) * 0.02;
       const g = skyCtx.createLinearGradient(0, 0, 0, h);
-      g.addColorStop(0, "#083344");
-      g.addColorStop(0.35 + drift, "#0284C7");
-      g.addColorStop(0.65 + drift, "#FF7E5F");
-      g.addColorStop(1, "#FFD166");
+      g.addColorStop(0, "#0284C7");
+      g.addColorStop(0.4 + drift, "#38BDF8");
+      g.addColorStop(0.75 + drift, "#7DD3FC");
+      g.addColorStop(1, "#E0F2FE");
       skyCtx.fillStyle = g;
       skyCtx.fillRect(0, 0, w, h);
-
-      // God Rays
-      if (enabled.godRays) {
-        const sunX = w * sunState.x;
-        const sunY = h * sunState.y + sunState.scrollOffset;
-        for (let i = 0; i < 6; i++) {
-          const angle = -Math.PI / 2 + (i - 2.5) * 0.14;
-          const len = h * 0.95;
-          const alpha = 0.06 + Math.abs(Math.sin(time * 0.5 + i)) * 0.05;
-          const grad = skyCtx.createLinearGradient(sunX, sunY, sunX + Math.cos(angle) * len, sunY + Math.sin(angle) * len + len);
-          grad.addColorStop(0, `rgba(255,243,196,${alpha})`);
-          grad.addColorStop(1, "rgba(255,243,196,0)");
-          skyCtx.fillStyle = grad;
-          skyCtx.save();
-          skyCtx.translate(sunX, sunY);
-          skyCtx.rotate(angle);
-          skyCtx.beginPath();
-          skyCtx.moveTo(0, 0);
-          skyCtx.lineTo(-16, len);
-          skyCtx.lineTo(16, len);
-          skyCtx.closePath();
-          skyCtx.fill();
-          skyCtx.restore();
-        }
-      }
 
       // Sun Glow & Core
       const cx = w * sunState.x;
@@ -169,8 +144,8 @@ export function HeroOcean() {
       const r = h * sunState.r;
 
       const glow = skyCtx.createRadialGradient(cx, cy, 0, cx, cy, r * 3.5);
-      glow.addColorStop(0, "rgba(255,209,102,0.45)");
-      glow.addColorStop(1, "rgba(255,209,102,0)");
+      glow.addColorStop(0, "rgba(254, 240, 138, 0.6)");
+      glow.addColorStop(1, "rgba(254, 240, 138, 0)");
       skyCtx.fillStyle = glow;
       skyCtx.beginPath();
       skyCtx.arc(cx, cy, r * 3.5, 0, Math.PI * 2);
@@ -178,7 +153,7 @@ export function HeroOcean() {
 
       const core = skyCtx.createRadialGradient(cx, cy, 0, cx, cy, r);
       core.addColorStop(0, "#FFFFFF");
-      core.addColorStop(1, "#FFD166");
+      core.addColorStop(1, "#FEF08A");
       skyCtx.fillStyle = core;
       skyCtx.beginPath();
       skyCtx.arc(cx, cy, r, 0, Math.PI * 2);
@@ -191,7 +166,7 @@ export function HeroOcean() {
           const x = (((i * spread + time * layer.speed * 20) % (w + spread * layer.scale)) - spread * layer.scale);
           const y = h * layer.y + Math.sin(time * 0.1 + i) * 6;
           const size = layer.scale * 60;
-          skyCtx.fillStyle = `rgba(255,255,255,${layer.alpha})`;
+          skyCtx.fillStyle = `rgba(255,255,255,${layer.alpha * 0.9})`;
           [[0, 0, 1], [size * 0.6, -size * 0.15, 0.8], [-size * 0.6, -size * 0.1, 0.7], [size * 0.3, size * 0.1, 0.9]].forEach(
             ([dx, dy, s]) => {
               skyCtx.beginPath();
@@ -210,8 +185,8 @@ export function HeroOcean() {
           const py = g.y * h + Math.sin(time * 0.3 + g.flapOffset) * 8;
           const wing = Math.sin(time * 6 + g.flapOffset) * 6 * g.scale;
 
-          skyCtx.strokeStyle = "rgba(255,255,255,0.75)";
-          skyCtx.lineWidth = 1.8 * g.scale;
+          skyCtx.strokeStyle = "rgba(255,255,255,0.9)";
+          skyCtx.lineWidth = 2 * g.scale;
           skyCtx.lineCap = "round";
           skyCtx.beginPath();
           skyCtx.moveTo(px - 10 * g.scale, py + wing);
@@ -220,67 +195,13 @@ export function HeroOcean() {
           skyCtx.stroke();
         });
       }
-
-      // Kite
-      if (enabled.kite) {
-        const kx = w * 0.15 + Math.sin(time * 0.4) * 20;
-        const ky = h * 0.2 + Math.cos(time * 0.3) * 14;
-        skyCtx.save();
-        skyCtx.translate(kx, ky);
-        skyCtx.rotate(Math.sin(time * 0.4) * 0.15);
-        skyCtx.fillStyle = "rgba(255,126,95,0.9)";
-        skyCtx.beginPath();
-        skyCtx.moveTo(0, -16);
-        skyCtx.lineTo(14, 0);
-        skyCtx.lineTo(0, 16);
-        skyCtx.lineTo(-14, 0);
-        skyCtx.closePath();
-        skyCtx.fill();
-        skyCtx.strokeStyle = "rgba(255,255,255,0.8)";
-        skyCtx.lineWidth = 1;
-        skyCtx.beginPath();
-        skyCtx.moveTo(-14, 0);
-        skyCtx.lineTo(14, 0);
-        skyCtx.moveTo(0, -16);
-        skyCtx.lineTo(0, 16);
-        skyCtx.stroke();
-        skyCtx.strokeStyle = "rgba(255,209,102,0.8)";
-        skyCtx.beginPath();
-        skyCtx.moveTo(0, 16);
-        for (let i = 1; i <= 4; i++) {
-          skyCtx.lineTo(Math.sin(time * 2 + i) * 6, 16 + i * 10);
-        }
-        skyCtx.stroke();
-        skyCtx.restore();
-      }
-
-      // Falling Petals
-      if (enabled.petals) {
-        petals.forEach((p) => {
-          p.y += p.speed;
-          p.x += Math.sin(time * 0.6 + p.drift) * 0.6;
-          p.rot += p.rotSpeed;
-          if (p.y > h + 10) {
-            p.y = -10;
-            p.x = Math.random() * w;
-          }
-          skyCtx.save();
-          skyCtx.translate(p.x, p.y);
-          skyCtx.rotate(p.rot);
-          skyCtx.fillStyle = "rgba(255,182,193,0.8)";
-          skyCtx.beginPath();
-          skyCtx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
-          skyCtx.fill();
-          skyCtx.restore();
-        });
-      }
     };
 
     const drawWaves = (w: number, h: number, time: number) => {
       wavesCtx.clearRect(0, 0, w, h);
       const step = isMobile ? 8 : 4;
 
-      // Render 4 wave layers with vibrant ocean colors
+      // 1. Render 4 Wave Layers (Ocean Turquoise)
       waveLayers.forEach((layer) => {
         wavesCtx.beginPath();
         wavesCtx.moveTo(0, h);
@@ -293,18 +214,33 @@ export function HeroOcean() {
         wavesCtx.fill();
       });
 
-      // Front Wave Foam
+      // 2. Golden Beach Sand Shoreline at the Bottom of Canvas
+      const sandGrad = wavesCtx.createLinearGradient(0, h * 0.88, 0, h);
+      sandGrad.addColorStop(0, "rgba(254, 240, 138, 0)");
+      sandGrad.addColorStop(0.3, "rgba(254, 240, 138, 0.45)");
+      sandGrad.addColorStop(1, "rgba(253, 224, 71, 0.85)");
+      wavesCtx.fillStyle = sandGrad;
+      wavesCtx.beginPath();
+      wavesCtx.moveTo(0, h);
+      for (let x = 0; x <= w; x += step) {
+        wavesCtx.lineTo(x, h * 0.88 + Math.sin(x * 0.005 + time * 0.4) * 8);
+      }
+      wavesCtx.lineTo(w, h);
+      wavesCtx.closePath();
+      wavesCtx.fill();
+
+      // Front Wave Foam Border
       const frontLayer = waveLayers[3];
       wavesCtx.beginPath();
       for (let x = 0; x <= w; x += step) {
         const y = h * frontLayer.baseY + waveY(x, time, frontLayer);
         x === 0 ? wavesCtx.moveTo(x, y) : wavesCtx.lineTo(x, y);
       }
-      wavesCtx.strokeStyle = `rgba(255,255,255,${0.65 + Math.sin(time * 1.5) * 0.25})`;
+      wavesCtx.strokeStyle = `rgba(255,255,255,${0.7 + Math.sin(time * 1.5) * 0.2})`;
       wavesCtx.lineWidth = 3;
       wavesCtx.stroke();
 
-      // Sailboats on Wave Surface
+      // Sailboats / Yachts on Wave Surface
       if (enabled.boats) {
         boats.forEach((b) => {
           const x = ((b.xFactor * w + time * b.drift * 10) % (w + 60)) - 30;
@@ -320,7 +256,7 @@ export function HeroOcean() {
           wavesCtx.lineTo(-9, 8);
           wavesCtx.closePath();
           wavesCtx.fill();
-          wavesCtx.fillStyle = "rgba(255,126,95,0.95)";
+          wavesCtx.fillStyle = "rgba(6,182,212,0.95)";
           wavesCtx.beginPath();
           wavesCtx.moveTo(0, 0);
           wavesCtx.lineTo(0, -20);
@@ -334,9 +270,9 @@ export function HeroOcean() {
       // Sparkles
       sparkles.forEach((p) => {
         const alpha = Math.abs(Math.sin(time * p.speed + p.offset));
-        wavesCtx.fillStyle = `rgba(255,255,255,${alpha * 0.9})`;
+        wavesCtx.fillStyle = `rgba(255,255,255,${alpha * 0.95})`;
         wavesCtx.beginPath();
-        wavesCtx.arc(p.x, h * p.yFactor, p.size * 1.2, 0, Math.PI * 2);
+        wavesCtx.arc(p.x, h * p.yFactor, p.size * 1.3, 0, Math.PI * 2);
         wavesCtx.fill();
       });
 
@@ -388,183 +324,154 @@ export function HeroOcean() {
       <canvas id="sky-canvas" ref={skyCanvasRef} aria-hidden="true" className="pointer-events-none" />
       <canvas id="waves-canvas" ref={wavesCanvasRef} aria-hidden="true" className="pointer-events-none" />
 
-      {/* Swaying Coconut Palm Tree Leaf Shadow */}
-      <svg className="palm-shadow" viewBox="0 0 300 300" aria-hidden="true">
-        <g fill="rgba(6,182,212,0.55)">
-          <path d="M20,300 C20,180 60,120 90,60 C70,110 40,160 20,300 Z" />
-          <path d="M20,300 C40,190 90,140 150,90 C100,130 50,180 20,300 Z" />
-          <path d="M20,300 C60,200 130,160 190,130 C130,160 70,210 20,300 Z" />
+      {/* Swaying Coconut Palm Tree Left Side */}
+      <svg className="palm-shadow left-0 -bottom-8 w-64 md:w-80" viewBox="0 0 300 300" aria-hidden="true">
+        <g fill="rgba(14,165,233,0.45)">
+          <path d="M0,300 C20,180 60,120 110,50 C80,100 40,160 0,300 Z" />
+          <path d="M0,300 C40,190 100,130 170,80 C110,120 50,180 0,300 Z" />
+          <path d="M0,300 C60,200 140,160 210,120 C140,150 70,210 0,300 Z" />
+        </g>
+      </svg>
+
+      {/* Swaying Coconut Palm Tree Right Side */}
+      <svg className="palm-shadow right-0 -bottom-8 w-64 md:w-80 transform -scale-x-100" viewBox="0 0 300 300" aria-hidden="true">
+        <g fill="rgba(14,165,233,0.45)">
+          <path d="M0,300 C20,180 60,120 110,50 C80,100 40,160 0,300 Z" />
+          <path d="M0,300 C40,190 100,130 170,80 C110,120 50,180 0,300 Z" />
+          <path d="M0,300 C60,200 140,160 210,120 C140,150 70,210 0,300 Z" />
         </g>
       </svg>
 
       {/* Hero Overlay Content */}
-      <div className="hero-content max-w-6xl mx-auto w-full px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center py-24">
-        {/* Left Column Copy */}
+      <div className="hero-content max-w-6xl mx-auto w-full px-6 grid grid-cols-1 md:grid-cols-12 gap-10 items-center py-20 z-10">
+        
+        {/* Left Column Copy (7 cols) - Minimalist & Icon-Driven */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-start text-left"
+          className="lg:col-span-7 flex flex-col items-start text-left"
         >
+          {/* Welcome Pill */}
+          <div className="mb-5">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 bg-white/15 text-white backdrop-blur-md shadow-lg text-xs font-bold font-mono tracking-wider">
+              <OceanIcon name="wave" className="w-4 h-4 text-[#FEF08A]" />
+              WELCOME TO DUY.DEV · OCEAN PORTFOLIO
+            </span>
+          </div>
+
           {/* Headline in Fraunces */}
-          <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.6rem] font-bold leading-[1.08] text-white tracking-tight mb-5 drop-shadow-lg">
-            Architecting <span className="italic font-normal text-[#2DD4BF]">Intelligent</span> Systems & AI Pipelines.
+          <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.8rem] font-extrabold leading-[1.05] text-white tracking-tight mb-4 drop-shadow-lg">
+            Nguyen Thanh Duy
           </h1>
 
-          {/* Subtext in Plus Jakarta Sans */}
-          <p className="font-jakarta text-base md:text-lg text-teal-100/90 leading-relaxed max-w-[42ch] mb-8 font-medium drop-shadow-sm">
-            Student developer at UTT (3.64 GPA). 3rd Place Team Leader at AI for Social Challenge. Building high-performance backends and temporal Graph-RAG architectures.
+          <p className="font-fraunces text-xl md:text-2xl text-[#FEF08A] italic mb-6 drop-shadow-md">
+            Software Engineer & AI Builder
           </p>
 
-          {/* Action CTAs */}
-          <div className="flex gap-4 flex-wrap mb-10">
+          {/* Action CTAs - Minimalist & Icon Driven */}
+          <div className="flex gap-3.5 flex-wrap mb-8">
             <a
               href="#projects"
-              className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] hover:from-[#0284c7] hover:to-[#14b8a6] text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="font-jakarta inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#0284C7] hover:bg-[#FEF08A] font-extrabold text-sm shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              Selected Work <OceanIcon name="wave" className="w-5 h-5 text-white" />
+              <OceanIcon name="sailboat" className="w-4 h-4 text-[#0284C7]" /> Works
             </a>
             <a
               href="#contact"
-              className="font-jakarta inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-teal-300/40 bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-md transition-all duration-300"
+              className="font-jakarta inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/50 bg-white/15 hover:bg-white/30 text-white font-bold backdrop-blur-md text-sm transition-all duration-300"
             >
-              Get in Touch <OceanIcon name="compass" className="w-5 h-5 text-[#2DD4BF]" />
+              <OceanIcon name="mail" className="w-4 h-4 text-[#FEF08A]" /> Contact
             </a>
           </div>
 
-          {/* Social Links with Thin SVG Icons */}
-          <div className="flex gap-3 items-center text-white/90">
+          {/* Social Links with Thin Icons */}
+          <div className="flex gap-2.5 items-center">
             <a
               href={portfolioConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl border border-teal-300/30 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-full border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105"
               aria-label="GitHub"
             >
-              <OceanIcon name="github" className="w-5 h-5" />
+              <OceanIcon name="github" className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${portfolioConfig.email}`}
-              className="p-2.5 rounded-xl border border-teal-300/30 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-full border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105"
               aria-label="Email"
             >
-              <OceanIcon name="mail" className="w-5 h-5" />
+              <OceanIcon name="mail" className="w-4 h-4" />
             </a>
             <a
               href={portfolioConfig.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl border border-teal-300/30 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-full border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105"
               aria-label="Resume"
             >
-              <OceanIcon name="terminal" className="w-5 h-5" />
+              <OceanIcon name="terminal" className="w-4 h-4" />
             </a>
-            <div className="w-px h-5 bg-white/30 mx-1" />
-            <span className="postmark text-xs text-[#2DD4BF] font-bold">HANOI, VN</span>
+            <div className="w-px h-4 bg-white/40 mx-1" />
+            <span className="postmark text-xs text-[#FEF08A] font-bold">UTT · HANOI</span>
           </div>
         </motion.div>
 
-        {/* Right Column Profile Showcase: Ocean Expedition Compass & Helm Frame */}
+        {/* Right Column Profile Showcase (5 cols) - Focused Portrait, NO Dark Overlays */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
+          initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center items-center relative"
+          className="lg:col-span-5 flex justify-center items-center relative"
         >
           <Tilt
-            tiltMaxAngleX={8}
-            tiltMaxAngleY={8}
+            tiltMaxAngleX={6}
+            tiltMaxAngleY={6}
             perspective={1000}
             transitionSpeed={1200}
             gyroscope={true}
-            className="relative flex items-center justify-center p-6"
+            className="relative flex flex-col items-center justify-center p-2"
           >
-            {/* 1. Animated Outer Rotating Compass Navigation Dial */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <svg className="w-[390px] h-[390px] text-[#2DD4BF]/40 spin-slow" viewBox="0 0 400 400" fill="none">
-                <circle cx="200" cy="200" r="190" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 8" />
-                <circle cx="200" cy="200" r="175" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-                {/* Compass Markers N, S, E, W */}
-                <text x="195" y="24" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">N</text>
-                <text x="380" y="204" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">E</text>
-                <text x="195" y="390" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">S</text>
-                <text x="12" y="204" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">W</text>
-              </svg>
-            </div>
-
-            {/* 2. Pulsating Water Ripple Rings */}
-            <div className="absolute inset-4 rounded-full border border-[#06B6D4]/30 animate-pulse pointer-events-none" />
-            <div className="absolute -inset-2 rounded-full border border-[#2DD4BF]/20 pointer-events-none" />
-
-            {/* 3. Central Ocean Helm Portrait Window */}
-            <div className="relative w-[290px] h-[290px] md:w-[330px] md:h-[330px] rounded-full p-2.5 bg-gradient-to-tr from-[#06B6D4] via-[#2DD4BF] to-[#38BDF8] shadow-[0_0_50px_rgba(6,182,212,0.35)] group">
+            {/* Pure Crystal Glass Frame (NO dark box backdrop!) */}
+            <div className="relative w-[280px] h-[350px] md:w-[320px] md:h-[400px] rounded-3xl p-3 border-2 border-white/50 bg-white/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] group overflow-hidden">
               
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/60 bg-[#032b3d]">
+              {/* Focused Centered Photo (object-center) */}
+              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/60">
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
                   fill
-                  sizes="(max-width: 768px) 290px, 330px"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 280px, 320px"
+                  className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
                 
-                {/* Sunlit Ocean Shimmer Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#032b3d] via-transparent to-transparent opacity-85 group-hover:opacity-75 transition-opacity duration-500" />
-
-                {/* Integrated Name & Role Banner at Center-Bottom of Ring */}
-                <div className="absolute bottom-6 left-0 right-0 text-center px-4 text-white">
-                  <div className="font-fraunces text-xl font-bold tracking-tight text-white drop-shadow-md">
-                    Nguyen Thanh Duy
-                  </div>
-                  <div className="postmark text-[11px] text-[#2DD4BF] font-extrabold tracking-widest mt-0.5 flex items-center justify-center gap-1.5">
-                    <OceanIcon name="wave" className="w-3.5 h-3.5 text-[#2DD4BF]" />
-                    SOFTWARE ENGINEER · UTT
-                  </div>
-                </div>
+                {/* Sunlit Subtle Shimmer at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0284C7]/60 via-transparent to-transparent" />
               </div>
 
             </div>
 
-            {/* 4. Floating Nautical Compass Badges */}
-            {/* Top-Right Badge: GPA 3.64 */}
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="absolute -right-2 md:-right-6 top-8 bg-[#042d3e]/95 border border-[#2DD4BF]/50 rounded-2xl px-4 py-2.5 shadow-2xl backdrop-blur-xl text-white flex items-center gap-3 z-20"
-            >
-              <div className="p-2 rounded-xl bg-[#06B6D4]/20 text-[#2DD4BF]">
-                <OceanIcon name="compass" className="w-5 h-5" />
+            {/* Sleek Minimalist Micro Badges Below Frame (NO overlap, NO dark boxes!) */}
+            <div className="flex gap-2.5 mt-4">
+              <div className="px-3.5 py-1.5 rounded-full border border-white/40 bg-white/20 backdrop-blur-md text-white text-xs font-bold flex items-center gap-1.5 shadow-md">
+                <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FEF08A]" />
+                GPA 3.64
               </div>
-              <div>
-                <div className="postmark text-[9px] text-[#2DD4BF] font-bold">ACADEMIC EXCELLENCE</div>
-                <div className="font-fraunces text-lg font-extrabold text-white leading-none my-0.5">3.64 GPA</div>
-                <div className="postmark text-[9px] text-teal-100/70">UTT · EXCELLENT</div>
-              </div>
-            </motion.div>
 
-            {/* Bottom-Left Badge: 3rd Place Award */}
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="absolute -left-2 md:-left-6 bottom-8 bg-[#042d3e]/95 border border-[#2DD4BF]/50 rounded-2xl px-4 py-2.5 shadow-2xl backdrop-blur-xl text-white flex items-center gap-3 z-20"
-            >
-              <div className="p-2 rounded-xl bg-[#06B6D4]/20 text-[#2DD4BF]">
-                <OceanIcon name="trophy" className="w-5 h-5" />
+              <div className="px-3.5 py-1.5 rounded-full border border-white/40 bg-white/20 backdrop-blur-md text-white text-xs font-bold flex items-center gap-1.5 shadow-md">
+                <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FEF08A]" />
+                3rd Place Award
               </div>
-              <div>
-                <div className="postmark text-[9px] text-[#2DD4BF] font-bold">AI INNOVATION AWARD</div>
-                <div className="font-fraunces text-sm font-extrabold text-white leading-none my-0.5">3rd Place Winner</div>
-                <div className="postmark text-[9px] text-teal-100/70">AI FOR SOCIAL CHALLENGE</div>
-              </div>
-            </motion.div>
+            </div>
 
           </Tilt>
         </motion.div>
       </div>
 
-      {/* Scroll Down Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 z-10">
-        <span className="postmark text-[10px] tracking-[0.2em]">SCROLL TO EXPLORE</span>
-        <OceanIcon name="wave" className="w-4 h-4 animate-bounce text-[#FFE3A3]" />
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/90 z-10">
+        <OceanIcon name="wave" className="w-5 h-5 animate-bounce text-[#FEF08A]" />
       </div>
     </section>
   );
