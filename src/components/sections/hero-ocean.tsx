@@ -432,7 +432,7 @@ export function HeroOcean() {
           </div>
         </motion.div>
 
-        {/* Right Column Profile Showcase (5 cols) - Royal Tropical Palm Glass Showcase */}
+        {/* Right Column Profile Showcase (5 cols) - 3D Tropical Ocean Crystal Globe Showcase */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -447,35 +447,35 @@ export function HeroOcean() {
             gyroscope={true}
             className="relative flex flex-col items-center justify-center p-2"
           >
-            {/* Swaying Tropical Palm Leaves Arching Over Portrait Frame */}
-            <svg className="absolute -top-12 -right-8 w-44 h-44 z-20 pointer-events-none transform rotate-12 drop-shadow-xl" viewBox="0 0 200 200" fill="none">
-              <path d="M20,180 C50,110 110,60 180,20 C150,60 110,110 90,180 Z" fill="#2DD4BF" opacity="0.85" />
-              <path d="M20,180 C70,120 130,80 195,40 C160,80 120,130 90,180 Z" fill="#FDE68A" opacity="0.7" />
-              <path d="M20,180 C40,130 80,90 150,50 C120,90 80,130 60,180 Z" fill="#06B6D4" opacity="0.8" />
+            {/* Swaying Tropical Palm Fronds Framing the Top of the Globe */}
+            <svg className="absolute -top-10 -right-6 w-44 h-44 z-20 pointer-events-none transform rotate-12 drop-shadow-2xl" viewBox="0 0 200 200" fill="none">
+              <path d="M20,180 C50,110 110,60 180,20 C150,60 110,110 90,180 Z" fill="#2DD4BF" opacity="0.9" />
+              <path d="M20,180 C70,120 130,80 195,40 C160,80 120,130 90,180 Z" fill="#FDE68A" opacity="0.8" />
+              <path d="M20,180 C40,130 80,90 150,50 C120,90 80,130 60,180 Z" fill="#06B6D4" opacity="0.85" />
             </svg>
 
-            {/* Ocean Lagoon Glass Window with Turquoise & Gold Border */}
-            <div className="relative w-[280px] h-[340px] md:w-[320px] md:h-[390px] rounded-sm p-3 bg-[#042c3d]/90 border-2 border-[#2DD4BF]/80 shadow-[0_20px_60px_rgba(2,132,199,0.4)] group overflow-hidden">
+            {/* 3D Tropical Ocean Crystal Globe Sphere Window */}
+            <div className="relative w-[290px] h-[290px] md:w-[340px] md:h-[340px] rounded-full p-2.5 bg-gradient-to-br from-teal-300 via-teal-900 to-[#022433] border-4 border-[#2DD4BF] shadow-[0_0_50px_rgba(45,212,191,0.45)] group">
               
-              {/* Inner Focused Portrait Photo */}
-              <div className="relative w-full h-full rounded-none overflow-hidden border border-white/60 bg-[#0284C7]">
+              {/* Inner Convex Crystal Sphere Lens (100% Unobstructed Photo) */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/90 bg-[#0284C7] shadow-inner">
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
                   fill
-                  sizes="(max-width: 768px) 280px, 320px"
-                  className="object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 290px, 340px"
+                  className="object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-108"
                   priority
                 />
 
-                {/* Sunlit Glass Shimmer Lens Flare */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none group-hover:opacity-80 transition-opacity duration-500" />
+                {/* Tropical Sunlit Glass Lens Flare & Reflection */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/40 pointer-events-none group-hover:opacity-80 transition-opacity duration-500" />
               </div>
 
             </div>
 
-            {/* Standalone Glass Label below Photo */}
-            <div className="mt-4 px-6 py-2 rounded-sm border border-white/60 bg-[#042c3d]/90 backdrop-blur-xl text-center shadow-xl z-20">
+            {/* Standalone Glass Label below Globe */}
+            <div className="mt-4 px-6 py-2.5 rounded-full border border-[#FDE68A]/60 bg-[#042c3d]/92 backdrop-blur-2xl text-center shadow-2xl z-20">
               <div className="font-fraunces text-base md:text-lg font-bold text-white tracking-tight drop-shadow-sm">
                 Nguyen Thanh Duy
               </div>
@@ -484,13 +484,13 @@ export function HeroOcean() {
               </div>
             </div>
 
-            {/* Sharp Metric Badges Cluster */}
-            <div className="flex flex-wrap justify-center gap-2.5 mt-3 z-20">
+            {/* Metric Badges Cluster Below Label */}
+            <div className="flex flex-wrap justify-center gap-2.5 mt-3.5 z-20">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="px-3.5 py-1.5 rounded-sm border border-[#FDE68A]/60 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
+                className="px-4 py-2 rounded-2xl border border-white/50 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-none bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
+                <div className="w-6 h-6 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
                   <OceanIcon name="star" className="w-3.5 h-3.5 text-[#022433]" />
                 </div>
                 <div>
@@ -501,9 +501,9 @@ export function HeroOcean() {
 
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="px-3.5 py-1.5 rounded-sm border border-[#FDE68A]/60 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
+                className="px-4 py-2 rounded-2xl border border-white/50 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-none bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
+                <div className="w-6 h-6 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
                   <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#022433]" />
                 </div>
                 <div>
