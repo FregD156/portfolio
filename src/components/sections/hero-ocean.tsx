@@ -30,6 +30,17 @@ function waveY(x: number, t: number, layer: (typeof waveLayers)[0]) {
   );
 }
 
+// Precomputed Titanium Rivets coordinates for 100% stable SSR hydration
+const titaniumRivets = Array.from({ length: 12 }).map((_, i) => {
+  const angle = (i * 30 * Math.PI) / 180;
+  const radius = 48;
+  return {
+    id: i,
+    left: `${Number((50 + radius * Math.cos(angle)).toFixed(2))}%`,
+    top: `${Number((50 + radius * Math.sin(angle)).toFixed(2))}%`,
+  };
+});
+
 export function HeroOcean() {
   const skyCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const wavesCanvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -436,19 +447,13 @@ export function HeroOcean() {
             <div className="relative w-[280px] h-[280px] md:w-[330px] md:h-[330px] rounded-full p-4 bg-gradient-to-br from-slate-200 via-teal-800 to-cyan-900 border-4 border-white/90 shadow-[0_20px_60px_rgba(2,132,199,0.35)] group">
               
               {/* Titanium Rivets around Porthole Circle (12 Rivets) */}
-              {Array.from({ length: 12 }).map((_, i) => {
-                const angle = (i * 30 * Math.PI) / 180;
-                const radius = 48; // percentage offset
-                const x = 50 + radius * Math.cos(angle);
-                const y = 50 + radius * Math.sin(angle);
-                return (
-                  <div
-                    key={i}
-                    className="absolute w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-300 to-white shadow-[0_1px_3px_rgba(0,0,0,0.5)] border border-slate-600/40 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                    style={{ left: `${x}%`, top: `${y}%` }}
-                  />
-                );
-              })}
+              {titaniumRivets.map((rivet) => (
+                <div
+                  key={rivet.id}
+                  className="absolute w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-300 to-white shadow-[0_1px_3px_rgba(0,0,0,0.5)] border border-slate-600/40 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                  style={{ left: rivet.left, top: rivet.top }}
+                />
+              ))}
 
               {/* Inner Convex Glass Window Lens (100% Unobstructed Clean Image) */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#0284C7] bg-[#0284C7] shadow-inner">

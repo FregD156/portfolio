@@ -7,7 +7,7 @@ const icons = [
   { name: "JavaScript", slug: "javascript" },
   { name: "TypeScript", slug: "typescript" },
   { name: "Python",     slug: "python" },
-  { name: "Java",       slug: "java" },
+  { name: "Java",       slug: "openjdk" },
   { name: "Node.js",   slug: "nodedotjs" },
   { name: "FastAPI",   slug: "fastapi" },
   { name: "React",     slug: "react" },
