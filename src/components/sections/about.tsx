@@ -41,10 +41,10 @@ export function About() {
         {/* Section Header */}
         <div className="mb-16">
           <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-            About <span className="italic font-normal text-[#2DD4BF]">my engineering path</span>
+            About <span className="italic font-normal text-[#FDE68A]">my engineering path</span>
           </h2>
-          <p className="font-jakarta text-sm md:text-base text-teal-100/80 mt-3 max-w-2xl font-medium">
-            Student developer at UTT (GPA 3.64). 3rd Place Team Leader at AI for Social Challenge & Hackathon Top 6 Finalist.
+          <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-3 max-w-2xl font-medium">
+            Student developer at UTT (GPA 3.64 / 4.00). 3rd Place Team Leader at AI for Social Challenge & Hackathon Top 6 Finalist.
           </p>
         </div>
 
@@ -60,15 +60,15 @@ export function About() {
             className="lg:col-span-7 space-y-8"
           >
             {/* Bio Card */}
-            <div className="p-8 rounded-2xl border border-teal-300/30 bg-[#042d3e]/80 backdrop-blur-md shadow-xl">
+            <div className="p-8 rounded-sm glass-resort-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <OceanIcon name="wave" className="w-5 h-5 text-primary" /> Background & Perspective
+                <OceanIcon name="wave" className="w-5 h-5 text-[#FDE68A]" /> Background & Perspective
               </h3>
-              <div className="font-jakarta space-y-4 text-sm md:text-base text-teal-100/90 leading-relaxed font-medium">
+              <div className="font-jakarta space-y-4 text-sm md:text-base text-teal-100/95 leading-relaxed font-medium">
                 <p>
                   I am a Software Engineering student at the{" "}
-                  <span className="text-white font-bold underline decoration-primary/50">University of Transport Technology (UTT)</span>,
-                  maintaining an Excellent academic standing with a <span className="text-[#2DD4BF] font-extrabold">3.64 / 4.00 GPA</span>. Driven by logic and a proactive mindset, I engineer AI pipelines and high-performance backend systems.
+                  <span className="text-white font-bold underline decoration-[#FDE68A]/60">University of Transport Technology (UTT)</span>,
+                  maintaining an Excellent academic standing with a <span className="text-[#FDE68A] font-extrabold">3.64 / 4.00 GPA</span>. Driven by logic and a proactive mindset, I engineer AI pipelines and high-performance backend systems.
                 </p>
                 <p>
                   As an active AI researcher and team leader, I led my team to win{" "}
@@ -76,15 +76,15 @@ export function About() {
                 </p>
                 <p>
                   I am actively pursuing academic and research opportunities at the{" "}
-                  <span className="text-[#2DD4BF] font-bold">Korea National University of Transportation (KNUT)</span> to expand my global research perspective.
+                  <span className="text-[#FDE68A] font-bold">Korea National University of Transportation (KNUT)</span> to expand my global research perspective.
                 </p>
               </div>
             </div>
 
             {/* Language Proficiency Card */}
-            <div className="p-8 rounded-2xl border border-teal-300/30 bg-[#042d3e]/80 backdrop-blur-md shadow-xl">
+            <div className="p-8 rounded-sm glass-resort-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <OceanIcon name="shell" className="w-5 h-5 text-primary" /> Language Proficiency
+                <OceanIcon name="shell" className="w-5 h-5 text-[#FDE68A]" /> Language Proficiency
               </h3>
               <div className="space-y-5">
                 {languages.map((lang, i) => (
@@ -97,11 +97,11 @@ export function About() {
                   >
                     <div className="flex justify-between mb-2 font-jakarta">
                       <span className="text-sm font-bold text-white">{lang.name}</span>
-                      <span className="postmark text-xs text-[#2DD4BF] font-semibold">{lang.level}</span>
+                      <span className="font-mono text-xs text-[#FDE68A] font-bold">{lang.level}</span>
                     </div>
-                    <div className="h-2.5 bg-[#031c28] rounded-full overflow-hidden border border-teal-300/20">
+                    <div className="h-2 bg-[#021c28] rounded-none overflow-hidden border border-teal-300/30">
                       <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF]"
+                        className="h-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#FDE68A]"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${lang.pct}%` }}
                         viewport={{ once: true }}
@@ -123,23 +123,23 @@ export function About() {
             className="lg:col-span-5 space-y-6"
           >
             {/* Categorized Technical Arsenal */}
-            <div className="p-8 rounded-2xl border border-teal-300/30 bg-[#042d3e]/80 backdrop-blur-md shadow-xl">
+            <div className="p-8 rounded-sm glass-resort-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <OceanIcon name="code" className="w-5 h-5 text-primary" /> Technical Arsenal
+                <OceanIcon name="code" className="w-5 h-5 text-[#FDE68A]" /> Technical Arsenal
               </h3>
 
               <div className="space-y-5">
                 {techCategories.map((cat) => (
                   <div key={cat.title} className="space-y-2">
-                    <div className="postmark text-xs text-[#2DD4BF] font-bold flex items-center gap-1.5">
-                      <OceanIcon name={cat.icon} className="w-3.5 h-3.5 text-primary" />
+                    <div className="font-mono text-xs text-[#FDE68A] font-bold flex items-center gap-1.5 uppercase">
+                      <OceanIcon name={cat.icon} className="w-3.5 h-3.5 text-[#2DD4BF]" />
                       {cat.title}
                     </div>
                     <div className="flex flex-wrap gap-1.5">
                       {cat.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="postmark text-[11px] px-2.5 py-1 rounded-lg border border-teal-300/30 bg-teal-500/10 text-teal-100 font-medium hover:border-primary transition-colors"
+                          className="font-mono text-[11px] px-2.5 py-1 rounded-sm border border-teal-300/40 bg-white/10 text-teal-100 font-medium hover:border-[#FDE68A] transition-colors"
                         >
                           {skill}
                         </span>
@@ -151,11 +151,11 @@ export function About() {
             </div>
 
             {/* Target KNUT Future Goal Block */}
-            <div className="p-6 rounded-2xl border border-primary/40 bg-gradient-to-br from-[#06B6D4]/15 to-[#2DD4BF]/10 backdrop-blur-md relative overflow-hidden group">
-              <div className="absolute top-4 right-4 text-primary/30 group-hover:text-primary/60 transition-colors">
+            <div className="p-6 rounded-sm glass-resort-card border-l-4 border-l-[#FDE68A] relative overflow-hidden group">
+              <div className="absolute top-4 right-4 text-[#FDE68A]/40 group-hover:text-[#FDE68A] transition-colors">
                 <OceanIcon name="sailboat" className="w-10 h-10" />
               </div>
-              <div className="postmark text-xs text-[#2DD4BF] font-bold mb-2">FUTURE HORIZONS · ACADEMIC GOAL</div>
+              <div className="font-mono text-xs text-[#FDE68A] font-bold mb-2">FUTURE HORIZONS · ACADEMIC GOAL</div>
               <div className="font-fraunces text-lg font-bold text-white mb-2">
                 Korea National University of Transportation (KNUT)
               </div>
