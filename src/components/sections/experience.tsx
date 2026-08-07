@@ -47,15 +47,7 @@ const timeline: TimelineItem[] = [
     description: "Core member of scientific research team. Led team to build EduGuide AI, an award-winning university recommendation system. Maintained 3.64 GPA throughout.",
     tags: ["AI Research", "Team Leadership", "Software Engineering"],
   },
-  {
-    period: "Sports",
-    role: "Regional Champions & Athletes",
-    company: "Provincial / Regional Competitions",
-    duration: "2019 – 2023",
-    highlight: "Volleyball Champion & Badminton Silver Medalist",
-    description: "Regional Volleyball Champion (2023), Silver Medalist in Badminton (2019), and 5-year participant in District/Provincial academic contests.",
-    tags: ["Leadership", "Athletics", "Teamwork"],
-  },
+
   {
     period: "12 Months",
     role: "Badminton Coach",
