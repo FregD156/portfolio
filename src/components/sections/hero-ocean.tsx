@@ -363,13 +363,7 @@ export function HeroOcean() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-7 flex flex-col items-start text-left"
         >
-          {/* Welcome Tag in Soft Fluid Pill */}
-          <div className="mb-5">
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#FDE68A]/60 bg-[#042c3d]/75 text-[#FDE68A] backdrop-blur-xl text-xs font-mono font-bold tracking-wider shadow-lg animate-float">
-              <OceanIcon name="wave" className="w-4 h-4 text-[#FDE68A]" />
-              WELCOME TO DUY.DEV · OCEAN SANCTUARY
-            </span>
-          </div>
+
 
           {/* Headline in Fraunces */}
           <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.8rem] font-extrabold leading-[1.05] text-white tracking-tight mb-3 drop-shadow-lg">
