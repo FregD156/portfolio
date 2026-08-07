@@ -47,35 +47,31 @@
   --color-surface-hover: var(--surface-hover);
 }
 
-/* ─── BRIGHT SUNLIT COASTAL OCEAN THEME (LUMINOUS & VIBRANT) ─────────── */
+/* ─── BRIGHT SUNLIT COASTAL OCEAN THEME (LUXURY RESORT & GLASS SANCTUARY) ─── */
 :root,
 .dark,
 .light {
-  --background: #032b3d;
+  --background: #022433;
   --foreground: #f0fdfa;
-  --card: rgba(8, 60, 82, 0.75);
+  --card: rgba(4, 50, 71, 0.75);
   --card-foreground: #ffffff;
-  --popover: rgba(8, 60, 82, 0.9);
+  --popover: rgba(4, 50, 71, 0.9);
   --popover-foreground: #ffffff;
 
-  /* Bright Turquoise & Ice Cyan Aqua Accent */
   --primary: #06B6D4;
-  --primary-bright: #2DD4BF;
   --primary-foreground: #ffffff;
-
   --secondary: #084c61;
   --secondary-foreground: #f0fdfa;
-  --muted: #084c61;
-  --muted-foreground: #99f6e4;
-  --accent: #084c61;
-  --accent-foreground: #f0fdfa;
 
-  --destructive: #f43f5e;
-  --destructive-foreground: #ffffff;
-  --border: rgba(45, 212, 191, 0.3);
+  --muted: rgba(6, 182, 212, 0.15);
+  --muted-foreground: #94a3b8;
+  --accent: #2DD4BF;
+  --accent-foreground: #022433;
+
+  --destructive: #ef4444;
+  --border: rgba(45, 212, 191, 0.35);
   --input: rgba(45, 212, 191, 0.3);
   --ring: #2DD4BF;
-  --radius: 1rem;
 
   --sidebar: #084c61;
   --sidebar-foreground: #f0fdfa;
@@ -86,19 +82,19 @@
   --sidebar-border: rgba(45, 212, 191, 0.3);
   --sidebar-ring: #2DD4BF;
 
-  /* Luminous Coastal Tokens */
+  /* Coastal Luxury Resort Tokens */
   --cyan-bright: #2DD4BF;
   --teal-aqua: #14B8A6;
   --sky-cool: #38BDF8;
   --ice-foam: #CCFBFF;
 
-  --orange: #2DD4BF;
-  --orange-dim: #06b6d4;
-  --orange-glow: rgba(45, 212, 191, 0.35);
+  --gold-sand: #FDE68A;
+  --gold-warm: #F59E0B;
+  --gold-glow: rgba(253, 230, 138, 0.4);
 
-  --surface: rgba(12, 74, 96, 0.85);
-  --surface-hover: rgba(16, 92, 118, 0.95);
-  --badge-bg: rgba(45, 212, 191, 0.2);
+  --surface: rgba(4, 50, 71, 0.85);
+  --surface-hover: rgba(8, 70, 98, 0.95);
+  --badge-bg: rgba(6, 182, 212, 0.2);
 }
 
 /* ─── BASE ───────────────────────────────────────────────────────────── */
@@ -114,35 +110,38 @@
   }
 }
 
-/* ─── STORYLINE CHAPTER BADGE & GLASS CARDS ──────────────────────────── */
+/* ─── COASTAL LUXURY RESORT GLASS CARDS ──────────────────────────── */
 .chapter-badge {
   font-family: var(--font-space-mono), monospace;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #2DD4BF;
-  background: rgba(6, 182, 212, 0.18);
-  border: 1px solid rgba(45, 212, 191, 0.4);
-  padding: 0.35rem 1rem;
+  color: #FDE68A;
+  background: rgba(4, 50, 71, 0.85);
+  border: 1px solid rgba(253, 230, 138, 0.45);
+  padding: 0.4rem 1.1rem;
   border-radius: 9999px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.15);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.2);
 }
 
-.glass-beach-card {
-  background: rgba(8, 55, 75, 0.7);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(45, 212, 191, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.25);
-  border-radius: 1.25rem;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.glass-beach-card,
+.glass-resort-card {
+  background: rgba(4, 50, 71, 0.78);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  box-shadow: 0 20px 50px -10px rgba(2, 132, 199, 0.3);
+  border-radius: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.glass-beach-card:hover {
-  border-color: rgba(45, 212, 191, 0.55);
-  box-shadow: 0 16px 40px -10px rgba(6, 182, 212, 0.35);
+
+.glass-beach-card:hover,
+.glass-resort-card:hover {
+  border-color: rgba(253, 230, 138, 0.6);
+  box-shadow: 0 25px 60px -10px rgba(6, 182, 212, 0.4);
   transform: translateY(-2px);
 }
 

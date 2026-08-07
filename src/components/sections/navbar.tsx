@@ -49,7 +49,7 @@ export function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 transform ${
           scrolled
-            ? "bg-[#051923]/90 backdrop-blur-xl border-b border-[#38BDF8]/20 shadow-lg"
+            ? "bg-[#022433]/92 backdrop-blur-2xl border-b border-teal-300/30 shadow-xl"
             : "bg-transparent border-b border-transparent"
         } ${
           visible ? "translate-y-0" : "-translate-y-full"
@@ -59,28 +59,28 @@ export function Navbar() {
         <div className="max-w-6xl mx-auto h-full px-6 flex justify-between items-center">
 
           {/* Logo in Fraunces */}
-          <a href="#" className="font-fraunces text-lg font-bold tracking-tight flex items-center gap-2 group">
-            <OceanIcon name="wave" className="w-5 h-5 text-primary transition-transform group-hover:rotate-12" />
+          <a href="#" className="font-fraunces text-lg md:text-xl font-bold tracking-tight flex items-center gap-2 group">
+            <OceanIcon name="wave" className="w-5 h-5 text-[#2DD4BF] transition-transform group-hover:rotate-12" />
             <span className="text-white">Nguyen Thanh Duy</span>
-            <span className="postmark text-[10px] text-primary">.dev</span>
+            <span className="font-mono text-xs text-[#FDE68A] font-bold">.DEV</span>
           </a>
 
-          {/* Desktop nav in Space Mono */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-1 font-jakarta font-semibold text-sm">
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 postmark rounded-lg transition-colors duration-200 ${
+                className={`relative px-4 py-2 rounded-full transition-all duration-200 ${
                   active === link.href.slice(1)
-                    ? "text-primary font-bold"
-                    : "text-muted-foreground hover:text-white"
+                    ? "text-[#FDE68A] font-bold"
+                    : "text-teal-100/80 hover:text-white"
                 }`}
               >
                 {active === link.href.slice(1) && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-lg bg-primary/15"
+                    className="absolute inset-0 rounded-full bg-white/10 border border-teal-300/40"
                     transition={{ type: "spring", stiffness: 350, damping: 35 }}
                   />
                 )}
@@ -88,12 +88,12 @@ export function Navbar() {
               </a>
             ))}
 
-            <div className="w-px h-4 bg-border/60 mx-2" />
+            <div className="w-px h-4 bg-teal-300/30 mx-2" />
 
             <a
               href={portfolioConfig.resumeUrl}
               target="_blank" rel="noopener noreferrer"
-              className="ml-2 postmark px-4 py-2 rounded-xl border border-primary/50 text-primary hover:bg-primary/10 transition-all duration-200 cursor-pointer flex items-center gap-1.5 font-bold"
+              className="ml-2 font-jakarta px-4 py-2 rounded-full border border-[#FDE68A]/60 bg-white/10 text-[#FDE68A] hover:bg-[#FDE68A] hover:text-[#022433] transition-all duration-300 cursor-pointer flex items-center gap-1.5 font-bold shadow-md"
             >
               <OceanIcon name="terminal" className="w-3.5 h-3.5" />
               Resume
@@ -104,10 +104,10 @@ export function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-muted-foreground hover:text-white"
+              className="p-2 text-teal-100/90 hover:text-white"
               aria-label="Toggle menu"
             >
-              <OceanIcon name="compass" className="w-6 h-6 text-primary" />
+              <OceanIcon name="compass" className="w-6 h-6 text-[#2DD4BF]" />
             </button>
           </div>
         </div>
