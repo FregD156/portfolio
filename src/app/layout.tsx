@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/lenis-provider";
 import { SplashIntro } from "@/components/splash-intro";
 import { OceanIconSprite } from "@/components/ui/ocean-icons";
 
-const fraunces = Fraunces({
+const syne = Syne({
   variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["500", "700", "800"],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -20,11 +19,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const spaceMono = Space_Mono({
+const jetbrainsMono = JetBrains_Mono({
   variable: "--font-space-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "700"],
+  weight: ["400", "500", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -60,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${fraunces.variable} ${plusJakartaSans.variable} ${spaceMono.variable} font-sans min-h-screen bg-background text-foreground antialiased grain`}
+        className={`${syne.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} font-sans min-h-screen bg-background text-foreground antialiased grain`}
       >
         <OceanIconSprite />
         <SplashIntro />
