@@ -47,51 +47,57 @@
   --color-surface-hover: var(--surface-hover);
 }
 
-/* ─── OCEAN SUNSET THEME ─────────── */
+/* ─── VIBRANT SUMMER BEACH THEME ─────────── */
 :root,
 .dark {
-  --background: #081d2c;
-  --foreground: #f4f6f8;
-  --card: #0d283b;
-  --card-foreground: #f4f6f8;
-  --popover: #0d283b;
-  --popover-foreground: #f4f6f8;
+  --background: #051923;
+  --foreground: #f0f9ff;
+  --card: #082836;
+  --card-foreground: #f0f9ff;
+  --popover: #082836;
+  --popover-foreground: #f0f9ff;
 
-  /* Ocean Teal & Sunset Coral Accent */
-  --primary: #12B8A6;
+  /* Ocean Aqua Teal & Sun Coral Accent */
+  --primary: #14B8A6;
   --primary-foreground: #ffffff;
 
-  --secondary: #14354c;
-  --secondary-foreground: #f4f6f8;
-  --muted: #14354c;
-  --muted-foreground: #94a3b8;
-  --accent: #14354c;
-  --accent-foreground: #f4f6f8;
+  --secondary: #0c384d;
+  --secondary-foreground: #f0f9ff;
+  --muted: #0c384d;
+  --muted-foreground: #7dd3fc;
+  --accent: #0c384d;
+  --accent-foreground: #f0f9ff;
 
-  --destructive: #ef4444;
+  --destructive: #f43f5e;
   --destructive-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #12B8A6;
-  --radius: 0.75rem;
+  --border: rgba(56, 189, 248, 0.18);
+  --input: rgba(56, 189, 248, 0.18);
+  --ring: #14B8A6;
+  --radius: 0.85rem;
 
-  --sidebar: #0d283b;
-  --sidebar-foreground: #f4f6f8;
-  --sidebar-primary: #12B8A6;
+  --sidebar: #082836;
+  --sidebar-foreground: #f0f9ff;
+  --sidebar-primary: #14B8A6;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #14354c;
-  --sidebar-accent-foreground: #f4f6f8;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #12B8A6;
+  --sidebar-accent: #0c384d;
+  --sidebar-accent-foreground: #f0f9ff;
+  --sidebar-border: rgba(56, 189, 248, 0.18);
+  --sidebar-ring: #14B8A6;
 
-  /* Brand-specific tokens */
-  --orange: #FF9E7D;
-  --orange-dim: #d97d5e;
-  --orange-glow: rgba(255, 158, 125, 0.2);
+  /* Vibrant Summer Tokens */
+  --coral: #FF7E5F;
+  --sun-gold: #FFD166;
+  --cyan-breeze: #38BDF8;
+  --teal-wave: #14B8A6;
+  --foam-white: #E0F2FE;
 
-  --surface: rgba(13, 40, 59, 0.75);
-  --surface-hover: rgba(20, 53, 76, 0.9);
-  --badge-bg: rgba(255, 255, 255, 0.08);
+  --orange: #FF7E5F;
+  --orange-dim: #e06346;
+  --orange-glow: rgba(255, 126, 95, 0.25);
+
+  --surface: rgba(8, 40, 54, 0.8);
+  --surface-hover: rgba(12, 56, 77, 0.95);
+  --badge-bg: rgba(56, 189, 248, 0.12);
 }
 
 /* ─── LIGHT THEME (optional toggle) ─────────────────────────────────── */

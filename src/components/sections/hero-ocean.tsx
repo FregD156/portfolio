@@ -127,13 +127,13 @@ export function HeroOcean() {
     const drawSky = (w: number, h: number, time: number) => {
       skyCtx.clearRect(0, 0, w, h);
 
-      // Sky Gradient
+      // Sky Gradient - Fresh Summer Ocean Sky to Sunset transition
       const drift = Math.sin(time * 0.02) * 0.02;
       const g = skyCtx.createLinearGradient(0, 0, 0, h);
-      g.addColorStop(0, "#0B3D57");
-      g.addColorStop(0.35 + drift, "#2C7DA0");
-      g.addColorStop(0.65 + drift, "#FF9E7D");
-      g.addColorStop(1, "#FFE3A3");
+      g.addColorStop(0, "#083344");
+      g.addColorStop(0.35 + drift, "#0284C7");
+      g.addColorStop(0.65 + drift, "#FF7E5F");
+      g.addColorStop(1, "#FFD166");
       skyCtx.fillStyle = g;
       skyCtx.fillRect(0, 0, w, h);
 
@@ -141,21 +141,21 @@ export function HeroOcean() {
       if (enabled.godRays) {
         const sunX = w * sunState.x;
         const sunY = h * sunState.y + sunState.scrollOffset;
-        for (let i = 0; i < 5; i++) {
-          const angle = -Math.PI / 2 + (i - 2) * 0.12;
-          const len = h * 0.9;
-          const alpha = 0.04 + Math.abs(Math.sin(time * 0.5 + i)) * 0.04;
+        for (let i = 0; i < 6; i++) {
+          const angle = -Math.PI / 2 + (i - 2.5) * 0.14;
+          const len = h * 0.95;
+          const alpha = 0.06 + Math.abs(Math.sin(time * 0.5 + i)) * 0.05;
           const grad = skyCtx.createLinearGradient(sunX, sunY, sunX + Math.cos(angle) * len, sunY + Math.sin(angle) * len + len);
-          grad.addColorStop(0, `rgba(255,233,168,${alpha})`);
-          grad.addColorStop(1, "rgba(255,233,168,0)");
+          grad.addColorStop(0, `rgba(255,243,196,${alpha})`);
+          grad.addColorStop(1, "rgba(255,243,196,0)");
           skyCtx.fillStyle = grad;
           skyCtx.save();
           skyCtx.translate(sunX, sunY);
           skyCtx.rotate(angle);
           skyCtx.beginPath();
           skyCtx.moveTo(0, 0);
-          skyCtx.lineTo(-14, len);
-          skyCtx.lineTo(14, len);
+          skyCtx.lineTo(-16, len);
+          skyCtx.lineTo(16, len);
           skyCtx.closePath();
           skyCtx.fill();
           skyCtx.restore();
@@ -167,17 +167,17 @@ export function HeroOcean() {
       const cy = h * sunState.y + sunState.scrollOffset;
       const r = h * sunState.r;
 
-      const glow = skyCtx.createRadialGradient(cx, cy, 0, cx, cy, r * 3);
-      glow.addColorStop(0, "rgba(255,233,168,0.35)");
-      glow.addColorStop(1, "rgba(255,233,168,0)");
+      const glow = skyCtx.createRadialGradient(cx, cy, 0, cx, cy, r * 3.5);
+      glow.addColorStop(0, "rgba(255,209,102,0.45)");
+      glow.addColorStop(1, "rgba(255,209,102,0)");
       skyCtx.fillStyle = glow;
       skyCtx.beginPath();
-      skyCtx.arc(cx, cy, r * 3, 0, Math.PI * 2);
+      skyCtx.arc(cx, cy, r * 3.5, 0, Math.PI * 2);
       skyCtx.fill();
 
       const core = skyCtx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      core.addColorStop(0, "#FFF4D6");
-      core.addColorStop(1, "#FFE9A8");
+      core.addColorStop(0, "#FFFFFF");
+      core.addColorStop(1, "#FFD166");
       skyCtx.fillStyle = core;
       skyCtx.beginPath();
       skyCtx.arc(cx, cy, r, 0, Math.PI * 2);
@@ -190,7 +190,7 @@ export function HeroOcean() {
           const x = (((i * spread + time * layer.speed * 20) % (w + spread * layer.scale)) - spread * layer.scale);
           const y = h * layer.y + Math.sin(time * 0.1 + i) * 6;
           const size = layer.scale * 60;
-          skyCtx.fillStyle = `rgba(255,244,230,${layer.alpha})`;
+          skyCtx.fillStyle = `rgba(255,255,255,${layer.alpha})`;
           [[0, 0, 1], [size * 0.6, -size * 0.15, 0.8], [-size * 0.6, -size * 0.1, 0.7], [size * 0.3, size * 0.1, 0.9]].forEach(
             ([dx, dy, s]) => {
               skyCtx.beginPath();
@@ -209,8 +209,8 @@ export function HeroOcean() {
           const py = g.y * h + Math.sin(time * 0.3 + g.flapOffset) * 8;
           const wing = Math.sin(time * 6 + g.flapOffset) * 6 * g.scale;
 
-          skyCtx.strokeStyle = "rgba(11,61,87,0.55)";
-          skyCtx.lineWidth = 1.6 * g.scale;
+          skyCtx.strokeStyle = "rgba(255,255,255,0.75)";
+          skyCtx.lineWidth = 1.8 * g.scale;
           skyCtx.lineCap = "round";
           skyCtx.beginPath();
           skyCtx.moveTo(px - 10 * g.scale, py + wing);
@@ -227,7 +227,7 @@ export function HeroOcean() {
         skyCtx.save();
         skyCtx.translate(kx, ky);
         skyCtx.rotate(Math.sin(time * 0.4) * 0.15);
-        skyCtx.fillStyle = "rgba(255,201,60,0.85)";
+        skyCtx.fillStyle = "rgba(255,126,95,0.9)";
         skyCtx.beginPath();
         skyCtx.moveTo(0, -16);
         skyCtx.lineTo(14, 0);
@@ -235,7 +235,7 @@ export function HeroOcean() {
         skyCtx.lineTo(-14, 0);
         skyCtx.closePath();
         skyCtx.fill();
-        skyCtx.strokeStyle = "rgba(255,255,255,0.6)";
+        skyCtx.strokeStyle = "rgba(255,255,255,0.8)";
         skyCtx.lineWidth = 1;
         skyCtx.beginPath();
         skyCtx.moveTo(-14, 0);
@@ -243,7 +243,7 @@ export function HeroOcean() {
         skyCtx.moveTo(0, -16);
         skyCtx.lineTo(0, 16);
         skyCtx.stroke();
-        skyCtx.strokeStyle = "rgba(255,201,60,0.6)";
+        skyCtx.strokeStyle = "rgba(255,209,102,0.8)";
         skyCtx.beginPath();
         skyCtx.moveTo(0, 16);
         for (let i = 1; i <= 4; i++) {
@@ -266,7 +266,7 @@ export function HeroOcean() {
           skyCtx.save();
           skyCtx.translate(p.x, p.y);
           skyCtx.rotate(p.rot);
-          skyCtx.fillStyle = "rgba(255,158,125,0.75)";
+          skyCtx.fillStyle = "rgba(255,182,193,0.8)";
           skyCtx.beginPath();
           skyCtx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
           skyCtx.fill();
@@ -279,7 +279,7 @@ export function HeroOcean() {
       wavesCtx.clearRect(0, 0, w, h);
       const step = isMobile ? 8 : 4;
 
-      // Render 4 wave layers
+      // Render 4 wave layers with vibrant ocean colors
       waveLayers.forEach((layer) => {
         wavesCtx.beginPath();
         wavesCtx.moveTo(0, h);
@@ -299,8 +299,8 @@ export function HeroOcean() {
         const y = h * frontLayer.baseY + waveY(x, time, frontLayer);
         x === 0 ? wavesCtx.moveTo(x, y) : wavesCtx.lineTo(x, y);
       }
-      wavesCtx.strokeStyle = `rgba(255,255,255,${0.5 + Math.sin(time * 1.5) * 0.2})`;
-      wavesCtx.lineWidth = 2.5;
+      wavesCtx.strokeStyle = `rgba(255,255,255,${0.65 + Math.sin(time * 1.5) * 0.25})`;
+      wavesCtx.lineWidth = 3;
       wavesCtx.stroke();
 
       // Sailboats on Wave Surface
@@ -311,7 +311,7 @@ export function HeroOcean() {
           wavesCtx.save();
           wavesCtx.translate(x, y);
           wavesCtx.scale(b.scale, b.scale);
-          wavesCtx.fillStyle = "rgba(255,255,255,0.85)";
+          wavesCtx.fillStyle = "rgba(255,255,255,0.95)";
           wavesCtx.beginPath();
           wavesCtx.moveTo(-14, 0);
           wavesCtx.lineTo(14, 0);
@@ -319,7 +319,7 @@ export function HeroOcean() {
           wavesCtx.lineTo(-9, 8);
           wavesCtx.closePath();
           wavesCtx.fill();
-          wavesCtx.fillStyle = "rgba(255,110,87,0.9)";
+          wavesCtx.fillStyle = "rgba(255,126,95,0.95)";
           wavesCtx.beginPath();
           wavesCtx.moveTo(0, 0);
           wavesCtx.lineTo(0, -20);
@@ -333,9 +333,9 @@ export function HeroOcean() {
       // Sparkles
       sparkles.forEach((p) => {
         const alpha = Math.abs(Math.sin(time * p.speed + p.offset));
-        wavesCtx.fillStyle = `rgba(255,244,214,${alpha * 0.8})`;
+        wavesCtx.fillStyle = `rgba(255,255,255,${alpha * 0.9})`;
         wavesCtx.beginPath();
-        wavesCtx.arc(p.x, h * p.yFactor, p.size, 0, Math.PI * 2);
+        wavesCtx.arc(p.x, h * p.yFactor, p.size * 1.2, 0, Math.PI * 2);
         wavesCtx.fill();
       });
 
@@ -389,7 +389,7 @@ export function HeroOcean() {
 
       {/* Swaying Coconut Palm Tree Leaf Shadow */}
       <svg className="palm-shadow" viewBox="0 0 300 300" aria-hidden="true">
-        <g fill="rgba(7,59,76,0.75)">
+        <g fill="rgba(6,182,212,0.55)">
           <path d="M20,300 C20,180 60,120 90,60 C70,110 40,160 20,300 Z" />
           <path d="M20,300 C40,190 90,140 150,90 C100,130 50,180 20,300 Z" />
           <path d="M20,300 C60,200 130,160 190,130 C130,160 70,210 20,300 Z" />
@@ -407,19 +407,19 @@ export function HeroOcean() {
         >
           {/* Eyebrow tag in Space Mono */}
           <div className="mb-6">
-            <span className="eyebrow inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#FF9E7D]/40 bg-[#0B3D57]/60 text-[#FFE3A3] backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-[#FF9E7D] animate-ping" />
+            <span className="eyebrow inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FFD166]/60 bg-[#082836]/80 text-[#FFD166] backdrop-blur-md shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-[#FF7E5F] animate-ping" />
               UTT SOFTWARE ENGINEERING · GPA 3.64
             </span>
           </div>
 
           {/* Headline in Fraunces */}
-          <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.08] text-white tracking-tight mb-5 drop-shadow-md">
-            Architecting <span className="italic font-normal text-[#FFE3A3]">Intelligent</span> Systems & AI Pipelines.
+          <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.6rem] font-bold leading-[1.08] text-white tracking-tight mb-5 drop-shadow-lg">
+            Architecting <span className="italic font-normal text-[#FFD166] underline decoration-[#FF7E5F]/50 decoration-wavy decoration-2">Intelligent</span> Systems & AI Pipelines.
           </h1>
 
           {/* Subtext in Plus Jakarta Sans */}
-          <p className="font-jakarta text-base md:text-lg text-white/90 leading-relaxed max-w-[42ch] mb-8 font-medium drop-shadow-sm">
+          <p className="font-jakarta text-base md:text-lg text-white/95 leading-relaxed max-w-[42ch] mb-8 font-medium drop-shadow-sm">
             Student developer at UTT (3.64 GPA). 3rd Place Team Leader at AI for Social Challenge. Building high-performance backends and temporal Graph-RAG architectures.
           </p>
 
@@ -427,32 +427,32 @@ export function HeroOcean() {
           <div className="flex gap-4 flex-wrap mb-10">
             <a
               href="#projects"
-              className="font-jakarta inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#12B8A6] hover:bg-[#0F6E56] text-white font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#14B8A6] to-[#06B6D4] hover:from-[#0d9488] hover:to-[#0284c7] text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              Selected Work <OceanIcon name="wave" className="w-5 h-5" />
+              Selected Work <OceanIcon name="wave" className="w-5 h-5 text-white" />
             </a>
             <a
               href="#contact"
-              className="font-jakarta inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 bg-black/20 hover:bg-white/10 text-white font-semibold backdrop-blur-md transition-all duration-300"
+              className="font-jakarta inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/40 bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-md transition-all duration-300"
             >
-              Get in Touch <OceanIcon name="compass" className="w-5 h-5" />
+              Get in Touch <OceanIcon name="compass" className="w-5 h-5 text-[#FFD166]" />
             </a>
           </div>
 
           {/* Social Links with Thin SVG Icons */}
-          <div className="flex gap-3 items-center text-white/80">
+          <div className="flex gap-3 items-center text-white/90">
             <a
               href={portfolioConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="p-2.5 rounded-xl border border-white/25 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
               aria-label="GitHub"
             >
               <OceanIcon name="github" className="w-5 h-5" />
             </a>
             <a
               href={`mailto:${portfolioConfig.email}`}
-              className="p-2.5 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="p-2.5 rounded-xl border border-white/25 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
               aria-label="Email"
             >
               <OceanIcon name="mail" className="w-5 h-5" />
@@ -461,13 +461,13 @@ export function HeroOcean() {
               href={portfolioConfig.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="p-2.5 rounded-xl border border-white/25 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
               aria-label="Resume"
             >
               <OceanIcon name="terminal" className="w-5 h-5" />
             </a>
-            <div className="w-px h-5 bg-white/20 mx-1" />
-            <span className="postmark text-xs text-white/70">HANOI, VN</span>
+            <div className="w-px h-5 bg-white/30 mx-1" />
+            <span className="postmark text-xs text-[#FFD166] font-bold">HANOI, VN</span>
           </div>
         </motion.div>
 
