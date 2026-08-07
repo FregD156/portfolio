@@ -417,7 +417,7 @@ export function HeroOcean() {
           </div>
         </motion.div>
 
-        {/* Right Column Profile Showcase (5 cols) - Focused Portrait, NO Dark Overlays */}
+        {/* Right Column Profile Showcase (5 cols) - Focused Portrait, NO Outer Box Frame */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -432,27 +432,22 @@ export function HeroOcean() {
             gyroscope={true}
             className="relative flex flex-col items-center justify-center p-2"
           >
-            {/* Pure Crystal Glass Frame (NO dark box backdrop!) */}
-            <div className="relative w-[280px] h-[350px] md:w-[320px] md:h-[400px] rounded-3xl p-3 border-2 border-white/50 bg-white/10 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] group overflow-hidden">
+            {/* Focused Centered Photo (Direct, NO outer rectangular box frame!) */}
+            <div className="relative w-[280px] h-[350px] md:w-[320px] md:h-[400px] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/60 group">
+              <Image
+                src="/assets/images/profile.jpeg"
+                alt="Nguyen Thanh Duy - Software Engineer"
+                fill
+                sizes="(max-width: 768px) 280px, 320px"
+                className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
               
-              {/* Focused Centered Photo (object-center) */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/60">
-                <Image
-                  src="/assets/images/profile.jpeg"
-                  alt="Nguyen Thanh Duy - Software Engineer"
-                  fill
-                  sizes="(max-width: 768px) 280px, 320px"
-                  className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
-                  priority
-                />
-                
-                {/* Sunlit Subtle Shimmer at bottom */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0284C7]/60 via-transparent to-transparent" />
-              </div>
-
+              {/* Sunlit Subtle Shimmer at bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0284C7]/60 via-transparent to-transparent pointer-events-none" />
             </div>
 
-            {/* Sleek Minimalist Micro Badges Below Frame (NO overlap, NO dark boxes!) */}
+            {/* Sleek Minimalist Micro Badges Below Photo */}
             <div className="flex gap-2.5 mt-4">
               <div className="px-3.5 py-1.5 rounded-full border border-white/40 bg-white/20 backdrop-blur-md text-white text-xs font-bold flex items-center gap-1.5 shadow-md">
                 <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FEF08A]" />
