@@ -98,17 +98,17 @@ export function Experience() {
           </p>
         </div>
 
-        {/* Pirate Ship Rigging Line & Hook Timeline (Thanh Tiến Trình Hải Tặc) */}
-        <div className="relative pl-6 md:pl-10">
+        {/* Pirate Ship Rigging Line & Hook Timeline (Thanh Tiến Trình Hải Tặc với Mốc Thời Gian Bên Trái) */}
+        <div className="relative pl-6 md:pl-40">
           {/* Top Master Anchor Icon */}
-          <div className="absolute left-[2px] md:left-[6px] -top-5 z-20">
+          <div className="absolute left-[2px] md:left-[130px] -top-5 z-20">
             <div className="p-1 rounded-full border border-[#FDE68A] bg-[#022433] text-[#FDE68A] shadow-[0_0_12px_rgba(253,230,138,0.5)]">
               <OceanIcon name="anchor" className="w-3.5 h-3.5" />
             </div>
           </div>
 
           {/* Vertical Progression Rope Line (Thanh Tiến Trình) */}
-          <div className="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm rounded-full" />
+          <div className="absolute left-[11px] md:left-[139px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm rounded-full" />
 
           {/* Compact Experience Cards Container */}
           <div className="space-y-6 pl-6 md:pl-8">
@@ -121,8 +121,18 @@ export function Experience() {
                 transition={{ duration: 0.45, delay: i * 0.05 }}
                 className="relative group"
               >
+                {/* Floating Date Badge Positioned on the LEFT SIDE of Timeline Bar */}
+                <div className="hidden md:flex absolute -left-[205px] top-3.5 w-36 flex-col items-end text-right z-20">
+                  <span className="font-mono text-[11px] text-[#FDE68A] font-extrabold bg-[#022433]/95 border border-[#FDE68A]/60 px-3 py-1 rounded-full shadow-md backdrop-blur-md">
+                    {item.duration}
+                  </span>
+                  <span className="font-mono text-[9px] text-[#2DD4BF] font-extrabold uppercase tracking-wider mt-1 pr-1">
+                    {item.period}
+                  </span>
+                </div>
+
                 {/* Golden Brass Anchor Hook Node (Móc Treo Hải Tặc) */}
-                <div className="absolute -left-10 md:-left-12 top-3.5 z-20 flex items-center">
+                <div className="absolute -left-10 md:-left-[53px] top-3.5 z-20 flex items-center">
                   <div className="w-6 h-6 md:w-7 md:h-7 rounded-full border border-[#FDE68A] bg-[#022433] flex items-center justify-center text-[#FDE68A] shadow-md group-hover:scale-110 group-hover:bg-[#FDE68A] group-hover:text-[#022433] transition-all">
                     <OceanIcon name="anchor" className="w-3 h-3" />
                   </div>
@@ -133,8 +143,8 @@ export function Experience() {
                 {/* Compact Sleek Experience Frame */}
                 <div className="glass-resort-card p-4 md:p-5 rounded-xl border border-teal-300/25 group-hover:border-[#FDE68A]/70 shadow-md transition-all duration-300 group-hover:-translate-y-1">
 
-                  {/* Top Bar: Date Badge + Period Tag */}
-                  <div className="flex items-center justify-between gap-2 mb-2">
+                  {/* Mobile-only Date Tag (hidden on desktop because it's on the left side) */}
+                  <div className="flex md:hidden items-center justify-between gap-2 mb-2">
                     <span className="font-mono text-[10px] text-[#FDE68A] font-extrabold bg-[#022433]/90 border border-[#FDE68A]/50 px-2.5 py-0.5 rounded-full shadow-sm">
                       {item.duration}
                     </span>
