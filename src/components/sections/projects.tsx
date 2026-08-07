@@ -64,38 +64,22 @@ const projects = [
     category: "web",
   },
 ]
-
-const categories = [
-  { id: "all", label: "All Ocean Bubbles" },
-  { id: "ai", label: "AI & Graph-RAG" },
-  { id: "web", label: "Web Applications" },
-  { id: "awards", label: "Award Winners 🏆" },
-]
-
 export function Projects() {
-  const [activeTab, setActiveTab] = React.useState("all")
   const [selectedProject, setSelectedProject] = React.useState<typeof projects[0] | null>(null)
-
-  const filteredProjects = projects.filter((p) => {
-    if (activeTab === "all") return true
-    if (activeTab === "ai") return p.category === "ai"
-    if (activeTab === "web") return p.category === "web"
-    if (activeTab === "awards") return p.hasAward
-    return true
-  })
+  const doubledProjects = [...projects, ...projects]
 
   return (
     <section className="py-28 relative overflow-hidden" id="projects">
       <div className="max-w-6xl mx-auto px-6 relative">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-6">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
           <div>
             <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-              Floating Ocean <span className="italic font-normal text-[#FDE68A]">Bubbles</span>
+              Floating Ocean <span className="italic font-normal text-[#FDE68A]">Bubble Stream</span>
             </h2>
             <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-2 max-w-xl font-medium">
-              Click on any floating ocean bubble to expand full system architecture details & live demos.
+              Hover to pause the bubble stream & click any bubble to expand full system architecture details & live demos.
             </p>
           </div>
 
@@ -109,43 +93,19 @@ export function Projects() {
           </a>
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-14 bg-[#042c3d]/60 backdrop-blur-xl p-2 rounded-full border border-teal-300/30 max-w-max shadow-lg">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
-              className={`relative px-5 py-2 rounded-full font-jakarta text-xs md:text-sm font-bold transition-all duration-300 ${
-                activeTab === cat.id
-                  ? "text-[#022433]"
-                  : "text-teal-100/80 hover:text-white"
-              }`}
-            >
-              {activeTab === cat.id && (
-                <motion.div
-                  layoutId="active-bubble-tab"
-                  className="absolute inset-0 bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF] rounded-full shadow-md"
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{cat.label}</span>
-            </button>
-          ))}
-        </div>
+        {/* Continuous Infinite Horizontal Ocean Bubble Orbit Stream */}
+        <div className="relative flex overflow-hidden py-8 select-none group">
+          {/* Gradient Edge Blurs */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-28 z-20 pointer-events-none bg-gradient-to-r from-[#022433] to-transparent" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-28 z-20 pointer-events-none bg-gradient-to-l from-[#022433] to-transparent" />
 
-        {/* Floating Ocean Bubbles Showcase Grid */}
-        <motion.div layout className="flex flex-wrap justify-center items-center gap-8 md:gap-12 py-6">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((p, index) => (
-              <motion.div
-                key={p.id}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+          {/* Marquee Track */}
+          <div className="animate-marquee flex gap-10 md:gap-14 items-center whitespace-nowrap group-hover:[animation-play-state:paused] py-4">
+            {doubledProjects.map((p, index) => (
+              <div
+                key={`${p.id}-${index}`}
                 onClick={() => setSelectedProject(p)}
-                className="relative group cursor-pointer"
+                className="relative group/bubble cursor-pointer flex-shrink-0"
               >
                 {/* Award Note Chip Floating Over Bubble */}
                 {p.hasAward && (
@@ -160,7 +120,7 @@ export function Projects() {
                   tiltMaxAngleX={10}
                   tiltMaxAngleY={10}
                   perspective={1000}
-                  className="w-56 h-56 md:w-64 md:h-64 rounded-full border-4 border-[#2DD4BF] p-2 bg-gradient-to-br from-teal-300 via-teal-900 to-[#022433] shadow-[0_0_50px_rgba(45,212,191,0.45)] group-hover:shadow-[0_0_70px_rgba(253,230,138,0.6)] transition-all duration-500 relative overflow-hidden flex flex-col items-center justify-center text-center animate-float"
+                  className="w-56 h-56 md:w-64 md:h-64 rounded-full border-4 border-[#2DD4BF] p-2 bg-gradient-to-br from-teal-300 via-teal-900 to-[#022433] shadow-[0_0_50px_rgba(45,212,191,0.45)] group-hover/bubble:shadow-[0_0_70px_rgba(253,230,138,0.7)] transition-all duration-500 relative overflow-hidden flex flex-col items-center justify-center text-center animate-float"
                 >
                   {/* Inner Lens Image Container */}
                   <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/80">
@@ -169,12 +129,12 @@ export function Projects() {
                       alt={p.name}
                       fill
                       sizes="256px"
-                      className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-75 group-hover:opacity-95"
+                      className="object-cover transition-transform duration-700 group-hover/bubble:scale-110 opacity-75 group-hover/bubble:opacity-95"
                     />
 
                     {/* Dark Vignette Overlay for Title Contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#022433]/90 via-[#022433]/40 to-transparent flex flex-col justify-end p-5 text-center">
-                      <div className="font-fraunces text-lg md:text-xl font-bold text-white drop-shadow-lg tracking-tight group-hover:text-[#FDE68A] transition-colors">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#022433]/90 via-[#022433]/40 to-transparent flex flex-col justify-end p-5 text-center whitespace-normal">
+                      <div className="font-fraunces text-lg md:text-xl font-bold text-white drop-shadow-lg tracking-tight group-hover/bubble:text-[#FDE68A] transition-colors leading-tight">
                         {p.name}
                       </div>
                       <div className="font-mono text-[10px] text-teal-200/90 font-bold uppercase tracking-wider mt-1">
@@ -183,13 +143,13 @@ export function Projects() {
                     </div>
 
                     {/* Sunlit Lens Flare Shimmer */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none group-hover:opacity-80 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none group-hover/bubble:opacity-80 transition-opacity" />
                   </div>
                 </Tilt>
-              </motion.div>
+              </div>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Interactive Click-to-Expand Project Detail Modal Drawer */}
         <AnimatePresence>
