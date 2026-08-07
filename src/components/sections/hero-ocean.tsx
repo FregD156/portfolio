@@ -463,20 +463,17 @@ export function HeroOcean() {
           </div>
         </motion.div>
 
-        {/* Right Column Profile Card */}
+        {/* Right Column Profile Card - Clean Glassmorphic Frame */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center items-center"
         >
-          <div className="relative">
-            {/* Outer Decorative Wave Rings */}
-            <div className="absolute -inset-4 rounded-[2rem] border border-teal-400/20 backdrop-blur-sm" />
-            <div className="absolute -inset-8 rounded-[2.5rem] border border-teal-400/10" />
-
+          <div className="w-full max-w-[360px] p-5 rounded-3xl border border-teal-300/35 bg-[#042d3e]/85 backdrop-blur-xl shadow-2xl space-y-4">
+            
             {/* Profile Photo */}
-            <div className="relative w-[285px] h-[285px] md:w-[340px] md:h-[340px] rounded-[1.8rem] overflow-hidden border border-teal-300/40 shadow-2xl group">
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-teal-300/30 shadow-inner group">
               <Image
                 src="/assets/images/profile.jpeg"
                 alt="Nguyen Thanh Duy - Software Engineer"
@@ -485,29 +482,31 @@ export function HeroOcean() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#032b3d]/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#032b3d]/90 via-transparent to-transparent" />
 
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <div className="font-fraunces text-lg font-bold">Nguyen Thanh Duy</div>
-                <div className="postmark text-[11px] text-[#2DD4BF]">SOFTWARE ENGINEER · UTT</div>
+                <div className="font-fraunces text-xl font-bold">Nguyen Thanh Duy</div>
+                <div className="postmark text-xs text-[#2DD4BF] font-semibold mt-0.5">SOFTWARE ENGINEER · UTT</div>
               </div>
             </div>
 
-            {/* Postmark Badge: GPA */}
-            <div className="absolute -right-4 md:-right-8 top-6 bg-[#042d3e]/95 border border-teal-300/30 rounded-xl px-4 py-3 shadow-xl backdrop-blur-md text-white">
-              <div className="postmark text-[9px] text-[#2DD4BF]">ACADEMIC GPA</div>
-              <div className="font-fraunces text-2xl font-extrabold text-white leading-none my-0.5">3.64</div>
-              <div className="postmark text-[9px] text-teal-100/80">UTT · EXCELLENT</div>
+            {/* Clean Structured Stat Pills Below Photo */}
+            <div className="grid grid-cols-2 gap-3 pt-1">
+              <div className="p-3 rounded-xl border border-teal-300/25 bg-[#031f2c]/70 backdrop-blur-md">
+                <div className="postmark text-[10px] text-[#2DD4BF] font-bold">ACADEMIC GPA</div>
+                <div className="font-fraunces text-2xl font-extrabold text-white mt-0.5">3.64</div>
+                <div className="postmark text-[10px] text-teal-100/70">UTT · EXCELLENT</div>
+              </div>
+
+              <div className="p-3 rounded-xl border border-teal-300/25 bg-[#031f2c]/70 backdrop-blur-md">
+                <div className="postmark text-[10px] text-[#2DD4BF] font-bold flex items-center gap-1">
+                  <OceanIcon name="trophy" className="w-3.5 h-3.5 text-primary" /> AWARD
+                </div>
+                <div className="font-fraunces text-sm font-bold text-white mt-1">3rd Place</div>
+                <div className="postmark text-[10px] text-teal-100/70 truncate">AI CHALLENGE</div>
+              </div>
             </div>
 
-            {/* Postmark Badge: Award */}
-            <div className="absolute -left-4 md:-left-8 bottom-8 bg-[#042d3e]/95 border border-teal-300/30 rounded-xl px-4 py-3 shadow-xl backdrop-blur-md text-white">
-              <div className="postmark text-[9px] text-[#2DD4BF]">AI INNOVATION</div>
-              <div className="font-fraunces text-sm font-bold text-white leading-none my-1 flex items-center gap-1">
-                <OceanIcon name="trophy" className="w-4 h-4 text-[#2DD4BF]" /> 3rd Place Award
-              </div>
-              <div className="postmark text-[9px] text-teal-100/80">AI FOR SOCIAL CHALLENGE</div>
-            </div>
           </div>
         </motion.div>
       </div>
