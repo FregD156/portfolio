@@ -221,16 +221,10 @@ export function Projects() {
 
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14 gap-4">
           <div>
-            <div className="mb-3">
-              <span className="chapter-badge">
-                <OceanIcon name="sailboat" className="w-4 h-4 text-primary" />
-                CHAPTER 04 // FEATURED DISCOVERIES & AI SYSTEMS
-              </span>
-            </div>
             <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-              Featured <span className="italic font-normal text-primary">Innovations</span>
+              Featured <span className="italic font-normal text-[#2DD4BF]">Innovations</span>
             </h2>
-            <p className="font-jakarta text-sm text-teal-100/80 mt-2 max-w-xl">
+            <p className="font-jakarta text-sm text-teal-100/80 mt-2 max-w-xl font-medium">
               High-impact software systems, Graph-RAG architectures, and AI recommendation engines built by Nguyen Thanh Duy.
             </p>
           </div>

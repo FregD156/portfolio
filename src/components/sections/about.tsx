@@ -38,18 +38,12 @@ export function About() {
     <section className="py-28 relative" id="about">
       <div className="max-w-6xl mx-auto px-6">
 
-        {/* Section Header with Storyline Chapter Badge */}
+        {/* Section Header */}
         <div className="mb-16">
-          <div className="mb-4">
-            <span className="chapter-badge">
-              <OceanIcon name="compass" className="w-4 h-4 text-primary" />
-              CHAPTER 03 // THE EXPLORER&apos;S JOURNEY
-            </span>
-          </div>
           <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
             About <span className="italic font-normal text-[#2DD4BF]">my engineering path</span>
           </h2>
-          <p className="font-jakarta text-sm md:text-base text-teal-100/80 mt-3 max-w-2xl">
+          <p className="font-jakarta text-sm md:text-base text-teal-100/80 mt-3 max-w-2xl font-medium">
             Student developer at UTT (GPA 3.64). 3rd Place Team Leader at AI for Social Challenge & Hackathon Top 6 Finalist.
           </p>
         </div>
