@@ -419,11 +419,11 @@ export function HeroOcean() {
 
           {/* Headline in Fraunces */}
           <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.6rem] font-bold leading-[1.08] text-white tracking-tight mb-5 drop-shadow-lg">
-            Architecting <span className="italic font-normal text-[#FFD166] underline decoration-[#FF7E5F]/50 decoration-wavy decoration-2">Intelligent</span> Systems & AI Pipelines.
+            Architecting <span className="italic font-normal text-[#2DD4BF]">Intelligent</span> Systems & AI Pipelines.
           </h1>
 
           {/* Subtext in Plus Jakarta Sans */}
-          <p className="font-jakarta text-base md:text-lg text-white/95 leading-relaxed max-w-[42ch] mb-8 font-medium drop-shadow-sm">
+          <p className="font-jakarta text-base md:text-lg text-teal-100/90 leading-relaxed max-w-[42ch] mb-8 font-medium drop-shadow-sm">
             Student developer at UTT (3.64 GPA). 3rd Place Team Leader at AI for Social Challenge. Building high-performance backends and temporal Graph-RAG architectures.
           </p>
 
@@ -431,15 +431,15 @@ export function HeroOcean() {
           <div className="flex gap-4 flex-wrap mb-10">
             <a
               href="#projects"
-              className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#14B8A6] to-[#06B6D4] hover:from-[#0d9488] hover:to-[#0284c7] text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] hover:from-[#0284c7] hover:to-[#14b8a6] text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5"
             >
               Selected Work <OceanIcon name="wave" className="w-5 h-5 text-white" />
             </a>
             <a
               href="#contact"
-              className="font-jakarta inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/40 bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-md transition-all duration-300"
+              className="font-jakarta inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-teal-300/40 bg-white/10 hover:bg-white/20 text-white font-semibold backdrop-blur-md transition-all duration-300"
             >
-              Get in Touch <OceanIcon name="compass" className="w-5 h-5 text-[#FFD166]" />
+              Get in Touch <OceanIcon name="compass" className="w-5 h-5 text-[#2DD4BF]" />
             </a>
           </div>
 
@@ -449,14 +449,14 @@ export function HeroOcean() {
               href={portfolioConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl border border-white/25 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-xl border border-teal-300/30 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
               aria-label="GitHub"
             >
               <OceanIcon name="github" className="w-5 h-5" />
             </a>
             <a
               href={`mailto:${portfolioConfig.email}`}
-              className="p-2.5 rounded-xl border border-white/25 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-xl border border-teal-300/30 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
               aria-label="Email"
             >
               <OceanIcon name="mail" className="w-5 h-5" />
@@ -465,13 +465,13 @@ export function HeroOcean() {
               href={portfolioConfig.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-xl border border-white/25 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-xl border border-teal-300/30 bg-white/10 hover:bg-white/25 text-white transition-all duration-200 hover:scale-105"
               aria-label="Resume"
             >
               <OceanIcon name="terminal" className="w-5 h-5" />
             </a>
             <div className="w-px h-5 bg-white/30 mx-1" />
-            <span className="postmark text-xs text-[#FFD166] font-bold">HANOI, VN</span>
+            <span className="postmark text-xs text-[#2DD4BF] font-bold">HANOI, VN</span>
           </div>
         </motion.div>
 
@@ -484,11 +484,11 @@ export function HeroOcean() {
         >
           <div className="relative">
             {/* Outer Decorative Wave Rings */}
-            <div className="absolute -inset-4 rounded-[2rem] border border-white/15 backdrop-blur-sm" />
-            <div className="absolute -inset-8 rounded-[2.5rem] border border-white/10" />
+            <div className="absolute -inset-4 rounded-[2rem] border border-teal-400/20 backdrop-blur-sm" />
+            <div className="absolute -inset-8 rounded-[2.5rem] border border-teal-400/10" />
 
             {/* Profile Photo */}
-            <div className="relative w-[285px] h-[285px] md:w-[340px] md:h-[340px] rounded-[1.8rem] overflow-hidden border border-white/30 shadow-2xl group">
+            <div className="relative w-[285px] h-[285px] md:w-[340px] md:h-[340px] rounded-[1.8rem] overflow-hidden border border-teal-300/40 shadow-2xl group">
               <Image
                 src="/assets/images/profile.jpeg"
                 alt="Nguyen Thanh Duy - Software Engineer"
@@ -497,28 +497,28 @@ export function HeroOcean() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#032b3d]/80 via-transparent to-transparent" />
 
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <div className="font-fraunces text-lg font-bold">Nguyen Thanh Duy</div>
-                <div className="postmark text-[11px] text-[#FFE3A3]">SOFTWARE ENGINEER · UTT</div>
+                <div className="postmark text-[11px] text-[#2DD4BF]">SOFTWARE ENGINEER · UTT</div>
               </div>
             </div>
 
             {/* Postmark Badge: GPA */}
-            <div className="absolute -right-4 md:-right-8 top-6 bg-[#0B3D57]/90 border border-white/20 rounded-xl px-4 py-3 shadow-xl backdrop-blur-md text-white">
-              <div className="postmark text-[9px] text-[#FFE3A3]">ACADEMIC GPA</div>
+            <div className="absolute -right-4 md:-right-8 top-6 bg-[#042d3e]/95 border border-teal-300/30 rounded-xl px-4 py-3 shadow-xl backdrop-blur-md text-white">
+              <div className="postmark text-[9px] text-[#2DD4BF]">ACADEMIC GPA</div>
               <div className="font-fraunces text-2xl font-extrabold text-white leading-none my-0.5">3.64</div>
-              <div className="postmark text-[9px] text-white/70">UTT · EXCELLENT</div>
+              <div className="postmark text-[9px] text-teal-100/80">UTT · EXCELLENT</div>
             </div>
 
             {/* Postmark Badge: Award */}
-            <div className="absolute -left-4 md:-left-8 bottom-8 bg-[#0B3D57]/90 border border-white/20 rounded-xl px-4 py-3 shadow-xl backdrop-blur-md text-white">
-              <div className="postmark text-[9px] text-[#FFE3A3]">AI INNOVATION</div>
+            <div className="absolute -left-4 md:-left-8 bottom-8 bg-[#042d3e]/95 border border-teal-300/30 rounded-xl px-4 py-3 shadow-xl backdrop-blur-md text-white">
+              <div className="postmark text-[9px] text-[#2DD4BF]">AI INNOVATION</div>
               <div className="font-fraunces text-sm font-bold text-white leading-none my-1 flex items-center gap-1">
-                <OceanIcon name="trophy" className="w-4 h-4 text-[#FFE3A3]" /> 3rd Place Award
+                <OceanIcon name="trophy" className="w-4 h-4 text-[#2DD4BF]" /> 3rd Place Award
               </div>
-              <div className="postmark text-[9px] text-white/70">AI FOR SOCIAL CHALLENGE</div>
+              <div className="postmark text-[9px] text-teal-100/80">AI FOR SOCIAL CHALLENGE</div>
             </div>
           </div>
         </motion.div>
