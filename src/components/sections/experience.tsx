@@ -107,70 +107,70 @@ export function Experience() {
         </div>
 
         {/* Pirate Ship Rigging Line & Hook Timeline */}
-        <div className="relative pl-6 md:pl-12">
+        <div className="relative pl-6 md:pl-10">
           {/* Top Golden Brass Master Anchor */}
-          <div className="absolute left-[3px] md:left-[11px] -top-6 z-20">
-            <div className="p-2 rounded-full border-2 border-[#FDE68A] bg-[#022433] text-[#FDE68A] shadow-[0_0_20px_rgba(253,230,138,0.6)] animate-float">
-              <OceanIcon name="anchor" className="w-5 h-5" />
+          <div className="absolute left-[3px] md:left-[7px] -top-5 z-20">
+            <div className="p-1.5 rounded-full border border-[#FDE68A] bg-[#022433] text-[#FDE68A] shadow-[0_0_15px_rgba(253,230,138,0.5)]">
+              <OceanIcon name="anchor" className="w-4 h-4" />
             </div>
           </div>
 
           {/* Vertical Pirate Rigging Rope Bar */}
-          <div className="absolute left-[15px] md:left-[23px] top-4 bottom-4 w-1 bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-[0_0_12px_rgba(45,212,191,0.5)] rounded-full" />
+          <div className="absolute left-[13px] md:left-[17px] top-3 bottom-3 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm rounded-full" />
 
-          <div className="space-y-12 pl-8 md:pl-12">
+          <div className="space-y-8 pl-6 md:pl-10">
             {timeline.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -24 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.5, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 className="relative group"
               >
-                {/* Golden Pirate Ship Hook Node (Móc Treo Hải Tặc) */}
-                <div className="absolute -left-12 md:-left-16 top-1 z-20 flex items-center">
-                  <div className="w-8 h-8 md:w-9 md:h-9 rounded-full border-2 border-[#FDE68A] bg-[#022433] flex items-center justify-center text-[#FDE68A] shadow-2xl group-hover:scale-125 group-hover:bg-[#FDE68A] group-hover:text-[#022433] transition-all duration-300">
-                    <OceanIcon name="anchor" className="w-4 h-4" />
+                {/* Golden Pirate Ship Hook Node (Móc Treo Hải Tặc Refined) */}
+                <div className="absolute -left-10 md:-left-14 top-4 z-20 flex items-center">
+                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-full border border-[#FDE68A] bg-[#022433] flex items-center justify-center text-[#FDE68A] shadow-md group-hover:scale-110 group-hover:bg-[#FDE68A] group-hover:text-[#022433] transition-all duration-300">
+                    <OceanIcon name="anchor" className="w-3.5 h-3.5" />
                   </div>
-                  {/* Rope Hook Connector Line */}
-                  <div className="w-4 md:w-7 h-[2px] bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF]" />
+                  {/* Connector Line */}
+                  <div className="w-3 md:w-6 h-[1.5px] bg-[#FDE68A]/60" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 md:gap-8 glass-resort-card p-6 md:p-7 rounded-3xl border border-teal-300/30 group-hover:border-[#FDE68A]/70 shadow-xl transition-all duration-300 group-hover:-translate-y-1">
+                <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-3 md:gap-6 glass-resort-card p-5 md:p-6 rounded-2xl border border-teal-300/25 group-hover:border-[#FDE68A]/60 shadow-lg transition-all duration-300">
 
-                  <div className="flex flex-col gap-1">
-                    <span className="font-mono text-xs text-[#FDE68A] font-bold">{item.duration}</span>
-                    <span className="font-mono text-xs text-[#2DD4BF] font-extrabold uppercase tracking-wider">{item.period}</span>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-mono text-[11px] text-[#FDE68A] font-bold">{item.duration}</span>
+                    <span className="font-mono text-[10px] text-[#2DD4BF] font-extrabold uppercase tracking-wider">{item.period}</span>
                   </div>
 
                   <div>
-                    <h3 className="font-fraunces text-xl font-bold text-white mb-1 group-hover:text-[#FDE68A] transition-colors">{item.role}</h3>
+                    <h3 className="font-fraunces text-lg md:text-xl font-bold text-white mb-1 group-hover:text-[#FDE68A] transition-colors">{item.role}</h3>
                     <p className="font-jakarta text-xs text-teal-100/80 mb-3 font-semibold">{item.company}</p>
 
                     {item.highlight && (
-                      <div className="flex items-center gap-2 mb-4 flex-wrap">
-                        <span className="font-mono text-xs px-3.5 py-1 rounded-full border border-[#FDE68A] text-[#FDE68A] bg-[#022433]/80 flex items-center gap-1.5 font-bold shadow-md">
-                          <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
+                      <div className="flex items-center gap-2 mb-3 flex-wrap">
+                        <span className="font-mono text-[11px] px-3 py-0.5 rounded-full border border-[#FDE68A]/70 text-[#FDE68A] bg-[#022433]/80 flex items-center gap-1.5 font-bold shadow-sm">
+                          <OceanIcon name="trophy" className="w-3 h-3 text-[#FDE68A]" />
                           {item.highlight}
                         </span>
                         {item.certificateUrl && (
                           <button
                             onClick={() => setSelectedCert(item)}
-                            className="font-mono inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full border border-teal-300/40 bg-white/10 hover:border-[#FDE68A] text-teal-100 hover:text-white transition-all duration-200 cursor-pointer font-bold"
+                            className="font-mono inline-flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full border border-teal-300/40 bg-white/10 hover:border-[#FDE68A] text-teal-100 hover:text-white transition-all duration-200 cursor-pointer font-bold"
                           >
-                            <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FDE68A]" />
+                            <OceanIcon name="star" className="w-3 h-3 text-[#FDE68A]" />
                             View Certificate
                           </button>
                         )}
                       </div>
                     )}
 
-                    <p className="font-jakarta text-xs md:text-sm text-teal-100/90 leading-relaxed font-medium mb-4">{item.description}</p>
+                    <p className="font-jakarta text-xs md:text-sm text-teal-100/90 leading-relaxed font-medium mb-3">{item.description}</p>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {item.tags.map(tag => (
-                        <span key={tag} className="font-mono text-[10px] text-teal-200 border border-teal-300/30 px-3 py-1 rounded-full bg-white/5 font-semibold">
+                        <span key={tag} className="font-mono text-[10px] text-teal-200/90 border border-teal-300/25 px-2.5 py-0.5 rounded-full bg-white/5 font-medium">
                           {tag}
                         </span>
                       ))}
