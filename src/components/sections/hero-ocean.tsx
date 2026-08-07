@@ -356,60 +356,64 @@ export function HeroOcean() {
       {/* Hero Overlay Content */}
       <div className="hero-content max-w-6xl mx-auto w-full px-6 grid grid-cols-1 md:grid-cols-12 gap-10 items-center py-20 z-10">
         
-        {/* Left Column Copy (7 cols) - Minimalist & Icon-Driven */}
+        {/* Left Column Copy (7 cols) - Sharp Architectural Geometric Layout */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-7 flex flex-col items-start text-left"
         >
-          {/* Welcome Pill */}
+          {/* Welcome Tag in Sharp Geometric Frame */}
           <div className="mb-5">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/40 bg-white/15 text-white backdrop-blur-md shadow-lg text-xs font-bold font-mono tracking-wider">
-              <OceanIcon name="wave" className="w-4 h-4 text-[#FEF08A]" />
-              WELCOME TO DUY.DEV · OCEAN PORTFOLIO
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm border border-[#FDE68A]/60 bg-[#042c3d]/90 text-[#FDE68A] backdrop-blur-md text-xs font-mono font-bold tracking-wider shadow-md">
+              <OceanIcon name="wave" className="w-3.5 h-3.5 text-[#FDE68A]" />
+              WELCOME — DUY.DEV ARCHITECTURE
             </span>
           </div>
 
           {/* Headline in Fraunces */}
-          <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.8rem] font-extrabold leading-[1.05] text-white tracking-tight mb-4 drop-shadow-lg">
+          <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.8rem] font-extrabold leading-[1.05] text-white tracking-tight mb-3 drop-shadow-lg">
             Nguyen Thanh Duy
           </h1>
 
-          <p className="font-fraunces text-xl md:text-2xl text-[#FEF08A] italic mb-6 drop-shadow-md">
+          <p className="font-fraunces text-xl md:text-2xl text-[#FDE68A] italic mb-4 drop-shadow-md">
             Software Engineer & AI Builder
           </p>
 
-          {/* Action CTAs - Minimalist & Icon Driven */}
+          <p className="font-jakarta text-sm md:text-base text-teal-100/90 leading-relaxed max-w-[45ch] mb-8 font-medium drop-shadow-sm">
+            Engineering Graph-RAG architectures & high-performance backend systems at UTT Hanoi.
+          </p>
+
+          {/* Action CTAs - Sharp Rectangles (NO Rounded Pills) */}
           <div className="flex gap-3.5 flex-wrap mb-8">
             <a
               href="#projects"
-              className="font-jakarta inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#0284C7] hover:bg-[#FEF08A] font-extrabold text-sm shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="font-jakarta inline-flex items-center gap-2.5 px-6 py-3 rounded-sm bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] hover:from-[#0284c7] hover:to-[#14b8a6] text-white font-extrabold text-sm shadow-xl hover:shadow-[0_0_25px_rgba(45,212,191,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              <OceanIcon name="sailboat" className="w-4 h-4 text-[#0284C7]" /> Works
+              <OceanIcon name="sailboat" className="w-4 h-4 text-white" /> Selected Works
             </a>
             <a
               href="#contact"
-              className="font-jakarta inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/50 bg-white/15 hover:bg-white/30 text-white font-bold backdrop-blur-md text-sm transition-all duration-300"
+              className="font-jakarta inline-flex items-center gap-2 px-6 py-3 rounded-sm border border-white/60 bg-white/10 hover:bg-white/25 text-white font-bold backdrop-blur-md text-sm transition-all duration-300"
             >
-              <OceanIcon name="mail" className="w-4 h-4 text-[#FEF08A]" /> Contact
+              <OceanIcon name="mail" className="w-4 h-4 text-[#FDE68A]" /> Get in Touch
             </a>
           </div>
 
-          {/* Social Links with Thin Icons */}
+          {/* Social Links with Sharp Square Boxes */}
           <div className="flex gap-2.5 items-center">
             <a
               href={portfolioConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-sm border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105 hover:border-[#FDE68A]"
               aria-label="GitHub"
             >
               <OceanIcon name="github" className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${portfolioConfig.email}`}
-              className="p-2.5 rounded-full border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-sm border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105 hover:border-[#FDE68A]"
               aria-label="Email"
             >
               <OceanIcon name="mail" className="w-4 h-4" />
@@ -418,17 +422,17 @@ export function HeroOcean() {
               href={portfolioConfig.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105"
+              className="p-2.5 rounded-sm border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105 hover:border-[#FDE68A]"
               aria-label="Resume"
             >
               <OceanIcon name="terminal" className="w-4 h-4" />
             </a>
             <div className="w-px h-4 bg-white/40 mx-1" />
-            <span className="postmark text-xs text-[#FEF08A] font-bold">UTT · HANOI</span>
+            <span className="font-mono text-xs text-[#FDE68A] font-bold">UTT · HANOI</span>
           </div>
         </motion.div>
 
-        {/* Right Column Profile Showcase (5 cols) - Option 3: Luxury Yacht Porthole Showcase */}
+        {/* Right Column Profile Showcase (5 cols) - Option A: Sharp Architectural Prism Frame */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -443,71 +447,66 @@ export function HeroOcean() {
             gyroscope={true}
             className="relative flex flex-col items-center justify-center p-2"
           >
-            {/* Outer Titanium Yacht Porthole Frame with Precision Rivets */}
-            <div className="relative w-[280px] h-[280px] md:w-[330px] md:h-[330px] rounded-full p-4 bg-gradient-to-br from-slate-200 via-teal-800 to-cyan-900 border-4 border-white/90 shadow-[0_20px_60px_rgba(2,132,199,0.35)] group">
+            {/* Sharp Architectural Prism Edge Frame */}
+            <div className="relative w-[280px] h-[340px] md:w-[320px] md:h-[390px] rounded-sm p-3 bg-[#042c3d]/90 border-2 border-[#2DD4BF]/60 shadow-[0_20px_60px_rgba(2,132,199,0.35)] group">
               
-              {/* Titanium Rivets around Porthole Circle (12 Rivets) */}
-              {titaniumRivets.map((rivet) => (
-                <div
-                  key={rivet.id}
-                  className="absolute w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-300 to-white shadow-[0_1px_3px_rgba(0,0,0,0.5)] border border-slate-600/40 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                  style={{ left: rivet.left, top: rivet.top }}
-                />
-              ))}
+              {/* 4 Titanium Architectural Corner Chamfers */}
+              <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-[#FDE68A]" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-[#FDE68A]" />
+              <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-[#FDE68A]" />
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-[#FDE68A]" />
 
-              {/* Inner Convex Glass Window Lens (100% Unobstructed Clean Image) */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-[#0284C7] bg-[#0284C7] shadow-inner">
-                
-                {/* Centered Profile Photo */}
+              {/* Inner Focused Portrait Photo (Sharp Geometric Cut) */}
+              <div className="relative w-full h-full rounded-none overflow-hidden border border-white/50 bg-[#0284C7]">
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
                   fill
-                  sizes="(max-width: 768px) 280px, 330px"
-                  className="object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-108"
+                  sizes="(max-width: 768px) 280px, 320px"
+                  className="object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
 
-                {/* Sunlit Glass Lens Flare & Reflection */}
+                {/* Sunlit Glass Shimmer Lens Flare */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none group-hover:opacity-80 transition-opacity duration-500" />
               </div>
 
             </div>
 
-            {/* Standalone Glass Caption Label (OUTSIDE photo, no text overlay on image) */}
-            <div className="mt-4 px-6 py-2 rounded-full border border-white/60 bg-white/20 backdrop-blur-xl text-center shadow-xl">
+            {/* Standalone Glass Label below Photo (Sharp Rectangle) */}
+            <div className="mt-4 px-6 py-2 rounded-sm border border-white/60 bg-[#042c3d]/90 backdrop-blur-xl text-center shadow-xl">
               <div className="font-fraunces text-base md:text-lg font-bold text-white tracking-tight drop-shadow-sm">
                 Nguyen Thanh Duy
               </div>
-              <div className="font-mono text-[10px] md:text-[11px] text-[#FEF08A] font-extrabold tracking-widest uppercase">
+              <div className="font-mono text-[10px] md:text-[11px] text-[#FDE68A] font-extrabold tracking-widest uppercase">
                 SOFTWARE ENGINEER · UTT HANOI
               </div>
             </div>
 
-            {/* Unified Glass Cluster connected to Porthole Frame */}
-            <div className="flex flex-wrap justify-center gap-2.5 mt-3.5 z-20">
+            {/* Sharp Metric Badges Cluster (NO pills) */}
+            <div className="flex flex-wrap justify-center gap-2.5 mt-3 z-20">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="px-3.5 py-1.5 rounded-2xl border border-white/50 bg-[#032b3d]/65 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
+                className="px-3.5 py-1.5 rounded-sm border border-[#FDE68A]/60 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-xl bg-white/20 text-[#FEF08A] flex items-center justify-center font-bold shadow-inner">
-                  <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FEF08A]" />
+                <div className="w-6 h-6 rounded-none bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
+                  <OceanIcon name="star" className="w-3.5 h-3.5 text-[#022433]" />
                 </div>
                 <div>
-                  <div className="font-mono text-[9px] text-[#FEF08A] font-bold tracking-wider uppercase">ACADEMIC GPA</div>
+                  <div className="font-mono text-[9px] text-[#FDE68A] font-bold tracking-wider uppercase">ACADEMIC GPA</div>
                   <div className="font-fraunces text-xs md:text-sm font-extrabold text-white">3.64 / 4.00</div>
                 </div>
               </motion.div>
 
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="px-3.5 py-1.5 rounded-2xl border border-white/50 bg-[#032b3d]/65 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
+                className="px-3.5 py-1.5 rounded-sm border border-[#FDE68A]/60 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-xl bg-white/20 text-[#FEF08A] flex items-center justify-center font-bold shadow-inner">
-                  <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FEF08A]" />
+                <div className="w-6 h-6 rounded-none bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
+                  <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#022433]" />
                 </div>
                 <div>
-                  <div className="font-mono text-[9px] text-[#FEF08A] font-bold tracking-wider uppercase">AI INNOVATION</div>
+                  <div className="font-mono text-[9px] text-[#FDE68A] font-bold tracking-wider uppercase">AI INNOVATION</div>
                   <div className="font-fraunces text-xs md:text-sm font-extrabold text-white">3rd Place Award</div>
                 </div>
               </motion.div>
@@ -519,7 +518,7 @@ export function HeroOcean() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/90 z-10">
-        <OceanIcon name="wave" className="w-5 h-5 animate-bounce text-[#FEF08A]" />
+        <OceanIcon name="wave" className="w-5 h-5 animate-bounce text-[#FDE68A]" />
       </div>
     </section>
   );
