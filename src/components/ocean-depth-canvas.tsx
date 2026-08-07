@@ -339,146 +339,58 @@ export function OceanDepthCanvas() {
         else if (c.type === "turtle") drawTurtle(c, t);
       });
 
-      // 5. --- SUBMERGED SEABED ROCK FORMATIONS (Positioned on Left & Right Flanks, Center Trench Open) ---
-      const seabedY = height * 0.88;
+      // 5. --- ELEGANT MINIMALIST SEABED CONTOUR & SUBTLE SEA REEDS ---
+      const seabedY = height * 0.94;
 
-      // Background Dark Ocean Rock Silhouettes (Flanking Left & Right)
-      ctx.fillStyle = "rgba(1, 20, 30, 0.95)";
-      ctx.beginPath();
-      ctx.moveTo(0, height);
-      ctx.lineTo(0, seabedY - 120);
-      ctx.quadraticCurveTo(width * 0.12, seabedY - 140, width * 0.3, seabedY - 20);
-      ctx.lineTo(width * 0.7, seabedY - 20);
-      ctx.quadraticCurveTo(width * 0.88, seabedY - 130, width, seabedY - 110);
-      ctx.lineTo(width, height);
-      ctx.closePath();
-      ctx.fill();
-
-      // Foreground Crisp Coral Reef Rocks on Left & Right Sides (Layer 2)
-      const rockGrad = ctx.createLinearGradient(0, seabedY - 100, 0, height);
-      rockGrad.addColorStop(0, "#042c3d");
-      rockGrad.addColorStop(0.5, "#021a27");
-      rockGrad.addColorStop(1, "#010e17");
-      ctx.fillStyle = rockGrad;
-      ctx.strokeStyle = "rgba(45, 212, 191, 0.45)";
-      ctx.lineWidth = 2;
+      // Soft Subtle Ocean Seabed Contour (Layer 1)
+      const seabedGrad = ctx.createLinearGradient(0, seabedY - 30, 0, height);
+      seabedGrad.addColorStop(0, "rgba(4, 44, 61, 0.5)");
+      seabedGrad.addColorStop(1, "rgba(1, 14, 23, 0.8)");
+      ctx.fillStyle = seabedGrad;
+      ctx.strokeStyle = "rgba(45, 212, 191, 0.25)";
+      ctx.lineWidth = 1.5;
 
       ctx.beginPath();
       ctx.moveTo(0, height);
-      ctx.lineTo(0, seabedY - 90);
-      ctx.quadraticCurveTo(width * 0.1, seabedY - 125, width * 0.28, seabedY - 15);
-      ctx.lineTo(width * 0.72, seabedY - 15);
-      ctx.quadraticCurveTo(width * 0.9, seabedY - 135, width, seabedY - 85);
+      ctx.lineTo(0, seabedY - 25);
+      ctx.quadraticCurveTo(width * 0.15, seabedY - 45, width * 0.35, seabedY - 10);
+      ctx.lineTo(width * 0.65, seabedY - 10);
+      ctx.quadraticCurveTo(width * 0.85, seabedY - 45, width, seabedY - 20);
       ctx.lineTo(width, height);
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
 
-      // --- ULTRALUMINOUS BIOLUMINESCENT CORAL REEF SANCTUARY (Left & Right Flanks) ---
-      const coralClusters = [
-        // Left Flank Corals
-        { type: "staghorn", x: width * 0.04, y: seabedY - 80, scale: 1.1, color: "#2DD4BF" },
-        { type: "anemone",  x: width * 0.09, y: seabedY - 110, scale: 1.3, color: "#FDE68A" },
-        { type: "fancoral", x: width * 0.15, y: seabedY - 60, scale: 1.0, color: "#FF7E5F" },
-        { type: "anemone",  x: width * 0.22, y: seabedY - 35, scale: 0.9, color: "#06B6D4" },
-
-        // Right Flank Corals
-        { type: "fancoral", x: width * 0.78, y: seabedY - 40, scale: 1.0, color: "#2DD4BF" },
-        { type: "staghorn", x: width * 0.84, y: seabedY - 105, scale: 1.2, color: "#FDE68A" },
-        { type: "anemone",  x: width * 0.90, y: seabedY - 120, scale: 1.4, color: "#FF7E5F" },
-        { type: "staghorn", x: width * 0.96, y: seabedY - 75, scale: 1.0, color: "#14B8A6" },
+      // Subtle & Elegant Swaying Sea Reeds (Tảo Biển Tinh Tế & Nhẹ Nhàng)
+      const reedPositions = [
+        { x: width * 0.04, h: 45 },
+        { x: width * 0.08, h: 55 },
+        { x: width * 0.12, h: 40 },
+        { x: width * 0.88, h: 42 },
+        { x: width * 0.92, h: 58 },
+        { x: width * 0.96, h: 48 },
       ];
 
-      coralClusters.forEach((coral, i) => {
-        ctx.save();
-        ctx.translate(coral.x, coral.y);
-        ctx.scale(coral.scale, coral.scale);
+      reedPositions.forEach((r, i) => {
+        const rx = r.x;
+        const ry = seabedY - 10;
+        const rh = r.h;
+        const sway = Math.sin(t * 1.2 + i) * 12;
 
-        if (coral.type === "staghorn") {
-          // 1. Branching Staghorn Coral Tree (San Hô Cành Gạc Nai)
-          const sway = Math.sin(t * 1.4 + i) * 4;
-          ctx.strokeStyle = coral.color;
-          ctx.lineWidth = 3.5;
-          ctx.lineCap = "round";
+        ctx.strokeStyle = i % 2 === 0 ? "rgba(45, 212, 191, 0.45)" : "rgba(253, 230, 138, 0.4)";
+        ctx.lineWidth = 1.8;
+        ctx.lineCap = "round";
 
-          // Main Trunk
-          ctx.beginPath();
-          ctx.moveTo(0, 0);
-          ctx.quadraticCurveTo(sway * 0.5, -25, sway, -50);
-          ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(rx, ry);
+        ctx.quadraticCurveTo(rx + sway * 0.5, ry - rh * 0.5, rx + sway, ry - rh);
+        ctx.stroke();
 
-          // Left Branch
-          ctx.beginPath();
-          ctx.moveTo(sway * 0.4, -20);
-          ctx.quadraticCurveTo(-15 + sway, -35, -25 + sway, -55);
-          ctx.stroke();
-
-          // Right Branch
-          ctx.beginPath();
-          ctx.moveTo(sway * 0.6, -30);
-          ctx.quadraticCurveTo(15 + sway, -45, 22 + sway, -65);
-          ctx.stroke();
-
-          // Glowing Coral Tips
-          ctx.fillStyle = "#FFFFFF";
-          [[-25 + sway, -55], [sway, -50], [22 + sway, -65]].forEach(([cx, cy]) => {
-            ctx.beginPath();
-            ctx.arc(cx, cy, 3, 0, Math.PI * 2);
-            ctx.fill();
-          });
-        } else if (coral.type === "anemone") {
-          // 2. Pulsating Sea Anemone with Waving Tentacles (Hải Quỳ Mềm Uốn Lượn)
-          const pulse = Math.sin(t * 2 + i) * 2;
-
-          // Glowing Dome Base
-          const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 16);
-          g.addColorStop(0, coral.color);
-          g.addColorStop(1, "rgba(2, 36, 51, 0.4)");
-          ctx.fillStyle = g;
-          ctx.beginPath();
-          ctx.arc(0, 0, 14 + pulse, Math.PI, 0);
-          ctx.fill();
-
-          // Waving Tentacles
-          ctx.strokeStyle = coral.color;
-          ctx.lineWidth = 2;
-          for (let a = -12; a <= 12; a += 4) {
-            const swayT = Math.sin(t * 2.5 + a + i) * 8;
-            ctx.beginPath();
-            ctx.moveTo(a, -5);
-            ctx.quadraticCurveTo(a + swayT * 0.5, -20, a + swayT, -35);
-            ctx.stroke();
-
-            // Glowing Bulb Tip
-            ctx.fillStyle = "#FDE68A";
-            ctx.beginPath();
-            ctx.arc(a + swayT, -35, 2.5, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        } else if (coral.type === "fancoral") {
-          // 3. Glowing Fan Coral (San Hô Quạt Dạ Quang)
-          const fanGrad = ctx.createRadialGradient(0, -20, 0, 0, -20, 30);
-          fanGrad.addColorStop(0, coral.color);
-          fanGrad.addColorStop(0.8, "rgba(45, 212, 191, 0.5)");
-          fanGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
-          ctx.fillStyle = fanGrad;
-
-          ctx.beginPath();
-          ctx.arc(0, 0, 28, Math.PI, 0);
-          ctx.fill();
-
-          // Radial Veins
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
-          ctx.lineWidth = 1;
-          for (let angle = Math.PI + 0.3; angle < Math.PI * 2 - 0.3; angle += 0.3) {
-            ctx.beginPath();
-            ctx.moveTo(0, 0);
-            ctx.lineTo(Math.cos(angle) * 26, Math.sin(angle) * 26);
-            ctx.stroke();
-          }
-        }
-
-        ctx.restore();
+        // Subtle Soft Glowing Spore Dot
+        ctx.fillStyle = i % 2 === 0 ? "rgba(45, 212, 191, 0.8)" : "rgba(253, 230, 138, 0.8)";
+        ctx.beginPath();
+        ctx.arc(rx + sway, ry - rh, 2, 0, Math.PI * 2);
+        ctx.fill();
       });
 
       if (!reduceMotion) {
