@@ -60,26 +60,21 @@ export function PirateScrollHook() {
   return (
     <div className="fixed right-4 md:right-8 top-0 bottom-0 z-40 pointer-events-none flex flex-col items-center">
 
-      {/* --- TOP FISHING ROD & REEL DOCK (Cần Câu Cá & Máy Cuộn Cước) --- */}
+      {/* --- TOP FISHING ROD & REEL DOCK (Icon Only) --- */}
       <div
         onClick={handleReelUp}
-        className="absolute top-3 right-0 z-50 pointer-events-auto cursor-pointer group flex items-center gap-2"
-        title="Click Rod to Reel Line Up to Menu"
+        className="absolute top-3 right-0 z-50 pointer-events-auto cursor-pointer group flex items-center gap-1.5"
+        title="Click Rod Reel to Scroll Up to Menu"
       >
-        {/* Fishing Rod Handle & Spool Badge */}
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border-2 border-[#FDE68A] bg-[#022433]/95 text-[#FDE68A] shadow-[0_0_20px_rgba(253,230,138,0.6)] backdrop-blur-xl group-hover:scale-105 transition-all">
-          {/* Reel Spool Icon */}
+        {/* Compact Pure Icon Spool Badge */}
+        <div className="w-9 h-9 rounded-full border-2 border-[#FDE68A] bg-[#022433]/95 text-[#FDE68A] flex items-center justify-center shadow-[0_0_18px_rgba(253,230,138,0.7)] backdrop-blur-xl group-hover:scale-110 transition-all">
           <div className={`w-5 h-5 rounded-full border border-[#FDE68A] flex items-center justify-center bg-[#FDE68A] text-[#022433] ${isReeling ? "animate-spin" : "group-hover:rotate-45"}`}>
             <OceanIcon name="compass" className="w-3.5 h-3.5 text-[#022433]" />
           </div>
-
-          <span className="font-mono text-[10px] md:text-xs font-extrabold text-[#FDE68A] tracking-wider uppercase">
-            ROD REEL {isReeling ? "· REELING..." : ""}
-          </span>
         </div>
 
         {/* Fishing Rod Tip SVG */}
-        <svg className="w-8 h-8 text-[#FDE68A] drop-shadow-md transform -rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg className="w-7 h-7 text-[#FDE68A] drop-shadow-md transform -rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M4 20 L20 4" strokeLinecap="round" />
           <circle cx="20" cy="4" r="1.5" fill="#FDE68A" />
         </svg>
@@ -91,7 +86,7 @@ export function PirateScrollHook() {
         style={{ height: `${hookTopPercent}%` }}
       />
 
-      {/* --- FLOATING FISHING HOOK & BOBBER (Móc Câu & Phao Câu Thả Lơ Lửng) --- */}
+      {/* --- FLOATING FISHING HOOK & BOBBER (Icon Only) --- */}
       <div
         className="absolute pointer-events-auto transition-all duration-300 ease-out flex flex-col items-center"
         style={{ top: `${hookTopPercent}%` }}
@@ -101,7 +96,7 @@ export function PirateScrollHook() {
         {/* Fishing Bobber Lure (Phao Cước Đung Đưa) */}
         <div className="w-3 h-3 rounded-full bg-gradient-to-b from-[#EF4444] via-[#FDE68A] to-white shadow-md animate-bounce mb-1 border border-white/60" />
 
-        {/* Golden Fishing Hook Badge */}
+        {/* Golden Fishing Hook Badge (Pure Icon) */}
         <motion.div
           animate={{
             scale: isReeling ? [1, 1.3, 1] : isLatched ? [1, 1.2, 1] : 1,
@@ -112,7 +107,7 @@ export function PirateScrollHook() {
             repeat: isLatched ? Infinity : 0,
           }}
           onClick={handleReelUp}
-          className={`relative group cursor-pointer flex items-center justify-center w-11 h-11 md:w-13 md:h-13 rounded-full border-2 transition-all duration-300 shadow-2xl ${
+          className={`relative group cursor-pointer flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full border-2 transition-all duration-300 shadow-2xl ${
             isLatched
               ? "border-[#FDE68A] bg-[#FDE68A] text-[#022433] shadow-[0_0_40px_rgba(253,230,138,0.95)] animate-pulse"
               : "border-[#FDE68A] bg-[#022433]/95 text-[#FDE68A] hover:bg-[#FDE68A] hover:text-[#022433] shadow-[0_0_25px_rgba(45,212,191,0.6)]"
@@ -135,21 +130,16 @@ export function PirateScrollHook() {
             <div className="absolute -inset-1 rounded-full border-2 border-[#FDE68A] animate-ping opacity-80 pointer-events-none" />
           )}
 
-          {/* Tooltip Popup on Hover or Latch */}
+          {/* Pure Icon Indicator Popup on Hover or Latch */}
           <AnimatePresence>
             {(showTooltip || isLatched) && (
               <motion.div
-                initial={{ opacity: 0, x: 15, scale: 0.9 }}
+                initial={{ opacity: 0, x: 10, scale: 0.9 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: 15, scale: 0.9 }}
-                className="absolute right-14 whitespace-nowrap bg-[#022433]/95 border-2 border-[#FDE68A] text-[#FDE68A] font-mono text-[10px] md:text-xs font-extrabold px-3.5 py-1.5 rounded-full shadow-2xl flex items-center gap-1.5 backdrop-blur-2xl"
+                exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                className="absolute right-14 w-8 h-8 bg-[#022433]/95 border-2 border-[#FDE68A] text-[#FDE68A] rounded-full shadow-2xl flex items-center justify-center backdrop-blur-2xl"
               >
-                <OceanIcon name="fishing-hook" className="w-3.5 h-3.5 text-[#2DD4BF]" />
-                <span>
-                  {isLatched
-                    ? "FISH HOOKED TO CONTACT! REEL UP ↑"
-                    : "REEL LINE TO TOP ↑"}
-                </span>
+                <OceanIcon name="fishing-hook" className="w-4 h-4 text-[#2DD4BF] animate-bounce" />
               </motion.div>
             )}
           </AnimatePresence>
