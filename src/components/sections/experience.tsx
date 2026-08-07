@@ -99,16 +99,16 @@ export function Experience() {
         </div>
 
         {/* Pirate Ship Rigging Line & Hook Timeline (Aligned Left & Expanded Width) */}
-        <div className="relative pl-4 md:pl-28">
+        <div className="relative pl-4 md:pl-44">
           {/* Top Master Anchor Icon */}
-          <div className="absolute left-[-2px] md:left-[86px] -top-5 z-20">
+          <div className="absolute left-[-2px] md:left-[150px] -top-5 z-20">
             <div className="p-1 rounded-full border border-[#FDE68A] bg-[#022433] text-[#FDE68A] shadow-[0_0_12px_rgba(253,230,138,0.5)]">
               <OceanIcon name="anchor" className="w-3.5 h-3.5" />
             </div>
           </div>
 
           {/* Vertical Progression Rope Line */}
-          <div className="absolute left-[7px] md:left-[95px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm rounded-full" />
+          <div className="absolute left-[7px] md:left-[159px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm rounded-full" />
 
           {/* Expanded Experience Cards Container */}
           <div className="space-y-6 pl-4 md:pl-6 w-full">
@@ -121,8 +121,8 @@ export function Experience() {
                 transition={{ duration: 0.45, delay: i * 0.05 }}
                 className="relative group w-full"
               >
-                {/* Floating Date Badge Positioned on the LEFT SIDE of Timeline Bar */}
-                <div className="hidden md:flex absolute -left-[160px] top-3.5 w-32 flex-col items-end text-right z-20">
+                {/* Floating Date Badge Positioned Safely to the LEFT of Anchor Hook Icon */}
+                <div className="hidden md:flex absolute -left-[210px] top-3.5 w-36 flex-col items-end text-right z-20">
                   <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/80 px-3 py-1 rounded-full shadow-md backdrop-blur-md">
                     {item.duration}
                   </span>
