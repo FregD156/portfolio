@@ -18,8 +18,8 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://shb-compliance-operations-intellige.vercel.app/",
     hasAward: true,
-    awardNote: "🏆 VIETNAM AI INNOVATION CHALLENGE 2026",
     category: "ai",
+    featured: true,
   },
   {
     id: "eduguide",
@@ -32,8 +32,8 @@ const projects = [
     codeUrl: "https://github.com/FregD156/AI.git",
     demoUrl: "http://www.xettuyen.site",
     hasAward: true,
-    awardNote: "🏆 3RD PLACE WINNER · SOCIAL AI",
     category: "ai",
+    featured: false,
   },
   {
     id: "dblinkstore",
@@ -46,8 +46,8 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://dblinkstore.vercel.app",
     hasAward: false,
-    awardNote: null,
     category: "web",
+    featured: false,
   },
   {
     id: "topikw",
@@ -60,8 +60,8 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://topikwfregd.vercel.app",
     hasAward: false,
-    awardNote: null,
     category: "web",
+    featured: false,
   },
 ]
 
@@ -70,23 +70,30 @@ export function Projects() {
 
   return (
     <section className="py-28 relative overflow-hidden" id="projects">
-      {/* Background Starry Water Glow Gradient */}
+      {/* Ocean Particle Background Ambiance */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(6,182,212,0.15),transparent_75%)]" />
+
+      {/* Floating Ocean Background Bubble Particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute left-[10%] top-[20%] w-4 h-4 rounded-full bg-teal-300/20 blur-sm animate-float" />
+        <div className="absolute right-[15%] top-[40%] w-6 h-6 rounded-full bg-teal-200/15 blur-sm animate-float [animation-delay:1.5s]" />
+        <div className="absolute left-[20%] bottom-[15%] w-5 h-5 rounded-full bg-amber-200/20 blur-sm animate-float [animation-delay:2.5s]" />
+      </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14 gap-6">
           <div>
             <div className="font-mono text-xs text-[#FDE68A] font-bold tracking-widest uppercase mb-2 flex items-center gap-2">
               <OceanIcon name="compass" className="w-4 h-4 text-[#2DD4BF]" />
-              INTERACTIVE 3D OCEAN SPHERE SANCTUARY
+              FEATURED DISCOVERIES & ARCHITECTURES
             </div>
             <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-              Floating Ocean <span className="italic font-normal text-[#FDE68A]">Spheres</span>
+              Selected <span className="italic font-normal text-[#FDE68A]">Innovations</span>
             </h2>
-            <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-3 max-w-2xl font-medium">
-              Click any floating 3D glass sphere to expand full architecture breakdowns & live system demos.
+            <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-2 max-w-xl font-medium">
+              Click any project card to expand full system architecture specs and live demos.
             </p>
           </div>
 
@@ -100,86 +107,100 @@ export function Projects() {
           </a>
         </div>
 
-        {/* 3D Staggered Floating Ocean Sphere Sanctuary (Asymmetric Organic Layout) */}
-        <div className="relative py-12 min-h-[620px] flex flex-col items-center justify-center">
+        {/* Responsive 2-Column Grid with 24px Rounded Cards & Full Bleed Overlay */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {projects.map((p) => (
+            <motion.div
+              key={p.id}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              onClick={() => setSelectedProject(p)}
+              className={p.featured ? "md:col-span-2 group" : "md:col-span-1 group"}
+            >
+              <Tilt
+                tiltMaxAngleX={4}
+                tiltMaxAngleY={4}
+                perspective={1000}
+                className={`w-full relative rounded-[24px] overflow-hidden border border-teal-300/30 bg-[#022433]/90 shadow-xl transition-all duration-500 cursor-pointer group-hover:-translate-y-2 group-hover:border-[#2DD4BF] group-hover:shadow-[0_20px_40px_rgba(45,212,191,0.35)] flex flex-col justify-end p-6 md:p-8 ${
+                  p.featured ? "aspect-[16/9] md:aspect-[21/9]" : "aspect-[4/3]"
+                }`}
+              >
+                {/* Full-Bleed Project Background Image */}
+                <Image
+                  src={p.image}
+                  alt={p.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 opacity-85 group-hover:opacity-100"
+                />
 
-          {/* Central Glass Node Compass Badge */}
-          <div className="z-20 mb-12 md:mb-16">
-            <span className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#FDE68A] bg-[#042c3d]/90 backdrop-blur-2xl text-[#FDE68A] font-mono text-xs font-bold tracking-widest shadow-2xl animate-float">
-              <OceanIcon name="wave" className="w-4 h-4 text-[#2DD4BF]" />
-              SELECT A FLOATING SPHERE TO EXPLORE
-            </span>
-          </div>
+                {/* Dark Gradient Overlay (40% at top -> 85% at bottom for guaranteed text contrast) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/20 pointer-events-none z-10" />
 
-          {/* Floating Spheres Container */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 w-full max-w-5xl items-center justify-items-center">
-            {projects.map((p, index) => {
-              // Custom floating delays and sizes for asymmetric 3D feel
-              const floatDelayClass =
-                index === 0
-                  ? "animate-float"
-                  : index === 1
-                  ? "animate-float [animation-delay:1.2s]"
-                  : index === 2
-                  ? "animate-float [animation-delay:2.4s]"
-                  : "animate-float [animation-delay:1.8s]"
+                {/* Fixed Golden Ribbon Award Badge (Top-Left Corner of Card) */}
+                {p.hasAward && (
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#FDE68A] text-[#022433] font-mono text-[10px] md:text-[11px] font-extrabold px-3.5 py-1.5 rounded-full shadow-lg border border-[#FDE68A]">
+                    <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#022433]" />
+                    <span>{p.outcome}</span>
+                  </div>
+                )}
 
-              return (
-                <motion.div
-                  key={p.id}
-                  initial={{ opacity: 0, scale: 0.85, y: 30 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  onClick={() => setSelectedProject(p)}
-                  className={`relative group cursor-pointer ${floatDelayClass}`}
-                >
-                  {/* Floating Award Note Badge */}
-                  {p.hasAward && (
-                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap px-4 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/95 backdrop-blur-2xl text-[#FDE68A] font-mono text-[10px] font-extrabold shadow-2xl flex items-center gap-1.5 animate-bounce">
-                      <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
-                      {p.awardNote}
-                    </div>
-                  )}
+                {/* Floating Ocean Hover Bubbles Effect */}
+                <div className="absolute inset-0 pointer-events-none z-15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
+                  <div className="absolute left-[15%] bottom-[-10%] w-3 h-3 rounded-full bg-teal-300/60 blur-[1px] animate-float" />
+                  <div className="absolute left-[45%] bottom-[-15%] w-4 h-4 rounded-full bg-white/40 blur-[1px] animate-float [animation-delay:0.4s]" />
+                  <div className="absolute right-[25%] bottom-[-10%] w-2.5 h-2.5 rounded-full bg-[#FDE68A]/60 blur-[1px] animate-float [animation-delay:0.8s]" />
+                  <div className="absolute right-[10%] bottom-[-20%] w-3.5 h-3.5 rounded-full bg-teal-200/50 blur-[1px] animate-float [animation-delay:1.2s]" />
+                </div>
 
-                  {/* 3D Liquid Crystal Sphere Lens */}
-                  <Tilt
-                    tiltMaxAngleX={12}
-                    tiltMaxAngleY={12}
-                    perspective={1000}
-                    className="w-64 h-64 md:w-72 md:h-72 rounded-full border-4 border-[#2DD4BF] p-2 bg-gradient-to-br from-[#2DD4BF]/40 via-[#043247] to-[#022433] shadow-[0_0_60px_rgba(45,212,191,0.5)] group-hover:shadow-[0_0_80px_rgba(253,230,138,0.7)] transition-all duration-500 relative overflow-hidden flex flex-col items-center justify-center text-center group-hover:scale-105"
-                  >
-                    {/* Inner Circular Lens Image */}
-                    <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/90">
-                      <Image
-                        src={p.image}
-                        alt={p.name}
-                        fill
-                        sizes="288px"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-95"
-                      />
+                {/* Card Bottom Information Layout */}
+                <div className="relative z-20 mt-auto pt-16">
+                  {/* Tech Stack Tags Above Title */}
+                  <div className="flex flex-wrap gap-1.5 mb-2.5">
+                    {p.tech.slice(0, 4).map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[10px] md:text-[11px] px-2.5 py-0.5 rounded-full border border-teal-300/40 bg-[#022433]/80 text-[#2DD4BF] font-semibold backdrop-blur-md"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                    {p.tech.length > 4 && (
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-white/20 bg-white/10 text-white/80 font-semibold">
+                        +{p.tech.length - 4}
+                      </span>
+                    )}
+                  </div>
 
-                      {/* Dark Vignette Lens Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#022433]/95 via-[#022433]/40 to-transparent flex flex-col justify-end p-6 text-center">
-                        <div className="font-fraunces text-xl md:text-2xl font-bold text-white drop-shadow-lg tracking-tight group-hover:text-[#FDE68A] transition-colors leading-tight">
-                          {p.name}
-                        </div>
-                        <div className="font-mono text-[11px] text-[#2DD4BF] font-extrabold uppercase tracking-wider mt-1 flex items-center justify-center gap-1">
-                          <OceanIcon name="anchor" className="w-3 h-3 text-[#FDE68A]" /> View System →
-                        </div>
-                      </div>
+                  {/* Project Name & Description */}
+                  <h3 className="font-fraunces text-2xl md:text-3xl font-extrabold text-white tracking-tight drop-shadow-md mb-2 group-hover:text-[#FDE68A] transition-colors leading-tight">
+                    {p.name}
+                  </h3>
 
-                      {/* Sunlit Glass Lens Flare */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none group-hover:opacity-90 transition-opacity" />
-                    </div>
-                  </Tilt>
-                </motion.div>
-              )
-            })}
-          </div>
+                  <p className="font-jakarta text-xs md:text-sm text-teal-100/90 leading-relaxed font-medium line-clamp-2 mb-4">
+                    {p.description}
+                  </p>
+
+                  {/* View System Pill Button */}
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="font-mono text-[11px] text-teal-200/80 font-bold uppercase tracking-wider">
+                      Tap to inspect architecture
+                    </span>
+
+                    <span className="font-mono inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#2DD4BF]/60 bg-[#022433]/90 text-[#2DD4BF] text-xs font-bold shadow-md group-hover:bg-[#2DD4BF] group-hover:text-[#022433] transition-all duration-300">
+                      <OceanIcon name="anchor" className="w-3.5 h-3.5" />
+                      <span>VIEW SYSTEM →</span>
+                    </span>
+                  </div>
+                </div>
+              </Tilt>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Ultra-Refined System Spec Sheet Modal Drawer */}
+        {/* System Specification Modal Drawer */}
         <AnimatePresence>
           {selectedProject && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-[#021B27]/85 backdrop-blur-2xl">
