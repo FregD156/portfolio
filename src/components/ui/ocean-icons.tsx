@@ -159,6 +159,13 @@ export function OceanIconSprite() {
         <polyline points="4 17 10 11 4 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
         <line x1="12" y1="19" x2="20" y2="19" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
       </symbol>
+
+      <symbol id="icon-fishing-hook" viewBox="0 0 24 24">
+        <circle cx="12" cy="4" r="2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M12 6v8.5a4.5 4.5 0 0 1-9 0v-2.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M3 12l2.5 2.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M12 1.5v2.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </symbol>
     </svg>
   );
 }

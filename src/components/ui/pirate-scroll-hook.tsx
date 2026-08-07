@@ -86,9 +86,9 @@ export function PirateScrollHook() {
           }`}
           title="Click to Reel Anchor Back to Menu"
         >
-          {/* Hook Anchor Icon */}
+          {/* Fishing Hook Icon */}
           <OceanIcon
-            name="anchor"
+            name="fishing-hook"
             className={`w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 ${
               isReeling ? "animate-spin" : "group-hover:scale-110"
             }`}
@@ -106,12 +106,12 @@ export function PirateScrollHook() {
                 initial={{ opacity: 0, x: 15, scale: 0.9 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 exit={{ opacity: 0, x: 15, scale: 0.9 }}
-                className="absolute right-14 whitespace-nowrap bg-[#022433]/95 border border-[#FDE68A] text-[#FDE68A] font-mono text-[10px] md:text-xs font-extrabold px-3 py-1.5 rounded-full shadow-2xl flex items-center gap-1.5 backdrop-blur-xl"
+                className="absolute right-14 whitespace-nowrap bg-[#022433]/95 border border-[#FDE68A] text-[#FDE68A] font-mono text-[10px] md:text-xs font-extrabold px-3.5 py-1.5 rounded-full shadow-2xl flex items-center gap-1.5 backdrop-blur-xl"
               >
-                <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#2DD4BF]" />
+                <OceanIcon name="fishing-hook" className="w-3.5 h-3.5 text-[#2DD4BF]" />
                 <span>
                   {isLatched
-                    ? "ANCHORED TO CONTACT! REEL UP ↑"
+                    ? "HOOKED TO CONTACT! REEL UP ↑"
                     : "CLICK TO REEL UP ↑"}
                 </span>
               </motion.div>
