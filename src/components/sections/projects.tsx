@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import Tilt from "react-parallax-tilt"
 import { OceanIcon } from "@/components/ui/ocean-icons"
@@ -18,6 +18,7 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://shb-compliance-operations-intellige.vercel.app/",
     hasAward: true,
+    category: "ai",
     span: "large",
   },
   {
@@ -31,6 +32,7 @@ const projects = [
     codeUrl: "https://github.com/FregD156/AI.git",
     demoUrl: "http://www.xettuyen.site",
     hasAward: true,
+    category: "ai",
     span: "large",
   },
   {
@@ -44,6 +46,7 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://topikwfregd.vercel.app",
     hasAward: false,
+    category: "web",
     span: "small",
   },
   {
@@ -57,6 +60,7 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://dblinkstore.vercel.app",
     hasAward: false,
+    category: "web",
     span: "small",
   },
 ]
@@ -224,48 +228,95 @@ function WhatIDoCard() {
   )
 }
 
+const categories = [
+  { id: "all", label: "All Discoveries" },
+  { id: "ai", label: "AI & Graph-RAG" },
+  { id: "web", label: "Web Applications" },
+  { id: "awards", label: "Award Winners" },
+]
+
 export function Projects() {
-  const featured = projects.filter(p => p.span === "large")
-  const small = projects.filter(p => p.span === "small")
+  const [activeTab, setActiveTab] = React.useState("all")
+
+  const filteredProjects = projects.filter((p) => {
+    if (activeTab === "all") return true
+    if (activeTab === "ai") return p.category === "ai"
+    if (activeTab === "web") return p.category === "web"
+    if (activeTab === "awards") return p.hasAward
+    return true
+  })
 
   return (
     <section className="py-28 relative overflow-hidden" id="projects">
       <div className="max-w-6xl mx-auto px-6 relative">
 
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14 gap-4">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-6">
           <div>
             <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-              Featured <span className="italic font-normal text-[#2DD4BF]">Innovations</span>
+              Smart Project <span className="italic font-normal text-[#FDE68A]">Deck</span>
             </h2>
-            <p className="font-jakarta text-sm text-teal-100/80 mt-2 max-w-xl font-medium">
-              High-impact software systems, Graph-RAG architectures, and AI recommendation engines built by Nguyen Thanh Duy.
+            <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-2 max-w-xl font-medium">
+              Interactive showcase of AI systems, Graph-RAG architectures, and full-stack web applications.
             </p>
           </div>
+
           <a
-            href="https://github.com/FregD156" target="_blank" rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 postmark text-xs text-teal-200 hover:text-primary transition-colors bg-white/5 border border-white/20 px-4 py-2 rounded-full"
+            href="https://github.com/FregD156"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center gap-2 font-mono text-xs text-[#FDE68A] hover:text-white transition-colors bg-white/10 border border-white/30 px-5 py-2.5 rounded-full font-bold shadow-md hover:scale-105"
           >
             <OceanIcon name="github" className="w-4 h-4" /> GitHub Repositories
           </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {featured.map(p => (
-            <div key={p.id} className="lg:col-span-12">
-              <LargeCard project={p} />
-            </div>
+        {/* Smart Deck Category Selector Bar */}
+        <div className="flex flex-wrap items-center gap-2 mb-12 bg-[#042c3d]/60 backdrop-blur-xl p-2 rounded-full border border-teal-300/30 max-w-max shadow-lg">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveTab(cat.id)}
+              className={`relative px-5 py-2 rounded-full font-jakarta text-xs md:text-sm font-bold transition-all duration-300 ${
+                activeTab === cat.id
+                  ? "text-[#022433]"
+                  : "text-teal-100/80 hover:text-white"
+              }`}
+            >
+              {activeTab === cat.id && (
+                <motion.div
+                  layoutId="active-project-tab"
+                  className="absolute inset-0 bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF] rounded-full shadow-md"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{cat.label}</span>
+            </button>
           ))}
-
-          {small.map(p => (
-            <div key={p.id} className="lg:col-span-6 flex">
-              <SmallCard project={p} />
-            </div>
-          ))}
-
-          <div className="lg:col-span-6 flex">
-            <WhatIDoCard />
-          </div>
         </div>
+
+        {/* Smart Deck Card Grid with AnimatePresence Reveal */}
+        <motion.div layout className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((p) => (
+              <motion.div
+                key={p.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className={p.span === "large" ? "lg:col-span-12" : "lg:col-span-6 flex"}
+              >
+                {p.span === "large" ? (
+                  <LargeCard project={p} />
+                ) : (
+                  <SmallCard project={p} />
+                )}
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   )
