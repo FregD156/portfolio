@@ -135,40 +135,119 @@ export function HeroOcean() {
     };
     wavesCanvas.addEventListener("mousemove", handleMouseMove);
 
+    // Celestial Night Progress State
+    let nightProgress = window.document.documentElement.classList.contains("dark") ? 1 : 0;
+
+    // Precompute Twinkling Night Stars
+    const stars = Array.from({ length: 70 }, () => ({
+      xFactor: Math.random(),
+      yFactor: Math.random() * 0.6,
+      size: 0.8 + Math.random() * 1.8,
+      twinkleSpeed: 1 + Math.random() * 2.5,
+      twinkleOffset: Math.random() * Math.PI * 2,
+    }));
+
     // --- Drawing Functions ---
     const drawSky = (w: number, h: number, time: number) => {
       skyCtx.clearRect(0, 0, w, h);
 
-      // Sky Gradient - Bright Clear Blue Summer Sky
+      // Check current theme state and lerp nightProgress smoothly
+      const isDark = document.documentElement.classList.contains("dark");
+      const targetNight = isDark ? 1 : 0;
+      nightProgress += (targetNight - nightProgress) * 0.05;
+
+      // Sky Gradient - Smooth transition between Sunny Blue and Deep Midnight Starlight
       const drift = Math.sin(time * 0.02) * 0.02;
       const g = skyCtx.createLinearGradient(0, 0, 0, h);
-      g.addColorStop(0, "#0284C7");
-      g.addColorStop(0.4 + drift, "#38BDF8");
-      g.addColorStop(0.75 + drift, "#7DD3FC");
-      g.addColorStop(1, "#E0F2FE");
+
+      // Day colors: #0284C7 -> #38BDF8 -> #7DD3FC -> #E0F2FE
+      // Night colors: #010A14 -> #021727 -> #042940 -> #083D5D
+      const topR = Math.round(2 + (1 - 2) * nightProgress);
+      const topG = Math.round(132 + (10 - 132) * nightProgress);
+      const topB = Math.round(199 + (20 - 199) * nightProgress);
+
+      const midR = Math.round(56 + (2 - 56) * nightProgress);
+      const midG = Math.round(189 + (23 - 189) * nightProgress);
+      const midB = Math.round(248 + (39 - 248) * nightProgress);
+
+      const botR = Math.round(224 + (8 - 224) * nightProgress);
+      const botG = Math.round(242 + (61 - 242) * nightProgress);
+      const botB = Math.round(254 + (93 - 254) * nightProgress);
+
+      g.addColorStop(0, `rgb(${topR}, ${topG}, ${topB})`);
+      g.addColorStop(0.4 + drift, `rgb(${midR}, ${midG}, ${midB})`);
+      g.addColorStop(1, `rgb(${botR}, ${botG}, ${botB})`);
       skyCtx.fillStyle = g;
       skyCtx.fillRect(0, 0, w, h);
 
-      // Sun Glow & Core
-      const cx = w * sunState.x;
-      const cy = h * sunState.y + sunState.scrollOffset;
-      const r = h * sunState.r;
+      // --- Twinkling Starry Night Sky (Bầu trời ngàn sao lấp lánh) ---
+      if (nightProgress > 0.02) {
+        stars.forEach((star) => {
+          const starX = star.xFactor * w;
+          const starY = star.yFactor * h;
+          const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset) * 0.4 + 0.6;
+          const alpha = star.size > 1.8 ? 0.9 * twinkle * nightProgress : 0.6 * twinkle * nightProgress;
 
-      const glow = skyCtx.createRadialGradient(cx, cy, 0, cx, cy, r * 3.5);
-      glow.addColorStop(0, "rgba(254, 240, 138, 0.6)");
-      glow.addColorStop(1, "rgba(254, 240, 138, 0)");
-      skyCtx.fillStyle = glow;
-      skyCtx.beginPath();
-      skyCtx.arc(cx, cy, r * 3.5, 0, Math.PI * 2);
-      skyCtx.fill();
+          skyCtx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+          skyCtx.beginPath();
+          skyCtx.arc(starX, starY, star.size, 0, Math.PI * 2);
+          skyCtx.fill();
+        });
+      }
 
-      const core = skyCtx.createRadialGradient(cx, cy, 0, cx, cy, r);
-      core.addColorStop(0, "#FFFFFF");
-      core.addColorStop(1, "#FEF08A");
-      skyCtx.fillStyle = core;
-      skyCtx.beginPath();
-      skyCtx.arc(cx, cy, r, 0, Math.PI * 2);
-      skyCtx.fill();
+      // --- SUN (Mặt Trời lặn dần xuống chân trời khi chuyển sang Đêm) ---
+      const sunCx = w * sunState.x;
+      const sunCy = h * (sunState.y + nightProgress * 0.65) + sunState.scrollOffset;
+      const sunR = h * sunState.r;
+
+      if (nightProgress < 0.95) {
+        const sunAlpha = (1 - nightProgress * 0.9);
+        const glow = skyCtx.createRadialGradient(sunCx, sunCy, 0, sunCx, sunCy, sunR * 3.5);
+        glow.addColorStop(0, `rgba(254, 240, 138, ${0.6 * sunAlpha})`);
+        glow.addColorStop(1, "rgba(254, 240, 138, 0)");
+        skyCtx.fillStyle = glow;
+        skyCtx.beginPath();
+        skyCtx.arc(sunCx, sunCy, sunR * 3.5, 0, Math.PI * 2);
+        skyCtx.fill();
+
+        const core = skyCtx.createRadialGradient(sunCx, sunCy, 0, sunCx, sunCy, sunR);
+        core.addColorStop(0, `rgba(255, 255, 255, ${sunAlpha})`);
+        core.addColorStop(1, `rgba(254, 240, 138, ${sunAlpha})`);
+        skyCtx.fillStyle = core;
+        skyCtx.beginPath();
+        skyCtx.arc(sunCx, sunCy, sunR, 0, Math.PI * 2);
+        skyCtx.fill();
+      }
+
+      // --- MOON (Mặt Trăng nhô lên cao sáng lung linh khi về Đêm) ---
+      if (nightProgress > 0.05) {
+        const moonCx = w * 0.72;
+        const moonCy = h * (0.85 - nightProgress * 0.58);
+        const moonR = h * 0.075;
+        const moonAlpha = nightProgress;
+
+        // Moon Bioluminescent Glow Aura
+        const moonGlow = skyCtx.createRadialGradient(moonCx, moonCy, 0, moonCx, moonCy, moonR * 3.2);
+        moonGlow.addColorStop(0, `rgba(253, 230, 138, ${0.5 * moonAlpha})`);
+        moonGlow.addColorStop(0.5, `rgba(45, 212, 191, ${0.25 * moonAlpha})`);
+        moonGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+        skyCtx.fillStyle = moonGlow;
+        skyCtx.beginPath();
+        skyCtx.arc(moonCx, moonCy, moonR * 3.2, 0, Math.PI * 2);
+        skyCtx.fill();
+
+        // Moon Core & Silver Crescent Shadow
+        skyCtx.fillStyle = `rgba(254, 240, 138, ${0.95 * moonAlpha})`;
+        skyCtx.beginPath();
+        skyCtx.arc(moonCx, moonCy, moonR, 0, Math.PI * 2);
+        skyCtx.fill();
+
+        // Crescent cut out shadow for realistic moon phase
+        skyCtx.fillStyle = `rgba(${topR}, ${topG}, ${topB}, ${0.9 * moonAlpha})`;
+        skyCtx.beginPath();
+        skyCtx.arc(moonCx + moonR * 0.45, moonCy - moonR * 0.25, moonR * 0.85, 0, Math.PI * 2);
+        skyCtx.fill();
+      }
 
       // Parallax Clouds
       cloudLayers.forEach((layer) => {
@@ -177,7 +256,8 @@ export function HeroOcean() {
           const x = (((i * spread + time * layer.speed * 20) % (w + spread * layer.scale)) - spread * layer.scale);
           const y = h * layer.y + Math.sin(time * 0.1 + i) * 6;
           const size = layer.scale * 60;
-          skyCtx.fillStyle = `rgba(255,255,255,${layer.alpha * 0.9})`;
+          const cloudAlpha = isDark ? layer.alpha * 0.35 : layer.alpha * 0.9;
+          skyCtx.fillStyle = `rgba(255,255,255,${cloudAlpha})`;
           [[0, 0, 1], [size * 0.6, -size * 0.15, 0.8], [-size * 0.6, -size * 0.1, 0.7], [size * 0.3, size * 0.1, 0.9]].forEach(
             ([dx, dy, s]) => {
               skyCtx.beginPath();
