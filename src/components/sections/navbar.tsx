@@ -99,26 +99,20 @@ export function Navbar() {
 
             <div className="w-px h-4 bg-teal-300/30 mx-2" />
 
-            {/* Ocean Theme Switcher (Biển Về Đêm vs Biển Ban Ngày) */}
+            {/* Ocean Theme Switcher (Pure Sun / Moon Icon) */}
             <button
               onClick={toggleTheme}
-              className={`font-mono px-3.5 py-1.5 rounded-full border text-xs font-extrabold transition-all duration-300 flex items-center gap-2 shadow-md cursor-pointer ${
+              className={`w-9 h-9 rounded-full border transition-all duration-300 flex items-center justify-center shadow-md cursor-pointer hover:scale-110 ${
                 theme === "dark"
-                  ? "border-[#FDE68A] bg-[#022433] text-[#FDE68A] hover:bg-[#FDE68A] hover:text-[#022433]"
-                  : "border-white bg-[#FDE68A] text-[#022433] hover:bg-white"
+                  ? "border-[#FDE68A] bg-[#022433] text-[#FDE68A]"
+                  : "border-white bg-[#FDE68A] text-[#022433]"
               }`}
-              title="Toggle Ocean Theme: Night Lagoon vs Sunny Beach"
+              title={theme === "dark" ? "Switch to Sunny Beach Mode ☀️" : "Switch to Night Lagoon Mode 🌙"}
             >
               {theme === "dark" ? (
-                <>
-                  <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FDE68A]" />
-                  <span>BIỂN VỀ ĐÊM 🌙</span>
-                </>
+                <OceanIcon name="star" className="w-4 h-4 text-[#FDE68A]" />
               ) : (
-                <>
-                  <OceanIcon name="sun" className="w-3.5 h-3.5 text-[#022433]" />
-                  <span>BIỂN BAN NGÀY ☀️</span>
-                </>
+                <OceanIcon name="sun" className="w-4 h-4 text-[#022433]" />
               )}
             </button>
 
@@ -134,6 +128,23 @@ export function Navbar() {
 
           {/* Mobile controls */}
           <div className="flex items-center gap-2 md:hidden">
+            {/* Mobile Theme Switcher Icon */}
+            <button
+              onClick={toggleTheme}
+              className={`w-9 h-9 rounded-full border transition-all duration-300 flex items-center justify-center shadow-md ${
+                theme === "dark"
+                  ? "border-[#FDE68A] bg-[#022433] text-[#FDE68A]"
+                  : "border-white bg-[#FDE68A] text-[#022433]"
+              }`}
+              title="Toggle Theme"
+            >
+              {theme === "dark" ? (
+                <OceanIcon name="star" className="w-4 h-4 text-[#FDE68A]" />
+              ) : (
+                <OceanIcon name="sun" className="w-4 h-4 text-[#022433]" />
+              )}
+            </button>
+
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-teal-100/90 hover:text-white"
@@ -169,28 +180,11 @@ export function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <button
-                onClick={toggleTheme}
-                className="mt-2 w-full py-2.5 rounded-xl border border-[#FDE68A] bg-[#022433] text-[#FDE68A] font-mono text-xs font-bold flex items-center justify-center gap-2"
-              >
-                {theme === "dark" ? (
-                  <>
-                    <OceanIcon name="star" className="w-4 h-4 text-[#FDE68A]" />
-                    <span>BIỂN VỀ ĐÊM 🌙 (DARK MODE)</span>
-                  </>
-                ) : (
-                  <>
-                    <OceanIcon name="sun" className="w-4 h-4 text-[#022433]" />
-                    <span>BIỂN BAN NGÀY ☀️ (LIGHT MODE)</span>
-                  </>
-                )}
-              </button>
-
               <a
                 href={portfolioConfig.resumeUrl}
                 target="_blank" rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
-                className="mt-2 text-center py-2.5 rounded-xl border border-primary/50 text-primary font-bold hover:bg-primary/10 transition-colors postmark flex items-center justify-center gap-2"
+                className="mt-3 text-center py-2.5 rounded-xl border border-primary/50 text-primary font-bold hover:bg-primary/10 transition-colors postmark flex items-center justify-center gap-2"
               >
                 <OceanIcon name="terminal" className="w-4 h-4" />
                 Resume
