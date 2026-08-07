@@ -79,135 +79,117 @@ const timeline: TimelineItem[] = [
 
 export function Experience() {
   const [selectedCert, setSelectedCert] = React.useState<TimelineItem | null>(null)
-  const [expandedIndex, setExpandedIndex] = React.useState<number | null>(0)
-
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index)
-  }
 
   return (
     <section className="py-24 relative overflow-hidden" id="experience">
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-4">
-          <div>
-            <div className="font-mono text-xs text-[#FDE68A] font-bold tracking-widest uppercase mb-2 flex items-center gap-2">
-              <OceanIcon name="anchor" className="w-4 h-4 text-[#2DD4BF]" />
-              CAPTAIN'S LOG · CHRONICLES & MILESTONES
-            </div>
-            <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-              Achievements & <span className="italic font-normal text-[#FDE68A]">Experience</span>
-            </h2>
+        <div className="mb-14">
+          <div className="font-mono text-xs text-[#FDE68A] font-bold tracking-widest uppercase mb-2 flex items-center gap-2">
+            <OceanIcon name="anchor" className="w-4 h-4 text-[#2DD4BF]" />
+            CAPTAIN'S LOG · CHRONICLES & MILESTONES
           </div>
-
-          <span className="font-mono text-xs text-teal-200/80 font-bold bg-white/10 border border-teal-300/30 px-4 py-1.5 rounded-full">
-            Tap row to expand details
-          </span>
+          <h2 className="font-fraunces text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">
+            Achievements & <span className="italic font-normal text-[#FDE68A]">Experience</span>
+          </h2>
+          <p className="font-jakarta text-xs md:text-sm text-teal-100/90 max-w-lg font-medium">
+            A proven track record spanning scientific research, AI hackathons, technical leadership, and operations.
+          </p>
         </div>
 
-        {/* Ultra-Compact Expandable Milestone Accordion List */}
-        <div className="space-y-4">
-          {timeline.map((item, i) => {
-            const isExpanded = expandedIndex === i
+        {/* Pirate Ship Rigging Line & Hook Timeline (Thanh Tiến Trình Hải Tặc) */}
+        <div className="relative pl-6 md:pl-10">
+          {/* Top Master Anchor Icon */}
+          <div className="absolute left-[2px] md:left-[6px] -top-5 z-20">
+            <div className="p-1 rounded-full border border-[#FDE68A] bg-[#022433] text-[#FDE68A] shadow-[0_0_12px_rgba(253,230,138,0.5)]">
+              <OceanIcon name="anchor" className="w-3.5 h-3.5" />
+            </div>
+          </div>
 
-            return (
+          {/* Vertical Progression Rope Line (Thanh Tiến Trình) */}
+          <div className="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm rounded-full" />
+
+          {/* Compact Experience Cards Container */}
+          <div className="space-y-6 pl-6 md:pl-8">
+            {timeline.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="glass-resort-card rounded-2xl border border-teal-300/30 hover:border-[#FDE68A]/80 shadow-lg overflow-hidden transition-all duration-300"
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className="relative group"
               >
-                {/* Compact Row Bar (Always Visible) */}
-                <div
-                  onClick={() => toggleExpand(i)}
-                  className="p-4 md:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 cursor-pointer select-none group"
-                >
-                  <div className="flex items-center gap-3.5">
-                    {/* Anchor Hook Badge */}
-                    <div className="w-8 h-8 rounded-full border border-[#FDE68A] bg-[#022433] flex items-center justify-center text-[#FDE68A] shadow-md group-hover:scale-110 group-hover:bg-[#FDE68A] group-hover:text-[#022433] transition-all">
-                      <OceanIcon name="anchor" className="w-4 h-4" />
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="font-fraunces text-base md:text-lg font-bold text-white group-hover:text-[#FDE68A] transition-colors leading-tight">
-                          {item.role}
-                        </h3>
-                        <span className="font-jakarta text-xs text-teal-100/70 font-medium">
-                          · {item.company}
-                        </span>
-                      </div>
-
-                      {/* Highlight Trophy Badge */}
-                      {item.highlight && (
-                        <div className="mt-1 flex items-center gap-1.5">
-                          <span className="font-mono text-[10px] text-[#FDE68A] font-extrabold flex items-center gap-1 bg-[#022433]/90 border border-[#FDE68A]/50 px-2.5 py-0.5 rounded-full">
-                            <OceanIcon name="trophy" className="w-3 h-3 text-[#FDE68A]" />
-                            {item.highlight}
-                          </span>
-                        </div>
-                      )}
-                    </div>
+                {/* Golden Brass Anchor Hook Node (Móc Treo Hải Tặc) */}
+                <div className="absolute -left-10 md:-left-12 top-3.5 z-20 flex items-center">
+                  <div className="w-6 h-6 md:w-7 md:h-7 rounded-full border border-[#FDE68A] bg-[#022433] flex items-center justify-center text-[#FDE68A] shadow-md group-hover:scale-110 group-hover:bg-[#FDE68A] group-hover:text-[#022433] transition-all">
+                    <OceanIcon name="anchor" className="w-3 h-3" />
                   </div>
-
-                  {/* Right Controls: Duration Badge + View Cert + Expand Chevron */}
-                  <div className="flex items-center gap-3 self-end md:self-center shrink-0">
-                    <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433]/90 border border-[#FDE68A]/60 px-3 py-1 rounded-full shadow-sm">
-                      {item.duration}
-                    </span>
-
-                    {item.certificateUrl && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setSelectedCert(item)
-                        }}
-                        className="font-mono inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full border border-teal-300/40 bg-white/10 hover:border-[#FDE68A] text-teal-100 hover:text-white transition-all font-bold"
-                      >
-                        <OceanIcon name="star" className="w-3 h-3 text-[#FDE68A]" />
-                        Cert
-                      </button>
-                    )}
-
-                    <span className={`font-mono text-xs text-[#2DD4BF] font-extrabold transition-transform duration-300 ${isExpanded ? "rotate-180 text-[#FDE68A]" : ""}`}>
-                      ▼
-                    </span>
-                  </div>
+                  {/* Hook Line Connector */}
+                  <div className="w-3 md:w-5 h-[1.5px] bg-[#FDE68A]/60" />
                 </div>
 
-                {/* Smooth Expandable Description & Tags Content */}
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden border-t border-teal-300/20 bg-[#021B27]/60 px-5 py-4"
-                    >
-                      <p className="font-jakarta text-xs md:text-sm text-teal-100/90 leading-relaxed font-medium mb-3">
-                        {item.description}
-                      </p>
+                {/* Compact Sleek Experience Frame */}
+                <div className="glass-resort-card p-4 md:p-5 rounded-xl border border-teal-300/25 group-hover:border-[#FDE68A]/70 shadow-md transition-all duration-300 group-hover:-translate-y-1">
 
-                      <div className="flex flex-wrap gap-1.5">
-                        {item.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="font-mono text-[10px] text-teal-200 border border-teal-300/30 px-2.5 py-0.5 rounded-full bg-white/5 font-semibold"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
+                  {/* Top Bar: Date Badge + Period Tag */}
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="font-mono text-[10px] text-[#FDE68A] font-extrabold bg-[#022433]/90 border border-[#FDE68A]/50 px-2.5 py-0.5 rounded-full shadow-sm">
+                      {item.duration}
+                    </span>
+                    <span className="font-mono text-[9px] text-[#2DD4BF] font-extrabold uppercase tracking-wider">
+                      {item.period}
+                    </span>
+                  </div>
+
+                  {/* Role Title & Company */}
+                  <h3 className="font-fraunces text-base md:text-lg font-bold text-white mb-0.5 group-hover:text-[#FDE68A] transition-colors leading-tight">
+                    {item.role}
+                  </h3>
+                  <p className="font-jakarta text-xs text-teal-100/75 mb-2 font-medium">
+                    {item.company}
+                  </p>
+
+                  {/* Award Highlight & Certificate Button */}
+                  {item.highlight && (
+                    <div className="flex items-center gap-2 mb-2.5 flex-wrap">
+                      <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-full border border-[#FDE68A]/60 text-[#FDE68A] bg-[#022433]/90 flex items-center gap-1 font-bold shadow-sm">
+                        <OceanIcon name="trophy" className="w-3 h-3 text-[#FDE68A]" />
+                        {item.highlight}
+                      </span>
+                      {item.certificateUrl && (
+                        <button
+                          onClick={() => setSelectedCert(item)}
+                          className="font-mono inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full border border-teal-300/40 bg-white/10 hover:border-[#FDE68A] text-teal-100 hover:text-white transition-all font-bold"
+                        >
+                          <OceanIcon name="star" className="w-3 h-3 text-[#FDE68A]" />
+                          View Certificate
+                        </button>
+                      )}
+                    </div>
                   )}
-                </AnimatePresence>
+
+                  {/* Description Paragraph */}
+                  <p className="font-jakarta text-xs text-teal-100/90 leading-relaxed font-medium mb-3">
+                    {item.description}
+                  </p>
+
+                  {/* Tech / Skill Tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-[9px] text-teal-200/90 border border-teal-300/25 px-2 py-0.5 rounded-full bg-white/5 font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
-            )
-          })}
+            ))}
+          </div>
         </div>
       </div>
 
