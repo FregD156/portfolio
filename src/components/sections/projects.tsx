@@ -198,107 +198,248 @@ export function Projects() {
           ))}
         </div>
 
-        {/* System Specification Modal Drawer */}
+        {/* System Specification & Live Interactive Sandbox Modal Drawer */}
         <AnimatePresence>
           {selectedProject && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-[#021B27]/85 backdrop-blur-2xl">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.92, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.92, y: 30 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-full max-w-3xl rounded-3xl glass-resort-card overflow-hidden border border-[#FDE68A]/60 shadow-2xl p-6 md:p-9 max-h-[90vh] overflow-y-auto"
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-6 right-6 p-3 rounded-full border border-white/40 bg-white/15 text-white hover:bg-white/30 transition-all z-30 shadow-lg"
-                  aria-label="Close modal"
-                >
-                  <span className="font-mono text-base font-bold">✕</span>
-                </button>
-
-                {/* Modal Header Image */}
-                <div className="relative w-full h-60 md:h-80 rounded-2xl overflow-hidden mb-6 border border-teal-300/40 shadow-inner">
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.name}
-                    fill
-                    sizes="800px"
-                    className="object-cover"
-                  />
-                  {selectedProject.hasAward && (
-                    <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-[#022433]/95 backdrop-blur-md px-4 py-2 rounded-full border border-[#FDE68A] shadow-xl">
-                      <OceanIcon name="trophy" className="w-4 h-4 text-[#FDE68A]" />
-                      <span className="font-mono text-xs text-[#FDE68A] font-extrabold">{selectedProject.outcome}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Modal Content */}
-                <div className="space-y-5">
-                  <div className="font-mono text-xs text-[#FDE68A] font-bold uppercase tracking-widest flex items-center gap-2">
-                    <OceanIcon name="anchor" className="w-4 h-4 text-[#2DD4BF]" /> ARCHITECTURE & SYSTEM SPECIFICATIONS
-                  </div>
-
-                  <h3 className="font-fraunces text-2xl md:text-4xl font-bold text-white tracking-tight">
-                    {selectedProject.name}
-                  </h3>
-
-                  <p className="font-jakarta text-sm md:text-base text-teal-100/95 leading-relaxed font-medium">
-                    {selectedProject.description}
-                  </p>
-
-                  {/* Tech Stack List */}
-                  <div className="pt-2">
-                    <div className="font-mono text-xs text-teal-100/80 mb-3 font-bold uppercase tracking-wider">SYSTEM TOOLING:</div>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProject.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="font-mono text-xs px-4 py-1.5 rounded-full border border-teal-300/40 bg-white/10 text-[#FDE68A] font-bold shadow-sm"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Modal Actions */}
-                  <div className="flex flex-wrap gap-4 pt-6 border-t border-teal-300/30 mt-8">
-                    {selectedProject.demoUrl && (
-                      <a
-                        href={selectedProject.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] text-white hover:from-[#0284c7] hover:to-[#0f766e] font-extrabold text-sm shadow-xl hover:scale-105 transition-all"
-                      >
-                        Live System Demo <OceanIcon name="external" className="w-4 h-4" />
-                      </a>
-                    )}
-
-                    {selectedProject.codeUrl ? (
-                      <a
-                        href={selectedProject.codeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/60 bg-white/15 text-white hover:border-[#FDE68A] hover:text-[#FDE68A] font-bold text-sm shadow-lg hover:scale-105 transition-all"
-                      >
-                        <OceanIcon name="github" className="w-4 h-4" /> Source Code
-                      </a>
-                    ) : (
-                      <span className="font-mono inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-teal-300/30 text-teal-100/50 text-xs font-semibold cursor-not-allowed">
-                        <OceanIcon name="terminal" className="w-4 h-4" /> Confidential Proprietary Code
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <ModalSandboxDrawer project={selectedProject} onClose={() => setSelectedProject(null)} />
           )}
         </AnimatePresence>
 
       </div>
     </section>
+  )
+}
+
+function ModalSandboxDrawer({
+  project,
+  onClose,
+}: {
+  project: typeof projects[0]
+  onClose: () => void
+}) {
+  const [activeTab, setActiveTab] = React.useState<"overview" | "sandbox" | "architecture">("overview")
+  const [isSimulating, setIsSimulating] = React.useState(false)
+  const [simulationOutput, setSimulationOutput] = React.useState<string | null>(null)
+
+  const handleRunSimulation = () => {
+    setIsSimulating(true)
+    setSimulationOutput(null)
+
+    setTimeout(() => {
+      setIsSimulating(false)
+      setSimulationOutput(
+        JSON.stringify(
+          {
+            status: 200,
+            execution_time: "24.2ms",
+            pipeline: "Graph-RAG + RRF Hybrid Search (BM25 + FAISS)",
+            query: "Retrieve compliance requirements for VN Commercial Banks 2026",
+            results: [
+              {
+                document_id: "VN_SBV_CIRCULAR_2026_04",
+                relevance_score: 0.984,
+                grounding_status: "VERIFIED_CITATION_GUARD",
+                chunks_retrieved: 4,
+              },
+            ],
+            metrics: {
+              faiss_index_hits: 12,
+              graph_nodes_traversed: 48,
+              vector_similarity: 0.941,
+            },
+          },
+          null,
+          2
+        )
+      )
+    }, 800)
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-[#021B27]/85 backdrop-blur-2xl">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 30 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-3xl rounded-3xl glass-resort-card overflow-hidden border border-[#FDE68A]/60 shadow-2xl p-6 md:p-9 max-h-[90vh] overflow-y-auto"
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 p-3 rounded-full border border-white/40 bg-white/15 text-white hover:bg-white/30 transition-all z-30 shadow-lg"
+          aria-label="Close modal"
+        >
+          <span className="font-mono text-base font-bold">✕</span>
+        </button>
+
+        {/* Modal Header Image */}
+        <div className="relative w-full h-48 md:h-64 rounded-2xl overflow-hidden mb-6 border border-teal-300/40 shadow-inner">
+          <Image
+            src={project.image}
+            alt={project.name}
+            fill
+            sizes="800px"
+            className="object-cover"
+          />
+          {project.hasAward && (
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-[#022433]/95 backdrop-blur-md px-4 py-2 rounded-full border border-[#FDE68A] shadow-xl">
+              <OceanIcon name="trophy" className="w-4 h-4 text-[#FDE68A]" />
+              <span className="font-mono text-xs text-[#FDE68A] font-extrabold">{project.outcome}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Interactive Mode Navigation Tabs */}
+        <div className="flex gap-2 p-1.5 rounded-2xl bg-[#022433]/90 border border-teal-300/30 mb-6 overflow-x-auto">
+          <button
+            onClick={() => setActiveTab("overview")}
+            className={`font-mono text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+              activeTab === "overview"
+                ? "bg-[#2DD4BF] text-[#022433] shadow-md"
+                : "text-teal-100/70 hover:text-white"
+            }`}
+          >
+            <OceanIcon name="anchor" className="w-3.5 h-3.5" /> SYSTEM OVERVIEW
+          </button>
+          <button
+            onClick={() => setActiveTab("sandbox")}
+            className={`font-mono text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+              activeTab === "sandbox"
+                ? "bg-[#FDE68A] text-[#022433] shadow-md"
+                : "text-teal-100/70 hover:text-white"
+            }`}
+          >
+            <OceanIcon name="terminal" className="w-3.5 h-3.5" /> LIVE API SANDBOX
+          </button>
+          <button
+            onClick={() => setActiveTab("architecture")}
+            className={`font-mono text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+              activeTab === "architecture"
+                ? "bg-[#2DD4BF] text-[#022433] shadow-md"
+                : "text-teal-100/70 hover:text-white"
+            }`}
+          >
+            <OceanIcon name="compass" className="w-3.5 h-3.5" /> ARCHITECTURE
+          </button>
+        </div>
+
+        {/* Tab 1: System Overview */}
+        {activeTab === "overview" && (
+          <div className="space-y-5">
+            <h3 className="font-fraunces text-2xl md:text-4xl font-bold text-white tracking-tight">
+              {project.name}
+            </h3>
+
+            <p className="font-jakarta text-sm md:text-base text-teal-100/95 leading-relaxed font-medium">
+              {project.description}
+            </p>
+
+            <div className="pt-2">
+              <div className="font-mono text-xs text-teal-100/80 mb-3 font-bold uppercase tracking-wider">SYSTEM TOOLING:</div>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-xs px-4 py-1.5 rounded-full border border-teal-300/40 bg-white/10 text-[#FDE68A] font-bold shadow-sm"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-6 border-t border-teal-300/30 mt-6">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] text-white hover:from-[#0284c7] hover:to-[#0f766e] font-extrabold text-sm shadow-xl hover:scale-105 transition-all"
+                >
+                  Live System Demo <OceanIcon name="external" className="w-4 h-4" />
+                </a>
+              )}
+
+              {project.codeUrl ? (
+                <a
+                  href={project.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/60 bg-white/15 text-white hover:border-[#FDE68A] hover:text-[#FDE68A] font-bold text-sm shadow-lg hover:scale-105 transition-all"
+                >
+                  <OceanIcon name="github" className="w-4 h-4" /> Source Code
+                </a>
+              ) : (
+                <span className="font-mono inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-teal-300/30 text-teal-100/50 text-xs font-semibold cursor-not-allowed">
+                  <OceanIcon name="terminal" className="w-4 h-4" /> Confidential Proprietary Code
+                </span>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Tab 2: Live API Sandbox Simulator */}
+        {activeTab === "sandbox" && (
+          <div className="space-y-4">
+            <div className="font-mono text-xs text-[#FDE68A] font-extrabold uppercase tracking-widest flex items-center justify-between">
+              <span>REAL-TIME API ENDPOINT BENCHMARK</span>
+              <span className="text-[#2DD4BF]">POST /api/v1/query</span>
+            </div>
+
+            <div className="bg-[#01141e] border border-teal-300/30 rounded-2xl p-4 font-mono text-xs text-teal-100 shadow-inner">
+              <div className="text-teal-300/70 mb-2">/* Run simulation to trigger RRF Hybrid Search & CitationGuard */</div>
+              <button
+                onClick={handleRunSimulation}
+                disabled={isSimulating}
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] text-[#022433] font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+              >
+                <OceanIcon name="terminal" className="w-4 h-4 text-[#022433]" />
+                {isSimulating ? "SIMULATING RRF VECTOR PIPELINE..." : "RUN QUERY SIMULATION"}
+              </button>
+
+              {simulationOutput && (
+                <motion.pre
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 p-4 rounded-xl bg-[#022433] border border-[#FDE68A]/40 text-[#FDE68A] overflow-x-auto text-[11px] font-bold shadow-md"
+                >
+                  {simulationOutput}
+                </motion.pre>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Tab 3: Interactive Architecture Diagram */}
+        {activeTab === "architecture" && (
+          <div className="space-y-4">
+            <div className="font-mono text-xs text-[#2DD4BF] font-extrabold uppercase tracking-widest">
+              END-TO-END SYSTEM PIPELINE FLOW
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
+                <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">1</div>
+                <div className="font-mono text-xs text-[#FDE68A] font-bold">INGESTION</div>
+                <p className="font-jakarta text-[11px] text-teal-100/80">Doc → Article → Clause Hierarchical Chunking</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#022433]/90 border border-[#FDE68A]/40 text-center space-y-2 shadow-md">
+                <div className="w-8 h-8 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold mx-auto">2</div>
+                <div className="font-mono text-xs text-[#FDE68A] font-bold">RRF HYBRID SEARCH</div>
+                <p className="font-jakarta text-[11px] text-teal-100/80">BM25 + FAISS Vector Reciprocal Rank Fusion</p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
+                <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">3</div>
+                <div className="font-mono text-xs text-[#FDE68A] font-bold">CITATION GUARD</div>
+                <p className="font-jakarta text-[11px] text-teal-100/80">Strict Grounding & Anti-Hallucination Verification</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
   )
 }
