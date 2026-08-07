@@ -407,8 +407,8 @@ export function HeroOcean() {
         >
           {/* Eyebrow tag in Space Mono */}
           <div className="mb-6">
-            <span className="eyebrow inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FFD166]/60 bg-[#082836]/80 text-[#FFD166] backdrop-blur-md shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-[#FF7E5F] animate-ping" />
+            <span className="eyebrow inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-[#04212e]/80 text-[#2DD4BF] backdrop-blur-md shadow-lg font-bold">
+              <OceanIcon name="wave" className="w-4 h-4 text-primary" />
               UTT SOFTWARE ENGINEERING · GPA 3.64
             </span>
           </div>

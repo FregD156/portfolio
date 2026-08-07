@@ -93,8 +93,8 @@ export function Contact() {
             })}
 
             <div className="flex items-center gap-3 mt-3 px-1">
-              <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0 animate-ping" />
-              <p className="postmark text-xs text-muted-foreground">
+              <span className="w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0 shadow-sm" />
+              <p className="postmark text-xs text-muted-foreground font-semibold">
                 AVAILABLE FOR OPPORTUNITIES · HANOI / KNUT / REMOTE
               </p>
             </div>
