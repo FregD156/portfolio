@@ -47,54 +47,63 @@
   --color-surface-hover: var(--surface-hover);
 }
 
-/* ─── BRIGHT SUNLIT COASTAL OCEAN THEME (LUXURY RESORT & GLASS SANCTUARY) ─── */
-:root,
-.dark,
+/* ─── BIỂN BAN NGÀY (SUNNY BEACH LAGOON - LIGHT MODE) ─── */
 .light {
-  --background: #022433;
-  --foreground: #f0fdfa;
-  --card: rgba(4, 50, 71, 0.75);
+  --background: #0284C7;
+  --foreground: #ffffff;
+  --card: rgba(255, 255, 255, 0.22);
   --card-foreground: #ffffff;
-  --popover: rgba(4, 50, 71, 0.9);
+  --popover: rgba(2, 132, 199, 0.95);
   --popover-foreground: #ffffff;
 
-  --primary: #06B6D4;
-  --primary-foreground: #ffffff;
+  --primary: #FDE68A;
+  --primary-foreground: #022433;
+  --secondary: #38BDF8;
+  --secondary-foreground: #ffffff;
+
+  --muted: rgba(255, 255, 255, 0.2);
+  --muted-foreground: #e0f2fe;
+  --accent: #2DD4BF;
+  --accent-foreground: #022433;
+
+  --border: rgba(255, 255, 255, 0.45);
+  --input: rgba(255, 255, 255, 0.35);
+  --ring: #FDE68A;
+
+  --gold-sand: #FDE68A;
+  --gold-warm: #F59E0B;
+  --surface: rgba(255, 255, 255, 0.25);
+  --surface-hover: rgba(255, 255, 255, 0.35);
+}
+
+/* ─── BIỂN VỀ ĐÊM (DEEP OCEAN NIGHT LAGOON - DARK MODE) ─── */
+:root,
+.dark {
+  --background: #01141E;
+  --foreground: #f0fdfa;
+  --card: rgba(4, 50, 71, 0.85);
+  --card-foreground: #ffffff;
+  --popover: rgba(4, 50, 71, 0.95);
+  --popover-foreground: #ffffff;
+
+  --primary: #2DD4BF;
+  --primary-foreground: #01141E;
   --secondary: #084c61;
   --secondary-foreground: #f0fdfa;
 
   --muted: rgba(6, 182, 212, 0.15);
   --muted-foreground: #94a3b8;
-  --accent: #2DD4BF;
-  --accent-foreground: #022433;
+  --accent: #FDE68A;
+  --accent-foreground: #01141E;
 
-  --destructive: #ef4444;
   --border: rgba(45, 212, 191, 0.35);
   --input: rgba(45, 212, 191, 0.3);
   --ring: #2DD4BF;
 
-  --sidebar: #084c61;
-  --sidebar-foreground: #f0fdfa;
-  --sidebar-primary: #06B6D4;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #084c61;
-  --sidebar-accent-foreground: #f0fdfa;
-  --sidebar-border: rgba(45, 212, 191, 0.3);
-  --sidebar-ring: #2DD4BF;
-
-  /* Coastal Luxury Resort Tokens */
-  --cyan-bright: #2DD4BF;
-  --teal-aqua: #14B8A6;
-  --sky-cool: #38BDF8;
-  --ice-foam: #CCFBFF;
-
   --gold-sand: #FDE68A;
   --gold-warm: #F59E0B;
-  --gold-glow: rgba(253, 230, 138, 0.4);
-
   --surface: rgba(4, 50, 71, 0.85);
   --surface-hover: rgba(8, 70, 98, 0.95);
-  --badge-bg: rgba(6, 182, 212, 0.2);
 }
 
 /* ─── BASE ───────────────────────────────────────────────────────────── */
