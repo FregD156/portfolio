@@ -46,6 +46,19 @@ const projects = [
     hasAward: false,
     span: "small",
   },
+  {
+    id: "dblinkstore",
+    name: "DBLink Store",
+    outcome: "LIVE · DIGITAL ASSET AGGREGATOR",
+    description:
+      "A premium link-in-bio store and digital asset aggregator designed for developers and creators to centralize online presence & digital assets.",
+    tech: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
+    image: "/assets/images/projects/dblinkstore.png",
+    codeUrl: null,
+    demoUrl: "https://dblinkstore.vercel.app",
+    hasAward: false,
+    span: "small",
+  },
 ]
 
 function TechTag({ label }: { label: string }) {
