@@ -37,16 +37,18 @@ export function Contact() {
     <section className="py-28 border-t border-border/60 relative overflow-hidden" id="contact">
       <div className="max-w-6xl mx-auto px-6 relative">
 
-        {/* Header */}
+        {/* Header with Storyline Chapter Badge */}
         <div className="mb-16">
-          <div className="flex items-center gap-2 mb-2">
-            <OceanIcon name="mail" className="w-5 h-5 text-primary" />
-            <span className="postmark text-xs text-primary">SEND A POSTCARD · GET IN TOUCH</span>
+          <div className="mb-3">
+            <span className="chapter-badge">
+              <OceanIcon name="mail" className="w-4 h-4 text-primary" />
+              CHAPTER 06 // DROP ANCHOR & CONNECT
+            </span>
           </div>
-          <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-3">
+          <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white mb-3">
             Start a <span className="italic font-normal text-primary">Conversation</span>
           </h2>
-          <p className="font-jakarta text-sm md:text-base text-muted-foreground max-w-[50ch] leading-relaxed">
+          <p className="font-jakarta text-sm md:text-base text-teal-100/80 max-w-[52ch] leading-relaxed">
             Open to research collaborations, full-stack & backend engineering roles, and remote opportunities.
           </p>
         </div>

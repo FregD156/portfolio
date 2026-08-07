@@ -405,9 +405,13 @@ export function HeroOcean() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-start text-left"
         >
-          {/* Eyebrow tag in Space Mono */}
-          <div className="mb-6">
-            <span className="eyebrow inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-[#04212e]/80 text-[#2DD4BF] backdrop-blur-md shadow-lg font-bold">
+          {/* Eyebrow tag in Space Mono with Storyline Chapter Badge */}
+          <div className="mb-6 flex flex-wrap gap-2.5 items-center">
+            <span className="chapter-badge">
+              <OceanIcon name="compass" className="w-4 h-4 text-primary" />
+              CHAPTER 01 // THE EXPEDITION BEGINS
+            </span>
+            <span className="eyebrow inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/40 bg-[#04212e]/80 text-[#2DD4BF] backdrop-blur-md shadow-lg font-bold">
               <OceanIcon name="wave" className="w-4 h-4 text-primary" />
               UTT SOFTWARE ENGINEERING · GPA 3.64
             </span>

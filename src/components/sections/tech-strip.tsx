@@ -25,11 +25,16 @@ const doubled = [...icons, ...icons]
 export function TechStrip() {
   return (
     <section className="py-12 border-y border-border/60 bg-background/50 backdrop-blur-sm overflow-hidden" id="tech-strip">
-      <div className="max-w-6xl mx-auto px-6 mb-4 flex items-center gap-2">
-        <OceanIcon name="wave" className="w-4 h-4 text-primary" />
-        <p className="postmark text-xs text-muted-foreground">
-          CORE ENGINEERING STACK · TOOLING
-        </p>
+      <div className="max-w-6xl mx-auto px-6 mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <span className="chapter-badge mb-2">
+            <OceanIcon name="wave" className="w-4 h-4 text-primary" />
+            CHAPTER 02 // ENGINEERING ARSENAL & TOOLING
+          </span>
+          <p className="font-jakarta text-xs text-teal-100/70">
+            Tech stack & frameworks leveraged across AI pipelines & backend architectures.
+          </p>
+        </div>
       </div>
 
       {/* Marquee track */}

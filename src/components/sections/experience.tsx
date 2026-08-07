@@ -92,16 +92,18 @@ export function Experience() {
     <section className="py-28 border-t border-border/60 relative" id="experience">
       <div className="max-w-6xl mx-auto px-6">
 
-        {/* Header */}
+        {/* Header with Storyline Chapter Badge */}
         <div className="mb-20">
-          <div className="flex items-center gap-2 mb-2">
-            <OceanIcon name="anchor" className="w-5 h-5 text-primary" />
-            <span className="postmark text-xs text-primary font-bold">TIMELINE & MILESTONES</span>
+          <div className="mb-3">
+            <span className="chapter-badge">
+              <OceanIcon name="anchor" className="w-4 h-4 text-primary" />
+              CHAPTER 05 // MILESTONES & TROPHIES
+            </span>
           </div>
-          <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-3">
+          <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white mb-3">
             Achievements & <span className="italic font-normal text-primary">Experience</span>
           </h2>
-          <p className="font-jakarta text-sm text-muted-foreground max-w-[52ch]">
+          <p className="font-jakarta text-sm md:text-base text-teal-100/80 max-w-[55ch]">
             A proven track record spanning scientific research, AI hackathons, technical leadership, operational management, and athletic awards.
           </p>
         </div>

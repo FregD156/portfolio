@@ -28,15 +28,20 @@ export function About() {
     <section className="py-28 relative" id="about">
       <div className="max-w-6xl mx-auto px-6">
 
-        {/* Section Header */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-3">
-            <OceanIcon name="compass" className="w-5 h-5 text-primary" />
-            <span className="postmark text-xs text-primary">BACKGROUND & PERSPECTIVE</span>
+        {/* Section Header with Storyline Chapter Badge */}
+        <div className="mb-16 text-center md:text-left">
+          <div className="mb-4">
+            <span className="chapter-badge">
+              <OceanIcon name="compass" className="w-4 h-4 text-primary" />
+              CHAPTER 03 // THE EXPLORER&apos;S JOURNEY
+            </span>
           </div>
-          <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-            About <span className="italic font-normal text-primary">my journey</span>
+          <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
+            About <span className="italic font-normal text-primary">my engineering path</span>
           </h2>
+          <p className="font-jakarta text-sm md:text-base text-teal-100/80 mt-3 max-w-2xl">
+            From academic research at UTT (GPA 3.64) to building award-winning AI solutions and preparing for KNUT South Korea.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

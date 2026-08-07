@@ -219,21 +219,26 @@ export function Projects() {
     <section className="py-28 relative overflow-hidden" id="projects">
       <div className="max-w-6xl mx-auto px-6 relative">
 
-        <div className="flex items-end justify-between mb-14">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14 gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <OceanIcon name="sailboat" className="w-5 h-5 text-primary" />
-              <span className="postmark text-xs text-primary">POSTAL PORTFOLIO · SELECTED PROJECTS</span>
+            <div className="mb-3">
+              <span className="chapter-badge">
+                <OceanIcon name="sailboat" className="w-4 h-4 text-primary" />
+                CHAPTER 04 // FEATURED DISCOVERIES & AI SYSTEMS
+              </span>
             </div>
-            <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+            <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
               Featured <span className="italic font-normal text-primary">Innovations</span>
             </h2>
+            <p className="font-jakarta text-sm text-teal-100/80 mt-2 max-w-xl">
+              High-impact software systems, Graph-RAG architectures, and AI recommendation engines built by Nguyen Thanh Duy.
+            </p>
           </div>
           <a
             href="https://github.com/FregD156" target="_blank" rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 postmark text-xs text-muted-foreground hover:text-primary transition-colors"
+            className="hidden md:flex items-center gap-2 postmark text-xs text-teal-200 hover:text-primary transition-colors bg-white/5 border border-white/20 px-4 py-2 rounded-full"
           >
-            <OceanIcon name="github" className="w-4 h-4" /> GitHub Repository
+            <OceanIcon name="github" className="w-4 h-4" /> GitHub Repositories
           </a>
         </div>
 

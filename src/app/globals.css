@@ -47,45 +47,46 @@
   --color-surface-hover: var(--surface-hover);
 }
 
-/* ─── BRIGHT COOL-TONED TURQUOISE OCEAN THEME ─────────── */
+/* ─── BRIGHT SUNLIT COASTAL OCEAN THEME (LUMINOUS & VIBRANT) ─────────── */
 :root,
 .dark,
 .light {
-  --background: #031b26;
+  --background: #032b3d;
   --foreground: #f0fdfa;
-  --card: #083344;
-  --card-foreground: #f0fdfa;
-  --popover: #083344;
-  --popover-foreground: #f0fdfa;
+  --card: rgba(8, 60, 82, 0.75);
+  --card-foreground: #ffffff;
+  --popover: rgba(8, 60, 82, 0.9);
+  --popover-foreground: #ffffff;
 
-  /* Cool Turquoise & Cyan Aqua Accent */
+  /* Bright Turquoise & Ice Cyan Aqua Accent */
   --primary: #06B6D4;
+  --primary-bright: #2DD4BF;
   --primary-foreground: #ffffff;
 
-  --secondary: #0e4a5c;
+  --secondary: #084c61;
   --secondary-foreground: #f0fdfa;
-  --muted: #0e4a5c;
-  --muted-foreground: #67e8f9;
-  --accent: #0e4a5c;
+  --muted: #084c61;
+  --muted-foreground: #99f6e4;
+  --accent: #084c61;
   --accent-foreground: #f0fdfa;
 
   --destructive: #f43f5e;
   --destructive-foreground: #ffffff;
-  --border: rgba(45, 212, 191, 0.22);
-  --input: rgba(45, 212, 191, 0.22);
+  --border: rgba(45, 212, 191, 0.3);
+  --input: rgba(45, 212, 191, 0.3);
   --ring: #2DD4BF;
-  --radius: 0.85rem;
+  --radius: 1rem;
 
-  --sidebar: #083344;
+  --sidebar: #084c61;
   --sidebar-foreground: #f0fdfa;
   --sidebar-primary: #06B6D4;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #0e4a5c;
+  --sidebar-accent: #084c61;
   --sidebar-accent-foreground: #f0fdfa;
-  --sidebar-border: rgba(45, 212, 191, 0.22);
+  --sidebar-border: rgba(45, 212, 191, 0.3);
   --sidebar-ring: #2DD4BF;
 
-  /* Cool Turquoise Tokens */
+  /* Luminous Coastal Tokens */
   --cyan-bright: #2DD4BF;
   --teal-aqua: #14B8A6;
   --sky-cool: #38BDF8;
@@ -93,11 +94,11 @@
 
   --orange: #2DD4BF;
   --orange-dim: #06b6d4;
-  --orange-glow: rgba(45, 212, 191, 0.25);
+  --orange-glow: rgba(45, 212, 191, 0.35);
 
-  --surface: rgba(8, 51, 68, 0.82);
-  --surface-hover: rgba(14, 74, 92, 0.95);
-  --badge-bg: rgba(45, 212, 191, 0.15);
+  --surface: rgba(12, 74, 96, 0.85);
+  --surface-hover: rgba(16, 92, 118, 0.95);
+  --badge-bg: rgba(45, 212, 191, 0.2);
 }
 
 /* ─── BASE ───────────────────────────────────────────────────────────── */
@@ -111,6 +112,38 @@
   html {
     @apply font-sans scroll-smooth;
   }
+}
+
+/* ─── STORYLINE CHAPTER BADGE & GLASS CARDS ──────────────────────────── */
+.chapter-badge {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2DD4BF;
+  background: rgba(6, 182, 212, 0.18);
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.15);
+}
+
+.glass-beach-card {
+  background: rgba(8, 55, 75, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.25);
+  border-radius: 1.25rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-beach-card:hover {
+  border-color: rgba(45, 212, 191, 0.55);
+  box-shadow: 0 16px 40px -10px rgba(6, 182, 212, 0.35);
+  transform: translateY(-2px);
 }
 
 /* ─── CUSTOM SCROLLBAR ───────────────────────────────────────────────── */
