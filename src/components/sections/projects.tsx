@@ -50,7 +50,7 @@ const projects = [
 
 function TechTag({ label }: { label: string }) {
   return (
-    <span className="font-mono text-[11px] text-[#FDE68A] border border-teal-300/40 bg-white/10 px-2.5 py-1 rounded-sm font-semibold group-hover:border-[#FDE68A] transition-colors duration-200">
+    <span className="font-mono text-[11px] text-[#FDE68A] border border-teal-300/40 bg-white/10 px-3 py-1 rounded-full font-semibold group-hover:border-[#FDE68A] transition-colors duration-200">
       {label}
     </span>
   )
@@ -68,9 +68,9 @@ function LargeCard({ project }: { project: typeof projects[0] }) {
       <Tilt
         tiltMaxAngleX={2}
         tiltMaxAngleY={2}
-        className="w-full rounded-sm glass-resort-card overflow-hidden group relative flex flex-col lg:flex-row shadow-2xl"
+        className="w-full rounded-3xl glass-resort-card overflow-hidden group relative flex flex-col lg:flex-row shadow-2xl"
       >
-        <div className="relative w-full lg:w-[58%] aspect-[16/9] lg:aspect-auto min-h-[260px] lg:min-h-[400px] overflow-hidden">
+        <div className="relative w-full lg:w-[58%] aspect-[16/9] lg:aspect-auto min-h-[260px] lg:min-h-[400px] overflow-hidden rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#043247] z-10 hidden lg:block" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#043247] z-10 lg:hidden" />
           <Image
@@ -82,7 +82,7 @@ function LargeCard({ project }: { project: typeof projects[0] }) {
             priority
           />
           {project.hasAward && (
-            <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#022433]/90 backdrop-blur-md px-3.5 py-1.5 rounded-sm border border-[#FDE68A]/60">
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#022433]/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#FDE68A]/60">
               <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
               <span className="font-mono text-[10px] text-[#FDE68A] font-bold">{project.outcome}</span>
             </div>
@@ -106,19 +106,19 @@ function LargeCard({ project }: { project: typeof projects[0] }) {
             {project.codeUrl ? (
               <a
                 href={project.codeUrl} target="_blank" rel="noopener noreferrer"
-                className="font-mono inline-flex items-center gap-2 px-5 py-2.5 rounded-sm border border-white/60 bg-white/10 hover:border-[#FDE68A] hover:text-[#FDE68A] transition-all duration-300 text-xs font-bold text-white"
+                className="font-mono inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/60 bg-white/10 hover:border-[#FDE68A] hover:text-[#FDE68A] transition-all duration-300 text-xs font-bold text-white hover:scale-105"
               >
                 <OceanIcon name="github" className="w-4 h-4" /> Source Code
               </a>
             ) : (
-              <span className="font-mono inline-flex items-center gap-1.5 px-4 py-2.5 rounded-sm border border-teal-300/30 text-teal-100/50 text-xs cursor-not-allowed">
+              <span className="font-mono inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-teal-300/30 text-teal-100/50 text-xs cursor-not-allowed">
                 <OceanIcon name="terminal" className="w-3.5 h-3.5" /> Confidential
               </span>
             )}
             {project.demoUrl && (
               <a
                 href={project.demoUrl} target="_blank" rel="noopener noreferrer"
-                className="font-mono inline-flex items-center gap-2 px-6 py-2.5 rounded-sm bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] text-white hover:from-[#0284c7] hover:to-[#14b8a6] shadow-md hover:shadow-xl transition-all duration-300 text-xs font-bold"
+                className="font-mono inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] text-white hover:from-[#0284c7] hover:to-[#14b8a6] shadow-md hover:shadow-xl transition-all duration-300 text-xs font-bold hover:scale-105"
               >
                 Live Demo <OceanIcon name="external" className="w-3.5 h-3.5" />
               </a>
@@ -142,9 +142,9 @@ function SmallCard({ project }: { project: typeof projects[0] }) {
       <Tilt
         tiltMaxAngleX={3}
         tiltMaxAngleY={3}
-        className="w-full h-full flex flex-col rounded-sm glass-resort-card overflow-hidden group relative p-6 shadow-xl"
+        className="w-full h-full flex flex-col rounded-3xl glass-resort-card overflow-hidden group relative p-6 shadow-xl"
       >
-        <div className="relative w-full h-44 rounded-sm overflow-hidden mb-5 border border-teal-300/30">
+        <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-5 border border-teal-300/30">
           <Image
             src={project.image}
             alt={project.name}
@@ -165,7 +165,7 @@ function SmallCard({ project }: { project: typeof projects[0] }) {
         {project.demoUrl && (
           <a
             href={project.demoUrl} target="_blank" rel="noopener noreferrer"
-            className="font-mono inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-sm bg-white/10 hover:bg-[#FDE68A] text-[#FDE68A] hover:text-[#022433] border border-[#FDE68A]/60 transition-all duration-300 text-xs font-bold"
+            className="font-mono inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-white/10 hover:bg-[#FDE68A] text-[#FDE68A] hover:text-[#022433] border border-[#FDE68A]/60 transition-all duration-300 text-xs font-bold hover:scale-105"
           >
             Explore App <OceanIcon name="external" className="w-3.5 h-3.5" />
           </a>

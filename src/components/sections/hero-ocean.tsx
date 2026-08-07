@@ -363,11 +363,11 @@ export function HeroOcean() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-7 flex flex-col items-start text-left"
         >
-          {/* Welcome Tag in Sharp Geometric Frame */}
+          {/* Welcome Tag in Soft Fluid Pill */}
           <div className="mb-5">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm border border-[#FDE68A]/60 bg-[#042c3d]/90 text-[#FDE68A] backdrop-blur-md text-xs font-mono font-bold tracking-wider shadow-md">
-              <OceanIcon name="wave" className="w-3.5 h-3.5 text-[#FDE68A]" />
-              WELCOME — DUY.DEV ARCHITECTURE
+            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#FDE68A]/60 bg-[#042c3d]/75 text-[#FDE68A] backdrop-blur-xl text-xs font-mono font-bold tracking-wider shadow-lg animate-float">
+              <OceanIcon name="wave" className="w-4 h-4 text-[#FDE68A]" />
+              WELCOME TO DUY.DEV · OCEAN SANCTUARY
             </span>
           </div>
 
@@ -384,36 +384,36 @@ export function HeroOcean() {
             Engineering Graph-RAG architectures & high-performance backend systems at UTT Hanoi.
           </p>
 
-          {/* Action CTAs - Sharp Rectangles (NO Rounded Pills) */}
-          <div className="flex gap-3.5 flex-wrap mb-8">
+          {/* Action CTAs - Soft Organic Liquid Pills */}
+          <div className="flex gap-4 flex-wrap mb-8">
             <a
               href="#projects"
-              className="font-jakarta inline-flex items-center gap-2.5 px-6 py-3 rounded-sm bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] hover:from-[#0284c7] hover:to-[#14b8a6] text-white font-extrabold text-sm shadow-xl hover:shadow-[0_0_25px_rgba(45,212,191,0.5)] transition-all duration-300 transform hover:-translate-y-0.5"
+              className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] hover:from-[#0284c7] hover:to-[#0f766e] text-white font-extrabold text-sm shadow-xl hover:shadow-[0_10px_30px_rgba(45,212,191,0.5)] transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
             >
               <OceanIcon name="sailboat" className="w-4 h-4 text-white" /> Selected Works
             </a>
             <a
               href="#contact"
-              className="font-jakarta inline-flex items-center gap-2 px-6 py-3 rounded-sm border border-white/60 bg-white/10 hover:bg-white/25 text-white font-bold backdrop-blur-md text-sm transition-all duration-300"
+              className="font-jakarta inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/60 bg-white/15 hover:bg-white/30 text-white font-bold backdrop-blur-xl text-sm transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-lg"
             >
               <OceanIcon name="mail" className="w-4 h-4 text-[#FDE68A]" /> Get in Touch
             </a>
           </div>
 
-          {/* Social Links with Sharp Square Boxes */}
-          <div className="flex gap-2.5 items-center">
+          {/* Social Links with Soft Floating Icons */}
+          <div className="flex gap-3 items-center">
             <a
               href={portfolioConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-sm border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105 hover:border-[#FDE68A]"
+              className="p-3 rounded-full border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
               aria-label="GitHub"
             >
               <OceanIcon name="github" className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${portfolioConfig.email}`}
-              className="p-2.5 rounded-sm border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105 hover:border-[#FDE68A]"
+              className="p-3 rounded-full border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
               aria-label="Email"
             >
               <OceanIcon name="mail" className="w-4 h-4" />
@@ -422,13 +422,13 @@ export function HeroOcean() {
               href={portfolioConfig.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-sm border border-white/40 bg-white/15 hover:bg-white/30 text-white transition-all duration-200 hover:scale-105 hover:border-[#FDE68A]"
+              className="p-3 rounded-full border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
               aria-label="Resume"
             >
               <OceanIcon name="terminal" className="w-4 h-4" />
             </a>
             <div className="w-px h-4 bg-white/40 mx-1" />
-            <span className="font-mono text-xs text-[#FDE68A] font-bold">UTT · HANOI</span>
+            <span className="font-mono text-xs text-[#FDE68A] font-bold tracking-wider">UTT · HANOI</span>
           </div>
         </motion.div>
 
