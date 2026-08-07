@@ -457,14 +457,14 @@ export function HeroOcean() {
             {/* 3D Tropical Ocean Crystal Globe Sphere Window */}
             <div className="relative w-[290px] h-[290px] md:w-[340px] md:h-[340px] rounded-full p-2.5 bg-gradient-to-br from-teal-300 via-teal-900 to-[#022433] border-4 border-[#2DD4BF] shadow-[0_0_50px_rgba(45,212,191,0.45)] group">
               
-              {/* Inner Convex Crystal Sphere Lens (100% Unobstructed Photo) */}
+              {/* Inner Convex Crystal Sphere Lens (Photo Perfectly Centered) */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/90 bg-[#0284C7] shadow-inner">
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
                   fill
                   sizes="(max-width: 768px) 290px, 340px"
-                  className="object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-108"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
                   priority
                 />
 
@@ -474,24 +474,14 @@ export function HeroOcean() {
 
             </div>
 
-            {/* Standalone Glass Label below Globe */}
-            <div className="mt-4 px-6 py-2.5 rounded-full border border-[#FDE68A]/60 bg-[#042c3d]/92 backdrop-blur-2xl text-center shadow-2xl z-20">
-              <div className="font-fraunces text-base md:text-lg font-bold text-white tracking-tight drop-shadow-sm">
-                Nguyen Thanh Duy
-              </div>
-              <div className="font-mono text-[10px] md:text-[11px] text-[#FDE68A] font-extrabold tracking-widest uppercase">
-                SOFTWARE ENGINEER · UTT HANOI
-              </div>
-            </div>
-
-            {/* Metric Badges Cluster Below Label */}
-            <div className="flex flex-wrap justify-center gap-2.5 mt-3.5 z-20">
+            {/* Unified Glass Metric Showcase Bar (NO dark name label) */}
+            <div className="flex flex-wrap justify-center gap-3 mt-6 z-20">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 rounded-2xl border border-white/50 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
+                className="px-4 py-2 rounded-xl border border-white/40 bg-white/10 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
-                  <OceanIcon name="star" className="w-3.5 h-3.5 text-[#022433]" />
+                <div className="w-7 h-7 rounded-lg bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
+                  <OceanIcon name="star" className="w-4 h-4 text-[#022433]" />
                 </div>
                 <div>
                   <div className="font-mono text-[9px] text-[#FDE68A] font-bold tracking-wider uppercase">ACADEMIC GPA</div>
@@ -501,10 +491,10 @@ export function HeroOcean() {
 
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 rounded-2xl border border-white/50 bg-[#042c3d]/90 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
+                className="px-4 py-2 rounded-xl border border-white/40 bg-white/10 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
               >
-                <div className="w-6 h-6 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
-                  <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#022433]" />
+                <div className="w-7 h-7 rounded-lg bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
+                  <OceanIcon name="trophy" className="w-4 h-4 text-[#022433]" />
                 </div>
                 <div>
                   <div className="font-mono text-[9px] text-[#FDE68A] font-bold tracking-wider uppercase">AI INNOVATION</div>
