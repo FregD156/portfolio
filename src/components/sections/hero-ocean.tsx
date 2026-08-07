@@ -426,75 +426,125 @@ export function HeroOcean() {
           </div>
         </motion.div>
 
-        {/* Right Column Profile Showcase (5 cols) - 3D Tropical Ocean Crystal Globe Showcase */}
+        {/* Right Column Profile Showcase (5 cols) - 3D Globe Sphere Sanctuary with Orbiting Achievements & Swaying Palms */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 flex justify-center items-center relative"
+          className="lg:col-span-5 flex justify-center items-center relative py-8"
         >
           <Tilt
-            tiltMaxAngleX={8}
-            tiltMaxAngleY={8}
+            tiltMaxAngleX={10}
+            tiltMaxAngleY={10}
             perspective={1000}
             transitionSpeed={1200}
             gyroscope={true}
-            className="relative flex flex-col items-center justify-center p-2"
+            className="relative flex flex-col items-center justify-center p-4"
           >
-            {/* Swaying Tropical Palm Fronds Framing the Top of the Globe */}
-            <svg className="absolute -top-10 -right-6 w-44 h-44 z-20 pointer-events-none transform rotate-12 drop-shadow-2xl" viewBox="0 0 200 200" fill="none">
-              <path d="M20,180 C50,110 110,60 180,20 C150,60 110,110 90,180 Z" fill="#2DD4BF" opacity="0.9" />
-              <path d="M20,180 C70,120 130,80 195,40 C160,80 120,130 90,180 Z" fill="#FDE68A" opacity="0.8" />
+            {/* --- Lush Swaying Tropical Palm Fronds framing the Globe --- */}
+
+            {/* Top-Right Swaying Palm Frond Cluster */}
+            <svg className="absolute -top-14 -right-10 w-48 h-48 z-30 pointer-events-none transform rotate-12 drop-shadow-2xl animate-sway" viewBox="0 0 200 200" fill="none">
+              <path d="M20,180 C50,110 110,60 180,20 C150,60 110,110 90,180 Z" fill="#2DD4BF" opacity="0.95" />
+              <path d="M20,180 C70,120 130,80 195,40 C160,80 120,130 90,180 Z" fill="#FDE68A" opacity="0.9" />
               <path d="M20,180 C40,130 80,90 150,50 C120,90 80,130 60,180 Z" fill="#06B6D4" opacity="0.85" />
             </svg>
 
-            {/* 3D Tropical Ocean Crystal Globe Sphere Window */}
-            <div className="relative w-[290px] h-[290px] md:w-[340px] md:h-[340px] rounded-full p-2.5 bg-gradient-to-br from-teal-300 via-teal-900 to-[#022433] border-4 border-[#2DD4BF] shadow-[0_0_50px_rgba(45,212,191,0.45)] group">
+            {/* Top-Left Swaying Palm Frond Cluster */}
+            <svg className="absolute -top-12 -left-12 w-44 h-44 z-30 pointer-events-none transform -rotate-45 drop-shadow-2xl animate-sway [animation-delay:1.5s]" viewBox="0 0 200 200" fill="none">
+              <path d="M180,180 C150,110 90,60 20,20 C50,60 90,110 110,180 Z" fill="#2DD4BF" opacity="0.9" />
+              <path d="M180,180 C130,120 70,80 5,40 C40,80 80,130 110,180 Z" fill="#FDE68A" opacity="0.85" />
+            </svg>
+
+            {/* Bottom-Right Golden Palm Leaf */}
+            <svg className="absolute -bottom-8 -right-8 w-40 h-40 z-30 pointer-events-none transform rotate-45 drop-shadow-2xl animate-sway [animation-delay:3s]" viewBox="0 0 200 200" fill="none">
+              <path d="M20,20 C80,60 130,110 180,180 C120,140 70,90 20,20 Z" fill="#FDE68A" opacity="0.85" />
+              <path d="M40,20 C90,70 140,120 190,190 C130,150 80,100 40,20 Z" fill="#2DD4BF" opacity="0.75" />
+            </svg>
+
+            {/* Bottom-Left Emerald Palm Leaf */}
+            <svg className="absolute -bottom-10 -left-8 w-36 h-36 z-30 pointer-events-none transform -rotate-12 drop-shadow-2xl animate-sway [animation-delay:2.2s]" viewBox="0 0 200 200" fill="none">
+              <path d="M180,20 C120,60 70,110 20,180 C80,140 130,90 180,20 Z" fill="#14B8A6" opacity="0.85" />
+            </svg>
+
+            {/* --- 3D Holographic Globe Outer Orbital Rings --- */}
+            {/* Orbital Ring 1: Continuous Spinning Longitude Ring */}
+            <div className="absolute -inset-4 md:-inset-6 rounded-full border-2 border-dashed border-[#2DD4BF]/60 animate-[spin_30s_linear_infinite] pointer-events-none shadow-[0_0_20px_rgba(45,212,191,0.4)]" />
+
+            {/* Orbital Ring 2: Reverse Spinning Latitude Ring */}
+            <div className="absolute -inset-10 md:-inset-12 rounded-full border border-dashed border-[#FDE68A]/50 animate-[spin_45s_linear_infinite_reverse] pointer-events-none opacity-80" />
+
+            {/* Orbiting Equatorial Glow Path Ring */}
+            <div className="absolute inset-0 rounded-full border border-teal-200/40 pointer-events-none shadow-[0_0_50px_rgba(45,212,191,0.5)]" />
+
+            {/* --- ORBITING ACHIEVEMENT BADGES (Bay Vòng Quanh Quả Cầu) --- */}
+
+            {/* Orbiting Badge #1: Top 6 AI Hackathon 2026 (Top-Right Orbit) */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="absolute -top-7 -right-6 md:-right-14 z-40 animate-float"
+            >
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/95 backdrop-blur-2xl text-[#FDE68A] font-mono text-[10px] md:text-xs font-extrabold shadow-2xl">
+                <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
+                <span>Top 6 · AI Hackathon 2026</span>
+              </div>
+            </motion.div>
+
+            {/* Orbiting Badge #2: Academic GPA 3.64 / 4.00 (Top-Left Orbit) */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="absolute -top-5 -left-6 md:-left-16 z-40 animate-float [animation-delay:1.2s]"
+            >
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2DD4BF] bg-[#022433]/95 backdrop-blur-2xl text-white font-mono text-[10px] md:text-xs font-extrabold shadow-2xl">
+                <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FDE68A]" />
+                <span>GPA 3.64 / 4.00</span>
+              </div>
+            </motion.div>
+
+            {/* Orbiting Badge #3: 3rd Place Social AI (Bottom-Right Orbit) */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="absolute -bottom-6 -right-6 md:-right-12 z-40 animate-float [animation-delay:2.4s]"
+            >
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/95 backdrop-blur-2xl text-[#FDE68A] font-mono text-[10px] md:text-xs font-extrabold shadow-2xl">
+                <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
+                <span>3rd Place · Social AI</span>
+              </div>
+            </motion.div>
+
+            {/* Orbiting Badge #4: Graph-RAG Researcher (Bottom-Left Orbit) */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="absolute -bottom-8 -left-6 md:-left-14 z-40 animate-float [animation-delay:1.8s]"
+            >
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2DD4BF] bg-[#022433]/95 backdrop-blur-2xl text-white font-mono text-[10px] md:text-xs font-extrabold shadow-2xl">
+                <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#2DD4BF]" />
+                <span>Graph-RAG Research</span>
+              </div>
+            </motion.div>
+
+            {/* --- 3D Tropical Ocean Crystal Globe Sphere Frame Window --- */}
+            <div className="relative w-[280px] h-[280px] md:w-[350px] md:h-[350px] rounded-full p-3 bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#022433] border-4 border-[#2DD4BF] shadow-[0_0_80px_rgba(45,212,191,0.6)] group">
               
-              {/* Inner Convex Crystal Sphere Lens (Photo Perfectly Centered) */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/90 bg-[#0284C7] shadow-inner">
+              {/* Inner Convex Globe Sphere Lens (Photo Perfectly Centered) */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white bg-[#0284C7] shadow-[inset_0_0_30px_rgba(0,0,0,0.5)]">
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
                   fill
-                  sizes="(max-width: 768px) 290px, 340px"
+                  sizes="(max-width: 768px) 280px, 350px"
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
                   priority
                 />
 
-                {/* Tropical Sunlit Glass Lens Flare & Reflection */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/40 pointer-events-none group-hover:opacity-80 transition-opacity duration-500" />
+                {/* 3D Planet Grid Latitude / Longitude Overlay Lines */}
+                <div className="absolute inset-0 border border-white/20 rounded-full pointer-events-none [transform:rotateX(45deg)]" />
+                <div className="absolute inset-0 border border-white/20 rounded-full pointer-events-none [transform:rotateY(45deg)]" />
+
+                {/* Tropical Sunlit Glass Globe Lens Flare & Atmosphere Reflection */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/25 to-white/50 pointer-events-none group-hover:opacity-90 transition-opacity duration-500" />
               </div>
 
-            </div>
-
-            {/* Unified Glass Metric Showcase Bar (NO dark name label) */}
-            <div className="flex flex-wrap justify-center gap-3 mt-6 z-20">
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 rounded-xl border border-white/40 bg-white/10 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
-              >
-                <div className="w-7 h-7 rounded-lg bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
-                  <OceanIcon name="star" className="w-4 h-4 text-[#022433]" />
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] text-[#FDE68A] font-bold tracking-wider uppercase">ACADEMIC GPA</div>
-                  <div className="font-fraunces text-xs md:text-sm font-extrabold text-white">3.64 / 4.00</div>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 rounded-xl border border-white/40 bg-white/10 backdrop-blur-xl text-white flex items-center gap-2.5 shadow-xl transition-all cursor-default"
-              >
-                <div className="w-7 h-7 rounded-lg bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold shadow-inner">
-                  <OceanIcon name="trophy" className="w-4 h-4 text-[#022433]" />
-                </div>
-                <div>
-                  <div className="font-mono text-[9px] text-[#FDE68A] font-bold tracking-wider uppercase">AI INNOVATION</div>
-                  <div className="font-fraunces text-xs md:text-sm font-extrabold text-white">3rd Place Award</div>
-                </div>
-              </motion.div>
             </div>
 
           </Tilt>
