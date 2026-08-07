@@ -253,26 +253,35 @@ export function OceanDepthCanvas() {
 
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Vibrant Sunlit Ocean Depth Gradient
+      // 1. Continuous Butter-Smooth Sunlit Ocean Depth Gradient (100% Seamless RGB Lerp)
       const g = ctx.createLinearGradient(0, 0, 0, height);
 
-      if (currentScrollProgress < 0.45) {
-        // Bright Tropical Lagoon
-        const p = currentScrollProgress / 0.45;
-        g.addColorStop(0, "#0369a1");
-        g.addColorStop(0.5, "#075985");
-        g.addColorStop(1, "#0c4a6e");
-      } else if (currentScrollProgress < 0.8) {
-        // Mid Turquoise Depth
-        g.addColorStop(0, "#0c4a6e");
-        g.addColorStop(0.5, "#083344");
-        g.addColorStop(1, "#051923");
+      // Helper RGB lerp
+      const lerpRGB = (c1: [number, number, number], c2: [number, number, number], factor: number) => {
+        const r = Math.round(c1[0] + (c2[0] - c1[0]) * factor);
+        const gCol = Math.round(c1[1] + (c2[1] - c1[1]) * factor);
+        const b = Math.round(c1[2] + (c2[2] - c1[2]) * factor);
+        return `rgb(${r}, ${gCol}, ${b})`;
+      };
+
+      // 3 Depth Keyframe Palettes: 0.0 (Shallow) -> 0.5 (Mid) -> 1.0 (Deep Abyssal)
+      let topColor: string, midColor: string, botColor: string;
+
+      if (currentScrollProgress < 0.5) {
+        const p = currentScrollProgress / 0.5;
+        topColor = lerpRGB([3, 105, 161], [12, 74, 110], p);
+        midColor = lerpRGB([7, 89, 133], [8, 51, 68], p);
+        botColor = lerpRGB([12, 74, 110], [5, 25, 35], p);
       } else {
-        // Deep Luminous Sea
-        g.addColorStop(0, "#051923");
-        g.addColorStop(0.5, "#04141e");
-        g.addColorStop(1, "#020a11");
+        const p = (currentScrollProgress - 0.5) / 0.5;
+        topColor = lerpRGB([12, 74, 110], [5, 25, 35], p);
+        midColor = lerpRGB([8, 51, 68], [4, 20, 30], p);
+        botColor = lerpRGB([5, 25, 35], [2, 10, 17], p);
       }
+
+      g.addColorStop(0, topColor);
+      g.addColorStop(0.5, midColor);
+      g.addColorStop(1, botColor);
 
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, width, height);
