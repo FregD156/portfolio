@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Tilt from "react-parallax-tilt";
 import { OceanIcon } from "@/components/ui/ocean-icons";
 import { portfolioConfig } from "@/lib/config";
 
@@ -463,51 +464,100 @@ export function HeroOcean() {
           </div>
         </motion.div>
 
-        {/* Right Column Profile Card - Clean Glassmorphic Frame */}
+        {/* Right Column Profile Showcase: Ocean Expedition Compass & Helm Frame */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
+          initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center items-center"
+          className="flex justify-center items-center relative"
         >
-          <div className="w-full max-w-[360px] p-5 rounded-3xl border border-teal-300/35 bg-[#042d3e]/85 backdrop-blur-xl shadow-2xl space-y-4">
-            
-            {/* Profile Photo */}
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-teal-300/30 shadow-inner group">
-              <Image
-                src="/assets/images/profile.jpeg"
-                alt="Nguyen Thanh Duy - Software Engineer"
-                fill
-                sizes="(max-width: 768px) 285px, 340px"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#032b3d]/90 via-transparent to-transparent" />
-
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <div className="font-fraunces text-xl font-bold">Nguyen Thanh Duy</div>
-                <div className="postmark text-xs text-[#2DD4BF] font-semibold mt-0.5">SOFTWARE ENGINEER · UTT</div>
-              </div>
+          <Tilt
+            tiltMaxAngleX={8}
+            tiltMaxAngleY={8}
+            perspective={1000}
+            transitionSpeed={1200}
+            gyroscope={true}
+            className="relative flex items-center justify-center p-6"
+          >
+            {/* 1. Animated Outer Rotating Compass Navigation Dial */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <svg className="w-[390px] h-[390px] text-[#2DD4BF]/40 spin-slow" viewBox="0 0 400 400" fill="none">
+                <circle cx="200" cy="200" r="190" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 8" />
+                <circle cx="200" cy="200" r="175" stroke="currentColor" strokeWidth="1" opacity="0.6" />
+                {/* Compass Markers N, S, E, W */}
+                <text x="195" y="24" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">N</text>
+                <text x="380" y="204" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">E</text>
+                <text x="195" y="390" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">S</text>
+                <text x="12" y="204" fill="currentColor" fontSize="11" fontWeight="bold" fontFamily="monospace">W</text>
+              </svg>
             </div>
 
-            {/* Clean Structured Stat Pills Below Photo */}
-            <div className="grid grid-cols-2 gap-3 pt-1">
-              <div className="p-3 rounded-xl border border-teal-300/25 bg-[#031f2c]/70 backdrop-blur-md">
-                <div className="postmark text-[10px] text-[#2DD4BF] font-bold">ACADEMIC GPA</div>
-                <div className="font-fraunces text-2xl font-extrabold text-white mt-0.5">3.64</div>
-                <div className="postmark text-[10px] text-teal-100/70">UTT · EXCELLENT</div>
-              </div>
+            {/* 2. Pulsating Water Ripple Rings */}
+            <div className="absolute inset-4 rounded-full border border-[#06B6D4]/30 animate-pulse pointer-events-none" />
+            <div className="absolute -inset-2 rounded-full border border-[#2DD4BF]/20 pointer-events-none" />
 
-              <div className="p-3 rounded-xl border border-teal-300/25 bg-[#031f2c]/70 backdrop-blur-md">
-                <div className="postmark text-[10px] text-[#2DD4BF] font-bold flex items-center gap-1">
-                  <OceanIcon name="trophy" className="w-3.5 h-3.5 text-primary" /> AWARD
+            {/* 3. Central Ocean Helm Portrait Window */}
+            <div className="relative w-[290px] h-[290px] md:w-[330px] md:h-[330px] rounded-full p-2.5 bg-gradient-to-tr from-[#06B6D4] via-[#2DD4BF] to-[#38BDF8] shadow-[0_0_50px_rgba(6,182,212,0.35)] group">
+              
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/60 bg-[#032b3d]">
+                <Image
+                  src="/assets/images/profile.jpeg"
+                  alt="Nguyen Thanh Duy - Software Engineer"
+                  fill
+                  sizes="(max-width: 768px) 290px, 330px"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                  priority
+                />
+                
+                {/* Sunlit Ocean Shimmer Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#032b3d] via-transparent to-transparent opacity-85 group-hover:opacity-75 transition-opacity duration-500" />
+
+                {/* Integrated Name & Role Banner at Center-Bottom of Ring */}
+                <div className="absolute bottom-6 left-0 right-0 text-center px-4 text-white">
+                  <div className="font-fraunces text-xl font-bold tracking-tight text-white drop-shadow-md">
+                    Nguyen Thanh Duy
+                  </div>
+                  <div className="postmark text-[11px] text-[#2DD4BF] font-extrabold tracking-widest mt-0.5 flex items-center justify-center gap-1.5">
+                    <OceanIcon name="wave" className="w-3.5 h-3.5 text-[#2DD4BF]" />
+                    SOFTWARE ENGINEER · UTT
+                  </div>
                 </div>
-                <div className="font-fraunces text-sm font-bold text-white mt-1">3rd Place</div>
-                <div className="postmark text-[10px] text-teal-100/70 truncate">AI CHALLENGE</div>
               </div>
+
             </div>
 
-          </div>
+            {/* 4. Floating Nautical Compass Badges */}
+            {/* Top-Right Badge: GPA 3.64 */}
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="absolute -right-2 md:-right-6 top-8 bg-[#042d3e]/95 border border-[#2DD4BF]/50 rounded-2xl px-4 py-2.5 shadow-2xl backdrop-blur-xl text-white flex items-center gap-3 z-20"
+            >
+              <div className="p-2 rounded-xl bg-[#06B6D4]/20 text-[#2DD4BF]">
+                <OceanIcon name="compass" className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="postmark text-[9px] text-[#2DD4BF] font-bold">ACADEMIC EXCELLENCE</div>
+                <div className="font-fraunces text-lg font-extrabold text-white leading-none my-0.5">3.64 GPA</div>
+                <div className="postmark text-[9px] text-teal-100/70">UTT · EXCELLENT</div>
+              </div>
+            </motion.div>
+
+            {/* Bottom-Left Badge: 3rd Place Award */}
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="absolute -left-2 md:-left-6 bottom-8 bg-[#042d3e]/95 border border-[#2DD4BF]/50 rounded-2xl px-4 py-2.5 shadow-2xl backdrop-blur-xl text-white flex items-center gap-3 z-20"
+            >
+              <div className="p-2 rounded-xl bg-[#06B6D4]/20 text-[#2DD4BF]">
+                <OceanIcon name="trophy" className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="postmark text-[9px] text-[#2DD4BF] font-bold">AI INNOVATION AWARD</div>
+                <div className="font-fraunces text-sm font-extrabold text-white leading-none my-0.5">3rd Place Winner</div>
+                <div className="postmark text-[9px] text-teal-100/70">AI FOR SOCIAL CHALLENGE</div>
+              </div>
+            </motion.div>
+
+          </Tilt>
         </motion.div>
       </div>
 
