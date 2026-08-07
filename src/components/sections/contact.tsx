@@ -37,8 +37,13 @@ export function Contact() {
     <section className="py-28 relative overflow-hidden" id="contact">
       <div className="max-w-6xl mx-auto px-6 relative">
 
-        {/* Header */}
+        {/* Header with Golden Pirate Hook Dock Pill */}
         <div className="mb-16">
+          <div className="font-mono text-xs text-[#FDE68A] font-extrabold tracking-widest uppercase mb-2 flex items-center gap-2 bg-[#022433]/90 border border-[#FDE68A] px-4 py-1.5 rounded-full w-fit shadow-lg">
+            <OceanIcon name="anchor" className="w-4 h-4 text-[#FDE68A] animate-bounce" />
+            <span>PIRATE ANCHOR CONTACT DOCK</span>
+          </div>
+
           <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white mb-3">
             Start a <span className="italic font-normal text-[#2DD4BF]">Conversation</span>
           </h2>

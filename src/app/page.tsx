@@ -9,12 +9,14 @@ import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 import { MoodScrollController, MorphWaveDivider } from "@/components/mood-scroll";
 import { OceanDepthCanvas } from "@/components/ocean-depth-canvas";
+import { PirateScrollHook } from "@/components/ui/pirate-scroll-hook";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden">
       <OceanDepthCanvas />
       <MoodScrollController />
+      <PirateScrollHook />
 
       <Navbar />
       <main className="flex-1 w-full" id="main-content">
