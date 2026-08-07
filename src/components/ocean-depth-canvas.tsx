@@ -339,51 +339,62 @@ export function OceanDepthCanvas() {
         else if (c.type === "turtle") drawTurtle(c, t);
       });
 
-      // 5. --- SUBMERGED SEABED ROCK FORMATIONS & CORAL REEFS (Mô Phỏng Đá Ngầm & San Hô) ---
+      // 5. --- SUBMERGED SEABED ROCK FORMATIONS (Positioned on Left & Right Flanks, Center Trench Open) ---
       const seabedY = height * 0.88;
 
-      // Background Dark Ocean Rock Silhouette (Layer 1)
+      // Background Dark Ocean Rock Silhouettes (Flanking Left & Right)
       ctx.fillStyle = "rgba(1, 20, 30, 0.95)";
       ctx.beginPath();
       ctx.moveTo(0, height);
-      ctx.lineTo(0, seabedY - 35);
-      ctx.quadraticCurveTo(width * 0.15, seabedY - 80, width * 0.3, seabedY - 40);
-      ctx.quadraticCurveTo(width * 0.5, seabedY - 110, width * 0.7, seabedY - 50);
-      ctx.quadraticCurveTo(width * 0.85, seabedY - 95, width, seabedY - 45);
+      ctx.lineTo(0, seabedY - 120);
+      ctx.quadraticCurveTo(width * 0.12, seabedY - 140, width * 0.3, seabedY - 20);
+      ctx.lineTo(width * 0.7, seabedY - 20);
+      ctx.quadraticCurveTo(width * 0.88, seabedY - 130, width, seabedY - 110);
       ctx.lineTo(width, height);
       ctx.closePath();
       ctx.fill();
 
-      // Foreground Crisp Coral Reef Rocks with Glowing Edges (Layer 2)
-      const rockGrad = ctx.createLinearGradient(0, seabedY - 60, 0, height);
+      // Foreground Crisp Coral Reef Rocks on Left & Right Sides (Layer 2)
+      const rockGrad = ctx.createLinearGradient(0, seabedY - 100, 0, height);
       rockGrad.addColorStop(0, "#042c3d");
       rockGrad.addColorStop(0.5, "#021a27");
       rockGrad.addColorStop(1, "#010e17");
       ctx.fillStyle = rockGrad;
-      ctx.strokeStyle = "rgba(45, 212, 191, 0.4)";
+      ctx.strokeStyle = "rgba(45, 212, 191, 0.45)";
       ctx.lineWidth = 2;
 
       ctx.beginPath();
       ctx.moveTo(0, height);
-      ctx.lineTo(0, seabedY - 20);
-      ctx.quadraticCurveTo(width * 0.1, seabedY - 55, width * 0.22, seabedY - 25);
-      ctx.quadraticCurveTo(width * 0.38, seabedY - 75, width * 0.55, seabedY - 30);
-      ctx.quadraticCurveTo(width * 0.72, seabedY - 85, width * 0.88, seabedY - 35);
-      ctx.quadraticCurveTo(width * 0.95, seabedY - 60, width, seabedY - 20);
+      ctx.lineTo(0, seabedY - 90);
+      ctx.quadraticCurveTo(width * 0.1, seabedY - 125, width * 0.28, seabedY - 15);
+      ctx.lineTo(width * 0.72, seabedY - 15);
+      ctx.quadraticCurveTo(width * 0.9, seabedY - 135, width, seabedY - 85);
       ctx.lineTo(width, height);
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
 
-      // Swaying Seaweed & Sea Kelp (Tảo Biển Đung Đưa Theo Dòng Nước)
-      const kelpCount = 16;
-      for (let i = 0; i < kelpCount; i++) {
-        const kx = (width / kelpCount) * i + Math.sin(i * 99) * 20;
-        const ky = seabedY - 25 + Math.cos(i * 33) * 15;
-        const kh = 70 + (i % 5) * 25;
+      // Swaying Seaweed & Sea Kelp (Growing on Left & Right Rock Flanks Only)
+      const kelpPositions = [
+        // Left Flank Kelp
+        { x: width * 0.03, h: 90 },
+        { x: width * 0.08, h: 110 },
+        { x: width * 0.14, h: 80 },
+        { x: width * 0.20, h: 65 },
+        // Right Flank Kelp
+        { x: width * 0.80, h: 70 },
+        { x: width * 0.86, h: 95 },
+        { x: width * 0.92, h: 115 },
+        { x: width * 0.97, h: 85 },
+      ];
+
+      kelpPositions.forEach((k, i) => {
+        const kx = k.x;
+        const ky = seabedY - 20;
+        const kh = k.h;
         const sway = Math.sin(t * 1.6 + i * 0.8) * 18;
 
-        ctx.strokeStyle = i % 2 === 0 ? "rgba(45, 212, 191, 0.75)" : "rgba(253, 230, 138, 0.65)";
+        ctx.strokeStyle = i % 2 === 0 ? "rgba(45, 212, 191, 0.8)" : "rgba(253, 230, 138, 0.75)";
         ctx.lineWidth = 3;
         ctx.lineCap = "round";
 
@@ -397,7 +408,7 @@ export function OceanDepthCanvas() {
         ctx.beginPath();
         ctx.arc(kx + sway, ky - kh, 3.5, 0, Math.PI * 2);
         ctx.fill();
-      }
+      });
 
       if (!reduceMotion) {
         animationFrameId = requestAnimationFrame(render);
