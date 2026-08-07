@@ -139,7 +139,7 @@ export function Projects() {
 
                 {/* Fixed Golden Ribbon Award Badge (Top-Left Corner of Card) */}
                 {p.hasAward && (
-                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#FDE68A] text-[#022433] font-mono text-[10px] md:text-[11px] font-extrabold px-3.5 py-1.5 rounded-full shadow-lg border border-[#FDE68A]">
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#FDE68A] text-[#022433] font-mono text-xs font-extrabold px-4 py-1.5 rounded-full shadow-lg border border-[#FDE68A]">
                     <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#022433]" />
                     <span>{p.outcome}</span>
                   </div>
@@ -156,39 +156,39 @@ export function Projects() {
                 {/* Card Bottom Information Layout */}
                 <div className="relative z-20 mt-auto pt-12">
                   {/* Tech Stack Tags Above Title */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
+                  <div className="flex flex-wrap gap-1.5 mb-2.5">
                     {p.tech.slice(0, 4).map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[10px] px-2.5 py-0.5 rounded-full border border-teal-300/40 bg-[#022433]/80 text-[#2DD4BF] font-semibold backdrop-blur-md"
+                        className="font-mono text-xs px-3 py-0.5 rounded-full border border-[#2DD4BF]/50 bg-[#022433] text-[#2DD4BF] font-bold backdrop-blur-md shadow-sm"
                       >
                         {t}
                       </span>
                     ))}
                     {p.tech.length > 4 && (
-                      <span className="font-mono text-[10px] px-2 py-0.5 rounded-full border border-white/20 bg-white/10 text-white/80 font-semibold">
+                      <span className="font-mono text-xs px-2.5 py-0.5 rounded-full border border-white/30 bg-white/15 text-white font-bold">
                         +{p.tech.length - 4}
                       </span>
                     )}
                   </div>
 
                   {/* Project Name & Description */}
-                  <h3 className="font-fraunces text-xl md:text-2xl font-extrabold text-white tracking-tight drop-shadow-md mb-1.5 group-hover:text-[#FDE68A] transition-colors leading-tight">
+                  <h3 className="font-fraunces text-xl md:text-2xl font-extrabold text-white tracking-tight drop-shadow-md mb-2 group-hover:text-[#FDE68A] transition-colors leading-tight">
                     {p.name}
                   </h3>
 
-                  <p className="font-jakarta text-xs md:text-sm text-teal-100/90 leading-relaxed font-medium line-clamp-2 mb-3">
+                  <p className="font-jakarta text-xs md:text-sm text-slate-100 leading-relaxed font-medium line-clamp-2 mb-3.5">
                     {p.description}
                   </p>
 
                   {/* View System Pill Button */}
                   <div className="flex items-center justify-between pt-1">
-                    <span className="font-mono text-[10px] text-teal-200/80 font-bold uppercase tracking-wider">
+                    <span className="font-mono text-xs text-[#2DD4BF] font-extrabold uppercase tracking-wider">
                       Tap for details
                     </span>
 
-                    <span className="font-mono inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[#2DD4BF]/60 bg-[#022433]/90 text-[#2DD4BF] text-xs font-bold shadow-md group-hover:bg-[#2DD4BF] group-hover:text-[#022433] transition-all duration-300">
-                      <OceanIcon name="anchor" className="w-3 h-3" />
+                    <span className="font-mono inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#2DD4BF] bg-[#022433] text-[#2DD4BF] text-xs font-bold shadow-md group-hover:bg-[#2DD4BF] group-hover:text-[#022433] transition-all duration-300">
+                      <OceanIcon name="anchor" className="w-3.5 h-3.5" />
                       <span>VIEW SYSTEM →</span>
                     </span>
                   </div>

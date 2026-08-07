@@ -122,11 +122,11 @@ export function Experience() {
                 className="relative group"
               >
                 {/* Floating Date Badge Positioned on the LEFT SIDE of Timeline Bar */}
-                <div className="hidden md:flex absolute -left-[205px] top-3.5 w-36 flex-col items-end text-right z-20">
-                  <span className="font-mono text-[11px] text-[#FDE68A] font-extrabold bg-[#022433]/95 border border-[#FDE68A]/60 px-3 py-1 rounded-full shadow-md backdrop-blur-md">
+                <div className="hidden md:flex absolute -left-[215px] top-3.5 w-38 flex-col items-end text-right z-20">
+                  <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/80 px-3 py-1 rounded-full shadow-md backdrop-blur-md">
                     {item.duration}
                   </span>
-                  <span className="font-mono text-[9px] text-[#2DD4BF] font-extrabold uppercase tracking-wider mt-1 pr-1">
+                  <span className="font-mono text-[10px] text-[#2DD4BF] font-extrabold uppercase tracking-wider mt-1 pr-1">
                     {item.period}
                   </span>
                 </div>
@@ -141,47 +141,47 @@ export function Experience() {
                 </div>
 
                 {/* Compact Sleek Experience Frame */}
-                <div className="glass-resort-card p-4 md:p-5 rounded-xl border border-teal-300/25 group-hover:border-[#FDE68A]/70 shadow-md transition-all duration-300 group-hover:-translate-y-1">
+                <div className="glass-resort-card p-5 md:p-6 rounded-2xl border border-teal-300/30 group-hover:border-[#FDE68A]/80 shadow-md transition-all duration-300 group-hover:-translate-y-1">
 
                   {/* Mobile-only Date Tag (hidden on desktop because it's on the left side) */}
                   <div className="flex md:hidden items-center justify-between gap-2 mb-2">
-                    <span className="font-mono text-[10px] text-[#FDE68A] font-extrabold bg-[#022433]/90 border border-[#FDE68A]/50 px-2.5 py-0.5 rounded-full shadow-sm">
+                    <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/70 px-3 py-0.5 rounded-full shadow-sm">
                       {item.duration}
                     </span>
-                    <span className="font-mono text-[9px] text-[#2DD4BF] font-extrabold uppercase tracking-wider">
+                    <span className="font-mono text-[10px] text-[#2DD4BF] font-extrabold uppercase tracking-wider">
                       {item.period}
                     </span>
                   </div>
 
                   {/* Role Title & Company */}
-                  <h3 className="font-fraunces text-base md:text-lg font-bold text-white mb-0.5 group-hover:text-[#FDE68A] transition-colors leading-tight">
+                  <h3 className="font-fraunces text-lg md:text-xl font-bold text-white mb-1 group-hover:text-[#FDE68A] transition-colors leading-tight">
                     {item.role}
                   </h3>
-                  <p className="font-jakarta text-xs text-teal-100/75 mb-2 font-medium">
+                  <p className="font-jakarta text-xs md:text-sm text-[#2DD4BF] mb-2.5 font-bold">
                     {item.company}
                   </p>
 
                   {/* Award Highlight & Certificate Button */}
                   {item.highlight && (
-                    <div className="flex items-center gap-2 mb-2.5 flex-wrap">
-                      <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-full border border-[#FDE68A]/60 text-[#FDE68A] bg-[#022433]/90 flex items-center gap-1 font-bold shadow-sm">
-                        <OceanIcon name="trophy" className="w-3 h-3 text-[#FDE68A]" />
+                    <div className="flex items-center gap-2 mb-3 flex-wrap">
+                      <span className="font-mono text-xs px-3 py-1 rounded-full border border-[#FDE68A] text-[#FDE68A] bg-[#022433] flex items-center gap-1.5 font-bold shadow-sm">
+                        <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
                         {item.highlight}
                       </span>
                       {item.certificateUrl && (
                         <button
                           onClick={() => setSelectedCert(item)}
-                          className="font-mono inline-flex items-center gap-1 text-[10px] px-2.5 py-0.5 rounded-full border border-teal-300/40 bg-white/10 hover:border-[#FDE68A] text-teal-100 hover:text-white transition-all font-bold"
+                          className="font-mono inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full border border-[#2DD4BF]/60 bg-[#022433] hover:border-[#FDE68A] text-[#2DD4BF] hover:text-[#FDE68A] transition-all font-bold cursor-pointer"
                         >
-                          <OceanIcon name="star" className="w-3 h-3 text-[#FDE68A]" />
+                          <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FDE68A]" />
                           View Certificate
                         </button>
                       )}
                     </div>
                   )}
 
-                  {/* Description Paragraph */}
-                  <p className="font-jakarta text-xs text-teal-100/90 leading-relaxed font-medium mb-3">
+                  {/* Description Paragraph (Crystal Clear Legibility) */}
+                  <p className="font-jakarta text-xs md:text-sm text-teal-50 leading-relaxed font-medium mb-3.5">
                     {item.description}
                   </p>
 
@@ -190,7 +190,7 @@ export function Experience() {
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-mono text-[9px] text-teal-200/90 border border-teal-300/25 px-2 py-0.5 rounded-full bg-white/5 font-medium"
+                        className="font-mono text-[10px] md:text-[11px] text-[#2DD4BF] border border-[#2DD4BF]/35 px-2.5 py-0.5 rounded-full bg-[#022433]/80 font-bold"
                       >
                         {tag}
                       </span>
