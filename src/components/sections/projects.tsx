@@ -18,8 +18,8 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://shb-compliance-operations-intellige.vercel.app/",
     hasAward: true,
+    awardNote: "🏆 VIETNAM AI INNOVATION CHALLENGE 2026",
     category: "ai",
-    span: "large",
   },
   {
     id: "eduguide",
@@ -32,22 +32,8 @@ const projects = [
     codeUrl: "https://github.com/FregD156/AI.git",
     demoUrl: "http://www.xettuyen.site",
     hasAward: true,
+    awardNote: "🏆 3RD PLACE WINNER · SOCIAL AI",
     category: "ai",
-    span: "large",
-  },
-  {
-    id: "topikw",
-    name: "TOPIK Master",
-    outcome: "KOREAN LANGUAGE PROFICIENCY APP",
-    description:
-      "Specialized web application designed for intensive Korean language preparation, featuring multi-level vocabulary marathons (50 to 350+ questions) for TOPIK I & II.",
-    tech: ["Python", "FastAPI", "Node.js", "shadcn/ui", "Vercel"],
-    image: "/assets/images/projects/topikw-demo.png",
-    codeUrl: null,
-    demoUrl: "https://topikwfregd.vercel.app",
-    hasAward: false,
-    category: "web",
-    span: "small",
   },
   {
     id: "dblinkstore",
@@ -60,183 +46,35 @@ const projects = [
     codeUrl: null,
     demoUrl: "https://dblinkstore.vercel.app",
     hasAward: false,
+    awardNote: null,
     category: "web",
-    span: "small",
+  },
+  {
+    id: "topikw",
+    name: "TOPIK Master",
+    outcome: "KOREAN LANGUAGE PROFICIENCY APP",
+    description:
+      "Specialized web application designed for intensive Korean language preparation, featuring multi-level vocabulary marathons (50 to 350+ questions) for TOPIK I & II.",
+    tech: ["Python", "FastAPI", "Node.js", "shadcn/ui", "Vercel"],
+    image: "/assets/images/projects/topikw-demo.png",
+    codeUrl: null,
+    demoUrl: "https://topikwfregd.vercel.app",
+    hasAward: false,
+    awardNote: null,
+    category: "web",
   },
 ]
 
-function TechTag({ label }: { label: string }) {
-  return (
-    <span className="font-mono text-[11px] text-[#FDE68A] border border-teal-300/40 bg-white/10 px-3 py-1 rounded-full font-semibold group-hover:border-[#FDE68A] transition-colors duration-200">
-      {label}
-    </span>
-  )
-}
-
-function LargeCard({ project }: { project: typeof projects[0] }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full flex"
-    >
-      <Tilt
-        tiltMaxAngleX={2}
-        tiltMaxAngleY={2}
-        className="w-full rounded-3xl glass-resort-card overflow-hidden group relative flex flex-col lg:flex-row shadow-2xl"
-      >
-        <div className="relative w-full lg:w-[58%] aspect-[16/9] lg:aspect-auto min-h-[260px] lg:min-h-[400px] overflow-hidden rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#043247] z-10 hidden lg:block" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#043247] z-10 lg:hidden" />
-          <Image
-            src={project.image}
-            alt={project.name}
-            fill
-            sizes="(max-width: 1024px) 100vw, 58vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            priority
-          />
-          {project.hasAward && (
-            <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#022433]/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#FDE68A]/60">
-              <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
-              <span className="font-mono text-[10px] text-[#FDE68A] font-bold">{project.outcome}</span>
-            </div>
-          )}
-        </div>
-
-        <div className="flex flex-col justify-center flex-1 p-6 md:p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-teal-300/30">
-          <div className="font-mono text-xs text-[#FDE68A] mb-2 flex items-center gap-1.5 font-bold uppercase">
-            <OceanIcon name="anchor" className="w-4 h-4 text-[#2DD4BF]" /> FEATURED SYSTEM ARCHITECTURE
-          </div>
-          <h3 className="font-fraunces text-2xl md:text-3xl font-bold tracking-tight mb-3 text-white">{project.name}</h3>
-          <p className="font-jakarta text-sm md:text-base text-teal-100/90 leading-relaxed mb-6 font-medium">
-            {project.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2 mb-8">
-            {project.tech.map(t => <TechTag key={t} label={t} />)}
-          </div>
-
-          <div className="flex gap-3">
-            {project.codeUrl ? (
-              <a
-                href={project.codeUrl} target="_blank" rel="noopener noreferrer"
-                className="font-mono inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/60 bg-white/10 hover:border-[#FDE68A] hover:text-[#FDE68A] transition-all duration-300 text-xs font-bold text-white hover:scale-105"
-              >
-                <OceanIcon name="github" className="w-4 h-4" /> Source Code
-              </a>
-            ) : (
-              <span className="font-mono inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-teal-300/30 text-teal-100/50 text-xs cursor-not-allowed">
-                <OceanIcon name="terminal" className="w-3.5 h-3.5" /> Confidential
-              </span>
-            )}
-            {project.demoUrl && (
-              <a
-                href={project.demoUrl} target="_blank" rel="noopener noreferrer"
-                className="font-mono inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] text-white hover:from-[#0284c7] hover:to-[#14b8a6] shadow-md hover:shadow-xl transition-all duration-300 text-xs font-bold hover:scale-105"
-              >
-                Live Demo <OceanIcon name="external" className="w-3.5 h-3.5" />
-              </a>
-            )}
-          </div>
-        </div>
-      </Tilt>
-    </motion.div>
-  )
-}
-
-function SmallCard({ project }: { project: typeof projects[0] }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.75, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col w-full h-full"
-    >
-      <Tilt
-        tiltMaxAngleX={3}
-        tiltMaxAngleY={3}
-        className="w-full h-full flex flex-col rounded-3xl glass-resort-card overflow-hidden group relative p-6 shadow-xl"
-      >
-        <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-5 border border-teal-300/30">
-          <Image
-            src={project.image}
-            alt={project.name}
-            fill
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-
-        <div className="font-mono text-[10px] text-[#FDE68A] mb-1 font-bold">{project.outcome}</div>
-        <h3 className="font-fraunces text-xl font-bold tracking-tight mb-2 text-white">{project.name}</h3>
-        <p className="font-jakarta text-xs md:text-sm text-teal-100/90 leading-relaxed mb-6 flex-1 font-medium">{project.description}</p>
-
-        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-          {project.tech.map(t => <TechTag key={t} label={t} />)}
-        </div>
-
-        {project.demoUrl && (
-          <a
-            href={project.demoUrl} target="_blank" rel="noopener noreferrer"
-            className="font-mono inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-full bg-white/10 hover:bg-[#FDE68A] text-[#FDE68A] hover:text-[#022433] border border-[#FDE68A]/60 transition-all duration-300 text-xs font-bold hover:scale-105"
-          >
-            Explore App <OceanIcon name="external" className="w-3.5 h-3.5" />
-          </a>
-        )}
-      </Tilt>
-    </motion.div>
-  )
-}
-
-function WhatIDoCard() {
-  const capabilities = [
-    "Backend API & Microservices (FastAPI, Express)",
-    "Temporal Graph-RAG & Vector Search (FAISS, NetworkX)",
-    "Full-Stack Web Engineering (React 19, Next.js)",
-    "AI Models Integration & Algorithmic Optimizations",
-  ]
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.75, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-      className="rounded-2xl border border-primary/30 bg-card/80 backdrop-blur-md p-6 flex flex-col h-full w-full relative overflow-hidden"
-    >
-      <div className="postmark text-xs text-primary mb-4 flex items-center gap-2">
-        <OceanIcon name="compass" className="w-4 h-4" /> CORE CAPABILITIES
-      </div>
-      <h3 className="font-fraunces text-xl font-bold text-foreground mb-4">Engineering Focus</h3>
-      <ul className="space-y-3.5 flex-1 font-jakarta text-xs text-muted-foreground">
-        {capabilities.map((c, i) => (
-          <li key={i} className="flex items-start gap-2.5">
-            <OceanIcon name="wave" className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-            <span className="text-foreground/90">{c}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="mt-6 pt-4 border-t border-border/60">
-        <p className="postmark text-[11px] text-muted-foreground leading-relaxed">
-          Open to Software Engineering, Backend & AI roles in Vietnam, Korea (KNUT), or Remote.
-        </p>
-      </div>
-    </motion.div>
-  )
-}
-
 const categories = [
-  { id: "all", label: "All Discoveries" },
+  { id: "all", label: "All Ocean Bubbles" },
   { id: "ai", label: "AI & Graph-RAG" },
   { id: "web", label: "Web Applications" },
-  { id: "awards", label: "Award Winners" },
+  { id: "awards", label: "Award Winners 🏆" },
 ]
 
 export function Projects() {
   const [activeTab, setActiveTab] = React.useState("all")
+  const [selectedProject, setSelectedProject] = React.useState<typeof projects[0] | null>(null)
 
   const filteredProjects = projects.filter((p) => {
     if (activeTab === "all") return true
@@ -254,10 +92,10 @@ export function Projects() {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 gap-6">
           <div>
             <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-              Smart Project <span className="italic font-normal text-[#FDE68A]">Deck</span>
+              Floating Ocean <span className="italic font-normal text-[#FDE68A]">Bubbles</span>
             </h2>
             <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-2 max-w-xl font-medium">
-              Interactive showcase of AI systems, Graph-RAG architectures, and full-stack web applications.
+              Click on any floating ocean bubble to expand full system architecture details & live demos.
             </p>
           </div>
 
@@ -271,8 +109,8 @@ export function Projects() {
           </a>
         </div>
 
-        {/* Smart Deck Category Selector Bar */}
-        <div className="flex flex-wrap items-center gap-2 mb-12 bg-[#042c3d]/60 backdrop-blur-xl p-2 rounded-full border border-teal-300/30 max-w-max shadow-lg">
+        {/* Category Tabs */}
+        <div className="flex flex-wrap items-center gap-2 mb-14 bg-[#042c3d]/60 backdrop-blur-xl p-2 rounded-full border border-teal-300/30 max-w-max shadow-lg">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -285,7 +123,7 @@ export function Projects() {
             >
               {activeTab === cat.id && (
                 <motion.div
-                  layoutId="active-project-tab"
+                  layoutId="active-bubble-tab"
                   className="absolute inset-0 bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF] rounded-full shadow-md"
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
@@ -295,28 +133,164 @@ export function Projects() {
           ))}
         </div>
 
-        {/* Smart Deck Card Grid with AnimatePresence Reveal */}
-        <motion.div layout className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Floating Ocean Bubbles Showcase Grid */}
+        <motion.div layout className="flex flex-wrap justify-center items-center gap-8 md:gap-12 py-6">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((p) => (
+            {filteredProjects.map((p, index) => (
               <motion.div
                 key={p.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className={p.span === "large" ? "lg:col-span-12" : "lg:col-span-6 flex"}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setSelectedProject(p)}
+                className="relative group cursor-pointer"
               >
-                {p.span === "large" ? (
-                  <LargeCard project={p} />
-                ) : (
-                  <SmallCard project={p} />
+                {/* Award Note Chip Floating Over Bubble */}
+                {p.hasAward && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap px-3.5 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/95 backdrop-blur-xl text-[#FDE68A] font-mono text-[10px] font-extrabold shadow-2xl flex items-center gap-1.5 animate-bounce">
+                    <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
+                    {p.awardNote}
+                  </div>
                 )}
+
+                {/* Floating 3D Liquid Glass Sphere Bubble */}
+                <Tilt
+                  tiltMaxAngleX={10}
+                  tiltMaxAngleY={10}
+                  perspective={1000}
+                  className="w-56 h-56 md:w-64 md:h-64 rounded-full border-4 border-[#2DD4BF] p-2 bg-gradient-to-br from-teal-300 via-teal-900 to-[#022433] shadow-[0_0_50px_rgba(45,212,191,0.45)] group-hover:shadow-[0_0_70px_rgba(253,230,138,0.6)] transition-all duration-500 relative overflow-hidden flex flex-col items-center justify-center text-center animate-float"
+                >
+                  {/* Inner Lens Image Container */}
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/80">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="256px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-75 group-hover:opacity-95"
+                    />
+
+                    {/* Dark Vignette Overlay for Title Contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#022433]/90 via-[#022433]/40 to-transparent flex flex-col justify-end p-5 text-center">
+                      <div className="font-fraunces text-lg md:text-xl font-bold text-white drop-shadow-lg tracking-tight group-hover:text-[#FDE68A] transition-colors">
+                        {p.name}
+                      </div>
+                      <div className="font-mono text-[10px] text-teal-200/90 font-bold uppercase tracking-wider mt-1">
+                        Click to Expand →
+                      </div>
+                    </div>
+
+                    {/* Sunlit Lens Flare Shimmer */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none group-hover:opacity-80 transition-opacity" />
+                  </div>
+                </Tilt>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Interactive Click-to-Expand Project Detail Modal Drawer */}
+        <AnimatePresence>
+          {selectedProject && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-[#021B27]/80 backdrop-blur-2xl">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 30 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full max-w-3xl rounded-3xl glass-resort-card overflow-hidden border border-teal-300/40 shadow-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-6 right-6 p-2.5 rounded-full border border-white/40 bg-white/15 text-white hover:bg-white/30 transition-all z-30"
+                  aria-label="Close modal"
+                >
+                  <span className="font-mono text-base font-bold">✕</span>
+                </button>
+
+                {/* Modal Header & Image Banner */}
+                <div className="relative w-full h-56 md:h-72 rounded-2xl overflow-hidden mb-6 border border-teal-300/30">
+                  <Image
+                    src={selectedProject.image}
+                    alt={selectedProject.name}
+                    fill
+                    sizes="800px"
+                    className="object-cover"
+                  />
+                  {selectedProject.hasAward && (
+                    <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#022433]/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#FDE68A]">
+                      <OceanIcon name="trophy" className="w-4 h-4 text-[#FDE68A]" />
+                      <span className="font-mono text-xs text-[#FDE68A] font-extrabold">{selectedProject.outcome}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Modal Info */}
+                <div className="space-y-4">
+                  <div className="font-mono text-xs text-[#FDE68A] font-bold uppercase tracking-wider flex items-center gap-2">
+                    <OceanIcon name="anchor" className="w-4 h-4 text-[#2DD4BF]" /> SYSTEM DETAILS & ARCHITECTURE
+                  </div>
+
+                  <h3 className="font-fraunces text-2xl md:text-4xl font-bold text-white tracking-tight">
+                    {selectedProject.name}
+                  </h3>
+
+                  <p className="font-jakarta text-sm md:text-base text-teal-100/95 leading-relaxed font-medium">
+                    {selectedProject.description}
+                  </p>
+
+                  {/* Tech Stack List */}
+                  <div className="pt-2">
+                    <div className="font-mono text-xs text-teal-100/80 mb-2 font-bold uppercase">TECHNOLOGY STACK:</div>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="font-mono text-xs px-3.5 py-1.5 rounded-full border border-teal-300/40 bg-white/10 text-teal-100 font-semibold"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Modal Action Buttons */}
+                  <div className="flex flex-wrap gap-4 pt-6 border-t border-teal-300/30 mt-6">
+                    {selectedProject.demoUrl && (
+                      <a
+                        href={selectedProject.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-[#06B6D4] to-[#2DD4BF] text-white hover:from-[#0284c7] hover:to-[#14b8a6] font-bold text-sm shadow-xl hover:scale-105 transition-all"
+                      >
+                        Live Demo <OceanIcon name="external" className="w-4 h-4" />
+                      </a>
+                    )}
+
+                    {selectedProject.codeUrl ? (
+                      <a
+                        href={selectedProject.codeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/60 bg-white/15 text-white hover:border-[#FDE68A] hover:text-[#FDE68A] font-bold text-sm shadow-lg hover:scale-105 transition-all"
+                      >
+                        <OceanIcon name="github" className="w-4 h-4" /> Source Code
+                      </a>
+                    ) : (
+                      <span className="font-mono inline-flex items-center gap-2 px-6 py-3 rounded-full border border-teal-300/30 text-teal-100/50 text-xs font-semibold cursor-not-allowed">
+                        <OceanIcon name="terminal" className="w-4 h-4" /> Confidential Code
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
       </div>
     </section>
   )
