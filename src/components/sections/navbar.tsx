@@ -2,10 +2,10 @@
 
 import * as React from "react"
 import { useTheme } from "next-themes"
-import { Menu, X, Sun, Moon } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { portfolioConfig } from "@/lib/config"
+import { OceanIcon } from "@/components/ui/ocean-icons"
 
 const navLinks = [
   { href: "#about",      label: "About" },
@@ -29,7 +29,6 @@ export function Navbar() {
       const currentScrollY = window.scrollY
       setScrolled(currentScrollY > 40)
 
-      // Smart hide on scroll down, reveal on scroll up
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setVisible(false)
       } else {
@@ -55,7 +54,7 @@ export function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 transform ${
           scrolled
-            ? "bg-background/85 backdrop-blur-xl border-b border-border"
+            ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-md"
             : "bg-transparent border-b border-transparent"
         } ${
           visible ? "translate-y-0" : "-translate-y-full"
@@ -64,29 +63,29 @@ export function Navbar() {
       >
         <div className="max-w-6xl mx-auto h-full px-6 flex justify-between items-center">
 
-          {/* Logo */}
-          <a href="#" className="font-mono text-base font-bold tracking-tight flex items-center gap-0.5 group">
-            <span className="text-muted-foreground group-hover:text-foreground transition-colors">~/</span>
-            <span className="text-foreground">Duy</span>
-            <span className="text-primary transition-colors group-hover:opacity-80">.dev</span>
+          {/* Logo in Fraunces */}
+          <a href="#" className="font-fraunces text-lg font-bold tracking-tight flex items-center gap-1.5 group">
+            <OceanIcon name="wave" className="w-5 h-5 text-primary transition-transform group-hover:rotate-12" />
+            <span className="text-foreground">Nguyen Thanh Duy</span>
+            <span className="postmark text-[10px] text-primary">.dev</span>
           </a>
 
-          {/* Desktop nav */}
+          {/* Desktop nav in Space Mono */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                className={`relative px-4 py-2 postmark rounded-lg transition-colors duration-200 ${
                   active === link.href.slice(1)
-                    ? "text-foreground"
+                    ? "text-primary font-bold"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {active === link.href.slice(1) && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-lg bg-white/5"
+                    className="absolute inset-0 rounded-lg bg-primary/10"
                     transition={{ type: "spring", stiffness: 350, damping: 35 }}
                   />
                 )}
@@ -103,15 +102,16 @@ export function Navbar() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 aria-label="Toggle theme"
               >
-                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                <OceanIcon name="sun" className="w-4 h-4" />
               </Button>
             )}
 
             <a
               href={portfolioConfig.resumeUrl}
               target="_blank" rel="noopener noreferrer"
-              className="ml-2 text-sm font-semibold px-4 py-2 rounded-lg border border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/60 transition-all duration-200 cursor-pointer"
+              className="ml-2 postmark px-4 py-2 rounded-lg border border-primary/40 text-primary hover:bg-primary/10 transition-all duration-200 cursor-pointer flex items-center gap-1.5"
             >
+              <OceanIcon name="terminal" className="w-3.5 h-3.5" />
               Resume
             </a>
           </div>
@@ -125,7 +125,7 @@ export function Navbar() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 aria-label="Toggle theme"
               >
-                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                <OceanIcon name="sun" className="w-4 h-4" />
               </Button>
             )}
             <button
@@ -133,12 +133,7 @@ export function Navbar() {
               className="p-2 text-muted-foreground hover:text-foreground"
               aria-label="Toggle menu"
             >
-              <AnimatePresence mode="wait">
-                {isOpen
-                  ? <motion.span key="x"    initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90,  opacity: 0 }} transition={{ duration: 0.15 }}><X    className="h-5 w-5" /></motion.span>
-                  : <motion.span key="menu" initial={{ rotate:  90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}><Menu className="h-5 w-5" /></motion.span>
-                }
-              </AnimatePresence>
+              <OceanIcon name="compass" className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -163,7 +158,7 @@ export function Navbar() {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="py-2.5 border-b border-border/50 last:border-0 text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className="py-2.5 border-b border-border/50 last:border-0 postmark text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.label}
                 </motion.a>
@@ -172,8 +167,9 @@ export function Navbar() {
                 href={portfolioConfig.resumeUrl}
                 target="_blank" rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
-                className="mt-3 text-center py-2.5 rounded-lg border border-primary/30 text-primary font-semibold hover:bg-primary/10 transition-colors"
+                className="mt-3 text-center py-2.5 rounded-lg border border-primary/40 text-primary font-semibold hover:bg-primary/10 transition-colors postmark flex items-center justify-center gap-2"
               >
+                <OceanIcon name="terminal" className="w-4 h-4" />
                 Resume
               </a>
             </div>
@@ -183,3 +179,4 @@ export function Navbar() {
     </>
   )
 }
+

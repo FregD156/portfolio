@@ -47,51 +47,51 @@
   --color-surface-hover: var(--surface-hover);
 }
 
-/* ─── DARK THEME (primary — matches gauravsaxena.site feel) ─────────── */
+/* ─── OCEAN SUNSET THEME ─────────── */
 :root,
 .dark {
-  --background: #141414;
-  --foreground: #e8e6e1;
-  --card: #1c1c1c;
-  --card-foreground: #e8e6e1;
-  --popover: #1c1c1c;
-  --popover-foreground: #e8e6e1;
+  --background: #081d2c;
+  --foreground: #f4f6f8;
+  --card: #0d283b;
+  --card-foreground: #f4f6f8;
+  --popover: #0d283b;
+  --popover-foreground: #f4f6f8;
 
-  /* Burnt orange — the hero accent */
-  --primary: #D97757;
+  /* Ocean Teal & Sunset Coral Accent */
+  --primary: #12B8A6;
   --primary-foreground: #ffffff;
 
-  --secondary: #252525;
-  --secondary-foreground: #e8e6e1;
-  --muted: #252525;
-  --muted-foreground: #888073;
-  --accent: #252525;
-  --accent-foreground: #e8e6e1;
+  --secondary: #14354c;
+  --secondary-foreground: #f4f6f8;
+  --muted: #14354c;
+  --muted-foreground: #94a3b8;
+  --accent: #14354c;
+  --accent-foreground: #f4f6f8;
 
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.07);
-  --input: rgba(255, 255, 255, 0.07);
-  --ring: #D97757;
-  --radius: 0.625rem;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #12B8A6;
+  --radius: 0.75rem;
 
-  --sidebar: #1c1c1c;
-  --sidebar-foreground: #e8e6e1;
-  --sidebar-primary: #D97757;
+  --sidebar: #0d283b;
+  --sidebar-foreground: #f4f6f8;
+  --sidebar-primary: #12B8A6;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #252525;
-  --sidebar-accent-foreground: #e8e6e1;
-  --sidebar-border: rgba(255, 255, 255, 0.07);
-  --sidebar-ring: #D97757;
+  --sidebar-accent: #14354c;
+  --sidebar-accent-foreground: #f4f6f8;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #12B8A6;
 
   /* Brand-specific tokens */
-  --orange: #D97757;
-  --orange-dim: #b05e3d;
-  --orange-glow: rgba(217, 119, 87, 0.15);
+  --orange: #FF9E7D;
+  --orange-dim: #d97d5e;
+  --orange-glow: rgba(255, 158, 125, 0.2);
 
-  --surface: rgba(28, 28, 28, 0.7);
-  --surface-hover: rgba(37, 37, 37, 0.9);
-  --badge-bg: rgba(255, 255, 255, 0.05);
+  --surface: rgba(13, 40, 59, 0.75);
+  --surface-hover: rgba(20, 53, 76, 0.9);
+  --badge-bg: rgba(255, 255, 255, 0.08);
 }
 
 /* ─── LIGHT THEME (optional toggle) ─────────────────────────────────── */
@@ -254,11 +254,103 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-/* ─── TACTILE PHYSICAL PRESS ─────────────────────────────────────────── */
-button:active,
-a[role="button"]:active,
-.btn-active:active,
-.button-active:active {
-  transform: scale(0.97) translateY(0.5px);
-  transition: transform 0.1s ease;
+/* ─── OCEAN SUNSET SKILL SPECIFIC STYLES ────────────────────────────────────────── */
+:root {
+  --font-fraunces: 'Fraunces', serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-space-mono: 'Space Mono', monospace;
+
+  --fs-caption: 0.8125rem;
+  --fs-body:    1rem;
+  --fs-body-lg: 1.0625rem;
+  --fs-h3:      1.25rem;
+  --fs-h2:      1.75rem;
+  --fs-h1:      clamp(2.5rem, 5.4vw, 4.125rem);
+  --lh-tight: 1.05;
+  --lh-normal: 1.65;
+
+  --wave-dark: #0F6E56;
+  --wave-mid:  #12B8A6;
+  --wave-light:#4FD8C4;
+  --wave-pale: #EAFBF7;
+}
+
+.font-fraunces { font-family: var(--font-fraunces), serif; }
+.font-jakarta { font-family: var(--font-jakarta), sans-serif; }
+.font-mono-tag { font-family: var(--font-space-mono), monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.eyebrow, .tag, .postmark {
+  font-family: var(--font-space-mono), monospace;
+  font-size: var(--fs-caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Ocean Hero canvas container */
+.ocean-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+.ocean-hero canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.ocean-hero .hero-content {
+  position: relative;
+  z-index: 10;
+}
+.ocean-hero .hero-content::before {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  background: linear-gradient(180deg, rgba(7,59,76,.18), rgba(7,59,76,0) 70%);
+  z-index: -1;
+  border-radius: 24px;
+}
+
+/* Palm leaf shadow swaying */
+.palm-shadow {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 280px;
+  height: 280px;
+  z-index: 5;
+  transform-origin: bottom left;
+  animation: sway 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .palm-shadow { animation: none; }
+}
+
+/* Section transition morphing wave */
+.section-transition {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+}
+
+/* Icon class */
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  display: inline-block;
+  vertical-align: -0.2em;
+  stroke: currentColor;
+  fill: none;
+}
+.icon-lg {
+  width: 2rem;
+  height: 2rem;
 }
