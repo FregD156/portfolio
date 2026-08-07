@@ -24,7 +24,7 @@ const doubled = [...icons, ...icons]
 
 export function TechStrip() {
   return (
-    <section className="py-12 border-y border-border/60 bg-background/50 backdrop-blur-sm overflow-hidden" id="tech-strip">
+    <section className="py-12 bg-white/5 backdrop-blur-md overflow-hidden relative" id="tech-strip">
       <div className="max-w-6xl mx-auto px-6 mb-4 flex items-center justify-between gap-4">
         <p className="font-jakarta text-xs text-teal-100/80 font-bold uppercase tracking-wider flex items-center gap-2">
           <OceanIcon name="wave" className="w-4 h-4 text-primary" />

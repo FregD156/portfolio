@@ -19,11 +19,9 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 w-full" id="main-content">
         <HeroOcean />
-        <MorphWaveDivider from="hero" to="tech" />
         <TechStrip />
         <Stats />
         <About />
-        <MorphWaveDivider from="about" to="projects" />
         <Projects />
         <Experience />
         <Contact />

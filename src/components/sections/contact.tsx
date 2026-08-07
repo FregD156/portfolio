@@ -34,7 +34,7 @@ export function Contact() {
   }
 
   return (
-    <section className="py-28 border-t border-border/60 relative overflow-hidden" id="contact">
+    <section className="py-28 relative overflow-hidden" id="contact">
       <div className="max-w-6xl mx-auto px-6 relative">
 
         {/* Header */}

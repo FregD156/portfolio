@@ -13,7 +13,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="py-20 border-b border-border/60 relative overflow-hidden" id="stats">
+    <section className="py-20 relative overflow-hidden" id="stats">
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-border/60">
           {stats.map((s, i) => (

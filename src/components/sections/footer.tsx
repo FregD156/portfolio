@@ -9,7 +9,7 @@ const stack = ["Next.js 16", "React 19", "Tailwind CSS v4", "Canvas 2D"]
 export function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="border-t border-border/60 py-12 bg-background/90 relative overflow-hidden">
+    <footer className="py-12 bg-[#021B27]/80 backdrop-blur-xl border-t border-teal-300/20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
 
