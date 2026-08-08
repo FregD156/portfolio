@@ -99,9 +99,9 @@ export function About() {
                       <span className="text-sm font-bold text-white">{lang.name}</span>
                       <span className="font-mono text-xs text-[#FDE68A] font-bold">{lang.level}</span>
                     </div>
-                    <div className="h-2.5 bg-[#021c28] poly-badge overflow-hidden border border-teal-300/30">
+                    <div className="h-3.5 md:h-4 bg-[#01141e] overflow-hidden border border-[#2DD4BF]/60 shadow-[inset_0_2px_8px_rgba(0,0,0,0.8)]" style={{ clipPath: "polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)" }}>
                       <motion.div
-                        className="h-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#FDE68A]"
+                        className="h-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#FDE68A] shadow-[0_0_12px_rgba(45,212,191,0.8)]"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${lang.pct}%` }}
                         viewport={{ once: true }}
