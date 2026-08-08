@@ -51,9 +51,9 @@
 .light {
   --background: #0284C7;
   --foreground: #ffffff;
-  --card: rgba(255, 255, 255, 0.35);
+  --card: rgba(2, 40, 60, 0.85);
   --card-foreground: #ffffff;
-  --popover: rgba(2, 132, 199, 0.95);
+  --popover: rgba(2, 40, 60, 0.95);
   --popover-foreground: #ffffff;
 
   --primary: #FDE68A;
@@ -62,7 +62,7 @@
   --secondary-foreground: #ffffff;
 
   --muted: rgba(255, 255, 255, 0.25);
-  --muted-foreground: #f0fdfa;
+  --muted-foreground: #E0F2FE;
   --accent: #2DD4BF;
   --accent-foreground: #022433;
 
@@ -72,8 +72,8 @@
 
   --gold-sand: #FDE68A;
   --gold-warm: #F59E0B;
-  --surface: rgba(255, 255, 255, 0.35);
-  --surface-hover: rgba(255, 255, 255, 0.45);
+  --surface: rgba(2, 40, 60, 0.85);
+  --surface-hover: rgba(2, 50, 75, 0.92);
 }
 
 /* ─── BIỂN BAN ĐÊM (FRESH BIOLUMINESCENT LAGOON - DARK MODE) ─── */
@@ -81,9 +81,9 @@
 .dark {
   --background: #034F6B;
   --foreground: #ffffff;
-  --card: rgba(6, 182, 212, 0.22);
+  --card: rgba(2, 34, 48, 0.88);
   --card-foreground: #ffffff;
-  --popover: rgba(3, 79, 107, 0.95);
+  --popover: rgba(2, 34, 48, 0.95);
   --popover-foreground: #ffffff;
 
   --primary: #2DD4BF;
@@ -92,7 +92,7 @@
   --secondary-foreground: #ffffff;
 
   --muted: rgba(45, 212, 191, 0.2);
-  --muted-foreground: #ccfbff;
+  --muted-foreground: #E2F8FF;
   --accent: #FDE68A;
   --accent-foreground: #022433;
 
@@ -102,8 +102,8 @@
 
   --gold-sand: #FDE68A;
   --gold-warm: #F59E0B;
-  --surface: rgba(6, 182, 212, 0.25);
-  --surface-hover: rgba(45, 212, 191, 0.35);
+  --surface: rgba(2, 34, 48, 0.88);
+  --surface-hover: rgba(3, 48, 68, 0.95);
 }
 
 /* ─── BASE ───────────────────────────────────────────────────────────── */

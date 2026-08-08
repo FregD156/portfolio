@@ -454,7 +454,7 @@ export function HeroOcean() {
             Software Engineer & AI Builder
           </p>
 
-          <p className="font-jakarta text-sm md:text-base text-teal-100/90 leading-relaxed max-w-[45ch] mb-8 font-medium drop-shadow-sm">
+          <p className="font-jakarta text-sm md:text-base text-white leading-relaxed max-w-[45ch] mb-8 font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">
             Engineering Graph-RAG architectures & high-performance backend systems at UTT Hanoi.
           </p>
 
@@ -557,7 +557,7 @@ export function HeroOcean() {
             {/* Orbiting Equatorial Glow Path Ring */}
             <div className="absolute inset-0 rounded-full border border-teal-200/40 pointer-events-none shadow-[0_0_50px_rgba(45,212,191,0.5)]" />
 
-            {/* --- ORBITING ACHIEVEMENT BADGES (Fresh, Vibrant, Crystal Clear Glass Pills) --- */}
+            {/* --- ORBITING ACHIEVEMENT BADGES (High-Contrast Dark Glass Pills with Crisp Pure White Text) --- */}
 
             {/* Orbiting Badge #1: Top 6 AI Hackathon 2026 (Top-Right Orbit) */}
             <motion.div
@@ -566,9 +566,9 @@ export function HeroOcean() {
               whileHover={{ scale: 1.05 }}
               className="absolute -top-6 -right-4 md:-right-10 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/80 bg-white/25 backdrop-blur-2xl shadow-[0_4px_20px_rgba(253,230,138,0.45)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
                 <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
-                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white drop-shadow-sm">
+                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   Top 6 <span className="text-[#FDE68A]">· AI Hackathon</span>
                 </span>
               </div>
@@ -581,9 +581,9 @@ export function HeroOcean() {
               whileHover={{ scale: 1.05 }}
               className="absolute -top-5 -left-4 md:-left-12 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/80 bg-white/25 backdrop-blur-2xl shadow-[0_4px_20px_rgba(45,212,191,0.45)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2DD4BF] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
                 <OceanIcon name="star" className="w-3.5 h-3.5 text-[#2DD4BF] group-hover:scale-110 transition-transform" />
-                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white drop-shadow-sm">
+                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   GPA <span className="text-[#2DD4BF]">3.64 / 4.00</span>
                 </span>
               </div>
@@ -596,9 +596,9 @@ export function HeroOcean() {
               whileHover={{ scale: 1.05 }}
               className="absolute -bottom-5 -right-4 md:-right-8 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/80 bg-white/25 backdrop-blur-2xl shadow-[0_4px_20px_rgba(253,230,138,0.45)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
                 <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
-                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white drop-shadow-sm">
+                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   3rd Place <span className="text-[#FDE68A]">· Social AI</span>
                 </span>
               </div>
