@@ -264,19 +264,19 @@ export function OceanDepthCanvas() {
         return `rgb(${r}, ${gCol}, ${b})`;
       };
 
-      // 3 Depth Keyframe Palettes: 0.0 (Shallow) -> 0.5 (Mid) -> 1.0 (Deep Abyssal)
+      // 3 Fresh Depth Keyframe Palettes: 0.0 (Vibrant Summer) -> 0.5 (Mid Turquoise) -> 1.0 (Fresh Deep Lagoon)
       let topColor: string, midColor: string, botColor: string;
 
       if (currentScrollProgress < 0.5) {
         const p = currentScrollProgress / 0.5;
-        topColor = lerpRGB([3, 105, 161], [12, 74, 110], p);
-        midColor = lerpRGB([7, 89, 133], [8, 51, 68], p);
-        botColor = lerpRGB([12, 74, 110], [5, 25, 35], p);
+        topColor = lerpRGB([2, 132, 199], [3, 79, 107], p);
+        midColor = lerpRGB([6, 182, 212], [6, 110, 140], p);
+        botColor = lerpRGB([45, 212, 191], [12, 74, 110], p);
       } else {
         const p = (currentScrollProgress - 0.5) / 0.5;
-        topColor = lerpRGB([12, 74, 110], [5, 25, 35], p);
-        midColor = lerpRGB([8, 51, 68], [4, 20, 30], p);
-        botColor = lerpRGB([5, 25, 35], [2, 10, 17], p);
+        topColor = lerpRGB([3, 79, 107], [2, 48, 69], p);
+        midColor = lerpRGB([6, 110, 140], [4, 60, 84], p);
+        botColor = lerpRGB([12, 74, 110], [3, 35, 52], p);
       }
 
       g.addColorStop(0, topColor);

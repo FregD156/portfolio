@@ -51,7 +51,7 @@
 .light {
   --background: #0284C7;
   --foreground: #ffffff;
-  --card: rgba(255, 255, 255, 0.22);
+  --card: rgba(255, 255, 255, 0.35);
   --card-foreground: #ffffff;
   --popover: rgba(2, 132, 199, 0.95);
   --popover-foreground: #ffffff;
@@ -61,49 +61,49 @@
   --secondary: #38BDF8;
   --secondary-foreground: #ffffff;
 
-  --muted: rgba(255, 255, 255, 0.2);
-  --muted-foreground: #e0f2fe;
+  --muted: rgba(255, 255, 255, 0.25);
+  --muted-foreground: #f0fdfa;
   --accent: #2DD4BF;
   --accent-foreground: #022433;
 
-  --border: rgba(255, 255, 255, 0.45);
-  --input: rgba(255, 255, 255, 0.35);
+  --border: rgba(255, 255, 255, 0.6);
+  --input: rgba(255, 255, 255, 0.4);
   --ring: #FDE68A;
 
   --gold-sand: #FDE68A;
   --gold-warm: #F59E0B;
-  --surface: rgba(255, 255, 255, 0.25);
-  --surface-hover: rgba(255, 255, 255, 0.35);
+  --surface: rgba(255, 255, 255, 0.35);
+  --surface-hover: rgba(255, 255, 255, 0.45);
 }
 
-/* ─── BIỂN VỀ ĐÊM (DEEP OCEAN NIGHT LAGOON - DARK MODE) ─── */
+/* ─── BIỂN BAN ĐÊM (FRESH BIOLUMINESCENT LAGOON - DARK MODE) ─── */
 :root,
 .dark {
-  --background: #01141E;
-  --foreground: #f0fdfa;
-  --card: rgba(4, 50, 71, 0.85);
+  --background: #034F6B;
+  --foreground: #ffffff;
+  --card: rgba(6, 182, 212, 0.22);
   --card-foreground: #ffffff;
-  --popover: rgba(4, 50, 71, 0.95);
+  --popover: rgba(3, 79, 107, 0.95);
   --popover-foreground: #ffffff;
 
   --primary: #2DD4BF;
-  --primary-foreground: #01141E;
-  --secondary: #084c61;
-  --secondary-foreground: #f0fdfa;
+  --primary-foreground: #022433;
+  --secondary: #0682A6;
+  --secondary-foreground: #ffffff;
 
-  --muted: rgba(6, 182, 212, 0.15);
-  --muted-foreground: #94a3b8;
+  --muted: rgba(45, 212, 191, 0.2);
+  --muted-foreground: #ccfbff;
   --accent: #FDE68A;
-  --accent-foreground: #01141E;
+  --accent-foreground: #022433;
 
-  --border: rgba(45, 212, 191, 0.35);
-  --input: rgba(45, 212, 191, 0.3);
+  --border: rgba(45, 212, 191, 0.45);
+  --input: rgba(45, 212, 191, 0.35);
   --ring: #2DD4BF;
 
   --gold-sand: #FDE68A;
   --gold-warm: #F59E0B;
-  --surface: rgba(4, 50, 71, 0.85);
-  --surface-hover: rgba(8, 70, 98, 0.95);
+  --surface: rgba(6, 182, 212, 0.25);
+  --surface-hover: rgba(45, 212, 191, 0.35);
 }
 
 /* ─── BASE ───────────────────────────────────────────────────────────── */
