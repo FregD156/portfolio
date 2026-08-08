@@ -622,18 +622,15 @@ export function HeroOcean() {
 
 
 
-          {/* Slender Fluid Signature Typography Headline for "Nguyen Thanh Duy" */}
+          {/* Slender Fluid Signature Typography Headline for "FregD" */}
           <div className="relative mb-3">
-            <h1 className="font-signature text-5xl sm:text-6xl md:text-7xl lg:text-[5.4rem] font-normal leading-[1.1] tracking-wide antialiased">
-              <span className="bg-gradient-to-r from-white via-teal-100 to-[#2DD4BF] bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(45,212,191,0.5)]">
-                Nguyen
-              </span>{" "}
-              <span className="bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-white bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(253,230,138,0.6)]">
-                Thanh Duy
+            <h1 className="font-signature text-6xl sm:text-7xl md:text-8xl lg:text-[6rem] font-normal leading-[1.05] tracking-wide antialiased">
+              <span className="bg-gradient-to-r from-white via-[#2DD4BF] to-[#FDE68A] bg-clip-text text-transparent drop-shadow-[0_4px_22px_rgba(45,212,191,0.65)]">
+                FregD
               </span>
             </h1>
             {/* Sleek Signature Underline Flourish Line */}
-            <div className="h-[1.5px] w-36 bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-transparent rounded-full mt-1 shadow-[0_0_12px_rgba(45,212,191,0.8)]" />
+            <div className="h-[1.5px] w-28 bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-transparent rounded-full mt-1 shadow-[0_0_12px_rgba(45,212,191,0.8)]" />
           </div>
 
           <p className="font-fraunces text-xl md:text-2xl text-[#FDE68A] italic mb-4 drop-shadow-md">
