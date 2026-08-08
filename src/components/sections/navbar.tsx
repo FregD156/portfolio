@@ -67,11 +67,14 @@ export function Navbar() {
       >
         <div className="max-w-6xl mx-auto h-full px-6 flex justify-between items-center">
 
-          {/* Logo in Fraunces */}
-          <a href="#" className="font-fraunces text-lg md:text-xl font-bold tracking-tight flex items-center gap-2 group">
-            <OceanIcon name="wave" className="w-5 h-5 text-[#2DD4BF] transition-transform group-hover:rotate-12" />
-            <span className="text-white font-extrabold">FregD</span>
-            <span className="font-mono text-xs text-[#FDE68A] font-bold">.dev</span>
+          {/* 3D Crystalline Gemstone Brand Logo */}
+          <a href="#" className="font-fraunces text-lg md:text-xl font-bold tracking-tight flex items-center gap-2.5 group">
+            <div className="p-1.5 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#022433] to-[#FDE68A] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_10px_rgba(45,212,191,0.6)] group-hover:scale-110 transition-transform">
+              <OceanIcon name="wave" className="w-4 h-4 text-[#FDE68A] transition-transform group-hover:rotate-12" />
+            </div>
+            <span className="bg-gradient-to-r from-white via-[#FDE68A] to-[#2DD4BF] bg-clip-text text-transparent font-extrabold tracking-tight">
+              Nguyen Thanh Duy
+            </span>
           </a>
 
           {/* Desktop nav */}

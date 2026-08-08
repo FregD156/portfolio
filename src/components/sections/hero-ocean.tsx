@@ -620,9 +620,22 @@ export function HeroOcean() {
         >
 
 
-          {/* Headline in Fraunces */}
-          <h1 className="font-fraunces text-4xl md:text-5xl lg:text-[3.8rem] font-extrabold leading-[1.05] text-white tracking-tight mb-3 drop-shadow-lg">
-            Nguyen Thanh Duy
+          {/* 3D Crystalline Gemstone Facet Header Badge */}
+          <div className="mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 poly-badge bg-[#022433]/90 border border-[#FDE68A]/80 shadow-[0_0_15px_rgba(253,230,138,0.4)] backdrop-blur-md">
+            <span className="w-2 h-2 poly-octagon bg-[#2DD4BF] animate-pulse" />
+            <span className="font-mono text-xs text-[#FDE68A] font-extrabold uppercase tracking-widest">
+              CAPTAIN & SOFTWARE ENGINEER
+            </span>
+          </div>
+
+          {/* 3D Crystalline Gemstone Facet Headline for "Nguyen Thanh Duy" */}
+          <h1 className="font-fraunces text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-black leading-[1.04] tracking-tight mb-3 drop-shadow-[0_10px_25px_rgba(0,0,0,0.85)]">
+            <span className="bg-gradient-to-r from-white via-teal-100 to-[#2DD4BF] bg-clip-text text-transparent">
+              Nguyen
+            </span>{" "}
+            <span className="bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-white bg-clip-text text-transparent drop-shadow-[0_0_22px_rgba(45,212,191,0.7)]">
+              Thanh Duy
+            </span>
           </h1>
 
           <p className="font-fraunces text-xl md:text-2xl text-[#FDE68A] italic mb-4 drop-shadow-md">
