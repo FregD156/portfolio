@@ -16,17 +16,27 @@ const cloudLayers = [
 ];
 
 const waveLayers = [
-  { baseY: 0.55, color: "15,110,86",   alpha: 0.35, freq1: 0.004, freq2: 0.011, freq3: 0.002, amp1: 10, amp2: 5, amp3: 14, speed1: 0.6, speed2: 1.1, speed3: 0.3 },
-  { baseY: 0.65, color: "18,184,166",  alpha: 0.50, freq1: 0.005, freq2: 0.013, freq3: 0.003, amp1: 14, amp2: 7, amp3: 18, speed1: 0.8, speed2: 1.4, speed3: 0.4 },
-  { baseY: 0.78, color: "79,216,196",  alpha: 0.70, freq1: 0.006, freq2: 0.016, freq3: 0.004, amp1: 18, amp2: 9, amp3: 22, speed1: 1.0, speed2: 1.8, speed3: 0.5 },
-  { baseY: 0.90, color: "234,251,247", alpha: 0.90, freq1: 0.007, freq2: 0.02,  freq3: 0.005, amp1: 10, amp2: 6, amp3: 12, speed1: 1.3, speed2: 2.2, speed3: 0.6 },
+  { baseY: 0.52, color: "4,44,61",     alpha: 0.55, freq1: 0.0035, freq2: 0.008, freq3: 0.0018, amp1: 18, amp2: 10, amp3: 16, speed1: 0.7, speed2: 1.1, speed3: 0.4 },
+  { baseY: 0.62, color: "14,165,233",  alpha: 0.65, freq1: 0.0045, freq2: 0.011, freq3: 0.0025, amp1: 22, amp2: 12, amp3: 20, speed1: 0.9, speed2: 1.4, speed3: 0.5 },
+  { baseY: 0.75, color: "45,212,191",  alpha: 0.80, freq1: 0.0055, freq2: 0.014, freq3: 0.0035, amp1: 26, amp2: 14, amp3: 24, speed1: 1.2, speed2: 1.8, speed3: 0.6 },
+  { baseY: 0.88, color: "224,242,254", alpha: 0.95, freq1: 0.0070, freq2: 0.018, freq3: 0.0045, amp1: 16, amp2: 9,  amp3: 15, speed1: 1.5, speed2: 2.3, speed3: 0.8 },
 ];
 
 function waveY(x: number, t: number, layer: (typeof waveLayers)[0]) {
+  // Trochoidal Fluid Wave Physics (Nhô Đỉnh Sắc & Thung Lũng Sóng Rộng Mượt Như Nước Thật)
+  const w1 = Math.sin(x * layer.freq1 + t * layer.speed1);
+  const w2 = Math.cos(x * layer.freq2 - t * layer.speed2 * 1.3);
+  const w3 = Math.sin(x * layer.freq3 * 0.7 + t * layer.speed3 * 0.9 + Math.sin(t * 0.4));
+  
+  // Sharp Trochoidal Crest Power
+  const trochoid1 = Math.pow((w1 + 1) * 0.5, 1.6) * 2 - 1;
+  const trochoid2 = Math.pow((w2 + 1) * 0.5, 1.4) * 2 - 1;
+
   return (
-    Math.sin(x * layer.freq1 + t * layer.speed1) * layer.amp1 +
-    Math.sin(x * layer.freq2 + t * layer.speed2) * layer.amp2 +
-    Math.sin(x * layer.freq3 * 0.5 + t * layer.speed3 * 0.7) * layer.amp3 * 0.5
+    trochoid1 * layer.amp1 +
+    trochoid2 * layer.amp2 +
+    w3 * layer.amp3 * 0.6 +
+    Math.sin(x * 0.015 + t * 2.2) * 3.5
   );
 }
 
