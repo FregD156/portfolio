@@ -100,15 +100,15 @@ export function Experience() {
 
         {/* Pirate Ship Rigging Line & Hook Timeline (Aligned Left & Expanded Width) */}
         <div className="relative pl-4 md:pl-44">
-          {/* Top Master Anchor Icon */}
+          {/* Top Master 3D Crystalline Gemstone Node */}
           <div className="absolute left-[-2px] md:left-[150px] -top-5 z-20">
-            <div className="p-1 rounded-full border border-[#FDE68A] bg-[#022433] text-[#FDE68A] shadow-[0_0_12px_rgba(253,230,138,0.5)]">
-              <OceanIcon name="anchor" className="w-3.5 h-3.5" />
+            <div className="p-1.5 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_15px_rgba(253,230,138,0.7)]">
+              <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#FDE68A]" />
             </div>
           </div>
 
           {/* Vertical Progression Rope Line */}
-          <div className="absolute left-[7px] md:left-[159px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm rounded-full" />
+          <div className="absolute left-[7px] md:left-[159px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm poly-badge" />
 
           {/* Expanded Experience Cards Container */}
           <div className="space-y-6 pl-4 md:pl-6 w-full">
@@ -131,13 +131,13 @@ export function Experience() {
                   </span>
                 </div>
 
-                {/* Golden Brass Anchor Hook Node (Móc Treo Hải Tặc) */}
+                {/* 3D Crystalline Low-Poly Gemstone Facet Timeline Node */}
                 <div className="absolute -left-8 md:-left-[43px] top-3.5 z-20 flex items-center">
-                  <div className="w-6 h-6 md:w-7 md:h-7 rounded-full border border-[#FDE68A] bg-[#022433] flex items-center justify-center text-[#FDE68A] shadow-md group-hover:scale-110 group-hover:bg-[#FDE68A] group-hover:text-[#022433] transition-all">
-                    <OceanIcon name="anchor" className="w-3 h-3" />
+                  <div className="w-6 h-6 md:w-7 md:h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#022433] to-[#FDE68A] border border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_12px_rgba(45,212,191,0.65)] group-hover:scale-115 group-hover:border-[#2DD4BF] group-hover:text-white transition-all duration-300">
+                    <OceanIcon name="anchor" className="w-3 h-3 text-[#FDE68A] group-hover:text-white transition-colors" />
                   </div>
-                  {/* Hook Line Connector */}
-                  <div className="w-3 md:w-5 h-[1.5px] bg-[#FDE68A]/60" />
+                  {/* Facet Line Connector */}
+                  <div className="w-3 md:w-5 h-[2px] bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF]" />
                 </div>
 
                 {/* Expanded Sleek Experience Frame */}
@@ -261,7 +261,7 @@ export function Experience() {
                       href={selectedCert.certificatePdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="postmark inline-flex items-center gap-2 text-xs font-bold px-5 py-2.5 rounded-full border border-primary/40 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer shadow-sm"
+                      className="postmark inline-flex items-center gap-2 text-xs font-bold px-5 py-2.5 poly-badge border border-primary/40 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer shadow-sm"
                     >
                       <OceanIcon name="terminal" className="w-4 h-4" />
                       Open Certificate PDF <OceanIcon name="external" className="w-3.5 h-3.5" />
