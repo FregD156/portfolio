@@ -249,56 +249,42 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Organic Natural Cumulus Cloud Silhouettes (Tạo Hình Dáng Mây Hữu Cơ Tự Nhiên 100%)
+      // Ultra-Sleek Minimalist Modern Horizon Wisps (Dải Mây Sương Ngang Tối Giản, Tinh Tế & Hiện Đại)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
-          const cx = (((i * spread + time * layer.speed * 12) % (w + spread * layer.scale)) - spread * layer.scale);
-          const cy = h * layer.y + Math.sin(time * 0.08 + i) * 6;
-          const baseSize = layer.scale * 80;
+          const cx = (((i * spread + time * layer.speed * 14) % (w + spread * layer.scale * 2.5)) - spread * layer.scale * 0.5);
+          const cy = h * layer.y + Math.sin(time * 0.05 + i * 2) * 4;
+          const cloudLength = layer.scale * 240 + (i % 3) * 60;
+          const cloudHeight = 12 + layer.scale * 8;
 
-          // Organic Asymmetrical Cumulus Puffs Layout: [dx, dy, rx_ratio, ry_ratio, pIdx]
-          // Flat bottom base puffs + billowing top domes
-          const puffs: [number, number, number, number, number][] = [
-            // Flat Bottom Base Layer (Đáy Mây Phẳng Bằng Tự Nhiên)
-            [0, baseSize * 0.12, 1.25, 0.42, 0],
-            [-baseSize * 0.45, baseSize * 0.14, 0.85, 0.38, 1],
-            [baseSize * 0.48, baseSize * 0.14, 0.88, 0.38, 2],
-            // Billowing Top Domes (Đỉnh Mây Bồng Vồng Tự Nhiên)
-            [-baseSize * 0.22, -baseSize * 0.15, 0.75, 0.65, 3],
-            [0, -baseSize * 0.28, 0.88, 0.72, 4],
-            [baseSize * 0.25, -baseSize * 0.18, 0.78, 0.62, 5],
-            [-baseSize * 0.52, -baseSize * 0.05, 0.55, 0.52, 6],
-            [baseSize * 0.55, -baseSize * 0.05, 0.58, 0.52, 7],
-          ];
+          // Horizontal Tapered Linear Mist Ribbon
+          const cloudGrad = skyCtx.createLinearGradient(cx - cloudLength * 0.5, cy, cx + cloudLength * 0.5, cy);
 
-          puffs.forEach(([dx, dy, rxRatio, ryRatio, pIdx]) => {
-            const morph = Math.sin(time * 0.25 + i * 1.5 + pIdx) * 0.04;
-            const px = cx + dx;
-            const py = cy + dy;
-            const rx = baseSize * (rxRatio + morph) * 0.5;
-            const ry = baseSize * (ryRatio + morph) * 0.5;
+          if (isDark) {
+            cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
+            cloudGrad.addColorStop(0.25, "rgba(240, 249, 255, 0.45)");
+            cloudGrad.addColorStop(0.5, "rgba(186, 230, 253, 0.65)");
+            cloudGrad.addColorStop(0.75, "rgba(240, 249, 255, 0.45)");
+            cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+          } else {
+            cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
+            cloudGrad.addColorStop(0.25, "rgba(255, 255, 255, 0.65)");
+            cloudGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.92)");
+            cloudGrad.addColorStop(0.75, "rgba(255, 255, 255, 0.65)");
+            cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+          }
 
-            // Soft Feathering Radial Gradient (Light Mode: Pure White / Dark Mode: Silver Moonlight)
-            const cloudGrad = skyCtx.createRadialGradient(px, py - ry * 0.3, rx * 0.1, px, py, Math.max(rx, ry));
-            if (isDark) {
-              // Mystic Silver Moonlight Night Clouds (Mây Đêm Tráng Bạc Ánh Trăng Chân Thực 100%)
-              cloudGrad.addColorStop(0, "rgba(240, 249, 255, 0.88)");
-              cloudGrad.addColorStop(0.35, "rgba(186, 230, 253, 0.65)");
-              cloudGrad.addColorStop(0.7, "rgba(56, 189, 248, 0.3)");
-              cloudGrad.addColorStop(1, "rgba(2, 34, 48, 0)");
-            } else {
-              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.96)");
-              cloudGrad.addColorStop(0.45, "rgba(255, 255, 255, 0.82)");
-              cloudGrad.addColorStop(0.8, "rgba(255, 255, 255, 0.42)");
-              cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-            }
+          skyCtx.fillStyle = cloudGrad;
+          skyCtx.beginPath();
+          skyCtx.ellipse(cx, cy, cloudLength * 0.5, cloudHeight * 0.5, 0, 0, Math.PI * 2);
+          skyCtx.fill();
 
-            skyCtx.fillStyle = cloudGrad;
-            skyCtx.beginPath();
-            skyCtx.ellipse(px, py, rx, ry, 0, 0, Math.PI * 2);
-            skyCtx.fill();
-          });
+          // Subtle Accent Floating Sub-Wisp
+          skyCtx.fillStyle = isDark ? "rgba(253, 230, 138, 0.25)" : "rgba(255, 255, 255, 0.45)";
+          skyCtx.beginPath();
+          skyCtx.ellipse(cx + cloudLength * 0.15, cy - cloudHeight * 0.35, cloudLength * 0.22, cloudHeight * 0.3, 0, 0, Math.PI * 2);
+          skyCtx.fill();
         }
       });
 
