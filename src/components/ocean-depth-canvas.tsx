@@ -121,32 +121,56 @@ export function OceanDepthCanvas() {
       wobble: Math.random() * Math.PI * 2,
     }));
 
-    // --- Helper Drawing Routines ---
+    // --- Masterpiece 3D Pixar Cartoon Shaded Drawing Routines ---
     const drawFish = (c: Creature, time: number) => {
       ctx.save();
       ctx.translate(c.x, c.y);
       if (c.direction === -1) ctx.scale(-1, 1);
       ctx.scale(c.scale, c.scale);
 
-      const tailWag = Math.sin(time * 7 + c.phase) * 4;
+      const tailWag = Math.sin(time * 8 + c.phase) * 5;
 
-      ctx.fillStyle = c.color;
+      // 3D Shaded Body (Convex Volume Gradient)
+      const bodyGrad = ctx.createLinearGradient(0, -8, 0, 8);
+      bodyGrad.addColorStop(0, "#FF7E5F");
+      bodyGrad.addColorStop(0.5, c.color);
+      bodyGrad.addColorStop(1, "#022433");
+      ctx.fillStyle = bodyGrad;
+
       ctx.beginPath();
-      ctx.ellipse(0, 0, 14, 6, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, 0, 16, 8, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Tail
+      // 3D Cartoon White Stripe Band
+      ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
       ctx.beginPath();
-      ctx.moveTo(-12, 0);
-      ctx.lineTo(-20, -7 + tailWag);
-      ctx.lineTo(-20, 7 + tailWag);
+      ctx.ellipse(-2, 0, 3.5, 7.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 3D Animated Tail Fin
+      ctx.fillStyle = c.color;
+      ctx.beginPath();
+      ctx.moveTo(-14, 0);
+      ctx.quadraticCurveTo(-22, -9 + tailWag, -25, -10 + tailWag);
+      ctx.quadraticCurveTo(-20, 0, -25, 10 + tailWag);
+      ctx.quadraticCurveTo(-22, 9 + tailWag, -14, 0);
       ctx.closePath();
       ctx.fill();
 
-      // Eye
-      ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+      // Expressive 3D Cartoon Eye
+      ctx.fillStyle = "#FFFFFF";
       ctx.beginPath();
-      ctx.arc(8, -2, 1.5, 0, Math.PI * 2);
+      ctx.arc(9, -2.5, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#01141E";
+      ctx.beginPath();
+      ctx.arc(10, -2.5, 1.3, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.beginPath();
+      ctx.arc(10.5, -3.2, 0.6, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.restore();
@@ -158,22 +182,41 @@ export function OceanDepthCanvas() {
       if (c.direction === -1) ctx.scale(-1, 1);
       ctx.scale(c.scale, c.scale);
 
-      const wingFlap = Math.sin(time * 2.2 + c.phase) * 6;
+      const wingFlap = Math.sin(time * 2.5 + c.phase) * 7;
 
-      ctx.fillStyle = c.color;
+      // 3D Wing Gradient with Top Light Sheen
+      const rayGrad = ctx.createLinearGradient(0, -30, 0, 30);
+      rayGrad.addColorStop(0, "#2DD4BF");
+      rayGrad.addColorStop(0.4, "#0682A6");
+      rayGrad.addColorStop(1, "#022433");
+      ctx.fillStyle = rayGrad;
+
       ctx.beginPath();
-      ctx.moveTo(25, 0);
-      ctx.quadraticCurveTo(0, -25 - wingFlap, -20, -5);
-      ctx.quadraticCurveTo(-15, 0, -20, 5);
-      ctx.quadraticCurveTo(0, 25 + wingFlap, 25, 0);
+      ctx.moveTo(28, 0);
+      ctx.quadraticCurveTo(2, -30 - wingFlap, -22, -6);
+      ctx.quadraticCurveTo(-16, 0, -22, 6);
+      ctx.quadraticCurveTo(2, 30 + wingFlap, 28, 0);
       ctx.closePath();
       ctx.fill();
 
-      ctx.strokeStyle = c.color;
+      // 3D Wing Edge Highlight
+      ctx.strokeStyle = "rgba(45, 212, 191, 0.6)";
       ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Dual 3D Cephalic Fins (Sừng Cá Đuối Cute)
+      ctx.fillStyle = "#2DD4BF";
       ctx.beginPath();
-      ctx.moveTo(-20, 0);
-      ctx.quadraticCurveTo(-35, Math.sin(time * 3) * 5, -50, 0);
+      ctx.arc(26, -5, 3, 0, Math.PI * 2);
+      ctx.arc(26, 5, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 3D Whip Tail
+      ctx.strokeStyle = "rgba(45, 212, 191, 0.8)";
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(-22, 0);
+      ctx.quadraticCurveTo(-40, Math.sin(time * 3.5) * 6, -60, 0);
       ctx.stroke();
 
       ctx.restore();
@@ -184,27 +227,53 @@ export function OceanDepthCanvas() {
       ctx.translate(c.x, c.y);
       ctx.scale(c.scale, c.scale);
 
-      const pulse = Math.sin(time * 2.8 + c.phase) * 3;
+      const pulse = Math.sin(time * 3.2 + c.phase) * 3.5;
 
-      const grad = ctx.createRadialGradient(0, -5, 0, 0, -5, 18);
-      grad.addColorStop(0, "rgba(255, 209, 102, 0.75)");
-      grad.addColorStop(0.7, c.color);
-      grad.addColorStop(1, "rgba(255, 126, 95, 0)");
-      ctx.fillStyle = grad;
+      // 3D Translucent Umbrella Bell (Convex Shading)
+      const bellGrad = ctx.createRadialGradient(0, -8, 2, 0, -8, 20);
+      bellGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+      bellGrad.addColorStop(0.3, "rgba(45, 212, 191, 0.85)");
+      bellGrad.addColorStop(0.85, c.color);
+      bellGrad.addColorStop(1, "rgba(2, 36, 51, 0.2)");
+      ctx.fillStyle = bellGrad;
 
       ctx.beginPath();
-      ctx.arc(0, -5, 16 + pulse, Math.PI, 0);
-      ctx.quadraticCurveTo(0, 5, 0, 5);
+      ctx.arc(0, -6, 18 + pulse, Math.PI, 0);
+      ctx.quadraticCurveTo(0, 6, 0, 6);
       ctx.closePath();
       ctx.fill();
 
-      ctx.strokeStyle = "rgba(255, 209, 102, 0.5)";
-      ctx.lineWidth = 1.4;
-      for (let i = -10; i <= 10; i += 5) {
+      // 3D Umbrella Rim Highlight Arc
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, -6, 18 + pulse, Math.PI * 1.1, Math.PI * 1.9);
+      ctx.stroke();
+
+      // 3D Bioluminescent Organ Core
+      const organGrad = ctx.createRadialGradient(0, -4, 0, 0, -4, 8);
+      organGrad.addColorStop(0, "#FDE68A");
+      organGrad.addColorStop(1, "rgba(253, 230, 138, 0)");
+      ctx.fillStyle = organGrad;
+      ctx.beginPath();
+      ctx.arc(0, -4, 7, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 3D Wavy Tentacles with Glowing Spore Tips
+      for (let i = -12; i <= 12; i += 4.5) {
+        const sway = Math.sin(time * 3.5 + i + c.phase) * 6;
+        ctx.strokeStyle = i % 2 === 0 ? "rgba(45, 212, 191, 0.85)" : "rgba(253, 230, 138, 0.85)";
+        ctx.lineWidth = 1.6;
         ctx.beginPath();
-        ctx.moveTo(i, 5);
-        ctx.quadraticCurveTo(i + Math.sin(time * 3 + i) * 6, 20, i + Math.sin(time * 2 + i) * 4, 35);
+        ctx.moveTo(i, 6);
+        ctx.quadraticCurveTo(i + sway * 0.5, 22, i + sway, 38);
         ctx.stroke();
+
+        // 3D Glowing Spore Tip
+        ctx.fillStyle = i % 2 === 0 ? "#2DD4BF" : "#FDE68A";
+        ctx.beginPath();
+        ctx.arc(i + sway, 38, 2, 0, Math.PI * 2);
+        ctx.fill();
       }
 
       ctx.restore();
@@ -216,29 +285,52 @@ export function OceanDepthCanvas() {
       if (c.direction === -1) ctx.scale(-1, 1);
       ctx.scale(c.scale, c.scale);
 
-      const paddle = Math.sin(time * 2.2 + c.phase) * 8;
+      const paddle = Math.sin(time * 2.4 + c.phase) * 9;
 
+      // 3D Carapace Shell Gradient
+      const shellGrad = ctx.createRadialGradient(0, 0, 2, 0, 0, 18);
+      shellGrad.addColorStop(0, "#FDE68A");
+      shellGrad.addColorStop(0.5, c.color);
+      shellGrad.addColorStop(1, "#022433");
+      ctx.fillStyle = shellGrad;
+
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 18, 13, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 3D Carapace Shell Rim Highlight
+      ctx.strokeStyle = "rgba(253, 230, 138, 0.8)";
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
+
+      // 3D Turtle Head
       ctx.fillStyle = c.color;
       ctx.beginPath();
-      ctx.ellipse(0, 0, 16, 12, 0, 0, Math.PI * 2);
+      ctx.arc(20, 0, 5.5, 0, Math.PI * 2);
       ctx.fill();
 
+      // Cute 3D Cartoon Eye
+      ctx.fillStyle = "#FFFFFF";
       ctx.beginPath();
-      ctx.arc(18, 0, 5, 0, Math.PI * 2);
+      ctx.arc(22, -2, 1.8, 0, Math.PI * 2);
       ctx.fill();
 
+      ctx.fillStyle = "#01141E";
       ctx.beginPath();
-      ctx.moveTo(6, -8);
-      ctx.quadraticCurveTo(15, -22 + paddle, 4, -20);
+      ctx.arc(22.5, -2, 0.9, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 3D Flippers
+      ctx.fillStyle = c.color;
+      ctx.beginPath();
+      ctx.moveTo(8, -9);
+      ctx.quadraticCurveTo(18, -25 + paddle, 4, -22);
       ctx.closePath();
       ctx.fill();
 
       ctx.beginPath();
-      ctx.moveTo(6, 8);
-      ctx.quadraticCurveTo(15, 22 - paddle, 4, 20);
-      ctx.closePath();
-      ctx.fill();
-
+      ctx.moveTo(8, 9);
+      ctx.quadraticCurveTo(18, 25 - paddle, 4, 22);
       ctx.restore();
     };
 
@@ -286,7 +378,7 @@ export function OceanDepthCanvas() {
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Global Ocean Ambient Waves
+      // 2a. Global Ocean Ambient Waves
       const waveAlpha = 0.16 - currentScrollProgress * 0.08;
       ctx.fillStyle = `rgba(56, 189, 248, ${Math.max(0.05, waveAlpha)})`;
       ctx.beginPath();
@@ -298,6 +390,27 @@ export function OceanDepthCanvas() {
       ctx.lineTo(width, height);
       ctx.closePath();
       ctx.fill();
+
+      // 2b. 3D Volumetric Ocean Sunlight Beams (Tia Sáng 3D Chiếu Thủy Tinh)
+      const causticsCount = 4;
+      for (let i = 0; i < causticsCount; i++) {
+        const beamX = (width / causticsCount) * i + Math.sin(t * 0.4 + i) * 60;
+        const beamWidth = 80 + Math.sin(t * 0.8 + i) * 20;
+
+        const beamGrad = ctx.createLinearGradient(beamX, 0, beamX + 150, height);
+        beamGrad.addColorStop(0, "rgba(255, 255, 255, 0.12)");
+        beamGrad.addColorStop(0.5, "rgba(45, 212, 191, 0.06)");
+        beamGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+        ctx.fillStyle = beamGrad;
+        ctx.beginPath();
+        ctx.moveTo(beamX, 0);
+        ctx.lineTo(beamX + beamWidth, 0);
+        ctx.lineTo(beamX + beamWidth + 180, height);
+        ctx.lineTo(beamX + 180, height);
+        ctx.closePath();
+        ctx.fill();
+      }
 
       // 3. Rising Sea Bubbles
       bubbles.forEach((b) => {
