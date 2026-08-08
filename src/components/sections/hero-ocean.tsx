@@ -620,9 +620,9 @@ export function HeroOcean() {
         >
 
 
-          {/* 3D Crystalline Gemstone Facet Header Badge */}
-          <div className="mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 poly-badge bg-[#022433]/90 border border-[#FDE68A]/80 shadow-[0_0_15px_rgba(253,230,138,0.4)] backdrop-blur-md">
-            <span className="w-2 h-2 poly-octagon bg-[#2DD4BF] animate-pulse" />
+          {/* 3D Crystalline Gemstone Chamfer Header Badge */}
+          <div className="mb-4 inline-flex items-center gap-2.5 px-4 py-2 poly-badge bg-gradient-to-r from-[#022433] via-[#043247] to-[#022433] border border-[#FDE68A] shadow-[0_0_20px_rgba(253,230,138,0.5)] backdrop-blur-xl">
+            <span className="w-2.5 h-2.5 poly-octagon bg-[#2DD4BF] animate-pulse shadow-[0_0_10px_#2DD4BF]" />
             <span className="font-mono text-xs text-[#FDE68A] font-extrabold uppercase tracking-widest">
               CAPTAIN & SOFTWARE ENGINEER
             </span>
