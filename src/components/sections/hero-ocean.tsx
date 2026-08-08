@@ -249,16 +249,15 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Volumetric 3D Fluffy Cumulus Clouds with 3D Sunset & Moonlight Shading
+      // Volumetric 3D Fluffy Cumulus Clouds (100% Crisp, Bold & Vivid Visibility)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
           const cx = (((i * spread + time * layer.speed * 22) % (w + spread * layer.scale)) - spread * layer.scale);
           const cy = h * layer.y + Math.sin(time * 0.15 + i) * 8;
-          const baseSize = layer.scale * 65;
-          const cloudAlpha = isDark ? layer.alpha * 0.45 : layer.alpha * 0.95;
+          const baseSize = layer.scale * 72;
 
-          // Cloud Puffs Array with 3D Volumetric Radial Shading
+          // Cloud Puffs Array with Vivid 3D Volumetric Radial Shading
           const puffs: [number, number, number][] = [
             [0, 0, 1.0],
             [baseSize * 0.55, -baseSize * 0.18, 0.82],
@@ -272,22 +271,31 @@ export function HeroOcean() {
             const py = cy + dy;
             const r = baseSize * scale * 0.48;
 
-            // 3D Volumetric Radial Shading
-            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.3, r * 0.1, px, py, r);
+            // Crisp 3D Volumetric Radial Gradient
+            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.35, r * 0.05, px, py, r);
             if (isDark) {
-              cloudGrad.addColorStop(0, `rgba(253, 230, 138, ${cloudAlpha * 0.9})`);
-              cloudGrad.addColorStop(0.4, `rgba(45, 212, 191, ${cloudAlpha * 0.6})`);
-              cloudGrad.addColorStop(1, `rgba(4, 50, 71, ${cloudAlpha * 0.2})`);
+              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+              cloudGrad.addColorStop(0.35, "rgba(253, 230, 138, 0.9)");
+              cloudGrad.addColorStop(0.75, "rgba(45, 212, 191, 0.8)");
+              cloudGrad.addColorStop(1, "rgba(4, 50, 71, 0.6)");
             } else {
-              cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${cloudAlpha})`);
-              cloudGrad.addColorStop(0.65, `rgba(254, 240, 138, ${cloudAlpha * 0.85})`);
-              cloudGrad.addColorStop(1, `rgba(224, 242, 254, ${cloudAlpha * 0.3})`);
+              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 1.0)");
+              cloudGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.95)");
+              cloudGrad.addColorStop(0.85, "rgba(253, 230, 138, 0.85)");
+              cloudGrad.addColorStop(1, "rgba(186, 230, 253, 0.7)");
             }
 
             skyCtx.fillStyle = cloudGrad;
             skyCtx.beginPath();
             skyCtx.arc(px, py, r, 0, Math.PI * 2);
             skyCtx.fill();
+
+            // Crisp Top Highlight Arc for Maximum Visibility
+            skyCtx.strokeStyle = "rgba(255, 255, 255, 0.85)";
+            skyCtx.lineWidth = 1.2;
+            skyCtx.beginPath();
+            skyCtx.arc(px, py, r, Math.PI * 1.1, Math.PI * 1.9);
+            skyCtx.stroke();
           });
         }
       });
