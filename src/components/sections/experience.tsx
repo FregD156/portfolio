@@ -110,9 +110,9 @@ export function Experience() {
 
         {/* Pirate Ship Rigging Line & Hook Timeline Container */}
         <div ref={timelineRef} className="relative pl-4 md:pl-44">
-          {/* Top Master 3D Crystalline Gemstone Node */}
-          <div className="absolute left-[-2px] md:-left-[37px] -top-6 z-20">
-            <div className="p-1.5 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_15px_rgba(253,230,138,0.7)]">
+          {/* Top Master 3D Crystalline Diamond Gemstone Node (Centered Perfectly on Spine) */}
+          <div className="absolute left-[-8px] md:-left-[41px] -top-6 z-20">
+            <div className="w-7 h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_18px_rgba(253,230,138,0.9)]">
               <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#FDE68A]" />
             </div>
           </div>
@@ -137,7 +137,7 @@ export function Experience() {
                 transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 className="relative group w-full"
               >
-                {/* Floating Date Badge Positioned Safely to the LEFT of Anchor Hook Icon */}
+                {/* Floating Date Badge Positioned Safely to the LEFT of Anchor Gemstone Node */}
                 <div className="hidden md:flex absolute -left-[210px] top-3.5 w-36 flex-col items-end text-right z-20">
                   <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/80 px-3 py-1 poly-badge shadow-md backdrop-blur-md group-hover:border-[#2DD4BF] group-hover:text-white transition-colors">
                     {item.duration}
@@ -147,13 +147,13 @@ export function Experience() {
                   </span>
                 </div>
 
-                {/* 3D Crystalline Low-Poly Gemstone Facet Timeline Node (Attached Directly to Spine) */}
-                <div className="absolute -left-8 md:-left-[43px] top-3.5 z-20 flex items-center">
-                  <div className="w-6 h-6 md:w-7 md:h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#022433] to-[#FDE68A] border border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_15px_rgba(45,212,191,0.7)] group-hover:scale-120 group-hover:border-[#2DD4BF] group-hover:text-white transition-all duration-300">
-                    <OceanIcon name="anchor" className="w-3 h-3 text-[#FDE68A] group-hover:text-white transition-colors" />
+                {/* 3D Crystalline Low-Poly Gemstone Facet Node (Centered Directly ON TOP of Spine Line) */}
+                <div className="absolute -left-[30px] md:-left-[41px] top-3.5 z-20 flex items-center">
+                  <div className="w-7 h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#022433] to-[#FDE68A] border-1.5 border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_16px_rgba(45,212,191,0.85)] group-hover:scale-125 group-hover:border-[#2DD4BF] group-hover:text-white transition-all duration-300">
+                    <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:text-white transition-colors" />
                   </div>
-                  {/* Facet Line Connector (Locking Card directly to Spine) */}
-                  <div className="w-3 md:w-5 h-[2px] bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF] shadow-[0_0_8px_rgba(253,230,138,0.8)]" />
+                  {/* Glowing Facet Beam Connector (Locking Node directly into Content Card) */}
+                  <div className="w-3 md:w-5 h-[2.5px] bg-gradient-to-r from-[#FDE68A] via-[#2DD4BF] to-teal-400 shadow-[0_0_10px_rgba(253,230,138,0.9)]" />
                 </div>
 
                 {/* Expanded Sleek Experience Frame */}
