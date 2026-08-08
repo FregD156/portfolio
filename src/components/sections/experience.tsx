@@ -101,14 +101,14 @@ export function Experience() {
         {/* Pirate Ship Rigging Line & Hook Timeline (Aligned Left & Expanded Width) */}
         <div className="relative pl-4 md:pl-44">
           {/* Top Master 3D Crystalline Gemstone Node */}
-          <div className="absolute left-[-2px] md:left-[150px] -top-5 z-20">
+          <div className="absolute left-[-2px] md:-left-[37px] -top-6 z-20">
             <div className="p-1.5 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_15px_rgba(253,230,138,0.7)]">
               <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#FDE68A]" />
             </div>
           </div>
 
-          {/* Vertical Progression Rope Line */}
-          <div className="absolute left-[7px] md:left-[159px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-transparent shadow-sm poly-badge" />
+          {/* 3D Crystalline Polygonal Wireframe Vertical Timeline Laser Beam Line */}
+          <div className="absolute left-[4px] md:-left-[29px] top-2 bottom-2 w-[3px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] via-60% to-[#06B6D4] shadow-[0_0_12px_rgba(45,212,191,0.8)] z-10 rounded-full" />
 
           {/* Expanded Experience Cards Container */}
           <div className="space-y-6 pl-4 md:pl-6 w-full">
