@@ -620,13 +620,7 @@ export function HeroOcean() {
         >
 
 
-          {/* 3D Crystalline Gemstone Chamfer Header Badge */}
-          <div className="mb-4 inline-flex items-center gap-2.5 px-4 py-2 poly-badge bg-gradient-to-r from-[#022433] via-[#043247] to-[#022433] border border-[#FDE68A] shadow-[0_0_20px_rgba(253,230,138,0.5)] backdrop-blur-xl">
-            <span className="w-2.5 h-2.5 poly-octagon bg-[#2DD4BF] animate-pulse shadow-[0_0_10px_#2DD4BF]" />
-            <span className="font-mono text-xs text-[#FDE68A] font-extrabold uppercase tracking-widest">
-              CAPTAIN & SOFTWARE ENGINEER
-            </span>
-          </div>
+
 
           {/* Slender Fluid Signature Typography Headline for "Nguyen Thanh Duy" */}
           <div className="relative mb-3">
