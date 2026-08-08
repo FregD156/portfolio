@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
 import { OceanIcon } from "@/components/ui/ocean-icons"
 
@@ -80,6 +80,16 @@ const timeline: TimelineItem[] = [
 export function Experience() {
   const [selectedCert, setSelectedCert] = React.useState<TimelineItem | null>(null)
 
+  // Scroll-Driven Dynamic Fill Vertical Timeline Beam
+  const timelineRef = React.useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 75%", "end 35%"]
+  })
+
+  // Scale height of active fill line from 0 to 1 as user scrolls
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
+
   return (
     <section className="py-24 relative overflow-hidden" id="experience">
       <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
@@ -98,8 +108,8 @@ export function Experience() {
           </p>
         </div>
 
-        {/* Pirate Ship Rigging Line & Hook Timeline (Aligned Left & Expanded Width) */}
-        <div className="relative pl-4 md:pl-44">
+        {/* Pirate Ship Rigging Line & Hook Timeline Container */}
+        <div ref={timelineRef} className="relative pl-4 md:pl-44">
           {/* Top Master 3D Crystalline Gemstone Node */}
           <div className="absolute left-[-2px] md:-left-[37px] -top-6 z-20">
             <div className="p-1.5 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_15px_rgba(253,230,138,0.7)]">
@@ -107,25 +117,29 @@ export function Experience() {
             </div>
           </div>
 
-          {/* 3D Crystalline Polygonal Wireframe Vertical Timeline Laser Beam Line with Up & Down Scanner */}
-          <div className="absolute left-[4px] md:-left-[29px] top-2 bottom-2 w-[4px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] via-60% to-[#06B6D4] shadow-[0_0_15px_rgba(45,212,191,0.85)] z-10 rounded-full overflow-hidden">
-            <div className="timeline-laser-scanner" />
-          </div>
+          {/* 1. Background Vertical Guide Track Line */}
+          <div className="absolute left-[4px] md:-left-[29px] top-2 bottom-2 w-[4px] bg-[#022433] border border-teal-300/30 rounded-full z-0" />
+
+          {/* 2. Scroll-Driven Active Glowing Crystalline Laser Fill Beam Line */}
+          <motion.div
+            style={{ scaleY, transformOrigin: "top" }}
+            className="absolute left-[4px] md:-left-[29px] top-2 bottom-2 w-[4px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] to-[#06B6D4] shadow-[0_0_18px_rgba(45,212,191,1)] z-10 rounded-full"
+          />
 
           {/* Expanded Experience Cards Container */}
           <div className="space-y-6 pl-4 md:pl-6 w-full">
             {timeline.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.05 }}
+                initial={{ opacity: 0, x: -24, y: 16 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 className="relative group w-full"
               >
                 {/* Floating Date Badge Positioned Safely to the LEFT of Anchor Hook Icon */}
                 <div className="hidden md:flex absolute -left-[210px] top-3.5 w-36 flex-col items-end text-right z-20">
-                  <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/80 px-3 py-1 poly-badge shadow-md backdrop-blur-md">
+                  <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/80 px-3 py-1 poly-badge shadow-md backdrop-blur-md group-hover:border-[#2DD4BF] group-hover:text-white transition-colors">
                     {item.duration}
                   </span>
                   <span className="font-mono text-[10px] text-[#2DD4BF] font-extrabold uppercase tracking-wider mt-1 pr-1">
@@ -133,13 +147,13 @@ export function Experience() {
                   </span>
                 </div>
 
-                {/* 3D Crystalline Low-Poly Gemstone Facet Timeline Node */}
+                {/* 3D Crystalline Low-Poly Gemstone Facet Timeline Node (Attached Directly to Spine) */}
                 <div className="absolute -left-8 md:-left-[43px] top-3.5 z-20 flex items-center">
-                  <div className="w-6 h-6 md:w-7 md:h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#022433] to-[#FDE68A] border border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_12px_rgba(45,212,191,0.65)] group-hover:scale-115 group-hover:border-[#2DD4BF] group-hover:text-white transition-all duration-300">
+                  <div className="w-6 h-6 md:w-7 md:h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#022433] to-[#FDE68A] border border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_15px_rgba(45,212,191,0.7)] group-hover:scale-120 group-hover:border-[#2DD4BF] group-hover:text-white transition-all duration-300">
                     <OceanIcon name="anchor" className="w-3 h-3 text-[#FDE68A] group-hover:text-white transition-colors" />
                   </div>
-                  {/* Facet Line Connector */}
-                  <div className="w-3 md:w-5 h-[2px] bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF]" />
+                  {/* Facet Line Connector (Locking Card directly to Spine) */}
+                  <div className="w-3 md:w-5 h-[2px] bg-gradient-to-r from-[#FDE68A] to-[#2DD4BF] shadow-[0_0_8px_rgba(253,230,138,0.8)]" />
                 </div>
 
                 {/* Expanded Sleek Experience Frame */}
