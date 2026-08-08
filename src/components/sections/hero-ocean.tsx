@@ -714,34 +714,7 @@ export function HeroOcean() {
             gyroscope={true}
             className="relative flex flex-col items-center justify-center p-4"
           >
-            {/* --- 3D Crystalline Gemstone Facet Compass Rings & Corner Nodes Framework --- */}
-            {/* Top-Right 3D Low-Poly Diamond Gemstone Node */}
-            <div className="absolute -top-10 -right-8 z-30 pointer-events-none animate-pulse">
-              <div className="p-2.5 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_20px_rgba(45,212,191,0.85)]">
-                <OceanIcon name="anchor" className="w-4 h-4 text-[#FDE68A]" />
-              </div>
-            </div>
 
-            {/* Top-Left 3D Low-Poly Diamond Gemstone Node */}
-            <div className="absolute -top-8 -left-8 z-30 pointer-events-none animate-pulse [animation-delay:1s]">
-              <div className="p-2 poly-octagon bg-gradient-to-br from-[#06B6D4] via-[#022433] to-[#2DD4BF] border border-[#2DD4BF] text-[#2DD4BF] shadow-[0_0_16px_rgba(6,182,212,0.7)]">
-                <OceanIcon name="star" className="w-3.5 h-3.5 text-[#2DD4BF]" />
-              </div>
-            </div>
-
-            {/* Bottom-Right 3D Low-Poly Diamond Gemstone Node */}
-            <div className="absolute -bottom-8 -right-6 z-30 pointer-events-none animate-pulse [animation-delay:2s]">
-              <div className="p-2 poly-octagon bg-gradient-to-br from-[#FDE68A] via-[#022433] to-[#2DD4BF] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_16px_rgba(253,230,138,0.7)]">
-                <OceanIcon name="wave" className="w-3.5 h-3.5 text-[#FDE68A]" />
-              </div>
-            </div>
-
-            {/* Bottom-Left 3D Low-Poly Diamond Gemstone Node */}
-            <div className="absolute -bottom-6 -left-6 z-30 pointer-events-none animate-pulse [animation-delay:1.5s]">
-              <div className="p-2 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#2DD4BF] text-[#2DD4BF] shadow-[0_0_16px_rgba(45,212,191,0.75)]">
-                <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#2DD4BF]" />
-              </div>
-            </div>
 
             {/* --- 3D Holographic Globe Outer Orbital Rings --- */}
             {/* Orbital Ring 1: Continuous Spinning Longitude Ring */}
