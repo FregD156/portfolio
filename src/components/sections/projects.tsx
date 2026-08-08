@@ -123,7 +123,7 @@ export function Projects() {
                 tiltMaxAngleX={3}
                 tiltMaxAngleY={3}
                 perspective={1000}
-                className="w-full relative poly-chamfer overflow-hidden border border-teal-300/40 bg-[#022433]/90 shadow-xl transition-all duration-500 cursor-pointer group-hover:-translate-y-1.5 group-hover:border-[#2DD4BF] group-hover:shadow-[0_15px_35px_rgba(45,212,191,0.3)] flex flex-col justify-end p-6 md:p-7 aspect-[4/3]"
+                className="w-full relative poly-chamfer crystal-card overflow-hidden border border-teal-300/40 bg-[#022433]/90 shadow-xl transition-all duration-500 cursor-pointer group-hover:-translate-y-1.5 group-hover:border-[#2DD4BF] group-hover:shadow-[0_15px_35px_rgba(45,212,191,0.3)] flex flex-col justify-end p-6 md:p-7 aspect-[4/3]"
               >
                 {/* Full-Bleed Project Background Image */}
                 <Image

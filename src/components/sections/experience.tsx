@@ -141,7 +141,7 @@ export function Experience() {
                 </div>
 
                 {/* Expanded Sleek Experience Frame */}
-                <div className="glass-resort-card p-5 md:p-7 poly-chamfer border border-teal-300/30 group-hover:border-[#FDE68A]/80 shadow-md transition-all duration-300 group-hover:-translate-y-1 w-full">
+                <div className="glass-resort-card p-5 md:p-7 poly-chamfer crystal-card border border-teal-300/30 group-hover:border-[#FDE68A]/80 shadow-md transition-all duration-300 group-hover:-translate-y-1 w-full">
 
                   {/* Mobile-only Date Tag (hidden on desktop because it's on the left side) */}
                   <div className="flex md:hidden items-center justify-between gap-2 mb-2">

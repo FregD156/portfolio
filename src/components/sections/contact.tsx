@@ -64,7 +64,7 @@ export function Contact() {
           >
             {contactInfo.map((item, i) => {
               const inner = (
-                <div className="flex items-center gap-4 p-4 poly-chamfer border border-border/70 bg-card/80 backdrop-blur-md hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 group">
+                <div className="flex items-center gap-4 p-4 poly-chamfer crystal-card border border-border/70 bg-card/80 backdrop-blur-md hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 group">
                   <div className="flex items-center justify-center w-10 h-10 poly-badge border border-border bg-card/50 text-muted-foreground group-hover:text-primary group-hover:border-primary/40 transition-all duration-200 flex-shrink-0">
                     <OceanIcon name={item.icon} className="w-5 h-5" />
                   </div>
