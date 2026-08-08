@@ -249,42 +249,52 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Ultra-Sleek Minimalist Modern Horizon Wisps (Dải Mây Sương Ngang Tối Giản, Tinh Tế & Hiện Đại)
+      // 3D Crystalline Low-Poly Geometric Diamond Gem Clouds (Mây Tinh Thể Kim Cương Đa Giác 3D Lấp Lánh)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
-          const cx = (((i * spread + time * layer.speed * 14) % (w + spread * layer.scale * 2.5)) - spread * layer.scale * 0.5);
-          const cy = h * layer.y + Math.sin(time * 0.05 + i * 2) * 4;
-          const cloudLength = layer.scale * 240 + (i % 3) * 60;
-          const cloudHeight = 12 + layer.scale * 8;
+          const cx = (((i * spread + time * layer.speed * 12) % (w + spread * layer.scale * 2.2)) - spread * layer.scale * 0.4);
+          const cy = h * layer.y + Math.sin(time * 0.08 + i) * 6;
+          const scale = layer.scale * 1.1;
 
-          // Horizontal Tapered Linear Mist Ribbon
-          const cloudGrad = skyCtx.createLinearGradient(cx - cloudLength * 0.5, cy, cx + cloudLength * 0.5, cy);
+          // Crystalline Faceted Geometry Puffs (Mesh of Polygonal Gemstone Facets)
+          const facets: { pts: [number, number][]; color: string }[] = [
+            // Center Gemstone Facet
+            { pts: [[0, -18 * scale], [24 * scale, 0], [0, 14 * scale], [-24 * scale, 0]], color: isDark ? "rgba(253, 230, 138, 0.45)" : "rgba(255, 255, 255, 0.75)" },
+            // Upper Left Crystal Facet
+            { pts: [[-24 * scale, 0], [0, -18 * scale], [-18 * scale, -28 * scale], [-42 * scale, -10 * scale]], color: isDark ? "rgba(45, 212, 191, 0.35)" : "rgba(255, 255, 255, 0.55)" },
+            // Upper Right Crystal Facet
+            { pts: [[0, -18 * scale], [24 * scale, 0], [42 * scale, -10 * scale], [18 * scale, -28 * scale]], color: isDark ? "rgba(56, 189, 248, 0.4)" : "rgba(224, 242, 254, 0.65)" },
+            // Top Apex Crystal Pyramid
+            { pts: [[-18 * scale, -28 * scale], [0, -18 * scale], [18 * scale, -28 * scale], [0, -42 * scale]], color: isDark ? "rgba(255, 255, 255, 0.5)" : "rgba(255, 255, 255, 0.85)" },
+            // Lower Left Wing Crystal
+            { pts: [[-42 * scale, -10 * scale], [-24 * scale, 0], [-35 * scale, 12 * scale], [-58 * scale, 2 * scale]], color: isDark ? "rgba(6, 182, 212, 0.3)" : "rgba(186, 230, 253, 0.5)" },
+            // Lower Right Wing Crystal
+            { pts: [[24 * scale, 0], [42 * scale, -10 * scale], [58 * scale, 2 * scale], [35 * scale, 12 * scale]], color: isDark ? "rgba(45, 212, 191, 0.35)" : "rgba(255, 255, 255, 0.6)" },
+            // Bottom Base Crystal Facet
+            { pts: [[-24 * scale, 0], [0, 14 * scale], [24 * scale, 0], [0, 22 * scale]], color: isDark ? "rgba(2, 48, 69, 0.4)" : "rgba(203, 213, 225, 0.4)" },
+          ];
 
-          if (isDark) {
-            cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
-            cloudGrad.addColorStop(0.25, "rgba(240, 249, 255, 0.45)");
-            cloudGrad.addColorStop(0.5, "rgba(186, 230, 253, 0.65)");
-            cloudGrad.addColorStop(0.75, "rgba(240, 249, 255, 0.45)");
-            cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-          } else {
-            cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
-            cloudGrad.addColorStop(0.25, "rgba(255, 255, 255, 0.65)");
-            cloudGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.92)");
-            cloudGrad.addColorStop(0.75, "rgba(255, 255, 255, 0.65)");
-            cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-          }
+          skyCtx.save();
+          skyCtx.translate(cx, cy);
 
-          skyCtx.fillStyle = cloudGrad;
-          skyCtx.beginPath();
-          skyCtx.ellipse(cx, cy, cloudLength * 0.5, cloudHeight * 0.5, 0, 0, Math.PI * 2);
-          skyCtx.fill();
+          facets.forEach((f, fIdx) => {
+            const twinkle = Math.sin(time * 2.5 + i + fIdx) * 0.15 + 0.85;
+            skyCtx.fillStyle = f.color;
+            skyCtx.strokeStyle = isDark ? `rgba(255, 255, 255, ${0.5 * twinkle})` : `rgba(255, 255, 255, ${0.85 * twinkle})`;
+            skyCtx.lineWidth = 1.1;
 
-          // Subtle Accent Floating Sub-Wisp
-          skyCtx.fillStyle = isDark ? "rgba(253, 230, 138, 0.25)" : "rgba(255, 255, 255, 0.45)";
-          skyCtx.beginPath();
-          skyCtx.ellipse(cx + cloudLength * 0.15, cy - cloudHeight * 0.35, cloudLength * 0.22, cloudHeight * 0.3, 0, 0, Math.PI * 2);
-          skyCtx.fill();
+            skyCtx.beginPath();
+            skyCtx.moveTo(f.pts[0][0], f.pts[0][1]);
+            for (let p = 1; p < f.pts.length; p++) {
+              skyCtx.lineTo(f.pts[p][0], f.pts[p][1]);
+            }
+            skyCtx.closePath();
+            skyCtx.fill();
+            skyCtx.stroke();
+          });
+
+          skyCtx.restore();
         }
       });
 
