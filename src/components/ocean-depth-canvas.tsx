@@ -490,7 +490,7 @@ export function OceanDepthCanvas() {
         ctx.fill();
       }
 
-      // 3. Rising Sea Bubbles
+      // 3. Rising Sea Bubbles & Floating 3D Diamond Crystal Dust
       bubbles.forEach((b) => {
         b.y -= b.speed;
         b.x += Math.sin(t * 1.5 + b.wobble) * 0.4;
@@ -510,6 +510,35 @@ export function OceanDepthCanvas() {
         ctx.arc(b.x - b.r * 0.3, b.y - b.r * 0.3, b.r * 0.3, 0, Math.PI * 2);
         ctx.fill();
       });
+
+      // 3b. Floating 3D Diamond Crystal Gemstone Dust (Bụi Tinh Thể Kim Cương Bay Lơ Lửng)
+      const crystalCount = 18;
+      for (let i = 0; i < crystalCount; i++) {
+        const cx = ((i * 137.5 + t * 12) % width);
+        const cy = ((i * 89.3 + Math.sin(t + i) * 20) % height);
+        const cSize = 2.5 + (i % 3) * 1.5;
+        const twinkle = Math.sin(t * 3 + i) * 0.4 + 0.6;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(t * 0.5 + i);
+
+        ctx.fillStyle = i % 2 === 0 ? `rgba(253, 230, 138, ${0.75 * twinkle})` : `rgba(45, 212, 191, ${0.75 * twinkle})`;
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+        ctx.lineWidth = 0.8;
+
+        // Diamond Polygon
+        ctx.beginPath();
+        ctx.moveTo(0, -cSize * 1.4);
+        ctx.lineTo(cSize, 0);
+        ctx.lineTo(0, cSize * 1.4);
+        ctx.lineTo(-cSize, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.restore();
+      }
 
       // 4. Swim & Render Marine Creatures
       creatures.forEach((c) => {

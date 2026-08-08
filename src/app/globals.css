@@ -159,6 +159,45 @@
   );
 }
 
+/* ─── CRYSTALLINE PRISM SHIMMER & DIAMOND FACET EFFECTS ─── */
+.crystal-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(2, 34, 48, 0.92) 0%, rgba(6, 60, 85, 0.88) 100%);
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  box-shadow: 0 10px 40px -10px rgba(45, 212, 191, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.crystal-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(253, 230, 138, 0.15) 50%,
+    rgba(45, 212, 191, 0.25) 52%,
+    transparent 57%
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
+  animation: crystalSweeper 8s infinite linear;
+}
+
+@keyframes crystalSweeper {
+  0% { transform: translateY(-100%) rotate(30deg); }
+  100% { transform: translateY(100%) rotate(30deg); }
+}
+
+.crystal-glow-border {
+  border: 1px solid transparent;
+  background: linear-gradient(rgba(2, 34, 48, 0.92), rgba(2, 34, 48, 0.92)) padding-box,
+              linear-gradient(135deg, #2DD4BF 0%, #FDE68A 50%, #38BDF8 100%) border-box;
+}
+
 .chapter-badge {
   font-family: var(--font-space-mono), monospace;
   font-size: 0.75rem;
