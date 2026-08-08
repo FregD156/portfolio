@@ -201,6 +201,37 @@
               linear-gradient(135deg, #2DD4BF 0%, #FDE68A 50%, #38BDF8 100%) border-box;
 }
 
+/* ─── DYNAMIC TIMELINE UP & DOWN LASER SCANNER BEAD ─── */
+@keyframes timelineScanPulse {
+  0% {
+    top: 0%;
+    opacity: 0.4;
+  }
+  50% {
+    top: 95%;
+    opacity: 1;
+    box-shadow: 0 0 24px #FDE68A, 0 0 40px #2DD4BF;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.4;
+  }
+}
+
+.timeline-laser-scanner {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 32px;
+  background: linear-gradient(180deg, #FDE68A 0%, #2DD4BF 50%, #06B6D4 100%);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  box-shadow: 0 0 18px #FDE68A, 0 0 30px #2DD4BF;
+  animation: timelineScanPulse 6s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 15;
+}
+
 .chapter-badge {
   font-family: var(--font-space-mono), monospace;
   font-size: 0.75rem;

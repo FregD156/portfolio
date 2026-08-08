@@ -107,8 +107,10 @@ export function Experience() {
             </div>
           </div>
 
-          {/* 3D Crystalline Polygonal Wireframe Vertical Timeline Laser Beam Line */}
-          <div className="absolute left-[4px] md:-left-[29px] top-2 bottom-2 w-[3px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] via-60% to-[#06B6D4] shadow-[0_0_12px_rgba(45,212,191,0.8)] z-10 rounded-full" />
+          {/* 3D Crystalline Polygonal Wireframe Vertical Timeline Laser Beam Line with Up & Down Scanner */}
+          <div className="absolute left-[4px] md:-left-[29px] top-2 bottom-2 w-[4px] bg-gradient-to-b from-[#FDE68A] via-[#2DD4BF] via-60% to-[#06B6D4] shadow-[0_0_15px_rgba(45,212,191,0.85)] z-10 rounded-full overflow-hidden">
+            <div className="timeline-laser-scanner" />
+          </div>
 
           {/* Expanded Experience Cards Container */}
           <div className="space-y-6 pl-4 md:pl-6 w-full">
