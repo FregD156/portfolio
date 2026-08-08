@@ -70,8 +70,8 @@ export function Navbar() {
           {/* Logo in Fraunces */}
           <a href="#" className="font-fraunces text-lg md:text-xl font-bold tracking-tight flex items-center gap-2 group">
             <OceanIcon name="wave" className="w-5 h-5 text-[#2DD4BF] transition-transform group-hover:rotate-12" />
-            <span className="text-white">Nguyen Thanh Duy</span>
-            <span className="font-mono text-xs text-[#FDE68A] font-bold">.DEV</span>
+            <span className="text-white font-extrabold">FregD</span>
+            <span className="font-mono text-xs text-[#FDE68A] font-bold">.dev</span>
           </a>
 
           {/* Desktop nav */}

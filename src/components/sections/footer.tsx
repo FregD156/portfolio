@@ -17,7 +17,7 @@ export function Footer() {
           <div>
             <a href="#" className="font-fraunces text-lg font-bold text-foreground hover:text-primary transition-colors flex items-center gap-2">
               <OceanIcon name="wave" className="w-5 h-5 text-primary" />
-              <span>Nguyen Thanh Duy</span>
+              <span className="font-extrabold">FregD</span>
               <span className="postmark text-[10px] text-primary">.dev</span>
             </a>
             <p className="font-jakarta text-xs text-muted-foreground mt-2 max-w-[44ch]">
