@@ -714,31 +714,34 @@ export function HeroOcean() {
             gyroscope={true}
             className="relative flex flex-col items-center justify-center p-4"
           >
-            {/* --- Lush Swaying Tropical Palm Fronds framing the Globe --- */}
+            {/* --- 3D Crystalline Gemstone Facet Compass Rings & Corner Nodes Framework --- */}
+            {/* Top-Right 3D Low-Poly Diamond Gemstone Node */}
+            <div className="absolute -top-10 -right-8 z-30 pointer-events-none animate-pulse">
+              <div className="p-2.5 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_20px_rgba(45,212,191,0.85)]">
+                <OceanIcon name="anchor" className="w-4 h-4 text-[#FDE68A]" />
+              </div>
+            </div>
 
-            {/* Top-Right Swaying Palm Frond Cluster */}
-            <svg className="absolute -top-14 -right-10 w-48 h-48 z-30 pointer-events-none transform rotate-12 drop-shadow-2xl animate-sway" viewBox="0 0 200 200" fill="none">
-              <path d="M20,180 C50,110 110,60 180,20 C150,60 110,110 90,180 Z" fill="#2DD4BF" opacity="0.95" />
-              <path d="M20,180 C70,120 130,80 195,40 C160,80 120,130 90,180 Z" fill="#FDE68A" opacity="0.9" />
-              <path d="M20,180 C40,130 80,90 150,50 C120,90 80,130 60,180 Z" fill="#06B6D4" opacity="0.85" />
-            </svg>
+            {/* Top-Left 3D Low-Poly Diamond Gemstone Node */}
+            <div className="absolute -top-8 -left-8 z-30 pointer-events-none animate-pulse [animation-delay:1s]">
+              <div className="p-2 poly-octagon bg-gradient-to-br from-[#06B6D4] via-[#022433] to-[#2DD4BF] border border-[#2DD4BF] text-[#2DD4BF] shadow-[0_0_16px_rgba(6,182,212,0.7)]">
+                <OceanIcon name="star" className="w-3.5 h-3.5 text-[#2DD4BF]" />
+              </div>
+            </div>
 
-            {/* Top-Left Swaying Palm Frond Cluster */}
-            <svg className="absolute -top-12 -left-12 w-44 h-44 z-30 pointer-events-none transform -rotate-45 drop-shadow-2xl animate-sway [animation-delay:1.5s]" viewBox="0 0 200 200" fill="none">
-              <path d="M180,180 C150,110 90,60 20,20 C50,60 90,110 110,180 Z" fill="#2DD4BF" opacity="0.9" />
-              <path d="M180,180 C130,120 70,80 5,40 C40,80 80,130 110,180 Z" fill="#FDE68A" opacity="0.85" />
-            </svg>
+            {/* Bottom-Right 3D Low-Poly Diamond Gemstone Node */}
+            <div className="absolute -bottom-8 -right-6 z-30 pointer-events-none animate-pulse [animation-delay:2s]">
+              <div className="p-2 poly-octagon bg-gradient-to-br from-[#FDE68A] via-[#022433] to-[#2DD4BF] border border-[#FDE68A] text-[#FDE68A] shadow-[0_0_16px_rgba(253,230,138,0.7)]">
+                <OceanIcon name="wave" className="w-3.5 h-3.5 text-[#FDE68A]" />
+              </div>
+            </div>
 
-            {/* Bottom-Right Golden Palm Leaf */}
-            <svg className="absolute -bottom-8 -right-8 w-40 h-40 z-30 pointer-events-none transform rotate-45 drop-shadow-2xl animate-sway [animation-delay:3s]" viewBox="0 0 200 200" fill="none">
-              <path d="M20,20 C80,60 130,110 180,180 C120,140 70,90 20,20 Z" fill="#FDE68A" opacity="0.85" />
-              <path d="M40,20 C90,70 140,120 190,190 C130,150 80,100 40,20 Z" fill="#2DD4BF" opacity="0.75" />
-            </svg>
-
-            {/* Bottom-Left Emerald Palm Leaf */}
-            <svg className="absolute -bottom-10 -left-8 w-36 h-36 z-30 pointer-events-none transform -rotate-12 drop-shadow-2xl animate-sway [animation-delay:2.2s]" viewBox="0 0 200 200" fill="none">
-              <path d="M180,20 C120,60 70,110 20,180 C80,140 130,90 180,20 Z" fill="#14B8A6" opacity="0.85" />
-            </svg>
+            {/* Bottom-Left 3D Low-Poly Diamond Gemstone Node */}
+            <div className="absolute -bottom-6 -left-6 z-30 pointer-events-none animate-pulse [animation-delay:1.5s]">
+              <div className="p-2 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#2DD4BF] text-[#2DD4BF] shadow-[0_0_16px_rgba(45,212,191,0.75)]">
+                <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#2DD4BF]" />
+              </div>
+            </div>
 
             {/* --- 3D Holographic Globe Outer Orbital Rings --- */}
             {/* Orbital Ring 1: Continuous Spinning Longitude Ring */}
