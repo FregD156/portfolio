@@ -249,56 +249,70 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Realistic Organic Cumulus Clouds (Mây Tự Nhiên Chân Thực Như Thật)
+      // Photorealistic Volumetric Fluffy Soft Cumulus Clouds (Mây Bồng Bềnh Xốp Mịn 100% Giống Mây Thật)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
           const cx = (((i * spread + time * layer.speed * 14) % (w + spread * layer.scale * 2.2)) - spread * layer.scale * 0.4);
           const cy = h * layer.y + Math.sin(time * 0.05 + i * 1.8) * 4;
-          const wScale = layer.scale * 150 + (i % 3) * 40;
-          const hScale = layer.scale * 45 + (i % 2) * 15;
+          const s = layer.scale * 48;
 
-          // Realistic Cloud Gradient (Bright Top Sunlight / Moonlight -> Soft Translucent Base)
-          const cloudGrad = skyCtx.createLinearGradient(cx, cy - hScale, cx, cy + hScale * 0.4);
-
-          if (isDark) {
-            cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.92 * layer.alpha})`);
-            cloudGrad.addColorStop(0.4, `rgba(224, 242, 254, ${0.75 * layer.alpha})`);
-            cloudGrad.addColorStop(0.85, `rgba(186, 230, 253, ${0.45 * layer.alpha})`);
-            cloudGrad.addColorStop(1, `rgba(2, 34, 48, ${0.05 * layer.alpha})`);
-          } else {
-            cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.98 * layer.alpha})`);
-            cloudGrad.addColorStop(0.5, `rgba(255, 255, 255, ${0.85 * layer.alpha})`);
-            cloudGrad.addColorStop(0.85, `rgba(240, 249, 255, ${0.55 * layer.alpha})`);
-            cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-          }
+          // 14 Soft Volumetric Puff Coordinates forming a 100% Natural Fluffy Cumulus Cloud
+          const cloudPuffs = [
+            // Bottom Base Shadow Puffs (Đế mây mỏng)
+            { x: -s * 1.4, y: s * 0.2, r: s * 0.55, shadow: true },
+            { x: -s * 0.8, y: s * 0.25, r: s * 0.65, shadow: true },
+            { x: 0, y: s * 0.3, r: s * 0.7, shadow: true },
+            { x: s * 0.8, y: s * 0.25, r: s * 0.65, shadow: true },
+            { x: s * 1.4, y: s * 0.2, r: s * 0.55, shadow: true },
+            // Core Body Fluffy Puffs (Thân mây xốp mịn)
+            { x: -s * 1.1, y: 0, r: s * 0.68 },
+            { x: -s * 0.55, y: -s * 0.15, r: s * 0.82 },
+            { x: 0, y: -s * 0.2, r: s * 0.95 },
+            { x: s * 0.55, y: -s * 0.15, r: s * 0.85 },
+            { x: s * 1.1, y: 0, r: s * 0.68 },
+            // Top Apex Domes (Vòm mây nhô cao tự nhiên)
+            { x: -s * 0.3, y: -s * 0.55, r: s * 0.72, top: true },
+            { x: s * 0.25, y: -s * 0.5, r: s * 0.68, top: true },
+            { x: -s * 0.7, y: -s * 0.4, r: s * 0.58, top: true },
+            { x: s * 0.7, y: -s * 0.35, r: s * 0.55, top: true },
+          ];
 
           skyCtx.save();
-          skyCtx.fillStyle = cloudGrad;
-          skyCtx.beginPath();
+          skyCtx.translate(cx, cy);
 
-          // Flat Realistic Bottom Base & Natural Billowing Top Cumulus Domes
-          const xLeft = cx - wScale * 0.5;
-          const xRight = cx + wScale * 0.5;
-          const yBase = cy + hScale * 0.2;
+          // Render Volumetric Feathered Gradient Puffs
+          cloudPuffs.forEach((p) => {
+            const radGrad = skyCtx.createRadialGradient(
+              p.x, p.y - (p.top ? p.r * 0.15 : 0), p.r * 0.05,
+              p.x, p.y, p.r
+            );
 
-          skyCtx.moveTo(xLeft, yBase);
-          skyCtx.lineTo(xRight, yBase);
+            if (p.shadow) {
+              // Base Shadow Falloff
+              const shadowAlpha = isDark ? 0.45 * layer.alpha : 0.3 * layer.alpha;
+              radGrad.addColorStop(0, isDark ? `rgba(14, 116, 144, ${shadowAlpha})` : `rgba(224, 242, 254, ${shadowAlpha})`);
+              radGrad.addColorStop(0.7, isDark ? `rgba(6, 78, 106, ${shadowAlpha * 0.5})` : `rgba(186, 230, 253, ${shadowAlpha * 0.5})`);
+              radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+            } else if (p.top) {
+              // Luminous Sunlit / Moonlit Top Highlight
+              const topAlpha = isDark ? 0.95 * layer.alpha : 1.0 * layer.alpha;
+              radGrad.addColorStop(0, `rgba(255, 255, 255, ${topAlpha})`);
+              radGrad.addColorStop(0.65, isDark ? `rgba(253, 230, 138, ${topAlpha * 0.7})` : `rgba(255, 255, 255, ${topAlpha * 0.8})`);
+              radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+            } else {
+              // Main Fluffy White Core Body
+              const coreAlpha = isDark ? 0.88 * layer.alpha : 0.95 * layer.alpha;
+              radGrad.addColorStop(0, `rgba(255, 255, 255, ${coreAlpha})`);
+              radGrad.addColorStop(0.55, isDark ? `rgba(224, 242, 254, ${coreAlpha * 0.75})` : `rgba(255, 255, 255, ${coreAlpha * 0.85})`);
+              radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+            }
 
-          // Natural Fluffy Curves & Layered Cloud Domes
-          skyCtx.arcTo(xRight + wScale * 0.08, yBase, xRight, yBase - hScale * 0.3, hScale * 0.3);
-          skyCtx.arcTo(cx + wScale * 0.35, cy - hScale * 0.7, cx + wScale * 0.15, cy - hScale * 0.95, hScale * 0.6);
-          skyCtx.arcTo(cx - wScale * 0.15, cy - hScale * 1.1, cx - wScale * 0.35, cy - hScale * 0.6, hScale * 0.7);
-          skyCtx.arcTo(xLeft - wScale * 0.08, yBase - hScale * 0.2, xLeft, yBase, hScale * 0.3);
-
-          skyCtx.closePath();
-          skyCtx.fill();
-
-          // Top Rim Lighting Glow (Vòm Nắng / Vòm Trăng Phát Sáng Tự Nhiên)
-          skyCtx.fillStyle = isDark ? `rgba(253, 230, 138, ${0.32 * layer.alpha})` : `rgba(255, 255, 255, ${0.68 * layer.alpha})`;
-          skyCtx.beginPath();
-          skyCtx.ellipse(cx - wScale * 0.05, cy - hScale * 0.55, wScale * 0.28, hScale * 0.2, 0, 0, Math.PI * 2);
-          skyCtx.fill();
+            skyCtx.fillStyle = radGrad;
+            skyCtx.beginPath();
+            skyCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            skyCtx.fill();
+          });
 
           skyCtx.restore();
         }
