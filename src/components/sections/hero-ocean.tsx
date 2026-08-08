@@ -628,15 +628,19 @@ export function HeroOcean() {
             </span>
           </div>
 
-          {/* Frameless 3D Crystalline Facet Prism Typography Headline for "Nguyen Thanh Duy" */}
-          <h1 className="font-fraunces text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-black leading-[1.04] tracking-tight mb-3">
-            <span className="bg-gradient-to-r from-white via-teal-100 to-[#2DD4BF] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(45,212,191,0.85)] inline-block">
-              Nguyen
-            </span>{" "}
-            <span className="bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-white bg-clip-text text-transparent drop-shadow-[0_0_28px_rgba(253,230,138,0.85)] inline-block">
-              Thanh Duy
-            </span>
-          </h1>
+          {/* Ultra-Refined Sophisticated Modern Typography Headline for "Nguyen Thanh Duy" */}
+          <div className="relative mb-4">
+            <h1 className="font-jakarta text-4xl sm:text-5xl md:text-6xl lg:text-[4.4rem] font-extrabold leading-[1.02] tracking-tight antialiased">
+              <span className="bg-gradient-to-r from-white via-slate-100 via-60% to-[#2DD4BF] bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
+                Nguyen
+              </span>{" "}
+              <span className="bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-white bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(45,212,191,0.45)]">
+                Thanh Duy
+              </span>
+            </h1>
+            {/* Subtle Sleek Minimalist Crystal Accent Line */}
+            <div className="h-[2px] w-28 bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-transparent rounded-full mt-2.5 shadow-[0_0_12px_rgba(45,212,191,0.7)]" />
+          </div>
 
           <p className="font-fraunces text-xl md:text-2xl text-[#FDE68A] italic mb-4 drop-shadow-md">
             Software Engineer & AI Builder
