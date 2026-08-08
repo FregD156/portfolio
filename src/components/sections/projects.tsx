@@ -101,7 +101,7 @@ export function Projects() {
             href="https://github.com/FregD156"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 font-mono text-xs text-[#FDE68A] hover:text-white transition-all bg-white/10 border border-[#FDE68A]/50 px-6 py-3 rounded-full font-bold shadow-xl hover:scale-105"
+            className="hidden md:flex items-center gap-2 font-mono text-xs text-[#FDE68A] hover:text-white transition-all bg-white/10 border border-[#FDE68A]/50 px-6 py-3 poly-badge font-bold shadow-xl hover:scale-105"
           >
             <OceanIcon name="github" className="w-4 h-4" /> GitHub Repositories
           </a>
@@ -187,7 +187,7 @@ export function Projects() {
                       Tap for details
                     </span>
 
-                    <span className="font-mono inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#2DD4BF] bg-[#022433] text-[#2DD4BF] text-xs font-bold shadow-md group-hover:bg-[#2DD4BF] group-hover:text-[#022433] transition-all duration-300">
+                    <span className="font-mono inline-flex items-center gap-1.5 px-4 py-1.5 poly-badge border border-[#2DD4BF] bg-[#022433] text-[#2DD4BF] text-xs font-bold shadow-md group-hover:bg-[#2DD4BF] group-hover:text-[#022433] transition-all duration-300">
                       <OceanIcon name="anchor" className="w-3.5 h-3.5" />
                       <span>VIEW SYSTEM →</span>
                     </span>
@@ -283,7 +283,7 @@ function ModalSandboxDrawer({
             className="object-cover"
           />
           {project.hasAward && (
-            <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-[#022433]/95 backdrop-blur-md px-4 py-2 rounded-full border border-[#FDE68A] shadow-xl">
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-[#022433]/95 backdrop-blur-md px-4 py-2 poly-badge border border-[#FDE68A] shadow-xl">
               <OceanIcon name="trophy" className="w-4 h-4 text-[#FDE68A]" />
               <span className="font-mono text-xs text-[#FDE68A] font-extrabold">{project.outcome}</span>
             </div>
@@ -291,10 +291,10 @@ function ModalSandboxDrawer({
         </div>
 
         {/* Interactive Mode Navigation Tabs */}
-        <div className="flex gap-2 p-1.5 rounded-2xl bg-[#022433]/90 border border-teal-300/30 mb-6 overflow-x-auto">
+        <div className="flex gap-2 p-1.5 poly-chamfer bg-[#022433]/90 border border-teal-300/30 mb-6 overflow-x-auto">
           <button
             onClick={() => setActiveTab("overview")}
-            className={`font-mono text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+            className={`font-mono text-xs font-bold px-4 py-2 poly-badge transition-all flex items-center gap-2 ${
               activeTab === "overview"
                 ? "bg-[#2DD4BF] text-[#022433] shadow-md"
                 : "text-teal-100/70 hover:text-white"
@@ -304,7 +304,7 @@ function ModalSandboxDrawer({
           </button>
           <button
             onClick={() => setActiveTab("sandbox")}
-            className={`font-mono text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+            className={`font-mono text-xs font-bold px-4 py-2 poly-badge transition-all flex items-center gap-2 ${
               activeTab === "sandbox"
                 ? "bg-[#FDE68A] text-[#022433] shadow-md"
                 : "text-teal-100/70 hover:text-white"
@@ -314,7 +314,7 @@ function ModalSandboxDrawer({
           </button>
           <button
             onClick={() => setActiveTab("architecture")}
-            className={`font-mono text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center gap-2 ${
+            className={`font-mono text-xs font-bold px-4 py-2 poly-badge transition-all flex items-center gap-2 ${
               activeTab === "architecture"
                 ? "bg-[#2DD4BF] text-[#022433] shadow-md"
                 : "text-teal-100/70 hover:text-white"
@@ -341,7 +341,7 @@ function ModalSandboxDrawer({
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="font-mono text-xs px-4 py-1.5 rounded-full border border-teal-300/40 bg-white/10 text-[#FDE68A] font-bold shadow-sm"
+                    className="font-mono text-xs px-4 py-1.5 poly-badge border border-teal-300/40 bg-white/10 text-[#FDE68A] font-bold shadow-sm"
                   >
                     {t}
                   </span>
@@ -355,7 +355,7 @@ function ModalSandboxDrawer({
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] text-white hover:from-[#0284c7] hover:to-[#0f766e] font-extrabold text-sm shadow-xl hover:scale-105 transition-all"
+                  className="font-mono inline-flex items-center gap-2.5 px-8 py-3.5 poly-badge bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] text-white hover:from-[#0284c7] hover:to-[#0f766e] font-extrabold text-sm shadow-xl hover:scale-105 transition-all"
                 >
                   Live System Demo <OceanIcon name="external" className="w-4 h-4" />
                 </a>
@@ -366,12 +366,12 @@ function ModalSandboxDrawer({
                   href={project.codeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/60 bg-white/15 text-white hover:border-[#FDE68A] hover:text-[#FDE68A] font-bold text-sm shadow-lg hover:scale-105 transition-all"
+                  className="font-mono inline-flex items-center gap-2.5 px-7 py-3.5 poly-badge border border-white/60 bg-white/15 text-white hover:border-[#FDE68A] hover:text-[#FDE68A] font-bold text-sm shadow-lg hover:scale-105 transition-all"
                 >
                   <OceanIcon name="github" className="w-4 h-4" /> Source Code
                 </a>
               ) : (
-                <span className="font-mono inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-teal-300/30 text-teal-100/50 text-xs font-semibold cursor-not-allowed">
+                <span className="font-mono inline-flex items-center gap-2 px-6 py-3.5 poly-badge border border-teal-300/30 text-teal-100/50 text-xs font-semibold cursor-not-allowed">
                   <OceanIcon name="terminal" className="w-4 h-4" /> Confidential Proprietary Code
                 </span>
               )}

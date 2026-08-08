@@ -579,13 +579,13 @@ export function HeroOcean() {
 
             {/* --- 3D Holographic Globe Outer Orbital Rings --- */}
             {/* Orbital Ring 1: Continuous Spinning Longitude Ring */}
-            <div className="absolute -inset-4 md:-inset-6 poly-octagon border-2 border-dashed border-[#2DD4BF]/60 animate-[spin_30s_linear_infinite] pointer-events-none shadow-[0_0_20px_rgba(45,212,191,0.4)]" />
+            <div className="absolute -inset-4 md:-inset-6 rounded-full border-2 border-dashed border-[#2DD4BF]/60 animate-[spin_30s_linear_infinite] pointer-events-none shadow-[0_0_20px_rgba(45,212,191,0.4)]" />
 
             {/* Orbital Ring 2: Reverse Spinning Latitude Ring */}
-            <div className="absolute -inset-10 md:-inset-12 poly-octagon border border-dashed border-[#FDE68A]/50 animate-[spin_45s_linear_infinite_reverse] pointer-events-none opacity-80" />
+            <div className="absolute -inset-10 md:-inset-12 rounded-full border border-dashed border-[#FDE68A]/50 animate-[spin_45s_linear_infinite_reverse] pointer-events-none opacity-80" />
 
             {/* Orbiting Equatorial Glow Path Ring */}
-            <div className="absolute inset-0 poly-octagon border border-teal-200/40 pointer-events-none shadow-[0_0_50px_rgba(45,212,191,0.5)]" />
+            <div className="absolute inset-0 rounded-full border border-teal-200/40 pointer-events-none shadow-[0_0_50px_rgba(45,212,191,0.5)]" />
 
             {/* --- ORBITING ACHIEVEMENT BADGES (3D Low-Poly Polygonal Chamfered Badges) --- */}
 
@@ -634,11 +634,11 @@ export function HeroOcean() {
               </div>
             </motion.div>
 
-            {/* --- 3D Tropical Ocean Low-Poly Polygonal Crystalline Gem Frame --- */}
-            <div className="relative w-[280px] h-[280px] md:w-[350px] md:h-[350px] poly-octagon p-3 bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#022433] border-4 border-[#2DD4BF] shadow-[0_0_80px_rgba(45,212,191,0.6)] crystal-card group">
+            {/* --- 3D Globe Sphere Sanctuary Photo Window --- */}
+            <div className="relative w-[280px] h-[280px] md:w-[350px] md:h-[350px] rounded-full p-3 bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#022433] border-4 border-[#2DD4BF] shadow-[0_0_80px_rgba(45,212,191,0.6)] group">
               
-              {/* Inner Convex Crystalline Lens (Photo 100% Crystal Clear & Crisp) */}
-              <div className="relative w-full h-full poly-octagon overflow-hidden border-2 border-white/80 bg-[#0284C7] shadow-[inset_0_0_25px_rgba(0,0,0,0.5)]">
+              {/* Inner Convex Lens (Photo 100% Crystal Clear & Crisp) */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/80 bg-[#0284C7] shadow-[inset_0_0_25px_rgba(0,0,0,0.5)]">
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
@@ -648,8 +648,8 @@ export function HeroOcean() {
                   priority
                 />
 
-                {/* Subtle Crystalline Facet Edge Glow */}
-                <div className="absolute inset-0 poly-octagon border border-white/40 pointer-events-none shadow-[inset_0_2px_15px_rgba(255,255,255,0.4)]" />
+                {/* Subtle Clean Edge Glow Arc */}
+                <div className="absolute inset-0 rounded-full border border-white/30 pointer-events-none shadow-[inset_0_2px_15px_rgba(255,255,255,0.3)]" />
               </div>
 
             </div>

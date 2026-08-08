@@ -123,7 +123,7 @@ export function Experience() {
               >
                 {/* Floating Date Badge Positioned Safely to the LEFT of Anchor Hook Icon */}
                 <div className="hidden md:flex absolute -left-[210px] top-3.5 w-36 flex-col items-end text-right z-20">
-                  <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/80 px-3 py-1 rounded-full shadow-md backdrop-blur-md">
+                  <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/80 px-3 py-1 poly-badge shadow-md backdrop-blur-md">
                     {item.duration}
                   </span>
                   <span className="font-mono text-[10px] text-[#2DD4BF] font-extrabold uppercase tracking-wider mt-1 pr-1">

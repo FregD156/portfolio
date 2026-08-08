@@ -108,7 +108,7 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="p-6 md:p-8 rounded-2xl border border-border/80 bg-card/80 backdrop-blur-md shadow-xl">
+            <div className="p-6 md:p-8 poly-chamfer crystal-card border border-border/80 bg-card/80 backdrop-blur-md shadow-xl">
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-12 gap-4 text-center">
                   <OceanIcon name="trophy" className="w-12 h-12 text-primary" />
@@ -129,30 +129,30 @@ export function Contact() {
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="contact-name" className="postmark text-[11px] text-muted-foreground">YOUR NAME</label>
                       <Input id="contact-name" name="name" type="text" required placeholder="Nguyen Van A"
-                        className="rounded-xl border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
+                        className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="contact-email" className="postmark text-[11px] text-muted-foreground">EMAIL ADDRESS</label>
                       <Input id="contact-email" name="email" type="email" required placeholder="name@domain.com"
-                        className="rounded-xl border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
+                        className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="contact-subject" className="postmark text-[11px] text-muted-foreground">SUBJECT</label>
                     <Input id="contact-subject" name="subject" type="text" placeholder="Engineering opportunity, research, project..."
-                      className="rounded-xl border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
+                      className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
                   </div>
 
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="contact-message" className="postmark text-[11px] text-muted-foreground">MESSAGE CONTENT</label>
                     <Textarea id="contact-message" name="message" rows={5} required placeholder="Hello Duy, I'd like to discuss..."
-                      className="rounded-xl border-border/80 bg-background/50 focus-visible:ring-primary text-sm resize-none" />
+                      className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm resize-none" />
                   </div>
 
                   <Button
                     type="submit" disabled={sending}
-                    className="postmark w-full rounded-full font-bold bg-primary hover:bg-primary/90 text-white shadow-lg transition-all duration-300 py-3 text-xs"
+                    className="postmark w-full poly-badge font-bold bg-primary hover:bg-primary/90 text-white shadow-lg transition-all duration-300 py-3 text-xs"
                   >
                     {sending ? "Sending…" : "Send Postcard"}
                   </Button>
