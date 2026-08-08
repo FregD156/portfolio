@@ -115,14 +115,15 @@ export function HeroOcean() {
       offset: Math.random() * Math.PI * 2,
     }));
 
-    const petals = Array.from({ length: 10 }, () => ({
+    const crystalLeaves = Array.from({ length: 16 }, () => ({
       x: Math.random() * window.innerWidth,
-      y: Math.random() * -window.innerHeight,
-      speed: 0.4 + Math.random() * 0.6,
-      drift: Math.random() * Math.PI * 2,
+      y: Math.random() * window.innerHeight,
+      speedY: 0.6 + Math.random() * 0.7,
+      speedX: 0.3 + Math.random() * 0.6,
       rot: Math.random() * Math.PI * 2,
-      rotSpeed: (Math.random() - 0.5) * 0.02,
-      size: 4 + Math.random() * 4,
+      rotSpeed: (Math.random() - 0.5) * 0.025,
+      scale: 0.75 + Math.random() * 0.65,
+      hue: Math.random() > 0.4 ? "2DD4BF" : "10B981",
     }));
 
     const ripples: { x: number; y: number; r: number; alpha: number }[] = [];
@@ -336,6 +337,67 @@ export function HeroOcean() {
           skyCtx.stroke();
         });
       }
+
+      // Floating 3D Emerald Crystal Leaves (Hiệu Ứng Tinh Thể Lá Cây Xanh Bay Lướt Qua Màn Hình)
+      crystalLeaves.forEach((leaf, idx) => {
+        leaf.y += leaf.speedY;
+        leaf.x += leaf.speedX + Math.sin(time * 1.5 + idx) * 0.45;
+        leaf.rot += leaf.rotSpeed;
+
+        if (leaf.y > h + 40) {
+          leaf.y = -40;
+          leaf.x = Math.random() * w;
+        }
+        if (leaf.x > w + 40) {
+          leaf.x = -40;
+        }
+
+        skyCtx.save();
+        skyCtx.translate(leaf.x, leaf.y);
+        skyCtx.rotate(leaf.rot);
+        skyCtx.scale(leaf.scale, leaf.scale);
+
+        const lSize = 13;
+        const twinkle = Math.sin(time * 3 + idx) * 0.2 + 0.8;
+
+        // 3D Low-Poly Emerald Crystal Leaf Geometry
+        // Left Emerald Facet
+        skyCtx.fillStyle = isDark ? `rgba(45, 212, 191, ${0.78 * twinkle})` : `rgba(16, 185, 129, ${0.82 * twinkle})`;
+        skyCtx.beginPath();
+        skyCtx.moveTo(0, -lSize * 1.3);
+        skyCtx.lineTo(-lSize * 0.55, 0);
+        skyCtx.lineTo(0, lSize * 1.3);
+        skyCtx.closePath();
+        skyCtx.fill();
+
+        // Right Emerald Facet
+        skyCtx.fillStyle = isDark ? `rgba(56, 189, 248, ${0.68 * twinkle})` : `rgba(52, 211, 153, ${0.72 * twinkle})`;
+        skyCtx.beginPath();
+        skyCtx.moveTo(0, -lSize * 1.3);
+        skyCtx.lineTo(lSize * 0.55, 0);
+        skyCtx.lineTo(0, lSize * 1.3);
+        skyCtx.closePath();
+        skyCtx.fill();
+
+        // Glowing White Wireframe Spine & Border
+        skyCtx.strokeStyle = `rgba(255, 255, 255, ${0.88 * twinkle})`;
+        skyCtx.lineWidth = 1;
+        skyCtx.beginPath();
+        skyCtx.moveTo(0, -lSize * 1.3);
+        skyCtx.lineTo(-lSize * 0.55, 0);
+        skyCtx.lineTo(0, lSize * 1.3);
+        skyCtx.lineTo(lSize * 0.55, 0);
+        skyCtx.closePath();
+        skyCtx.stroke();
+
+        // Center Spine Line
+        skyCtx.beginPath();
+        skyCtx.moveTo(0, -lSize * 1.3);
+        skyCtx.lineTo(0, lSize * 1.3);
+        skyCtx.stroke();
+
+        skyCtx.restore();
+      });
     };
 
     const drawWaves = (w: number, h: number, time: number) => {
