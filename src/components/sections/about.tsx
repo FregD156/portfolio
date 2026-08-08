@@ -60,7 +60,7 @@ export function About() {
             className="lg:col-span-7 space-y-8"
           >
             {/* Bio Card */}
-            <div className="p-8 rounded-3xl glass-resort-card">
+            <div className="p-8 poly-chamfer glass-resort-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <OceanIcon name="wave" className="w-5 h-5 text-[#FDE68A]" /> Background & Perspective
               </h3>
@@ -82,7 +82,7 @@ export function About() {
             </div>
 
             {/* Language Proficiency Card */}
-            <div className="p-8 rounded-3xl glass-resort-card">
+            <div className="p-8 poly-chamfer glass-resort-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-6 flex items-center gap-2">
                 <OceanIcon name="shell" className="w-5 h-5 text-[#FDE68A]" /> Language Proficiency
               </h3>
@@ -99,9 +99,9 @@ export function About() {
                       <span className="text-sm font-bold text-white">{lang.name}</span>
                       <span className="font-mono text-xs text-[#FDE68A] font-bold">{lang.level}</span>
                     </div>
-                    <div className="h-2.5 bg-[#021c28] rounded-full overflow-hidden border border-teal-300/30">
+                    <div className="h-2.5 bg-[#021c28] poly-badge overflow-hidden border border-teal-300/30">
                       <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#FDE68A]"
+                        className="h-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#FDE68A]"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${lang.pct}%` }}
                         viewport={{ once: true }}
@@ -123,7 +123,7 @@ export function About() {
             className="lg:col-span-5 space-y-6"
           >
             {/* Categorized Technical Arsenal */}
-            <div className="p-8 rounded-3xl glass-resort-card">
+            <div className="p-8 poly-chamfer glass-resort-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-6 flex items-center gap-2">
                 <OceanIcon name="code" className="w-5 h-5 text-[#FDE68A]" /> Technical Arsenal
               </h3>
@@ -139,7 +139,7 @@ export function About() {
                       {cat.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="font-mono text-[11px] px-3 py-1 rounded-full border border-teal-300/40 bg-white/10 text-teal-100 font-medium hover:border-[#FDE68A] transition-all"
+                          className="font-mono text-[11px] px-3 py-1 poly-badge border border-teal-300/40 bg-white/10 text-teal-100 font-medium hover:border-[#FDE68A] transition-all"
                         >
                           {skill}
                         </span>
@@ -151,7 +151,7 @@ export function About() {
             </div>
 
             {/* Target KNUT Future Goal Block */}
-            <div className="p-6 rounded-3xl glass-resort-card border-l-4 border-l-[#FDE68A] relative overflow-hidden group">
+            <div className="p-6 poly-chamfer glass-resort-card border-l-4 border-l-[#FDE68A] relative overflow-hidden group">
               <div className="absolute top-4 right-4 text-[#FDE68A]/40 group-hover:text-[#FDE68A] transition-colors">
                 <OceanIcon name="sailboat" className="w-10 h-10" />
               </div>

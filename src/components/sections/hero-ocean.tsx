@@ -458,17 +458,17 @@ export function HeroOcean() {
             Engineering Graph-RAG architectures & high-performance backend systems at UTT Hanoi.
           </p>
 
-          {/* Action CTAs - Soft Organic Liquid Pills */}
+          {/* Action CTAs - 3D Low-Poly Polygonal Chamfered Buttons */}
           <div className="flex gap-4 flex-wrap mb-8">
             <a
               href="#projects"
-              className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] hover:from-[#0284c7] hover:to-[#0f766e] text-white font-extrabold text-sm shadow-xl hover:shadow-[0_10px_30px_rgba(45,212,191,0.5)] transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+              className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 poly-badge bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] hover:from-[#0284c7] hover:to-[#0f766e] text-white font-extrabold text-sm shadow-xl hover:shadow-[0_10px_30px_rgba(45,212,191,0.5)] transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
             >
               <OceanIcon name="sailboat" className="w-4 h-4 text-white" /> Selected Works
             </a>
             <a
               href="#contact"
-              className="font-jakarta inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/60 bg-white/15 hover:bg-white/30 text-white font-bold backdrop-blur-xl text-sm transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-lg"
+              className="font-jakarta inline-flex items-center gap-2 px-7 py-3.5 poly-badge border border-white/60 bg-white/15 hover:bg-white/30 text-white font-bold backdrop-blur-xl text-sm transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-lg"
             >
               <OceanIcon name="mail" className="w-4 h-4 text-[#FDE68A]" /> Get in Touch
             </a>
@@ -480,14 +480,14 @@ export function HeroOcean() {
               href={portfolioConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
+              className="p-3 poly-badge border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
               aria-label="GitHub"
             >
               <OceanIcon name="github" className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${portfolioConfig.email}`}
-              className="p-3 rounded-full border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
+              className="p-3 poly-badge border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
               aria-label="Email"
             >
               <OceanIcon name="mail" className="w-4 h-4" />
@@ -496,7 +496,7 @@ export function HeroOcean() {
               href={portfolioConfig.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
+              className="p-3 poly-badge border border-white/40 bg-white/15 hover:bg-white/35 text-white transition-all duration-300 hover:scale-110 hover:border-[#FDE68A] shadow-md"
               aria-label="Resume"
             >
               <OceanIcon name="terminal" className="w-4 h-4" />
@@ -557,7 +557,7 @@ export function HeroOcean() {
             {/* Orbiting Equatorial Glow Path Ring */}
             <div className="absolute inset-0 rounded-full border border-teal-200/40 pointer-events-none shadow-[0_0_50px_rgba(45,212,191,0.5)]" />
 
-            {/* --- ORBITING ACHIEVEMENT BADGES (High-Contrast Dark Glass Pills with Crisp Pure White Text) --- */}
+            {/* --- ORBITING ACHIEVEMENT BADGES (3D Low-Poly Polygonal Chamfered Badges) --- */}
 
             {/* Orbiting Badge #1: Top 6 AI Hackathon 2026 (Top-Right Orbit) */}
             <motion.div
@@ -566,7 +566,7 @@ export function HeroOcean() {
               whileHover={{ scale: 1.05 }}
               className="absolute -top-6 -right-4 md:-right-10 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
                 <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   Top 6 <span className="text-[#FDE68A]">· AI Hackathon</span>
@@ -581,7 +581,7 @@ export function HeroOcean() {
               whileHover={{ scale: 1.05 }}
               className="absolute -top-5 -left-4 md:-left-12 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2DD4BF] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#2DD4BF] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
                 <OceanIcon name="star" className="w-3.5 h-3.5 text-[#2DD4BF] group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   GPA <span className="text-[#2DD4BF]">3.64 / 4.00</span>
@@ -596,7 +596,7 @@ export function HeroOcean() {
               whileHover={{ scale: 1.05 }}
               className="absolute -bottom-5 -right-4 md:-right-8 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
                 <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   3rd Place <span className="text-[#FDE68A]">· Social AI</span>

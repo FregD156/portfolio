@@ -141,11 +141,11 @@ export function Experience() {
                 </div>
 
                 {/* Expanded Sleek Experience Frame */}
-                <div className="glass-resort-card p-5 md:p-7 rounded-2xl border border-teal-300/30 group-hover:border-[#FDE68A]/80 shadow-md transition-all duration-300 group-hover:-translate-y-1 w-full">
+                <div className="glass-resort-card p-5 md:p-7 poly-chamfer border border-teal-300/30 group-hover:border-[#FDE68A]/80 shadow-md transition-all duration-300 group-hover:-translate-y-1 w-full">
 
                   {/* Mobile-only Date Tag (hidden on desktop because it's on the left side) */}
                   <div className="flex md:hidden items-center justify-between gap-2 mb-2">
-                    <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/70 px-3 py-0.5 rounded-full shadow-sm">
+                    <span className="font-mono text-xs text-[#FDE68A] font-extrabold bg-[#022433] border border-[#FDE68A]/70 px-3 py-0.5 poly-badge shadow-sm">
                       {item.duration}
                     </span>
                     <span className="font-mono text-[10px] text-[#2DD4BF] font-extrabold uppercase tracking-wider">
@@ -164,14 +164,14 @@ export function Experience() {
                   {/* Award Highlight & Certificate Button */}
                   {item.highlight && (
                     <div className="flex items-center gap-2 mb-3 flex-wrap">
-                      <span className="font-mono text-xs px-3 py-1 rounded-full border border-[#FDE68A] text-[#FDE68A] bg-[#022433] flex items-center gap-1.5 font-bold shadow-sm">
+                      <span className="font-mono text-xs px-3 py-1 poly-badge border border-[#FDE68A] text-[#FDE68A] bg-[#022433] flex items-center gap-1.5 font-bold shadow-sm">
                         <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A]" />
                         {item.highlight}
                       </span>
                       {item.certificateUrl && (
                         <button
                           onClick={() => setSelectedCert(item)}
-                          className="font-mono inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full border border-[#2DD4BF]/60 bg-[#022433] hover:border-[#FDE68A] text-[#2DD4BF] hover:text-[#FDE68A] transition-all font-bold cursor-pointer"
+                          className="font-mono inline-flex items-center gap-1.5 text-xs px-3 py-1 poly-badge border border-[#2DD4BF]/60 bg-[#022433] hover:border-[#FDE68A] text-[#2DD4BF] hover:text-[#FDE68A] transition-all font-bold cursor-pointer"
                         >
                           <OceanIcon name="star" className="w-3.5 h-3.5 text-[#FDE68A]" />
                           View Certificate
@@ -190,7 +190,7 @@ export function Experience() {
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-mono text-[10px] md:text-[11px] text-[#2DD4BF] border border-[#2DD4BF]/35 px-2.5 py-0.5 rounded-full bg-[#022433]/80 font-bold"
+                        className="font-mono text-[10px] md:text-[11px] text-[#2DD4BF] border border-[#2DD4BF]/35 px-2.5 py-0.5 poly-badge bg-[#022433]/80 font-bold"
                       >
                         {tag}
                       </span>

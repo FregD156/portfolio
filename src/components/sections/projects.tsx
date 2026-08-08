@@ -123,7 +123,7 @@ export function Projects() {
                 tiltMaxAngleX={3}
                 tiltMaxAngleY={3}
                 perspective={1000}
-                className="w-full relative rounded-[24px] overflow-hidden border border-teal-300/30 bg-[#022433]/90 shadow-xl transition-all duration-500 cursor-pointer group-hover:-translate-y-1.5 group-hover:border-[#2DD4BF] group-hover:shadow-[0_15px_35px_rgba(45,212,191,0.3)] flex flex-col justify-end p-6 md:p-7 aspect-[4/3]"
+                className="w-full relative poly-chamfer overflow-hidden border border-teal-300/40 bg-[#022433]/90 shadow-xl transition-all duration-500 cursor-pointer group-hover:-translate-y-1.5 group-hover:border-[#2DD4BF] group-hover:shadow-[0_15px_35px_rgba(45,212,191,0.3)] flex flex-col justify-end p-6 md:p-7 aspect-[4/3]"
               >
                 {/* Full-Bleed Project Background Image */}
                 <Image
@@ -139,7 +139,7 @@ export function Projects() {
 
                 {/* Fixed Golden Ribbon Award Badge (Top-Left Corner of Card) */}
                 {p.hasAward && (
-                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#FDE68A] text-[#022433] font-mono text-xs font-extrabold px-4 py-1.5 rounded-full shadow-lg border border-[#FDE68A]">
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[#FDE68A] text-[#022433] font-mono text-xs font-extrabold px-4 py-1.5 poly-badge shadow-lg border border-[#FDE68A]">
                     <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#022433]" />
                     <span>{p.outcome}</span>
                   </div>
@@ -160,13 +160,13 @@ export function Projects() {
                     {p.tech.slice(0, 4).map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-xs px-3 py-0.5 rounded-full border border-[#2DD4BF]/50 bg-[#022433] text-[#2DD4BF] font-bold backdrop-blur-md shadow-sm"
+                        className="font-mono text-xs px-3 py-0.5 poly-badge border border-[#2DD4BF]/50 bg-[#022433] text-[#2DD4BF] font-bold backdrop-blur-md shadow-sm"
                       >
                         {t}
                       </span>
                     ))}
                     {p.tech.length > 4 && (
-                      <span className="font-mono text-xs px-2.5 py-0.5 rounded-full border border-white/30 bg-white/15 text-white font-bold">
+                      <span className="font-mono text-xs px-2.5 py-0.5 poly-badge border border-white/30 bg-white/15 text-white font-bold">
                         +{p.tech.length - 4}
                       </span>
                     )}
