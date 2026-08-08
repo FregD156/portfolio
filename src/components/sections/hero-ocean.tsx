@@ -271,12 +271,13 @@ export function HeroOcean() {
             const py = cy + dy;
             const r = baseSize * scale * 0.5;
 
-            // Pure White Feathering Radial Gradient
+            // Soft Feathering Radial Gradient (Light Mode: Pure White / Dark Mode: Silver Moonlight)
             const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.25, r * 0.05, px, py, r);
             if (isDark) {
-              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.88)");
-              cloudGrad.addColorStop(0.45, "rgba(253, 230, 138, 0.65)");
-              cloudGrad.addColorStop(0.8, "rgba(45, 212, 191, 0.35)");
+              // Mystic Silver Moonlight Night Clouds (Mây Đêm Tráng Bạc Ánh Trăng Chân Thực 100%)
+              cloudGrad.addColorStop(0, "rgba(240, 249, 255, 0.85)");
+              cloudGrad.addColorStop(0.35, "rgba(186, 230, 253, 0.65)");
+              cloudGrad.addColorStop(0.7, "rgba(56, 189, 248, 0.3)");
               cloudGrad.addColorStop(1, "rgba(2, 34, 48, 0)");
             } else {
               cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
@@ -289,6 +290,17 @@ export function HeroOcean() {
             skyCtx.beginPath();
             skyCtx.arc(px, py, r, 0, Math.PI * 2);
             skyCtx.fill();
+
+            // Dark Mode Silver Moonlight Top Edge Highlight
+            if (isDark) {
+              skyCtx.save();
+              skyCtx.strokeStyle = "rgba(253, 230, 138, 0.45)";
+              skyCtx.lineWidth = 1;
+              skyCtx.beginPath();
+              skyCtx.arc(px, py, r * 0.96, Math.PI * 1.15, Math.PI * 1.85);
+              skyCtx.stroke();
+              skyCtx.restore();
+            }
           });
         }
       });
