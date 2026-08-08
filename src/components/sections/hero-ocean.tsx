@@ -268,36 +268,32 @@ export function HeroOcean() {
             { dx: baseScale * 0.18, dy: -baseScale * 0.18, r: baseScale * 0.38 },
           ];
 
+          // Unified Single-Path Cloud Silhouette (100% Seamless & Uniform, No Inner Circles)
+          const cloudGrad = skyCtx.createRadialGradient(
+            0, -baseScale * 0.1, 0,
+            0, -baseScale * 0.1, baseScale * 1.1
+          );
+
+          if (isDark) {
+            cloudGrad.addColorStop(0, `rgba(240, 249, 255, ${0.72 * layer.alpha})`);
+            cloudGrad.addColorStop(0.55, `rgba(186, 230, 253, ${0.48 * layer.alpha})`);
+            cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+          } else {
+            cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.88 * layer.alpha})`);
+            cloudGrad.addColorStop(0.6, `rgba(255, 255, 255, ${0.55 * layer.alpha})`);
+            cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+          }
+
           skyCtx.save();
           skyCtx.translate(cx, cy);
 
-          // Draw Soft Radial Feathered Gradient Puffs
-          puffs.forEach((p) => {
-            const radGrad = skyCtx.createRadialGradient(
-              p.dx, p.dy, p.r * 0.1,
-              p.dx, p.dy, p.r
-            );
-
-            if (isDark) {
-              radGrad.addColorStop(0, `rgba(255, 255, 255, ${0.75 * layer.alpha})`);
-              radGrad.addColorStop(0.6, `rgba(224, 242, 254, ${0.45 * layer.alpha})`);
-              radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-            } else {
-              radGrad.addColorStop(0, `rgba(255, 255, 255, ${0.92 * layer.alpha})`);
-              radGrad.addColorStop(0.6, `rgba(255, 255, 255, ${0.65 * layer.alpha})`);
-              radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
-            }
-
-            skyCtx.fillStyle = radGrad;
-            skyCtx.beginPath();
-            skyCtx.arc(p.dx, p.dy, p.r, 0, Math.PI * 2);
-            skyCtx.fill();
-          });
-
-          // Soft Glowing Highlights on Top Domes
-          skyCtx.fillStyle = isDark ? "rgba(253, 230, 138, 0.18)" : "rgba(255, 255, 255, 0.45)";
+          // Fill Single Unified Contiguous Cloud Path (Zero Overlapping Inner Rings)
+          skyCtx.fillStyle = cloudGrad;
           skyCtx.beginPath();
-          skyCtx.ellipse(0, -baseScale * 0.2, baseScale * 0.45, baseScale * 0.22, 0, 0, Math.PI * 2);
+          puffs.forEach((p) => {
+            skyCtx.moveTo(p.dx + p.r, p.dy);
+            skyCtx.arc(p.dx, p.dy, p.r, 0, Math.PI * 2);
+          });
           skyCtx.fill();
 
           skyCtx.restore();
