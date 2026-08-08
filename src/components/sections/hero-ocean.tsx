@@ -607,23 +607,19 @@ export function HeroOcean() {
             {/* --- 3D Tropical Ocean Crystal Globe Sphere Frame Window --- */}
             <div className="relative w-[280px] h-[280px] md:w-[350px] md:h-[350px] rounded-full p-3 bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#022433] border-4 border-[#2DD4BF] shadow-[0_0_80px_rgba(45,212,191,0.6)] group">
               
-              {/* Inner Convex Globe Sphere Lens (Photo Perfectly Centered) */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white bg-[#0284C7] shadow-[inset_0_0_30px_rgba(0,0,0,0.5)]">
+              {/* Inner Convex Globe Sphere Lens (Photo 100% Crystal Clear & Crisp) */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/80 bg-[#0284C7] shadow-[inset_0_0_25px_rgba(0,0,0,0.5)]">
                 <Image
                   src="/assets/images/profile.jpeg"
                   alt="Nguyen Thanh Duy - Software Engineer"
                   fill
                   sizes="(max-width: 768px) 280px, 350px"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-108 contrast-[1.05] brightness-[1.03]"
                   priority
                 />
 
-                {/* 3D Planet Grid Latitude / Longitude Overlay Lines */}
-                <div className="absolute inset-0 border border-white/20 rounded-full pointer-events-none [transform:rotateX(45deg)]" />
-                <div className="absolute inset-0 border border-white/20 rounded-full pointer-events-none [transform:rotateY(45deg)]" />
-
-                {/* Tropical Sunlit Glass Globe Lens Flare & Atmosphere Reflection */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/25 to-white/50 pointer-events-none group-hover:opacity-90 transition-opacity duration-500" />
+                {/* Subtle Clean Edge Glow Arc (Non-Obscuring) */}
+                <div className="absolute inset-0 rounded-full border border-white/30 pointer-events-none shadow-[inset_0_2px_15px_rgba(255,255,255,0.3)]" />
               </div>
 
             </div>
