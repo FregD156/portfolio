@@ -249,53 +249,44 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Volumetric 3D Fluffy Cumulus Clouds (100% Crisp, Bold & Vivid Visibility)
+      // Soft Translucent Ethereal Glassy Mist Clouds (Mây Trong Suốt Bay Nhẹ Nhàng Thơ Mộng)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
-          const cx = (((i * spread + time * layer.speed * 22) % (w + spread * layer.scale)) - spread * layer.scale);
-          const cy = h * layer.y + Math.sin(time * 0.15 + i) * 8;
-          const baseSize = layer.scale * 72;
+          const cx = (((i * spread + time * layer.speed * 10) % (w + spread * layer.scale)) - spread * layer.scale);
+          const cy = h * layer.y + Math.sin(time * 0.08 + i) * 5;
+          const baseSize = layer.scale * 68;
 
-          // Cloud Puffs Array with Vivid 3D Volumetric Radial Shading
+          // Soft Translucent Mist Puffs
           const puffs: [number, number, number][] = [
             [0, 0, 1.0],
-            [baseSize * 0.55, -baseSize * 0.18, 0.82],
-            [-baseSize * 0.55, -baseSize * 0.12, 0.75],
-            [baseSize * 0.28, baseSize * 0.12, 0.88],
-            [-baseSize * 0.28, baseSize * 0.08, 0.82],
+            [baseSize * 0.5, -baseSize * 0.15, 0.8],
+            [-baseSize * 0.5, -baseSize * 0.1, 0.72],
+            [baseSize * 0.25, baseSize * 0.1, 0.85],
+            [-baseSize * 0.25, baseSize * 0.06, 0.78],
           ];
 
           puffs.forEach(([dx, dy, scale]) => {
             const px = cx + dx;
             const py = cy + dy;
-            const r = baseSize * scale * 0.48;
+            const r = baseSize * scale * 0.5;
 
-            // Crisp 3D Volumetric Radial Gradient
-            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.35, r * 0.05, px, py, r);
+            // Soft Translucent Feathering Radial Gradient
+            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.2, r * 0.05, px, py, r);
             if (isDark) {
-              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
-              cloudGrad.addColorStop(0.35, "rgba(253, 230, 138, 0.9)");
-              cloudGrad.addColorStop(0.75, "rgba(45, 212, 191, 0.8)");
-              cloudGrad.addColorStop(1, "rgba(4, 50, 71, 0.6)");
+              cloudGrad.addColorStop(0, "rgba(253, 230, 138, 0.35)");
+              cloudGrad.addColorStop(0.5, "rgba(45, 212, 191, 0.2)");
+              cloudGrad.addColorStop(1, "rgba(2, 34, 48, 0)");
             } else {
-              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 1.0)");
-              cloudGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.95)");
-              cloudGrad.addColorStop(0.85, "rgba(253, 230, 138, 0.85)");
-              cloudGrad.addColorStop(1, "rgba(186, 230, 253, 0.7)");
+              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.45)");
+              cloudGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.25)");
+              cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
             }
 
             skyCtx.fillStyle = cloudGrad;
             skyCtx.beginPath();
             skyCtx.arc(px, py, r, 0, Math.PI * 2);
             skyCtx.fill();
-
-            // Crisp Top Highlight Arc for Maximum Visibility
-            skyCtx.strokeStyle = "rgba(255, 255, 255, 0.85)";
-            skyCtx.lineWidth = 1.2;
-            skyCtx.beginPath();
-            skyCtx.arc(px, py, r, Math.PI * 1.1, Math.PI * 1.9);
-            skyCtx.stroke();
           });
         }
       });
