@@ -249,22 +249,46 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Parallax Clouds
+      // Volumetric 3D Fluffy Cumulus Clouds with 3D Sunset & Moonlight Shading
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
-          const x = (((i * spread + time * layer.speed * 20) % (w + spread * layer.scale)) - spread * layer.scale);
-          const y = h * layer.y + Math.sin(time * 0.1 + i) * 6;
-          const size = layer.scale * 60;
-          const cloudAlpha = isDark ? layer.alpha * 0.35 : layer.alpha * 0.9;
-          skyCtx.fillStyle = `rgba(255,255,255,${cloudAlpha})`;
-          [[0, 0, 1], [size * 0.6, -size * 0.15, 0.8], [-size * 0.6, -size * 0.1, 0.7], [size * 0.3, size * 0.1, 0.9]].forEach(
-            ([dx, dy, s]) => {
-              skyCtx.beginPath();
-              skyCtx.ellipse(x + dx, y + dy, size * s * 0.5, size * s * 0.32, 0, 0, Math.PI * 2);
-              skyCtx.fill();
+          const cx = (((i * spread + time * layer.speed * 22) % (w + spread * layer.scale)) - spread * layer.scale);
+          const cy = h * layer.y + Math.sin(time * 0.15 + i) * 8;
+          const baseSize = layer.scale * 65;
+          const cloudAlpha = isDark ? layer.alpha * 0.45 : layer.alpha * 0.95;
+
+          // Cloud Puffs Array with 3D Volumetric Radial Shading
+          const puffs: [number, number, number][] = [
+            [0, 0, 1.0],
+            [baseSize * 0.55, -baseSize * 0.18, 0.82],
+            [-baseSize * 0.55, -baseSize * 0.12, 0.75],
+            [baseSize * 0.28, baseSize * 0.12, 0.88],
+            [-baseSize * 0.28, baseSize * 0.08, 0.82],
+          ];
+
+          puffs.forEach(([dx, dy, scale]) => {
+            const px = cx + dx;
+            const py = cy + dy;
+            const r = baseSize * scale * 0.48;
+
+            // 3D Volumetric Radial Shading
+            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.3, r * 0.1, px, py, r);
+            if (isDark) {
+              cloudGrad.addColorStop(0, `rgba(253, 230, 138, ${cloudAlpha * 0.9})`);
+              cloudGrad.addColorStop(0.4, `rgba(45, 212, 191, ${cloudAlpha * 0.6})`);
+              cloudGrad.addColorStop(1, `rgba(4, 50, 71, ${cloudAlpha * 0.2})`);
+            } else {
+              cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${cloudAlpha})`);
+              cloudGrad.addColorStop(0.65, `rgba(254, 240, 138, ${cloudAlpha * 0.85})`);
+              cloudGrad.addColorStop(1, `rgba(224, 242, 254, ${cloudAlpha * 0.3})`);
             }
-          );
+
+            skyCtx.fillStyle = cloudGrad;
+            skyCtx.beginPath();
+            skyCtx.arc(px, py, r, 0, Math.PI * 2);
+            skyCtx.fill();
+          });
         }
       });
 

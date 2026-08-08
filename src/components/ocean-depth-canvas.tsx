@@ -50,6 +50,20 @@ export function OceanDepthCanvas() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
+    // Interactive Water Ripple System
+    const ripples: { x: number; y: number; r: number; alpha: number }[] = [];
+    const handleMouseMove = (e: MouseEvent) => {
+      if (Math.random() < 0.2) {
+        ripples.push({
+          x: e.clientX,
+          y: e.clientY,
+          r: 2,
+          alpha: 0.85,
+        });
+      }
+    };
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+
     const w = () => window.innerWidth;
     const h = () => window.innerHeight;
 
@@ -456,14 +470,50 @@ export function OceanDepthCanvas() {
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, width, height);
 
-      // 2a. Global Ocean Ambient Waves
-      const waveAlpha = 0.16 - currentScrollProgress * 0.08;
-      ctx.fillStyle = `rgba(56, 189, 248, ${Math.max(0.05, waveAlpha)})`;
+      // 2a. 3 Overlapping Ocean Wave Layers with Sparkling Sea Foam Crests
+      const waveAlpha = Math.max(0.05, 0.18 - currentScrollProgress * 0.08);
+
+      // Layer 3: Deep Background Horizon Wave
+      ctx.fillStyle = `rgba(3, 79, 107, ${waveAlpha * 0.6})`;
+      ctx.beginPath();
+      ctx.moveTo(0, height);
+      for (let x = 0; x <= width; x += 16) {
+        const y = height * 0.40 + Math.sin(x * 0.003 + t * 0.5) * 10;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(width, height);
+      ctx.closePath();
+      ctx.fill();
+
+      // Layer 2: Mid-ground Deep Blue Wave
+      ctx.fillStyle = `rgba(6, 182, 212, ${waveAlpha * 0.85})`;
+      ctx.beginPath();
+      ctx.moveTo(0, height);
+      for (let x = 0; x <= width; x += 14) {
+        const y = height * 0.36 + Math.sin(x * 0.004 + t * 0.8 + 1) * 14;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(width, height);
+      ctx.closePath();
+      ctx.fill();
+
+      // Layer 1: Foreground Crisp Cyan Wave with Foam Crests
+      ctx.fillStyle = `rgba(56, 189, 248, ${waveAlpha})`;
       ctx.beginPath();
       ctx.moveTo(0, height);
       for (let x = 0; x <= width; x += 12) {
-        const y = height * 0.35 + Math.sin(x * 0.005 + t * 0.9) * 16 + Math.cos(x * 0.01 + t * 0.6) * 12;
+        const y = height * 0.32 + Math.sin(x * 0.006 + t * 1.2) * 18 + Math.cos(x * 0.01 + t * 0.6) * 10;
         ctx.lineTo(x, y);
+
+        // Sparkling Foam Crests along Wave Peaks
+        if (Math.sin(x * 0.006 + t * 1.2) > 0.5 && x % 24 === 0) {
+          ctx.save();
+          ctx.fillStyle = `rgba(255, 255, 255, ${0.45 + Math.sin(t * 4 + x) * 0.25})`;
+          ctx.beginPath();
+          ctx.arc(x, y, 2.5 + Math.sin(t * 3 + x), 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
       }
       ctx.lineTo(width, height);
       ctx.closePath();
@@ -537,6 +587,32 @@ export function OceanDepthCanvas() {
         ctx.fill();
         ctx.stroke();
 
+        ctx.restore();
+      }
+
+      // 3c. Render & Expand Interactive Mouse Water Ripples (Vòng Loang Sóng Tương Tác Theo Con Trỏ)
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const rip = ripples[i];
+        rip.r += 1.8;
+        rip.alpha -= 0.018;
+
+        if (rip.alpha <= 0 || rip.r > 65) {
+          ripples.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.strokeStyle = `rgba(45, 212, 191, ${rip.alpha * 0.85})`;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.ellipse(rip.x, rip.y, rip.r, rip.r * 0.45, 0, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = `rgba(253, 230, 138, ${rip.alpha * 0.5})`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.ellipse(rip.x, rip.y, rip.r * 0.65, rip.r * 0.3, 0, 0, Math.PI * 2);
+        ctx.stroke();
         ctx.restore();
       }
 
@@ -637,6 +713,7 @@ export function OceanDepthCanvas() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
