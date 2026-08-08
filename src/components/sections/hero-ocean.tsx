@@ -753,16 +753,16 @@ export function HeroOcean() {
             {/* Orbiting Equatorial Glow Path Ring */}
             <div className="absolute inset-0 rounded-full border border-teal-200/40 pointer-events-none shadow-[0_0_50px_rgba(45,212,191,0.5)]" />
 
-            {/* --- ORBITING ACHIEVEMENT BADGES (3D Low-Poly Polygonal Chamfered Badges) --- */}
+            {/* --- ORBITING ACHIEVEMENT BADGES (Positioned with 4-Quadrant Radial Separation) --- */}
 
-            {/* Orbiting Badge #1: Top 6 AI Hackathon 2026 (Top-Right Orbit) */}
+            {/* Orbiting Badge #1: Top 6 AI Hackathon 2026 (Right Flank Orbit) */}
             <motion.div
-              animate={{ y: [0, -6, 0] }}
+              animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.05 }}
-              className="absolute -top-6 -right-4 md:-right-10 z-40 cursor-default"
+              whileHover={{ scale: 1.08 }}
+              className="absolute top-12 -right-6 md:-right-20 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#FDE68A] bg-[#022433]/95 backdrop-blur-2xl shadow-[0_4px_22px_rgba(0,0,0,0.65)] transition-all group">
                 <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   Top 6 <span className="text-[#FDE68A]">· AI Hackathon</span>
@@ -770,14 +770,14 @@ export function HeroOcean() {
               </div>
             </motion.div>
 
-            {/* Orbiting Badge #2: Academic GPA 3.64 / 4.00 (Top-Left Orbit) */}
+            {/* Orbiting Badge #2: Academic GPA 3.64 / 4.00 (Left Flank Orbit) */}
             <motion.div
-              animate={{ y: [0, -6, 0] }}
+              animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              whileHover={{ scale: 1.05 }}
-              className="absolute -top-5 -left-4 md:-left-12 z-40 cursor-default"
+              whileHover={{ scale: 1.08 }}
+              className="absolute top-12 -left-6 md:-left-20 z-40 cursor-default"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#2DD4BF] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#2DD4BF] bg-[#022433]/95 backdrop-blur-2xl shadow-[0_4px_22px_rgba(0,0,0,0.65)] transition-all group">
                 <OceanIcon name="star" className="w-3.5 h-3.5 text-[#2DD4BF] group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
                   GPA <span className="text-[#2DD4BF]">3.64 / 4.00</span>
@@ -785,17 +785,17 @@ export function HeroOcean() {
               </div>
             </motion.div>
 
-            {/* Orbiting Badge #3: 3rd Place Social AI (Bottom-Right Orbit) */}
+            {/* Orbiting Badge #3: 3rd Place Social AI (Bottom-Center Orbit) */}
             <motion.div
-              animate={{ y: [0, -5, 0] }}
+              animate={{ y: [0, -6, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              whileHover={{ scale: 1.05 }}
-              className="absolute -bottom-5 -right-4 md:-right-8 z-40 cursor-default"
+              whileHover={{ scale: 1.08 }}
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 cursor-default whitespace-nowrap"
             >
-              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all group">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 poly-badge border border-[#FDE68A] bg-[#022433]/95 backdrop-blur-2xl shadow-[0_4px_22px_rgba(0,0,0,0.65)] transition-all group">
                 <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
                 <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
-                  3rd Place <span className="text-[#FDE68A]">· Social AI</span>
+                  3rd Place <span className="text-[#FDE68A]">· Social AI System</span>
                 </span>
               </div>
             </motion.div>
