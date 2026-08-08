@@ -341,21 +341,65 @@ export function HeroOcean() {
     const drawWaves = (w: number, h: number, time: number) => {
       wavesCtx.clearRect(0, 0, w, h);
       const step = isMobile ? 8 : 4;
+      const isDark = document.documentElement.classList.contains("dark");
 
-      // 1. Render 4 Wave Layers (Ocean Turquoise)
-      waveLayers.forEach((layer) => {
+      // 1. Render 4 Realistic Trochoidal Wave Layers with Depth Gradients & Foam Crests
+      waveLayers.forEach((layer, lIdx) => {
+        const waveTopY = h * layer.baseY;
+
+        // Depth Gradient for each wave layer (Surface Translucency -> Deep Water Density)
+        const waveGrad = wavesCtx.createLinearGradient(0, waveTopY - 20, 0, h);
+        if (isDark) {
+          waveGrad.addColorStop(0, `rgba(${layer.color}, ${Math.min(1, layer.alpha * 1.15)})`);
+          waveGrad.addColorStop(0.5, `rgba(4, 44, 61, ${Math.min(1, layer.alpha * 1.25)})`);
+          waveGrad.addColorStop(1, "rgba(1, 14, 23, 0.98)");
+        } else {
+          waveGrad.addColorStop(0, `rgba(${layer.color}, ${Math.min(1, layer.alpha * 1.1)})`);
+          waveGrad.addColorStop(0.6, `rgba(14, 165, 233, ${Math.min(1, layer.alpha * 1.15)})`);
+          waveGrad.addColorStop(1, "rgba(3, 105, 161, 0.95)");
+        }
+
         wavesCtx.beginPath();
         wavesCtx.moveTo(0, h);
         for (let x = 0; x <= w; x += step) {
-          wavesCtx.lineTo(x, h * layer.baseY + waveY(x, time, layer));
+          wavesCtx.lineTo(x, waveTopY + waveY(x, time, layer));
         }
         wavesCtx.lineTo(w, h);
         wavesCtx.closePath();
-        wavesCtx.fillStyle = `rgba(${layer.color},${layer.alpha})`;
+        wavesCtx.fillStyle = waveGrad;
         wavesCtx.fill();
+
+        // Sea Foam Crest Line for EVERY wave layer (bọt sóng trắng lấp lấp lướt trên đỉnh sóng)
+        wavesCtx.beginPath();
+        for (let x = 0; x <= w; x += step) {
+          const y = waveTopY + waveY(x, time, layer);
+          x === 0 ? wavesCtx.moveTo(x, y) : wavesCtx.lineTo(x, y);
+        }
+        const foamAlpha = (0.45 + (lIdx / 3) * 0.4) * (0.85 + Math.sin(time * 2 + lIdx) * 0.15);
+        wavesCtx.strokeStyle = isDark ? `rgba(45, 212, 191, ${foamAlpha * 0.7})` : `rgba(255, 255, 255, ${foamAlpha})`;
+        wavesCtx.lineWidth = 1.2 + lIdx * 0.7;
+        wavesCtx.stroke();
       });
 
-      // 2. Golden Beach Sand Shoreline at the Bottom of Canvas
+      // 2. Sunlight / Moonlight Water Caustics Shimmer Net (Mạng Lưới Ánh Nắng / Ánh Trăng Phản Quang Trên Mặt Nước)
+      const causticY = h * 0.58;
+      wavesCtx.save();
+      wavesCtx.lineWidth = 1.2;
+      for (let c = 0; c < 12; c++) {
+        const cx = ((c * (w / 12) + time * 18) % (w + 100)) - 50;
+        const cy = causticY + Math.sin(cx * 0.008 + time * 1.5) * 22;
+        const cLen = 45 + (c % 4) * 25;
+        const shimmer = Math.sin(time * 3 + c) * 0.35 + 0.65;
+
+        wavesCtx.strokeStyle = isDark ? `rgba(45, 212, 191, ${0.45 * shimmer})` : `rgba(254, 240, 138, ${0.65 * shimmer})`;
+        wavesCtx.beginPath();
+        wavesCtx.moveTo(cx, cy);
+        wavesCtx.quadraticCurveTo(cx + cLen * 0.5, cy + Math.sin(time * 2 + c) * 12, cx + cLen, cy);
+        wavesCtx.stroke();
+      }
+      wavesCtx.restore();
+
+      // 3. Golden Beach Sand Shoreline at the Bottom of Canvas
       const sandGrad = wavesCtx.createLinearGradient(0, h * 0.88, 0, h);
       sandGrad.addColorStop(0, "rgba(254, 240, 138, 0)");
       sandGrad.addColorStop(0.3, "rgba(254, 240, 138, 0.45)");
@@ -370,15 +414,15 @@ export function HeroOcean() {
       wavesCtx.closePath();
       wavesCtx.fill();
 
-      // Front Wave Foam Border
+      // Front Wave Foam Splashes & Bubbles
       const frontLayer = waveLayers[3];
       wavesCtx.beginPath();
       for (let x = 0; x <= w; x += step) {
         const y = h * frontLayer.baseY + waveY(x, time, frontLayer);
         x === 0 ? wavesCtx.moveTo(x, y) : wavesCtx.lineTo(x, y);
       }
-      wavesCtx.strokeStyle = `rgba(255,255,255,${0.7 + Math.sin(time * 1.5) * 0.2})`;
-      wavesCtx.lineWidth = 3;
+      wavesCtx.strokeStyle = `rgba(255, 255, 255, ${0.85 + Math.sin(time * 2) * 0.15})`;
+      wavesCtx.lineWidth = 3.5;
       wavesCtx.stroke();
 
       // Sailboats / Yachts on Wave Surface
@@ -408,7 +452,7 @@ export function HeroOcean() {
         });
       }
 
-      // Sparkles
+      // Water Droplets & Surface Sparkles
       sparkles.forEach((p) => {
         const alpha = Math.abs(Math.sin(time * p.speed + p.offset));
         wavesCtx.fillStyle = `rgba(255,255,255,${alpha * 0.95})`;
