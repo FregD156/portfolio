@@ -557,71 +557,50 @@ export function HeroOcean() {
             {/* Orbiting Equatorial Glow Path Ring */}
             <div className="absolute inset-0 rounded-full border border-teal-200/40 pointer-events-none shadow-[0_0_50px_rgba(45,212,191,0.5)]" />
 
-            {/* --- ORBITING ACHIEVEMENT BADGES (Crisp 2-Line Oceanic Capsules with High-Contrast Legibility) --- */}
+            {/* --- ORBITING ACHIEVEMENT BADGES (Soft, Compact, Sleek Glass Pills) --- */}
 
             {/* Orbiting Badge #1: Top 6 AI Hackathon 2026 (Top-Right Orbit) */}
             <motion.div
-              animate={{ y: [0, -9, 0], rotate: [0, 2, 0] }}
+              animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.08, y: -12 }}
-              className="absolute -top-10 -right-6 md:-right-16 z-40 cursor-default"
+              whileHover={{ scale: 1.05 }}
+              className="absolute -top-6 -right-4 md:-right-10 z-40 cursor-default"
             >
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-2xl border-2 border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_0_30px_rgba(253,230,138,0.45)] group transition-all">
-                <div className="w-8 h-8 rounded-xl bg-[#FDE68A] text-[#022433] flex items-center justify-center font-extrabold shadow-md shrink-0 group-hover:scale-110 transition-transform">
-                  <OceanIcon name="trophy" className="w-4 h-4 text-[#022433]" />
-                </div>
-                <div className="flex flex-col text-left">
-                  <span className="font-mono text-[9px] text-[#FDE68A] font-extrabold uppercase tracking-widest leading-none mb-1">
-                    AI HACKATHON 2026
-                  </span>
-                  <span className="font-fraunces text-xs md:text-sm font-extrabold text-white leading-tight">
-                    Top 6 Finalist
-                  </span>
-                </div>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A]/60 bg-[#022433]/70 backdrop-blur-xl shadow-lg transition-all group">
+                <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
+                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
+                  Top 6 <span className="text-[#FDE68A]">· AI Hackathon</span>
+                </span>
               </div>
             </motion.div>
 
             {/* Orbiting Badge #2: Academic GPA 3.64 / 4.00 (Top-Left Orbit) */}
             <motion.div
-              animate={{ y: [0, -9, 0], rotate: [0, -2, 0] }}
+              animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              whileHover={{ scale: 1.08, y: -12 }}
-              className="absolute -top-8 -left-6 md:-left-20 z-40 cursor-default"
+              whileHover={{ scale: 1.05 }}
+              className="absolute -top-5 -left-4 md:-left-12 z-40 cursor-default"
             >
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-2xl border-2 border-[#2DD4BF] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_0_30px_rgba(45,212,191,0.45)] group transition-all">
-                <div className="w-8 h-8 rounded-xl bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-extrabold shadow-md shrink-0 group-hover:scale-110 transition-transform">
-                  <OceanIcon name="star" className="w-4 h-4 text-[#022433]" />
-                </div>
-                <div className="flex flex-col text-left">
-                  <span className="font-mono text-[9px] text-[#2DD4BF] font-extrabold uppercase tracking-widest leading-none mb-1">
-                    ACADEMIC HONORS
-                  </span>
-                  <span className="font-fraunces text-xs md:text-sm font-extrabold text-white leading-tight">
-                    GPA 3.64 / 4.00
-                  </span>
-                </div>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2DD4BF]/60 bg-[#022433]/70 backdrop-blur-xl shadow-lg transition-all group">
+                <OceanIcon name="star" className="w-3.5 h-3.5 text-[#2DD4BF] group-hover:scale-110 transition-transform" />
+                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
+                  GPA <span className="text-[#2DD4BF]">3.64 / 4.00</span>
+                </span>
               </div>
             </motion.div>
 
             {/* Orbiting Badge #3: 3rd Place Social AI (Bottom-Right Orbit) */}
             <motion.div
-              animate={{ y: [0, -8, 0], rotate: [0, 1.5, 0] }}
+              animate={{ y: [0, -5, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              whileHover={{ scale: 1.08, y: -10 }}
-              className="absolute -bottom-8 -right-6 md:-right-14 z-40 cursor-default"
+              whileHover={{ scale: 1.05 }}
+              className="absolute -bottom-5 -right-4 md:-right-8 z-40 cursor-default"
             >
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-2xl border-2 border-[#FDE68A] bg-[#022433]/92 backdrop-blur-2xl shadow-[0_0_30px_rgba(253,230,138,0.45)] group transition-all">
-                <div className="w-8 h-8 rounded-xl bg-[#FDE68A] text-[#022433] flex items-center justify-center font-extrabold shadow-md shrink-0 group-hover:scale-110 transition-transform">
-                  <OceanIcon name="trophy" className="w-4 h-4 text-[#022433]" />
-                </div>
-                <div className="flex flex-col text-left">
-                  <span className="font-mono text-[9px] text-[#FDE68A] font-extrabold uppercase tracking-widest leading-none mb-1">
-                    SOCIAL AI CHALLENGE
-                  </span>
-                  <span className="font-fraunces text-xs md:text-sm font-extrabold text-white leading-tight">
-                    3rd Place Award
-                  </span>
-                </div>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#FDE68A]/60 bg-[#022433]/70 backdrop-blur-xl shadow-lg transition-all group">
+                <OceanIcon name="trophy" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:scale-110 transition-transform" />
+                <span className="font-mono text-[10px] md:text-[11px] font-extrabold text-white">
+                  3rd Place <span className="text-[#FDE68A]">· Social AI</span>
+                </span>
               </div>
             </motion.div>
 
