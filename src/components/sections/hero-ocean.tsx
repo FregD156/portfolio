@@ -249,50 +249,56 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // 3D Crystalline Low-Poly Geometric Diamond Gem Clouds (Mây Tinh Thể Kim Cương Đa Giác 3D Lấp Lánh)
+      // Ethereal Soft Gentle Translucent Clouds (Mây Bầu Trời Nhẹ Nhàng, Mềm Mại & Bồng Bềnh)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
-          const cx = (((i * spread + time * layer.speed * 12) % (w + spread * layer.scale * 2.2)) - spread * layer.scale * 0.4);
-          const cy = h * layer.y + Math.sin(time * 0.08 + i) * 6;
-          const scale = layer.scale * 1.1;
+          const cx = (((i * spread + time * layer.speed * 14) % (w + spread * layer.scale * 2.2)) - spread * layer.scale * 0.4);
+          const cy = h * layer.y + Math.sin(time * 0.06 + i * 1.5) * 5;
+          const baseScale = layer.scale * 65;
 
-          // Crystalline Faceted Geometry Puffs (Mesh of Polygonal Gemstone Facets)
-          const facets: { pts: [number, number][]; color: string }[] = [
-            // Center Gemstone Facet
-            { pts: [[0, -18 * scale], [24 * scale, 0], [0, 14 * scale], [-24 * scale, 0]], color: isDark ? "rgba(253, 230, 138, 0.45)" : "rgba(255, 255, 255, 0.75)" },
-            // Upper Left Crystal Facet
-            { pts: [[-24 * scale, 0], [0, -18 * scale], [-18 * scale, -28 * scale], [-42 * scale, -10 * scale]], color: isDark ? "rgba(45, 212, 191, 0.35)" : "rgba(255, 255, 255, 0.55)" },
-            // Upper Right Crystal Facet
-            { pts: [[0, -18 * scale], [24 * scale, 0], [42 * scale, -10 * scale], [18 * scale, -28 * scale]], color: isDark ? "rgba(56, 189, 248, 0.4)" : "rgba(224, 242, 254, 0.65)" },
-            // Top Apex Crystal Pyramid
-            { pts: [[-18 * scale, -28 * scale], [0, -18 * scale], [18 * scale, -28 * scale], [0, -42 * scale]], color: isDark ? "rgba(255, 255, 255, 0.5)" : "rgba(255, 255, 255, 0.85)" },
-            // Lower Left Wing Crystal
-            { pts: [[-42 * scale, -10 * scale], [-24 * scale, 0], [-35 * scale, 12 * scale], [-58 * scale, 2 * scale]], color: isDark ? "rgba(6, 182, 212, 0.3)" : "rgba(186, 230, 253, 0.5)" },
-            // Lower Right Wing Crystal
-            { pts: [[24 * scale, 0], [42 * scale, -10 * scale], [58 * scale, 2 * scale], [35 * scale, 12 * scale]], color: isDark ? "rgba(45, 212, 191, 0.35)" : "rgba(255, 255, 255, 0.6)" },
-            // Bottom Base Crystal Facet
-            { pts: [[-24 * scale, 0], [0, 14 * scale], [24 * scale, 0], [0, 22 * scale]], color: isDark ? "rgba(2, 48, 69, 0.4)" : "rgba(203, 213, 225, 0.4)" },
+          // Organic Cumulus Cloud Puffs (Billowing Soft Feathered Circles)
+          const puffs = [
+            { dx: 0, dy: 0, r: baseScale * 0.55 },
+            { dx: -baseScale * 0.35, dy: baseScale * 0.1, r: baseScale * 0.42 },
+            { dx: baseScale * 0.38, dy: baseScale * 0.08, r: baseScale * 0.44 },
+            { dx: -baseScale * 0.6, dy: baseScale * 0.18, r: baseScale * 0.32 },
+            { dx: baseScale * 0.62, dy: baseScale * 0.16, r: baseScale * 0.35 },
+            { dx: -baseScale * 0.15, dy: -baseScale * 0.22, r: baseScale * 0.42 },
+            { dx: baseScale * 0.18, dy: -baseScale * 0.18, r: baseScale * 0.38 },
           ];
 
           skyCtx.save();
           skyCtx.translate(cx, cy);
 
-          facets.forEach((f, fIdx) => {
-            const twinkle = Math.sin(time * 2.5 + i + fIdx) * 0.15 + 0.85;
-            skyCtx.fillStyle = f.color;
-            skyCtx.strokeStyle = isDark ? `rgba(255, 255, 255, ${0.5 * twinkle})` : `rgba(255, 255, 255, ${0.85 * twinkle})`;
-            skyCtx.lineWidth = 1.1;
+          // Draw Soft Radial Feathered Gradient Puffs
+          puffs.forEach((p) => {
+            const radGrad = skyCtx.createRadialGradient(
+              p.dx, p.dy, p.r * 0.1,
+              p.dx, p.dy, p.r
+            );
 
-            skyCtx.beginPath();
-            skyCtx.moveTo(f.pts[0][0], f.pts[0][1]);
-            for (let p = 1; p < f.pts.length; p++) {
-              skyCtx.lineTo(f.pts[p][0], f.pts[p][1]);
+            if (isDark) {
+              radGrad.addColorStop(0, `rgba(255, 255, 255, ${0.75 * layer.alpha})`);
+              radGrad.addColorStop(0.6, `rgba(224, 242, 254, ${0.45 * layer.alpha})`);
+              radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+            } else {
+              radGrad.addColorStop(0, `rgba(255, 255, 255, ${0.92 * layer.alpha})`);
+              radGrad.addColorStop(0.6, `rgba(255, 255, 255, ${0.65 * layer.alpha})`);
+              radGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
             }
-            skyCtx.closePath();
+
+            skyCtx.fillStyle = radGrad;
+            skyCtx.beginPath();
+            skyCtx.arc(p.dx, p.dy, p.r, 0, Math.PI * 2);
             skyCtx.fill();
-            skyCtx.stroke();
           });
+
+          // Soft Glowing Highlights on Top Domes
+          skyCtx.fillStyle = isDark ? "rgba(253, 230, 138, 0.18)" : "rgba(255, 255, 255, 0.45)";
+          skyCtx.beginPath();
+          skyCtx.ellipse(0, -baseScale * 0.2, baseScale * 0.45, baseScale * 0.22, 0, 0, Math.PI * 2);
+          skyCtx.fill();
 
           skyCtx.restore();
         }
