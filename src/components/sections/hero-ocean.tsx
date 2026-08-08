@@ -275,12 +275,12 @@ export function HeroOcean() {
           );
 
           if (isDark) {
-            cloudGrad.addColorStop(0, `rgba(240, 249, 255, ${0.72 * layer.alpha})`);
-            cloudGrad.addColorStop(0.55, `rgba(186, 230, 253, ${0.48 * layer.alpha})`);
+            cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.9 * layer.alpha})`);
+            cloudGrad.addColorStop(0.55, `rgba(224, 242, 254, ${0.68 * layer.alpha})`);
             cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
           } else {
-            cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.88 * layer.alpha})`);
-            cloudGrad.addColorStop(0.6, `rgba(255, 255, 255, ${0.55 * layer.alpha})`);
+            cloudGrad.addColorStop(0, `rgba(255, 255, 255, ${0.98 * layer.alpha})`);
+            cloudGrad.addColorStop(0.6, `rgba(255, 255, 255, ${0.78 * layer.alpha})`);
             cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
           }
 
@@ -294,6 +294,12 @@ export function HeroOcean() {
             skyCtx.moveTo(p.dx + p.r, p.dy);
             skyCtx.arc(p.dx, p.dy, p.r, 0, Math.PI * 2);
           });
+          skyCtx.fill();
+
+          // Soft Luminous Bright Top Dome Highlight
+          skyCtx.fillStyle = isDark ? `rgba(253, 230, 138, ${0.28 * layer.alpha})` : `rgba(255, 255, 255, ${0.65 * layer.alpha})`;
+          skyCtx.beginPath();
+          skyCtx.ellipse(0, -baseScale * 0.18, baseScale * 0.45, baseScale * 0.2, 0, 0, Math.PI * 2);
           skyCtx.fill();
 
           skyCtx.restore();
