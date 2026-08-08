@@ -113,7 +113,9 @@ export function Experience() {
           {/* Top Master 3D Crystalline Diamond Gemstone Node (Centered Perfectly on Spine) */}
           <div className="absolute left-[-8px] md:-left-[41px] -top-6 z-20">
             <div className="w-7 h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#043247] to-[#FDE68A] border border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_18px_rgba(253,230,138,0.9)]">
-              <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#FDE68A]" />
+              <svg className="w-3.5 h-3.5 text-[#FDE68A] drop-shadow-[0_0_6px_#FDE68A]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L15.5 8.5L22 12L15.5 15.5L12 22L8.5 15.5L2 12L8.5 8.5L12 2Z" />
+              </svg>
             </div>
           </div>
 
@@ -150,7 +152,9 @@ export function Experience() {
                 {/* 3D Crystalline Low-Poly Gemstone Facet Node (Centered Directly ON TOP of Spine Line) */}
                 <div className="absolute -left-[30px] md:-left-[41px] top-3.5 z-20 flex items-center">
                   <div className="w-7 h-7 poly-octagon bg-gradient-to-br from-[#2DD4BF] via-[#022433] to-[#FDE68A] border-1.5 border-[#FDE68A] flex items-center justify-center text-[#FDE68A] shadow-[0_0_16px_rgba(45,212,191,0.85)] group-hover:scale-125 group-hover:border-[#2DD4BF] group-hover:text-white transition-all duration-300">
-                    <OceanIcon name="anchor" className="w-3.5 h-3.5 text-[#FDE68A] group-hover:text-white transition-colors" />
+                    <svg className="w-3.5 h-3.5 text-[#FDE68A] group-hover:text-white transition-colors drop-shadow-[0_0_6px_#FDE68A]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2L15.5 8.5L22 12L15.5 15.5L12 22L8.5 15.5L2 12L8.5 8.5L12 2Z" />
+                    </svg>
                   </div>
                   {/* Glowing Facet Beam Connector (Locking Node directly into Content Card) */}
                   <div className="w-3 md:w-5 h-[2.5px] bg-gradient-to-r from-[#FDE68A] via-[#2DD4BF] to-teal-400 shadow-[0_0_10px_rgba(253,230,138,0.9)]" />
