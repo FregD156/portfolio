@@ -628,12 +628,15 @@ export function HeroOcean() {
             </span>
           </div>
 
-          {/* 3D Crystalline Gemstone Facet Prism Typography Headline for "Nguyen Thanh Duy" */}
-          <div className="crystal-name-container poly-chamfer crystal-card">
-            <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] font-black tracking-wider crystal-font-facet m-0 py-1 leading-tight">
-              NGUYEN THANH DUY
-            </h1>
-          </div>
+          {/* Frameless 3D Crystalline Facet Prism Typography Headline for "Nguyen Thanh Duy" */}
+          <h1 className="font-fraunces text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-black leading-[1.04] tracking-tight mb-3">
+            <span className="bg-gradient-to-r from-white via-teal-100 to-[#2DD4BF] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(45,212,191,0.85)] inline-block">
+              Nguyen
+            </span>{" "}
+            <span className="bg-gradient-to-r from-[#2DD4BF] via-[#FDE68A] to-white bg-clip-text text-transparent drop-shadow-[0_0_28px_rgba(253,230,138,0.85)] inline-block">
+              Thanh Duy
+            </span>
+          </h1>
 
           <p className="font-fraunces text-xl md:text-2xl text-[#FDE68A] italic mb-4 drop-shadow-md">
             Software Engineer & AI Builder
