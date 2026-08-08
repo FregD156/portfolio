@@ -249,21 +249,21 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Soft Translucent Ethereal Glassy Mist Clouds (Mây Trong Suốt Bay Nhẹ Nhàng Thơ Mộng)
+      // Pure White Translucent Soft Clouds (Mây Trắng Trong Suốt Nổi Bật 100%)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
-          const cx = (((i * spread + time * layer.speed * 10) % (w + spread * layer.scale)) - spread * layer.scale);
-          const cy = h * layer.y + Math.sin(time * 0.08 + i) * 5;
-          const baseSize = layer.scale * 68;
+          const cx = (((i * spread + time * layer.speed * 12) % (w + spread * layer.scale)) - spread * layer.scale);
+          const cy = h * layer.y + Math.sin(time * 0.1 + i) * 6;
+          const baseSize = layer.scale * 70;
 
-          // Soft Translucent Mist Puffs
+          // Pure White Cloud Puffs
           const puffs: [number, number, number][] = [
             [0, 0, 1.0],
-            [baseSize * 0.5, -baseSize * 0.15, 0.8],
-            [-baseSize * 0.5, -baseSize * 0.1, 0.72],
-            [baseSize * 0.25, baseSize * 0.1, 0.85],
-            [-baseSize * 0.25, baseSize * 0.06, 0.78],
+            [baseSize * 0.52, -baseSize * 0.16, 0.8],
+            [-baseSize * 0.52, -baseSize * 0.12, 0.74],
+            [baseSize * 0.26, baseSize * 0.1, 0.86],
+            [-baseSize * 0.26, baseSize * 0.08, 0.8],
           ];
 
           puffs.forEach(([dx, dy, scale]) => {
@@ -271,15 +271,17 @@ export function HeroOcean() {
             const py = cy + dy;
             const r = baseSize * scale * 0.5;
 
-            // Soft Translucent Feathering Radial Gradient
-            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.2, r * 0.05, px, py, r);
+            // Pure White Feathering Radial Gradient
+            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.25, r * 0.05, px, py, r);
             if (isDark) {
-              cloudGrad.addColorStop(0, "rgba(253, 230, 138, 0.35)");
-              cloudGrad.addColorStop(0.5, "rgba(45, 212, 191, 0.2)");
+              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.88)");
+              cloudGrad.addColorStop(0.45, "rgba(253, 230, 138, 0.65)");
+              cloudGrad.addColorStop(0.8, "rgba(45, 212, 191, 0.35)");
               cloudGrad.addColorStop(1, "rgba(2, 34, 48, 0)");
             } else {
-              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.45)");
-              cloudGrad.addColorStop(0.5, "rgba(255, 255, 255, 0.25)");
+              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+              cloudGrad.addColorStop(0.45, "rgba(255, 255, 255, 0.80)");
+              cloudGrad.addColorStop(0.8, "rgba(255, 255, 255, 0.40)");
               cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
             }
 
