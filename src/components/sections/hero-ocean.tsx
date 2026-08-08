@@ -382,20 +382,39 @@ export function HeroOcean() {
       });
 
       // 2. Sunlight / Moonlight Water Caustics Shimmer Net (Mạng Lưới Ánh Nắng / Ánh Trăng Phản Quang Trên Mặt Nước)
-      const causticY = h * 0.58;
+      const causticY = h * 0.55;
       wavesCtx.save();
-      wavesCtx.lineWidth = 1.2;
-      for (let c = 0; c < 12; c++) {
-        const cx = ((c * (w / 12) + time * 18) % (w + 100)) - 50;
-        const cy = causticY + Math.sin(cx * 0.008 + time * 1.5) * 22;
-        const cLen = 45 + (c % 4) * 25;
-        const shimmer = Math.sin(time * 3 + c) * 0.35 + 0.65;
+      wavesCtx.lineWidth = 1.4;
+      for (let c = 0; c < 16; c++) {
+        const cx = ((c * (w / 16) + time * 20) % (w + 120)) - 60;
+        const cy = causticY + Math.sin(cx * 0.008 + time * 1.5) * 25;
+        const cLen = 50 + (c % 4) * 30;
+        const shimmer = Math.sin(time * 3.2 + c) * 0.35 + 0.65;
 
-        wavesCtx.strokeStyle = isDark ? `rgba(45, 212, 191, ${0.45 * shimmer})` : `rgba(254, 240, 138, ${0.65 * shimmer})`;
+        wavesCtx.strokeStyle = isDark ? `rgba(45, 212, 191, ${0.5 * shimmer})` : `rgba(254, 240, 138, ${0.7 * shimmer})`;
         wavesCtx.beginPath();
         wavesCtx.moveTo(cx, cy);
-        wavesCtx.quadraticCurveTo(cx + cLen * 0.5, cy + Math.sin(time * 2 + c) * 12, cx + cLen, cy);
+        wavesCtx.quadraticCurveTo(cx + cLen * 0.5, cy + Math.sin(time * 2 + c) * 14, cx + cLen, cy);
         wavesCtx.stroke();
+      }
+      wavesCtx.restore();
+
+      // 2b. Solar / Lunar Reflection Gleam Path on Water (Đường Nắng / Đường Trăng Rọi Sáng Rực Rỡ Trên Mặt Biển)
+      const gleamX = w * 0.72;
+      const gleamY = h * 0.53;
+      wavesCtx.save();
+      for (let r = 0; r < 16; r++) {
+        const ry = gleamY + r * 15;
+        const rWidth = (20 + r * 14) * (0.8 + Math.sin(time * 2.2 + r) * 0.2);
+        const rAlpha = Math.max(0, 0.75 - r * 0.042) * (0.75 + Math.sin(time * 2.8 + r) * 0.25);
+
+        wavesCtx.fillStyle = isDark
+          ? `rgba(45, 212, 191, ${rAlpha * 0.85})`
+          : `rgba(254, 240, 138, ${rAlpha})`;
+
+        wavesCtx.beginPath();
+        wavesCtx.ellipse(gleamX + Math.sin(time * 1.8 + r) * 8, ry, rWidth, 2.5, 0, 0, Math.PI * 2);
+        wavesCtx.fill();
       }
       wavesCtx.restore();
 
