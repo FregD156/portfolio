@@ -249,58 +249,55 @@ export function HeroOcean() {
         skyCtx.fill();
       }
 
-      // Pure White Translucent Soft Clouds (Mây Trắng Trong Suốt Nổi Bật 100%)
+      // Organic Natural Cumulus Cloud Silhouettes (Tạo Hình Dáng Mây Hữu Cơ Tự Nhiên 100%)
       cloudLayers.forEach((layer) => {
         for (let i = 0; i < layer.count; i++) {
           const spread = w / layer.count;
           const cx = (((i * spread + time * layer.speed * 12) % (w + spread * layer.scale)) - spread * layer.scale);
-          const cy = h * layer.y + Math.sin(time * 0.1 + i) * 6;
-          const baseSize = layer.scale * 70;
+          const cy = h * layer.y + Math.sin(time * 0.08 + i) * 6;
+          const baseSize = layer.scale * 80;
 
-          // Pure White Cloud Puffs
-          const puffs: [number, number, number][] = [
-            [0, 0, 1.0],
-            [baseSize * 0.52, -baseSize * 0.16, 0.8],
-            [-baseSize * 0.52, -baseSize * 0.12, 0.74],
-            [baseSize * 0.26, baseSize * 0.1, 0.86],
-            [-baseSize * 0.26, baseSize * 0.08, 0.8],
+          // Organic Asymmetrical Cumulus Puffs Layout: [dx, dy, rx_ratio, ry_ratio, pIdx]
+          // Flat bottom base puffs + billowing top domes
+          const puffs: [number, number, number, number, number][] = [
+            // Flat Bottom Base Layer (Đáy Mây Phẳng Bằng Tự Nhiên)
+            [0, baseSize * 0.12, 1.25, 0.42, 0],
+            [-baseSize * 0.45, baseSize * 0.14, 0.85, 0.38, 1],
+            [baseSize * 0.48, baseSize * 0.14, 0.88, 0.38, 2],
+            // Billowing Top Domes (Đỉnh Mây Bồng Vồng Tự Nhiên)
+            [-baseSize * 0.22, -baseSize * 0.15, 0.75, 0.65, 3],
+            [0, -baseSize * 0.28, 0.88, 0.72, 4],
+            [baseSize * 0.25, -baseSize * 0.18, 0.78, 0.62, 5],
+            [-baseSize * 0.52, -baseSize * 0.05, 0.55, 0.52, 6],
+            [baseSize * 0.55, -baseSize * 0.05, 0.58, 0.52, 7],
           ];
 
-          puffs.forEach(([dx, dy, scale]) => {
+          puffs.forEach(([dx, dy, rxRatio, ryRatio, pIdx]) => {
+            const morph = Math.sin(time * 0.25 + i * 1.5 + pIdx) * 0.04;
             const px = cx + dx;
             const py = cy + dy;
-            const r = baseSize * scale * 0.5;
+            const rx = baseSize * (rxRatio + morph) * 0.5;
+            const ry = baseSize * (ryRatio + morph) * 0.5;
 
             // Soft Feathering Radial Gradient (Light Mode: Pure White / Dark Mode: Silver Moonlight)
-            const cloudGrad = skyCtx.createRadialGradient(px, py - r * 0.25, r * 0.05, px, py, r);
+            const cloudGrad = skyCtx.createRadialGradient(px, py - ry * 0.3, rx * 0.1, px, py, Math.max(rx, ry));
             if (isDark) {
               // Mystic Silver Moonlight Night Clouds (Mây Đêm Tráng Bạc Ánh Trăng Chân Thực 100%)
-              cloudGrad.addColorStop(0, "rgba(240, 249, 255, 0.85)");
+              cloudGrad.addColorStop(0, "rgba(240, 249, 255, 0.88)");
               cloudGrad.addColorStop(0.35, "rgba(186, 230, 253, 0.65)");
               cloudGrad.addColorStop(0.7, "rgba(56, 189, 248, 0.3)");
               cloudGrad.addColorStop(1, "rgba(2, 34, 48, 0)");
             } else {
-              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.95)");
-              cloudGrad.addColorStop(0.45, "rgba(255, 255, 255, 0.80)");
-              cloudGrad.addColorStop(0.8, "rgba(255, 255, 255, 0.40)");
+              cloudGrad.addColorStop(0, "rgba(255, 255, 255, 0.96)");
+              cloudGrad.addColorStop(0.45, "rgba(255, 255, 255, 0.82)");
+              cloudGrad.addColorStop(0.8, "rgba(255, 255, 255, 0.42)");
               cloudGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
             }
 
             skyCtx.fillStyle = cloudGrad;
             skyCtx.beginPath();
-            skyCtx.arc(px, py, r, 0, Math.PI * 2);
+            skyCtx.ellipse(px, py, rx, ry, 0, 0, Math.PI * 2);
             skyCtx.fill();
-
-            // Dark Mode Silver Moonlight Top Edge Highlight
-            if (isDark) {
-              skyCtx.save();
-              skyCtx.strokeStyle = "rgba(253, 230, 138, 0.45)";
-              skyCtx.lineWidth = 1;
-              skyCtx.beginPath();
-              skyCtx.arc(px, py, r * 0.96, Math.PI * 1.15, Math.PI * 1.85);
-              skyCtx.stroke();
-              skyCtx.restore();
-            }
           });
         }
       });
