@@ -22,6 +22,20 @@ const projects = [
     featured: true,
   },
   {
+    id: "magic-energy",
+    name: "Magic Energy - Vệ Binh Nguyên Tố 3D",
+    outcome: "COMPUTER VISION & 3D INTERACTIVE GAME",
+    description:
+      "Real-time Computer Vision & WebGL hand gesture control game. Recognizes finger postures via MediaPipe & webcam tracking to trigger 5 elemental spells (Fire, Water, Ice, Lightning, Earth) against 3D boss monsters in Three.js.",
+    tech: ["Computer Vision", "MediaPipe", "Three.js", "JavaScript", "HTML5/CSS3", "Vercel"],
+    image: "/assets/images/projects/magic-energy.jpg",
+    codeUrl: null,
+    demoUrl: "https://magic-energy.vercel.app/",
+    hasAward: false,
+    category: "ai",
+    featured: false,
+  },
+  {
     id: "eduguide",
     name: "EduGuide AI",
     outcome: "3RD PLACE · AI FOR SOCIAL CHALLENGE",
@@ -227,31 +241,50 @@ function ModalSandboxDrawer({
 
     setTimeout(() => {
       setIsSimulating(false)
-      setSimulationOutput(
-        JSON.stringify(
-          {
-            status: 200,
-            execution_time: "24.2ms",
-            pipeline: "Graph-RAG + RRF Hybrid Search (BM25 + FAISS)",
-            query: "Retrieve compliance requirements for VN Commercial Banks 2026",
-            results: [
-              {
-                document_id: "VN_SBV_CIRCULAR_2026_04",
-                relevance_score: 0.984,
-                grounding_status: "VERIFIED_CITATION_GUARD",
-                chunks_retrieved: 4,
-              },
-            ],
-            metrics: {
-              faiss_index_hits: 12,
-              graph_nodes_traversed: 48,
-              vector_similarity: 0.941,
+      if (project.id === "magic-energy") {
+        setSimulationOutput(
+          JSON.stringify(
+            {
+              status: 200,
+              fps: 60,
+              pipeline: "MediaPipe Hands 21-Landmark Detection",
+              gesture_detected: "3_FINGERS_UP (ICE_ELEMENT)",
+              confidence: 0.987,
+              webgl_render: "Three.js Particle Spell System",
+              target_boss: "Glacial Wyrm (Boss Stage 3)",
+              spell_cast_latency: "12.4ms",
             },
-          },
-          null,
-          2
+            null,
+            2
+          )
         )
-      )
+      } else {
+        setSimulationOutput(
+          JSON.stringify(
+            {
+              status: 200,
+              execution_time: "24.2ms",
+              pipeline: "Graph-RAG + RRF Hybrid Search (BM25 + FAISS)",
+              query: "Retrieve compliance requirements for VN Commercial Banks 2026",
+              results: [
+                {
+                  document_id: "VN_SBV_CIRCULAR_2026_04",
+                  relevance_score: 0.984,
+                  grounding_status: "VERIFIED_CITATION_GUARD",
+                  chunks_retrieved: 4,
+                },
+              ],
+              metrics: {
+                faiss_index_hits: 12,
+                graph_nodes_traversed: 48,
+                vector_similarity: 0.941,
+              },
+            },
+            null,
+            2
+          )
+        )
+      }
     }, 800)
   }
 
@@ -419,23 +452,47 @@ function ModalSandboxDrawer({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
-                <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">1</div>
-                <div className="font-mono text-xs text-[#FDE68A] font-bold">INGESTION</div>
-                <p className="font-jakarta text-[11px] text-teal-100/80">Doc → Article → Clause Hierarchical Chunking</p>
-              </div>
+              {project.id === "magic-energy" ? (
+                <>
+                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">1</div>
+                    <div className="font-mono text-xs text-[#FDE68A] font-bold">CAMERA & VISION</div>
+                    <p className="font-jakarta text-[11px] text-teal-100/80">Webcam Feed → MediaPipe 21-Landmark Hand Tracking</p>
+                  </div>
 
-              <div className="p-4 rounded-2xl bg-[#022433]/90 border border-[#FDE68A]/40 text-center space-y-2 shadow-md">
-                <div className="w-8 h-8 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold mx-auto">2</div>
-                <div className="font-mono text-xs text-[#FDE68A] font-bold">RRF HYBRID SEARCH</div>
-                <p className="font-jakarta text-[11px] text-teal-100/80">BM25 + FAISS Vector Reciprocal Rank Fusion</p>
-              </div>
+                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-[#FDE68A]/40 text-center space-y-2 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold mx-auto">2</div>
+                    <div className="font-mono text-xs text-[#FDE68A] font-bold">GESTURE CLASSIFICATION</div>
+                    <p className="font-jakarta text-[11px] text-teal-100/80">Finger Count Mapping → 5 Elemental Spell Trigger (Lửa/Nước/Băng/Sét/Đất)</p>
+                  </div>
 
-              <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
-                <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">3</div>
-                <div className="font-mono text-xs text-[#FDE68A] font-bold">CITATION GUARD</div>
-                <p className="font-jakarta text-[11px] text-teal-100/80">Strict Grounding & Anti-Hallucination Verification</p>
-              </div>
+                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">3</div>
+                    <div className="font-mono text-xs text-[#FDE68A] font-bold">WEBGL 3D RENDER</div>
+                    <p className="font-jakarta text-[11px] text-teal-100/80">Three.js Real-time Particle System & Boss Encounter HUD</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">1</div>
+                    <div className="font-mono text-xs text-[#FDE68A] font-bold">INGESTION</div>
+                    <p className="font-jakarta text-[11px] text-teal-100/80">Doc → Article → Clause Hierarchical Chunking</p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-[#FDE68A]/40 text-center space-y-2 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold mx-auto">2</div>
+                    <div className="font-mono text-xs text-[#FDE68A] font-bold">RRF HYBRID SEARCH</div>
+                    <p className="font-jakarta text-[11px] text-teal-100/80">BM25 + FAISS Vector Reciprocal Rank Fusion</p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
+                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">3</div>
+                    <div className="font-mono text-xs text-[#FDE68A] font-bold">CITATION GUARD</div>
+                    <p className="font-jakarta text-[11px] text-teal-100/80">Strict Grounding & Anti-Hallucination Verification</p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}

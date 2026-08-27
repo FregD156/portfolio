@@ -77,6 +77,17 @@
 *   **Live Demo Link**: https://topikwfregd.vercel.app
 *   **Project Image**: `/assets/images/projects/topikw-demo.png`
 
+### Project 4: Magic Energy - Vệ Binh Nguyên Tố 3D (Computer Vision & WebGL Game)
+*   **Description**: A 3D interactive web game powered by Computer Vision (MediaPipe Hand Tracking) and Three.js WebGL rendering. Allows players to cast 5 elemental magic spells in real-time using webcam hand gesture recognition.
+*   **Key Features**:
+    - **Real-Time Hand Gesture Recognition**: Webcam tracking using MediaPipe 21-landmark hand detection for gesture-to-spell classification (1 to 5 finger postures trigger Fire, Water, Ice, Lightning, Earth).
+    - **Interactive Gesture Calibration**: Built-in webcam calibration module ensuring accurate hand tracking across diverse lighting environments.
+    - **3D WebGL Combat System**: Three.js dynamic particle effects, boss combat sequence system, and custom HUD overlays.
+*   **Technologies Used**: Computer Vision, MediaPipe, Three.js, JavaScript, HTML5/CSS3, Vercel
+*   **GitHub Repository**: `[Private/Link]`
+*   **Live Demo Link**: https://magic-energy.vercel.app/
+*   **Project Image**: `/assets/images/projects/magic-energy.jpg`
+
 ## 5. Work Experience & Achievements
 
 ### Academic Accomplishments & Activities
