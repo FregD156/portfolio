@@ -123,33 +123,51 @@ export function Projects() {
 
         {/* Clean, Neat, Controlled 2-Column Grid (Aspect 4:3) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-          {projects.map((p, index) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              onClick={() => setSelectedProject(p)}
-              className="group"
-            >
-              <Tilt
-                tiltMaxAngleX={3}
-                tiltMaxAngleY={3}
-                perspective={1000}
-                className="w-full relative poly-chamfer crystal-card overflow-hidden border border-teal-300/40 bg-[#022433]/90 shadow-xl transition-all duration-500 cursor-pointer group-hover:-translate-y-1.5 group-hover:border-[#2DD4BF] group-hover:shadow-[0_15px_35px_rgba(45,212,191,0.3)] flex flex-col justify-end p-6 md:p-7 aspect-[4/3]"
+          {projects.map((p, index) => {
+            const isDblink = p.id === "dblinkstore";
+            return (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                onClick={() => setSelectedProject(p)}
+                className="group"
               >
-                {/* Full-Bleed Project Background Image */}
-                <Image
-                  src={p.image}
-                  alt={p.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105 z-0 opacity-85 group-hover:opacity-100"
-                />
+                <Tilt
+                  tiltMaxAngleX={3}
+                  tiltMaxAngleY={3}
+                  perspective={1000}
+                  className={`w-full relative poly-chamfer overflow-hidden shadow-xl transition-all duration-500 cursor-pointer group-hover:-translate-y-1.5 flex flex-col justify-end p-6 md:p-7 aspect-[4/3] ${
+                    isDblink
+                      ? "bg-[#faf6f3] border-2 border-[#70152b]/30 group-hover:border-[#70152b] group-hover:shadow-[0_15px_35px_rgba(112,21,43,0.25)]"
+                      : "crystal-card border border-teal-300/40 bg-[#022433]/90 group-hover:border-[#2DD4BF] group-hover:shadow-[0_15px_35px_rgba(45,212,191,0.3)]"
+                  }`}
+                >
+                  {/* Project Image Container */}
+                  <div className={`absolute inset-0 ${isDblink ? "bg-[#faf6f3]" : ""}`}>
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className={`transition-transform duration-700 group-hover:scale-105 z-0 ${
+                        isDblink
+                          ? "object-contain p-4 md:p-6 opacity-100 drop-shadow-md"
+                          : "object-cover opacity-85 group-hover:opacity-100"
+                      }`}
+                    />
+                  </div>
 
-                {/* Dark Gradient Overlay (40% at top -> 85% at bottom for guaranteed text contrast) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 pointer-events-none z-10" />
+                  {/* Gradient Overlay (Clean bottom gradient for text contrast, no top/middle dark vignetting on DBLink) */}
+                  <div
+                    className={`absolute inset-0 pointer-events-none z-10 ${
+                      isDblink
+                        ? "bg-gradient-to-t from-[#022433] via-[#022433]/80 via-45% to-transparent"
+                        : "bg-gradient-to-t from-black/90 via-black/50 to-black/20"
+                    }`}
+                  />
 
                 {/* Fixed Golden Ribbon Award Badge (Top-Left Corner of Card) */}
                 {p.hasAward && (
@@ -209,7 +227,8 @@ export function Projects() {
                 </div>
               </Tilt>
             </motion.div>
-          ))}
+          );
+        })}
         </div>
 
         {/* System Specification & Live Interactive Sandbox Modal Drawer */}
@@ -307,13 +326,15 @@ function ModalSandboxDrawer({
         </button>
 
         {/* Modal Header Image */}
-        <div className="relative w-full h-48 md:h-64 rounded-2xl overflow-hidden mb-6 border border-teal-300/40 shadow-inner">
+        <div className={`relative w-full h-48 md:h-64 rounded-2xl overflow-hidden mb-6 shadow-inner ${
+          project.id === "dblinkstore" ? "bg-[#faf6f3] border-2 border-[#70152b]/30" : "border border-teal-300/40"
+        }`}>
           <Image
             src={project.image}
             alt={project.name}
             fill
             sizes="800px"
-            className="object-cover"
+            className={project.id === "dblinkstore" ? "object-contain p-4 md:p-6" : "object-cover"}
           />
           {project.hasAward && (
             <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-[#022433]/95 backdrop-blur-md px-4 py-2 poly-badge border border-[#FDE68A] shadow-xl">
