@@ -115,10 +115,9 @@ export function Navbar() {
             {/* Language Switcher Button (EN / VI) */}
             <button
               onClick={toggleLanguage}
-              className="font-mono text-xs font-extrabold px-3 py-1.5 rounded-full border border-[#2DD4BF]/50 bg-[#022433]/80 text-[#2DD4BF] hover:border-[#FDE68A] hover:text-[#FDE68A] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              className="font-mono text-xs font-extrabold px-3 py-1.5 rounded-full border border-[#2DD4BF]/50 bg-[#022433]/80 text-[#2DD4BF] hover:border-[#FDE68A] hover:text-[#FDE68A] transition-all flex items-center gap-1 shadow-sm cursor-pointer"
               title="Switch Language (EN / VI)"
             >
-              <span>🌐</span>
               <span className={language === "en" ? "text-[#FDE68A] font-extrabold underline" : "opacity-70"}>EN</span>
               <span className="opacity-40">/</span>
               <span className={language === "vi" ? "text-[#FDE68A] font-extrabold underline" : "opacity-70"}>VI</span>
@@ -156,10 +155,9 @@ export function Navbar() {
             {/* Mobile Language Switcher Button (EN / VI) */}
             <button
               onClick={toggleLanguage}
-              className="font-mono text-xs font-extrabold px-2.5 py-1 rounded-full border border-[#2DD4BF]/50 bg-[#022433]/90 text-[#FDE68A] flex items-center gap-1 shadow-sm"
+              className="font-mono text-xs font-extrabold px-2.5 py-1 rounded-full border border-[#2DD4BF]/50 bg-[#022433]/90 text-[#FDE68A] flex items-center gap-1 shadow-sm cursor-pointer"
               title="Switch Language"
             >
-              <span>🌐</span>
               <span>{language.toUpperCase()}</span>
             </button>
 

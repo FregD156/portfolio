@@ -6,6 +6,7 @@ import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 import { OceanIcon } from "@/components/ui/ocean-icons";
 import { portfolioConfig } from "@/lib/config";
+import { useLanguage } from "@/context/language-context";
 
 // --- Sky & Sun parameters ---
 const sunState = { x: 0.72, y: 0.28, r: 0.09, scrollOffset: 0 };
@@ -52,6 +53,7 @@ const titaniumRivets = Array.from({ length: 12 }).map((_, i) => {
 });
 
 export function HeroOcean() {
+  const { t } = useLanguage();
   const skyCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const wavesCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -648,7 +650,7 @@ export function HeroOcean() {
           </p>
 
           <p className="font-jakarta text-sm md:text-base text-white leading-relaxed max-w-[45ch] mb-8 font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">
-            Engineering Graph-RAG architectures & high-performance backend systems at UTT Hanoi.
+            {t("hero.sub")}
           </p>
 
           {/* Action CTAs - 3D Low-Poly Polygonal Chamfered Buttons */}
@@ -657,13 +659,13 @@ export function HeroOcean() {
               href="#projects"
               className="font-jakarta inline-flex items-center gap-2.5 px-7 py-3.5 poly-badge bg-gradient-to-r from-[#06B6D4] via-[#2DD4BF] to-[#14B8A6] hover:from-[#0284c7] hover:to-[#0f766e] text-white font-extrabold text-sm shadow-xl hover:shadow-[0_10px_30px_rgba(45,212,191,0.5)] transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
             >
-              <OceanIcon name="sailboat" className="w-4 h-4 text-white" /> Selected Works
+              <OceanIcon name="sailboat" className="w-4 h-4 text-white" /> {t("hero.viewProjects")}
             </a>
             <a
               href="#contact"
               className="font-jakarta inline-flex items-center gap-2 px-7 py-3.5 poly-badge border border-white/60 bg-white/15 hover:bg-white/30 text-white font-bold backdrop-blur-xl text-sm transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-lg"
             >
-              <OceanIcon name="mail" className="w-4 h-4 text-[#FDE68A]" /> Get in Touch
+              <OceanIcon name="mail" className="w-4 h-4 text-[#FDE68A]" /> {t("hero.contactMe")}
             </a>
           </div>
 
