@@ -77,7 +77,10 @@ const timeline: TimelineItem[] = [
   },
 ]
 
+import { useLanguage } from "@/context/language-context"
+
 export function Experience() {
+  const { t } = useLanguage()
   const [selectedCert, setSelectedCert] = React.useState<TimelineItem | null>(null)
 
   // Scroll-Driven Dynamic Fill Vertical Timeline Beam
@@ -98,13 +101,13 @@ export function Experience() {
         <div className="mb-14">
           <div className="font-mono text-xs text-[#FDE68A] font-bold tracking-widest uppercase mb-2 flex items-center gap-2">
             <OceanIcon name="anchor" className="w-4 h-4 text-[#2DD4BF]" />
-            CAPTAIN'S LOG · CHRONICLES & MILESTONES
+            {t("exp.tag")}
           </div>
           <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
-            Achievements & <span className="italic font-normal text-[#FDE68A]">Experience</span>
+            {t("exp.title")}
           </h2>
           <p className="font-jakarta text-xs md:text-sm text-teal-100/90 max-w-xl font-medium">
-            A proven track record spanning scientific research, AI hackathons, technical leadership, and operations.
+            {t("exp.sub")}
           </p>
         </div>
 

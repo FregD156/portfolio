@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { portfolioConfig } from "@/lib/config"
 import { OceanIcon } from "@/components/ui/ocean-icons"
 
+import { useLanguage } from "@/context/language-context"
+
 const contactInfo = [
   { icon: "mail",     label: "Email",    value: portfolioConfig.email,         href: `mailto:${portfolioConfig.email}` },
   { icon: "compass",  label: "Phone",    value: portfolioConfig.phone,         href: `tel:${portfolioConfig.phone.replace(/\s+/g, "")}` },
@@ -16,6 +18,7 @@ const contactInfo = [
 ]
 
 export function Contact() {
+  const { t } = useLanguage()
   const [submitted, setSubmitted] = React.useState(false)
   const [sending,   setSending]   = React.useState(false)
 
@@ -41,14 +44,14 @@ export function Contact() {
         <div className="mb-16">
           <div className="font-mono text-xs text-[#FDE68A] font-extrabold tracking-widest uppercase mb-2 flex items-center gap-2 bg-[#022433]/90 border border-[#FDE68A] px-4 py-1.5 poly-badge w-fit shadow-lg">
             <OceanIcon name="anchor" className="w-4 h-4 text-[#FDE68A] animate-bounce" />
-            <span>PIRATE ANCHOR CONTACT DOCK</span>
+            <span>{t("contact.tag")}</span>
           </div>
 
           <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white mb-3">
-            Start a <span className="italic font-normal text-[#2DD4BF]">Conversation</span>
+            {t("contact.title")}
           </h2>
           <p className="font-jakarta text-sm md:text-base text-teal-100/80 max-w-[52ch] leading-relaxed font-medium">
-            Open to research collaborations, full-stack & backend engineering roles, and remote opportunities.
+            {t("contact.sub")}
           </p>
         </div>
 
@@ -96,7 +99,7 @@ export function Contact() {
             <div className="flex items-center gap-3 mt-3 px-1">
               <span className="w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0 shadow-sm" />
               <p className="postmark text-xs text-muted-foreground font-semibold">
-                AVAILABLE FOR OPPORTUNITIES · HANOI / KNUT / REMOTE
+                {t("contact.status")} · HANOI / KNUT / REMOTE
               </p>
             </div>
           </motion.div>
@@ -112,7 +115,7 @@ export function Contact() {
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-12 gap-4 text-center">
                   <OceanIcon name="trophy" className="w-12 h-12 text-primary" />
-                  <h3 className="font-fraunces text-2xl font-bold">Postcard Sent!</h3>
+                  <h3 className="font-fraunces text-2xl font-bold">Message Transmission Sent!</h3>
                   <p className="font-jakarta text-sm text-muted-foreground max-w-[30ch]">
                     Thank you for reaching out. I will get back to you within 24 hours.
                   </p>
@@ -127,26 +130,20 @@ export function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-5 font-jakarta">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="contact-name" className="postmark text-[11px] text-muted-foreground">YOUR NAME</label>
+                      <label htmlFor="contact-name" className="postmark text-[11px] text-muted-foreground">{t("contact.name")}</label>
                       <Input id="contact-name" name="name" type="text" required placeholder="Nguyen Van A"
                         className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="contact-email" className="postmark text-[11px] text-muted-foreground">EMAIL ADDRESS</label>
+                      <label htmlFor="contact-email" className="postmark text-[11px] text-muted-foreground">{t("contact.email")}</label>
                       <Input id="contact-email" name="email" type="email" required placeholder="name@domain.com"
                         className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label htmlFor="contact-subject" className="postmark text-[11px] text-muted-foreground">SUBJECT</label>
-                    <Input id="contact-subject" name="subject" type="text" placeholder="Engineering opportunity, research, project..."
-                      className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm" />
-                  </div>
-
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="contact-message" className="postmark text-[11px] text-muted-foreground">MESSAGE CONTENT</label>
-                    <Textarea id="contact-message" name="message" rows={5} required placeholder="Hello Duy, I'd like to discuss..."
+                    <label htmlFor="contact-message" className="postmark text-[11px] text-muted-foreground">{t("contact.message")}</label>
+                    <Textarea id="contact-message" name="message" rows={5} required placeholder="..."
                       className="poly-badge border-border/80 bg-background/50 focus-visible:ring-primary text-sm resize-none" />
                   </div>
 
@@ -154,7 +151,7 @@ export function Contact() {
                     type="submit" disabled={sending}
                     className="postmark w-full poly-badge font-bold bg-primary hover:bg-primary/90 text-white shadow-lg transition-all duration-300 py-3 text-xs"
                   >
-                    {sending ? "Sending…" : "Send Postcard"}
+                    {sending ? "Sending…" : t("contact.send")}
                   </Button>
                 </form>
               )}

@@ -23,9 +23,9 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.badge": "Software Engineering Student @ UTT · GPA 3.64",
     "hero.title1": "Engineering Intelligent",
     "hero.title2": "AI Systems & Architectures",
-    "hero.sub": "High-achieving Software Engineer with 3.64 GPA. Award-winning AI builder specializing in Graph-RAG, Computer Vision 3D WebGL, and scalable backend workflows.",
-    "hero.viewProjects": "Explore Discoveries",
-    "hero.contactMe": "Get In Touch",
+    "hero.sub": "Engineering Graph-RAG architectures & high-performance backend systems at UTT Hanoi.",
+    "hero.viewProjects": "Selected Works",
+    "hero.contactMe": "Get in Touch",
 
     // Stats
     "stats.gpa": "Academic GPA",
@@ -38,13 +38,21 @@ const translations: Record<Language, Record<string, string>> = {
     "stats.experienceSub": "Operations & Coaching",
 
     // About
-    "about.tag": "ABOUT MY ENGINEERING PATH",
-    "about.title": "Background & Perspective",
+    "about.headerTag": "ABOUT MY ENGINEERING PATH",
+    "about.headerTitle": "About my engineering path",
+    "about.headerSub": "Student developer at UTT (GPA 3.64 / 4.00). 3rd Place Team Leader at AI for Social Challenge & Hackathon Top 6 Finalist.",
+    "about.cardTitle": "Background & Perspective",
     "about.bio1": "I am a Software Engineering student at the University of Transport Technology (UTT), maintaining an Excellent academic standing with a 3.64 / 4.00 GPA. Driven by logic and a proactive mindset, I engineer AI pipelines and high-performance backend systems.",
     "about.bio2": "As an active AI researcher and team leader, I led my team to win 3rd Place in the AI for Social Challenge with EduGuide AI, and reached Top 6 in Hackathon: AI for Everyday Life (LIKELION / K-Tech College 2026).",
     "about.bio3": "I am actively pursuing academic and research opportunities at the Korea National University of Transportation (KNUT) to expand my global research perspective.",
     "about.techStack": "Categorized Technical Arsenal",
     "about.languages": "Language Proficiency",
+    "lang.vi": "Vietnamese",
+    "lang.viLevel": "Native Proficiency",
+    "lang.en": "English",
+    "lang.enLevel": "Professional Working",
+    "lang.kr": "Korean",
+    "lang.krLevel": "TOPIK Preparation",
 
     // Projects
     "projects.tag": "FEATURED DISCOVERIES & ARCHITECTURES",
@@ -57,10 +65,13 @@ const translations: Record<Language, Record<string, string>> = {
     "projects.archTab": "INTERACTIVE ARCHITECTURE",
     "projects.overviewTab": "SYSTEM OVERVIEW",
     "projects.sandboxTab": "LIVE API SANDBOX",
+    "projects.propCode": "Confidential Proprietary Code",
 
     // Experience
     "exp.tag": "ACADEMIC & PROFESSIONAL HISTORY",
-    "exp.title": "Experience & Achievements",
+    "exp.title": "Experience & Background",
+    "exp.sub": "Chronological timeline of academic research, competitive hackathons, and operational leadership.",
+    "exp.viewCert": "View Certificate",
 
     // Contact
     "contact.tag": "COMMUNICATION NODE",
@@ -70,6 +81,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.email": "Your Email",
     "contact.message": "Your Message",
     "contact.send": "Send Transmission",
+    "contact.status": "Available for New Opportunities",
   },
   vi: {
     // Nav
@@ -79,11 +91,11 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Liên hệ",
 
     // Hero
-    "hero.badge": "Sinh viên Công nghệ Thông tin @ UTT · GPA 3.64",
+    "hero.badge": "Sinh viên Kỹ thuật Phần mềm @ UTT · GPA 3.64",
     "hero.title1": "Phát triển Hệ thống",
     "hero.title2": "Trí tuệ Nhân tạo & Kiến trúc Backend",
-    "hero.sub": "Kỹ sư Phần mềm thành tích cao với GPA 3.64. Đạt nhiều giải thưởng đổi mới sáng tạo AI, chuyên sâu về Graph-RAG, Computer Vision 3D WebGL và kiến trúc hệ thống.",
-    "hero.viewProjects": "Khám phá Dự án",
+    "hero.sub": "Xây dựng kiến trúc Graph-RAG & hệ thống backend hiệu năng cao tại UTT Hà Nội.",
+    "hero.viewProjects": "Dự án Chọn lọc",
     "hero.contactMe": "Liên hệ Ngay",
 
     // Stats
@@ -92,18 +104,26 @@ const translations: Record<Language, Record<string, string>> = {
     "stats.hackathon": "AI Hackathon",
     "stats.hackathonSub": "K-Tech & LIKELION 2026",
     "stats.award": "AI for Social Challenge",
-    "stats.awardSub": "Trưởng nhóm · Giải Ba Chiếc Húp",
+    "stats.awardSub": "Trưởng nhóm · Đạt giải Ba",
     "stats.experience": "Kinh nghiệm Làm việc",
     "stats.experienceSub": "Quản lý & Huấn luyện",
 
     // About
-    "about.tag": "HÀNH TRÌNH PHÁT TRIỂN KỸ THUẬT",
-    "about.title": "Nền tảng & Định hướng",
-    "about.bio1": "Tôi là sinh viên ngành Kỹ thuật Phần mềm tại Trường Đại học Công nghệ Giao thông Vận tải (UTT), duy trì học lực Xuất sắc với GPA 3.64 / 4.00. Với tư duy logic và chủ động, tôi chuyên xây dựng các quy trình AI tiên tiến và hệ thống backend hiệu năng cao.",
+    "about.headerTag": "HÀNH TRÌNH KỸ THUẬT PHẦN MỀM",
+    "about.headerTitle": "Hành trình kỹ thuật & nghiên cứu",
+    "about.headerSub": "Sinh viên Lập trình UTT (GPA 3.64 / 4.00). Trưởng nhóm đạt Giải Ba AI for Social Challenge & Top 6 Hackathon Toàn quốc.",
+    "about.cardTitle": "Nền tảng & Định hướng Kỹ thuật",
+    "about.bio1": "Tôi là sinh viên ngành Kỹ thuật Phần mềm tại Trường Đại học Công nghệ Giao thông Vận tải (UTT), duy trì học lực Xuất sắc với GPA 3.64 / 4.00. Với tư duy logic và chủ động, tôi chuyên thiết kế các quy trình AI tiên tiến và hệ thống backend hiệu năng cao.",
     "about.bio2": "Với vai trò Trưởng nhóm nghiên cứu AI, tôi đã dẫn dắt đội đạt Giải Ba cuộc thi AI for Social Challenge với hệ thống EduGuide AI, và đạt Top 6 Hackathon toàn quốc: AI for Everyday Life (LIKELION / K-Tech College 2026).",
-    "about.bio3": "Tôi đang tích cực chuẩn bị hồ sơ du học và nghiên cứu tại Đại học Quốc gia Giao thông Hàn Quốc (KNUT) để mở rộng góc nhìn công nghệ toàn cầu.",
-    "about.techStack": "Kho Vũ khí Công nghệ",
+    "about.bio3": "Tôi đang tích cực chuẩn bị hồ sơ du học và nghiên cứu tại Đại học Quốc gia Giao thông Hàn Quốc (KNUT) để mở rộng tầm nhìn công nghệ toàn cầu.",
+    "about.techStack": "Kho Vũ khí Công nghệ Phân loại",
     "about.languages": "Năng lực Ngôn ngữ",
+    "lang.vi": "Tiếng Việt",
+    "lang.viLevel": "Tiếng mẹ đẻ",
+    "lang.en": "Tiếng Anh",
+    "lang.enLevel": "Thành thạo công việc",
+    "lang.kr": "Tiếng Hàn",
+    "lang.krLevel": "Đang luyện thi TOPIK",
 
     // Projects
     "projects.tag": "DỰ ÁN NỔI BẬT & KIẾN TRÚC HỆ THỐNG",
@@ -116,10 +136,13 @@ const translations: Record<Language, Record<string, string>> = {
     "projects.archTab": "SƠ ĐỒ KIẾN TRÚC TƯƠNG TÁC",
     "projects.overviewTab": "TỔNG QUAN HỆ THỐNG",
     "projects.sandboxTab": "THỬ NGHIỆM API LIVE",
+    "projects.propCode": "Mã nguồn Bảo mật Độc quyền",
 
     // Experience
     "exp.tag": "LỊCH SỬ HỌC TẬP & HOẠT ĐỘNG",
     "exp.title": "Kinh nghiệm & Thành tựu",
+    "exp.sub": "Dòng thời gian nghiên cứu học thuật, các cuộc thi Hackathon và năng lực lãnh đạo.",
+    "exp.viewCert": "Xem Chứng nhận",
 
     // Contact
     "contact.tag": "KÊNH KẾT NỐI LIÊN HỆ",
@@ -129,6 +152,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.email": "Địa chỉ Email",
     "contact.message": "Nội dung tin nhắn",
     "contact.send": "Gửi Tin Nhắn",
+    "contact.status": "Sẵn sàng đón nhận cơ hội mới",
   },
 }
 

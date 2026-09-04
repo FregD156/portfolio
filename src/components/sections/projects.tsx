@@ -80,7 +80,10 @@ const projects = [
   },
 ]
 
+import { useLanguage } from "@/context/language-context"
+
 export function Projects() {
+  const { t } = useLanguage()
   const [selectedProject, setSelectedProject] = React.useState<typeof projects[0] | null>(null)
 
   return (
@@ -102,13 +105,13 @@ export function Projects() {
           <div>
             <div className="font-mono text-xs text-[#FDE68A] font-bold tracking-widest uppercase mb-2 flex items-center gap-2">
               <OceanIcon name="compass" className="w-4 h-4 text-[#2DD4BF]" />
-              FEATURED DISCOVERIES & ARCHITECTURES
+              {t("projects.tag")}
             </div>
             <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-              Selected <span className="italic font-normal text-[#FDE68A]">Innovations</span>
+              {t("projects.title")}
             </h2>
             <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-2 max-w-xl font-medium">
-              Click any project card to expand full system architecture specs and live demos.
+              {t("projects.subtitle")}
             </p>
           </div>
 

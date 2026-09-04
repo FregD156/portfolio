@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { OceanIcon } from "@/components/ui/ocean-icons"
+import { useLanguage } from "@/context/language-context"
 
 const techCategories = [
   {
@@ -27,13 +28,15 @@ const techCategories = [
   }
 ]
 
-const languages = [
-  { name: "Vietnamese", level: "Native Proficiency", pct: 100 },
-  { name: "English",    level: "Professional Working", pct: 85 },
-  { name: "Korean",     level: "TOPIK Preparation", pct: 50 },
-]
-
 export function About() {
+  const { t } = useLanguage()
+
+  const languages = [
+    { name: t("lang.vi"), level: t("lang.viLevel"), pct: 100 },
+    { name: t("lang.en"), level: t("lang.enLevel"), pct: 85 },
+    { name: t("lang.kr"), level: t("lang.krLevel"), pct: 50 },
+  ]
+
   return (
     <section className="py-28 relative" id="about">
       <div className="max-w-6xl mx-auto px-6">
@@ -41,10 +44,10 @@ export function About() {
         {/* Section Header */}
         <div className="mb-16">
           <h2 className="font-fraunces text-3xl md:text-5xl font-bold tracking-tight text-white">
-            About <span className="italic font-normal text-[#FDE68A]">my engineering path</span>
+            {t("about.headerTitle")}
           </h2>
           <p className="font-jakarta text-sm md:text-base text-teal-100/90 mt-3 max-w-2xl font-medium">
-            Student developer at UTT (GPA 3.64 / 4.00). 3rd Place Team Leader at AI for Social Challenge & Hackathon Top 6 Finalist.
+            {t("about.headerSub")}
           </p>
         </div>
 
@@ -62,29 +65,19 @@ export function About() {
             {/* Bio Card */}
             <div className="p-8 poly-chamfer glass-resort-card crystal-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <OceanIcon name="wave" className="w-5 h-5 text-[#FDE68A]" /> Background & Perspective
+                <OceanIcon name="wave" className="w-5 h-5 text-[#FDE68A]" /> {t("about.cardTitle")}
               </h3>
               <div className="font-jakarta space-y-4 text-sm md:text-base text-teal-100/95 leading-relaxed font-medium">
-                <p>
-                  I am a Software Engineering student at the{" "}
-                  <span className="text-white font-bold underline decoration-[#FDE68A]/60">University of Transport Technology (UTT)</span>,
-                  maintaining an Excellent academic standing with a <span className="text-[#FDE68A] font-extrabold">3.64 / 4.00 GPA</span>. Driven by logic and a proactive mindset, I engineer AI pipelines and high-performance backend systems.
-                </p>
-                <p>
-                  As an active AI researcher and team leader, I led my team to win{" "}
-                  <span className="text-white font-bold">3rd Place in the AI for Social Challenge</span> with <span className="text-[#2DD4BF] font-bold">EduGuide AI</span>, and reached <span className="text-white font-bold">Top 6 in Hackathon: AI for Everyday Life</span> (LIKELION / K-Tech College 2026).
-                </p>
-                <p>
-                  I am actively pursuing academic and research opportunities at the{" "}
-                  <span className="text-[#FDE68A] font-bold">Korea National University of Transportation (KNUT)</span> to expand my global research perspective.
-                </p>
+                <p>{t("about.bio1")}</p>
+                <p>{t("about.bio2")}</p>
+                <p>{t("about.bio3")}</p>
               </div>
             </div>
 
             {/* Language Proficiency Card */}
             <div className="p-8 poly-chamfer glass-resort-card crystal-card">
               <h3 className="font-fraunces text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <OceanIcon name="shell" className="w-5 h-5 text-[#FDE68A]" /> Language Proficiency
+                <OceanIcon name="shell" className="w-5 h-5 text-[#FDE68A]" /> {t("about.languages")}
               </h3>
               <div className="space-y-5">
                 {languages.map((lang, i) => (
