@@ -52,6 +52,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { LanguageProvider } from "@/context/language-context";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,11 +64,13 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${plusJakartaSans.variable} ${spaceMono.variable} font-sans min-h-screen bg-background text-foreground antialiased grain`}
       >
-        <OceanIconSprite />
-        <SplashIntro />
-        <LenisProvider>
-          {children}
-        </LenisProvider>
+        <LanguageProvider>
+          <OceanIconSprite />
+          <SplashIntro />
+          <LenisProvider>
+            {children}
+          </LenisProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

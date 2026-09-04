@@ -12,8 +12,18 @@ const navLinks = [
   { href: "#contact",    label: "Contact" },
 ]
 
+import { useLanguage } from "@/context/language-context"
+
 export function Navbar() {
+  const { language, toggleLanguage, t } = useLanguage()
   const [isOpen,   setIsOpen]   = React.useState(false)
+
+  const navLinks = [
+    { href: "#about",      label: t("nav.about") },
+    { href: "#projects",   label: t("nav.projects") },
+    { href: "#experience", label: t("nav.experience") },
+    { href: "#contact",    label: t("nav.contact") },
+  ]
   const [scrolled, setScrolled] = React.useState(false)
   const [active,   setActive]   = React.useState("")
   const [visible,  setVisible]  = React.useState(true)
@@ -102,6 +112,18 @@ export function Navbar() {
 
             <div className="w-px h-4 bg-teal-300/30 mx-2" />
 
+            {/* Language Switcher Button (EN / VI) */}
+            <button
+              onClick={toggleLanguage}
+              className="font-mono text-xs font-extrabold px-3 py-1.5 rounded-full border border-[#2DD4BF]/50 bg-[#022433]/80 text-[#2DD4BF] hover:border-[#FDE68A] hover:text-[#FDE68A] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              title="Switch Language (EN / VI)"
+            >
+              <span>🌐</span>
+              <span className={language === "en" ? "text-[#FDE68A] font-extrabold underline" : "opacity-70"}>EN</span>
+              <span className="opacity-40">/</span>
+              <span className={language === "vi" ? "text-[#FDE68A] font-extrabold underline" : "opacity-70"}>VI</span>
+            </button>
+
             {/* Ocean Theme Switcher (Pure Sun / Moon Icon) */}
             <button
               onClick={toggleTheme}
@@ -131,6 +153,16 @@ export function Navbar() {
 
           {/* Mobile controls */}
           <div className="flex items-center gap-2 md:hidden">
+            {/* Mobile Language Switcher Button (EN / VI) */}
+            <button
+              onClick={toggleLanguage}
+              className="font-mono text-xs font-extrabold px-2.5 py-1 rounded-full border border-[#2DD4BF]/50 bg-[#022433]/90 text-[#FDE68A] flex items-center gap-1 shadow-sm"
+              title="Switch Language"
+            >
+              <span>🌐</span>
+              <span>{language.toUpperCase()}</span>
+            </button>
+
             {/* Mobile Theme Switcher Icon */}
             <button
               onClick={toggleTheme}

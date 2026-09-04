@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import Tilt from "react-parallax-tilt"
 import { OceanIcon } from "@/components/ui/ocean-icons"
+import { InteractiveArchitectureVisualizer } from "@/components/ui/interactive-architecture-visualizer"
 
 const projects = [
   {
@@ -467,55 +468,7 @@ function ModalSandboxDrawer({
 
         {/* Tab 3: Interactive Architecture Diagram */}
         {activeTab === "architecture" && (
-          <div className="space-y-4">
-            <div className="font-mono text-xs text-[#2DD4BF] font-extrabold uppercase tracking-widest">
-              END-TO-END SYSTEM PIPELINE FLOW
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {project.id === "magic-energy" ? (
-                <>
-                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
-                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">1</div>
-                    <div className="font-mono text-xs text-[#FDE68A] font-bold">CAMERA & VISION</div>
-                    <p className="font-jakarta text-[11px] text-teal-100/80">Webcam Feed → MediaPipe 21-Landmark Hand Tracking</p>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-[#FDE68A]/40 text-center space-y-2 shadow-md">
-                    <div className="w-8 h-8 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold mx-auto">2</div>
-                    <div className="font-mono text-xs text-[#FDE68A] font-bold">GESTURE CLASSIFICATION</div>
-                    <p className="font-jakarta text-[11px] text-teal-100/80">Finger Count Mapping → 5 Elemental Spell Trigger (Lửa/Nước/Băng/Sét/Đất)</p>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
-                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">3</div>
-                    <div className="font-mono text-xs text-[#FDE68A] font-bold">WEBGL 3D RENDER</div>
-                    <p className="font-jakarta text-[11px] text-teal-100/80">Three.js Real-time Particle System & Boss Encounter HUD</p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
-                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">1</div>
-                    <div className="font-mono text-xs text-[#FDE68A] font-bold">INGESTION</div>
-                    <p className="font-jakarta text-[11px] text-teal-100/80">Doc → Article → Clause Hierarchical Chunking</p>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-[#FDE68A]/40 text-center space-y-2 shadow-md">
-                    <div className="w-8 h-8 rounded-full bg-[#FDE68A] text-[#022433] flex items-center justify-center font-bold mx-auto">2</div>
-                    <div className="font-mono text-xs text-[#FDE68A] font-bold">RRF HYBRID SEARCH</div>
-                    <p className="font-jakarta text-[11px] text-teal-100/80">BM25 + FAISS Vector Reciprocal Rank Fusion</p>
-                  </div>
-
-                  <div className="p-4 rounded-2xl bg-[#022433]/90 border border-teal-300/30 text-center space-y-2 shadow-md">
-                    <div className="w-8 h-8 rounded-full bg-[#2DD4BF] text-[#022433] flex items-center justify-center font-bold mx-auto">3</div>
-                    <div className="font-mono text-xs text-[#FDE68A] font-bold">CITATION GUARD</div>
-                    <p className="font-jakarta text-[11px] text-teal-100/80">Strict Grounding & Anti-Hallucination Verification</p>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
+          <InteractiveArchitectureVisualizer projectId={project.id} />
         )}
       </motion.div>
     </div>
